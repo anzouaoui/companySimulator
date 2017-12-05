@@ -145,8 +145,8 @@ public class Entreprise {
      * @author casag
      */
     public double getNiveauMoyenFormation(){
-        int nbEmp = 0 ;
-        int somme = 0 ;
+        double nbEmp = 0 ;
+        double somme = 0 ;
         double niveauGlobal;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {

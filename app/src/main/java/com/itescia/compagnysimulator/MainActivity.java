@@ -20,7 +20,11 @@ public class MainActivity extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-        double parite;
+        /*
+         * TEST DES FONCTIONS
+         */
+
+        double parite, niveauMoyFormation;
         int level;
         Joueur j = new Joueur("Célia") ;
         Entreprise e = new Entreprise("company");
@@ -31,19 +35,21 @@ public class MainActivity extends AppCompatActivity {
         e.getEmployes().add(d1);
         e.getEmployes().add(m1);
         e.getEmployes().add(c1);
-
+        d1.incrementNiveauFormation();
+        m1.incrementNiveauFormation();
+        c1.getNiveauFormation();
         parite = e.getParite();
 
         Production p1 = new Production('F');
         e.getEmployes().add(p1);
+
+        niveauMoyFormation = e.getNiveauMoyenFormation();
 
         parite = e.getParite();
 
         e.levelUp();
 
         level = e.getNiveau();
-
-        e.levelUp();
 
     }
 }

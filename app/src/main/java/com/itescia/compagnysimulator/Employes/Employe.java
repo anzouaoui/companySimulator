@@ -33,6 +33,14 @@ public class Employe {
         this.setSexe(sexe);
     }
 
+    /**
+     * Incrémente le niveau de formation de l'employé
+     * @author casag
+     */
+    public void incrementNiveauFormation(){
+        this.niveauFormation += 1;
+    }
+
     public int getNiveauFormation() {
         return niveauFormation;
     }
