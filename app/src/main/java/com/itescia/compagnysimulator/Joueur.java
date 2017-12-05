@@ -1,7 +1,7 @@
 package com.itescia.compagnysimulator;
 
 /**
- * <b>Joueur est la classe représentant l'utilisateur du jeu</b>
+ * <b>Classe représentant l'utilisateur du jeu</b>
  *
  * @author casag
  * @version Prototype

@@ -1,9 +1,13 @@
 package com.itescia.compagnysimulator;
 
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.itescia.compagnysimulator.Employes.Comptabilite;
+import com.itescia.compagnysimulator.Employes.Direction;
+import com.itescia.compagnysimulator.Employes.Marketing;
+import com.itescia.compagnysimulator.Employes.Production;
 
 public class MainActivity extends AppCompatActivity {
 

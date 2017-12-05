@@ -1,7 +1,10 @@
 package com.itescia.compagnysimulator;
 
 /**
- * Created by casag on 21/11/2017.
+ * <b> Classe représentant une ressource</b>
+ *
+ * @author casag
+ * @version Prototype
  */
 
 public class Ressources {
