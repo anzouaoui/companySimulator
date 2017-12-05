@@ -1,58 +1,130 @@
 package com.itescia.compagnysimulator;
-
-import android.support.annotation.NonNull;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
+ * <b> Entreprise est la classe représentant l'entreprise du joueur</b>
+ *
+ * @see Joueur
+ *
+ * @author casag
+ * @version Prototype
  * Created by casag on 21/11/2017.
  */
 
 public class Entreprise {
-
+    /** Nom de l'entreprise
+     * @see Entreprise#getNomEntreprise()
+     * @see Entreprise#setNomEntreprise(String)
+     */
     private String nomEntreprise;
-    private int niveau;
-    private int bonheur;
-    private int argent;
-    private int nbEmployes;
-    private int reputation;
-    private int niveauSecuPhysique; //dépend des employés sécurité
-    private int niveauSecuInfo; //augmentée en améliorant anti-virus, pare feu...
-    private int niveauQualConditionTravail;
-    private List<Employe> employes;
-    private List<Ressource> ressources;
 
+    /** Niveau général de l'entreprise
+     * @see Entreprise#getNiveau()
+     * @see Entreprise#setNiveau(int)
+     */
+    private int niveau;
+
+    /** Taux de bonheur dans l'entreprise.
+     *  Dépend du niveau de formation général des employés, de la réputation,
+     *  du taux global de sécurité et du niveau de qualité des conditions de travail
+     * @see Entreprise#getBonheur()
+     * @see Entreprise#setBonheur(int)
+     * @see Entreprise#getNiveauMoyenFormation()
+     * @see Entreprise#getNiveauSecuGlobal()
+     * @see Entreprise#levelUp()
+     */
+    private double bonheur;
+
+    /** Argent possédé dans l'entreprise
+     *  S'incrémente constamment en fonction du niveau de compétences des employés
+     *  et du niveau de bonheur :
+     *  40% Comptabilité | 30% bonheur | 10% Production | 10% Commercial | 10% Marketing
+     * @see Entreprise#getArgent()
+     * @see Entreprise#setArgent(int)
+     */
+    private double argent;
+
+    /** Niveau de réputation de l'entreprise
+     * S'améliorera ou se déteriorera en fonction d'actions à lancer (campagnes de com...)
+     * ou d'évènements aléatoire (grèves...)
+     * @see Entreprise#getReputation()
+     * @see Entreprise#setReputation(int)
+     */
+    private double reputation;
+
+    /** Niveau de réputation de l'entreprise
+     * S'améliorera ou se déteriorera en fonction d'actions à lancer (campagnes de com...)
+     * ou d'évènements aléatoire (grèves...)
+     * @see Entreprise#getReputation()
+     * @see Entreprise#setReputation(int)
+     */
+
+    //private int niveauSecuPhysique; //dépend des employés sécurité : voir fonction
+
+    /** Niveau de sécurité informatique
+     * S'augmentera en améliorant anti-virus, pare feu...
+     * @see Entreprise#getNiveauSecuInfo()
+     * @see Entreprise#setNiveauSecuInfo(int)
+      */
+    private double niveauSecuInfo;
+
+    /** Niveau de qualité des conditions de travail
+     * S'améliorera en montant de niveau ou en lançant des actions visant
+     * à l'améliorer (achat de sièges confortables...)
+     * @see Entreprise#getNiveauQualConditionTravail()
+     * @see Entreprise#setNiveauQualConditionTravail(int)
+     */
+    private double niveauQualConditionTravail;
+
+    /** Liste des employés de l'entreprise
+     * @see Employe
+     * @see Entreprise#getEmployes()
+     * @see Entreprise#setEmployes(List)
+     */
+    private List<Employe> employes;
+
+    /** Ressources de l'entreprise
+     * @see Ressources
+     * @see Entreprise#getRessources()
+     * @see Entreprise#setRessources(List)
+     */
+    private List<Ressources> ressources;
+
+    /** Constructeur de l'entreprise
+     * Le niveau est fixé à 1.
+     * Le bonheur est fixé à 0.5 (moyenne)
+     * L'argent est fixé à 5000.
+     * @param nomEntreprise : Le nom de l'entreprise
+     */
     public Entreprise (String nomEntreprise) {
         this.nomEntreprise = nomEntreprise;
         this.niveau = 1;
-        this.bonheur = 50;
+        this.bonheur = 0.5;
         this.argent = 5000;
         this.reputation = 0;
-        this.niveauSecuPhysique = 0;
         this.niveauSecuInfo = 0;
         this.niveauQualConditionTravail = 0;
         this.employes = new ArrayList<Employe>();
         this.ressources = new ArrayList<>();
     }
 
-    /*
-     * Augmente de niveau l'entreprise
+    /**
+     * Incrémente le niveau
+     * @author casag
      */
     public void levelUp () {
         this.niveau += 1;
     }
 
-    /*
+    /**
      * Retourne le taux de femmes dans l'entreprise
+     * @return parité : Taux de femmes dans l'entreprise
      */
-    public int getParite(){
-        int parite = 0;
-        int nbFemmes = 0;
-        int nbHommes = 0;
+    public double getParite(){
+        double parite = 0;
+        double nbFemmes = 0;
+        double nbHommes = 0;
         for (Employe e : employes) {
             if (e.getSexe() == 'F') {
                 nbFemmes += 1;
@@ -64,12 +136,56 @@ public class Entreprise {
         return parite;
     }
 
-    /*
-     * Retourne le niveau moyen de sécurité
+    /**
+     * Retourne le niveau de formation moyen des employés
+     * @return niveauGlobal : niveau de formation moyen des employés
      */
-    public int getNiveauSecu(){
-        int niveau = 0;
-        niveau = (niveauSecuPhysique + niveauSecuInfo + niveauQualConditionTravail) / 3;
+    public double getNiveauMoyenFormation(){
+        int nbEmp = 0 ;
+        int somme = 0 ;
+        double niveauGlobal;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé et on les compte
+            somme += emp.getNiveauFormation();
+            nbEmp += 1;
+        }
+        //Calcul moyenne
+        niveauGlobal = somme / nbEmp;
+        return niveauGlobal;
+    }
+
+    /**
+     * Retourne le niveau de formation moyen des employés de sécurité
+     * @return niveauGlobal : niveau de formation moyen des employés de sécurité
+     */
+    public double getNiveauMoyenSecuPhysique() {
+        int nbEmp = 0 ;
+        int somme = 0 ;
+        double niveauGlobal;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé de sécurité et on les compte
+            if(emp instanceof Securite){
+                somme += emp.getNiveauFormation();
+                nbEmp += 1;
+            }
+        }
+        //Calcul moyenne
+        niveauGlobal = somme / nbEmp;
+        return niveauGlobal;
+    }
+
+    /**
+     * Retourne le niveau moyen de sécurité dans l'entreprise
+     * Prend en compte le niveau de sécurité physique par rapport aux compétences
+     * des employés de sécurité, le niveau de sécurité informatique et le niveau
+     * de qualité de travail.
+     * @return niveau : Niveau de sécurité global
+     */
+    public double getNiveauSecuGlobal(){
+        double niveau = 0;
+        niveau = (getNiveauMoyenSecuPhysique() + niveauSecuInfo + niveauQualConditionTravail) / 3;
         return niveau;
     }
 
@@ -89,7 +205,7 @@ public class Entreprise {
         this.niveau = niveau;
     }
 
-    public int getBonheur() {
+    public double getBonheur() {
         return bonheur;
     }
 
@@ -97,7 +213,7 @@ public class Entreprise {
         this.bonheur = bonheur;
     }
 
-    public int getArgent() {
+    public double getArgent() {
         return argent;
     }
 
@@ -105,15 +221,8 @@ public class Entreprise {
         this.argent = argent;
     }
 
-    public int getNbEmployes() {
-        return nbEmployes;
-    }
 
-    public void setNbEmployes(int nbEmployes) {
-        this.nbEmployes = nbEmployes;
-    }
-
-    public int getReputation() {
+    public double getReputation() {
         return reputation;
     }
 
@@ -121,15 +230,7 @@ public class Entreprise {
         this.reputation = reputation;
     }
 
-    public int getNiveauSecuPhysique() {
-        return niveauSecuPhysique;
-    }
-
-    public void setNiveauSecuPhysique(int niveauSecuPhysique) {
-        this.niveauSecuPhysique = niveauSecuPhysique;
-    }
-
-    public int getNiveauSecuInfo() {
+    public double getNiveauSecuInfo() {
         return niveauSecuInfo;
     }
 
@@ -137,7 +238,7 @@ public class Entreprise {
         this.niveauSecuInfo = niveauSecuInfo;
     }
 
-    public int getNiveauQualConditionTravail() {
+    public double getNiveauQualConditionTravail() {
         return niveauQualConditionTravail;
     }
 
@@ -153,11 +254,11 @@ public class Entreprise {
         this.employes = employes;
     }
 
-    public List<Ressource> getRessources() {
+    public List<Ressources> getRessources() {
         return ressources;
     }
 
-    public void setRessources(List<Ressource> ressources) {
+    public void setRessources(List<Ressources> ressources) {
         this.ressources = ressources;
     }
 

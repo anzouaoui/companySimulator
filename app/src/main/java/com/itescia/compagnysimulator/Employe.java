@@ -12,6 +12,7 @@ public class Employe {
 
     public Employe(char sexe){
         this.niveauFormation = 0;
+        this.setSexe(sexe);
     }
 
     public int getNiveauFormation() {
