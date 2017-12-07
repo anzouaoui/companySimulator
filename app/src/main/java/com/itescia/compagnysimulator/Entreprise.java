@@ -53,7 +53,7 @@ public class Entreprise {
      */
     private double argent;
 
-    /** Niveau de réputation de l'entreprise <br>
+    /** Taux de réputation de l'entreprise <br>
      * S'améliorera ou se déteriorera en fonction d'actions à lancer (campagnes de com...)
      * ou d'évènements aléatoire (grèves...)
      * @see Entreprise#getReputation()
@@ -72,18 +72,18 @@ public class Entreprise {
 
     /** Niveau de sécurité informatique <br>
      * S'augmentera en améliorant anti-virus, pare feu...
-     * @see Entreprise#getNiveauSecuInfo()
-     * @see Entreprise#setNiveauSecuInfo(int)
+     * @see Entreprise#getTauxSecuInfo()
+     * @see Entreprise#setTauxSecuInfo(int)
       */
-    private double niveauSecuInfo;
+    private double tauxSecuInfo;
 
     /** Niveau de qualité des conditions de travail <br>
      * S'améliorera en montant de niveau ou en lançant des actions visant
      * à l'améliorer (achat de sièges confortables...)
-     * @see Entreprise#getNiveauQualConditionTravail()
-     * @see Entreprise#setNiveauQualConditionTravail(int)
+     * @see Entreprise#getTauxQualConditionTravail()
+     * @see Entreprise#setTauxQualConditionTravail(int)
      */
-    private double niveauQualConditionTravail;
+    private double tauxQualConditionTravail;
 
     /** Liste des employés de l'entreprise
      * @see Employe
@@ -111,8 +111,8 @@ public class Entreprise {
         this.bonheur = 0.5;
         this.argent = 5000;
         this.reputation = 0;
-        this.niveauSecuInfo = 0;
-        this.niveauQualConditionTravail = 0;
+        this.tauxSecuInfo = 0;
+        this.tauxQualConditionTravail = 0;
         this.employes = new ArrayList<Employe>();
         this.ressources = new ArrayList<>();
     }
@@ -329,7 +329,7 @@ public class Entreprise {
      */
     public double getNiveauSecuGlobal(){
         double niveau = 0;
-        niveau = (getNiveauMoyenSecuPhysique() + niveauSecuInfo + niveauQualConditionTravail) / 3;
+        niveau = ((getNiveauMoyenSecuPhysique()/5) + tauxSecuInfo + tauxQualConditionTravail) / 3;
         return niveau;
     }
 
@@ -345,9 +345,10 @@ public class Entreprise {
      * Mise à jour du taux de bonheur <br>
      * Dépend du niveau de formation général des employés, de la réputation, <br>
      * du taux global de sécurité et du niveau de qualité des conditions de travail
-     * @author
+     * @author casag
      */
-    public void majBonheur(){
+    public void setTauxBonheur(){
+        this.bonheur = ((getNiveauMoyenFormation()/5) + getReputation() + getNiveauSecuGlobal() + getTauxQualConditionTravail())/4;
     }
 
     /** Retourne le taux de rapidité d'incrémentation de l'argent <br>
@@ -398,20 +399,20 @@ public class Entreprise {
         this.reputation = reputation;
     }
 
-    public double getNiveauSecuInfo() {
-        return niveauSecuInfo;
+    public double getTauxSecuInfo() {
+        return tauxSecuInfo;
     }
 
-    public void setNiveauSecuInfo(int niveauSecuInfo) {
-        this.niveauSecuInfo = niveauSecuInfo;
+    public void setTauxSecuInfo(int niveauSecuInfo) {
+        this.tauxSecuInfo = niveauSecuInfo;
     }
 
-    public double getNiveauQualConditionTravail() {
-        return niveauQualConditionTravail;
+    public double getTauxQualConditionTravail() {
+        return tauxQualConditionTravail;
     }
 
-    public void setNiveauQualConditionTravail(int niveauQualConditionTravail) {
-        this.niveauQualConditionTravail = niveauQualConditionTravail;
+    public void setTauxQualConditionTravail(int tauxQualConditionTravail) {
+        this.tauxQualConditionTravail = tauxQualConditionTravail;
     }
 
     public List<Employe> getEmployes() {

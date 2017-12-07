@@ -10,7 +10,7 @@ import com.itescia.compagnysimulator.Entreprise;
  */
 public class Employe {
 
-    /** Niveau de formation de l'employé
+    /** Niveau de formation de l'employé (MAX : 5)
      * @see Employe#getNiveauFormation()
      * @see Employe#setNiveauFormation(int)
      */
@@ -35,18 +35,31 @@ public class Employe {
 
     /**
      * Incrémente le niveau de formation de l'employé
+     * @param nb : de combien le niveau de formation doit être augmenté
      * @author casag
      */
-    public void incrementNiveauFormation(){
-        this.niveauFormation += 1;
+    public void incrementNiveauFormation(int nb){
+        if(this.getNiveauFormation() + nb < 5) {
+            this.niveauFormation += nb;
+        } else {
+            this.niveauFormation = 5;
+        }
     }
 
     public int getNiveauFormation() {
         return niveauFormation;
     }
 
+    /**
+     * Met à jour le niveau de formation. Ne peut excéder 5.
+     * @param niveauFormation
+     */
     public void setNiveauFormation(int niveauFormation) {
-        this.niveauFormation = niveauFormation;
+        if(niveauFormation <= 5){
+            this.niveauFormation = niveauFormation;
+        } else {
+            this.niveauFormation = 5;
+        }
     }
 
     public char getSexe() { return sexe;}
