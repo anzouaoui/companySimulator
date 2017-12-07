@@ -1,5 +1,11 @@
 package com.itescia.compagnysimulator;
+import com.itescia.compagnysimulator.Employes.Commercial;
+import com.itescia.compagnysimulator.Employes.Comptabilite;
+import com.itescia.compagnysimulator.Employes.Direction;
 import com.itescia.compagnysimulator.Employes.Employe;
+import com.itescia.compagnysimulator.Employes.Marketing;
+import com.itescia.compagnysimulator.Employes.Production;
+import com.itescia.compagnysimulator.Employes.RD;
 import com.itescia.compagnysimulator.Employes.Securite;
 
 import java.util.ArrayList;
@@ -182,6 +188,138 @@ public class Entreprise {
     }
 
     /**
+     * Retourne le niveau de formation moyen des employés commerciaux
+     * @return niveauGlobal : niveau de formation moyen des employés commerciaux
+     * @author casag
+     */
+    public double getNiveauMoyenCommercial() {
+        int nbEmp = 0 ;
+        int somme = 0 ;
+        double niveauGlobal;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé commercial et on les compte
+            if(emp instanceof Commercial){
+                somme += emp.getNiveauFormation();
+                nbEmp += 1;
+            }
+        }
+        //Calcul moyenne
+        niveauGlobal = somme / nbEmp;
+        return niveauGlobal;
+    }
+
+    /**
+     * Retourne le niveau de formation moyen des employés comptables
+     * @return niveauGlobal : niveau de formation moyen des employés comptables
+     * @author casag
+     */
+    public double getNiveauMoyenComptabilite() {
+        int nbEmp = 0 ;
+        int somme = 0 ;
+        double niveauGlobal;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé comptable et on les compte
+            if(emp instanceof Comptabilite){
+                somme += emp.getNiveauFormation();
+                nbEmp += 1;
+            }
+        }
+        //Calcul moyenne
+        niveauGlobal = somme / nbEmp;
+        return niveauGlobal;
+    }
+
+    /**
+     * Retourne le niveau de formation moyen des employés de direction
+     * @return niveauGlobal : niveau de formation moyen des employés de direction
+     * @author casag
+     */
+    public double getNiveauMoyenDirection() {
+        int nbEmp = 0 ;
+        int somme = 0 ;
+        double niveauGlobal;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé de direction et on les compte
+            if(emp instanceof Direction){
+                somme += emp.getNiveauFormation();
+                nbEmp += 1;
+            }
+        }
+        //Calcul moyenne
+        niveauGlobal = somme / nbEmp;
+        return niveauGlobal;
+    }
+
+    /**
+     * Retourne le niveau de formation moyen des employés marketing
+     * @return niveauGlobal : niveau de formation moyen des employés marketing
+     * @author casag
+     */
+    public double getNiveauMoyenMarketing() {
+        int nbEmp = 0 ;
+        int somme = 0 ;
+        double niveauGlobal;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé marketing et on les compte
+            if(emp instanceof Marketing){
+                somme += emp.getNiveauFormation();
+                nbEmp += 1;
+            }
+        }
+        //Calcul moyenne
+        niveauGlobal = somme / nbEmp;
+        return niveauGlobal;
+    }
+
+    /**
+     * Retourne le niveau de formation moyen des employés de prodution
+     * @return niveauGlobal : niveau de formation moyen des employés de production
+     * @author casag
+     */
+    public double getNiveauMoyenProduction() {
+        int nbEmp = 0 ;
+        int somme = 0 ;
+        double niveauGlobal;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé de production et on les compte
+            if(emp instanceof Production){
+                somme += emp.getNiveauFormation();
+                nbEmp += 1;
+            }
+        }
+        //Calcul moyenne
+        niveauGlobal = somme / nbEmp;
+        return niveauGlobal;
+    }
+
+    /**
+     * Retourne le niveau de formation moyen des employés recherche et développement
+     * @return niveauGlobal : niveau de formation moyen des employés RD
+     * @author casag
+     */
+    public double getNiveauMoyenRD() {
+        int nbEmp = 0 ;
+        int somme = 0 ;
+        double niveauGlobal;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé RD et on les compte
+            if(emp instanceof RD){
+                somme += emp.getNiveauFormation();
+                nbEmp += 1;
+            }
+        }
+        //Calcul moyenne
+        niveauGlobal = somme / nbEmp;
+        return niveauGlobal;
+    }
+
+    /**
      * Retourne le niveau moyen de sécurité dans l'entreprise <br>
      * Prend en compte le niveau de sécurité physique par rapport aux compétences
      * des employés de sécurité, le niveau de sécurité informatique et le niveau
@@ -195,8 +333,28 @@ public class Entreprise {
         return niveau;
     }
 
+    /**
+     * Incrémente l'argent de 1
+     * @author casag
+     */
     public void incremArgent(){
         this.argent +=1;
+    }
+
+    /**
+     * Mise à jour du taux de bonheur <br>
+     * Dépend du niveau de formation général des employés, de la réputation, <br>
+     * du taux global de sécurité et du niveau de qualité des conditions de travail
+     * @author
+     */
+    public void majBonheur(){
+    }
+
+    /** Retourne le taux de rapidité d'incrémentation de l'argent <br>
+     * 40% Comptabilité | 30% bonheur | 10% Production | 10% Commercial | 10% Marketing
+     * @author
+     */
+    public void getRapiditeIncrementation(){
     }
 
     public String getNomEntreprise() {
