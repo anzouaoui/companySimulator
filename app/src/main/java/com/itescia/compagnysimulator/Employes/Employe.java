@@ -66,6 +66,4 @@ public class Employe {
 
     public void setSexe(char sexe) { this.sexe = sexe; }
 
-
 }
-

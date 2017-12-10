@@ -8,6 +8,7 @@ import com.itescia.compagnysimulator.Employes.Comptabilite;
 import com.itescia.compagnysimulator.Employes.Direction;
 import com.itescia.compagnysimulator.Employes.Marketing;
 import com.itescia.compagnysimulator.Employes.Production;
+import com.itescia.compagnysimulator.Employes.Securite;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-        double parite, niveauMoyFormation, niveauMoyFormMark;
+        double parite, niveauMoyFormation, niveauMoyFormMark, tauxBonheur, niveauSecuG;
         int level;
         // Création joueur et entreprise
         Joueur j = new Joueur("Célia") ;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Marketing m2 = new Marketing('F');
         Comptabilite c1 = new Comptabilite('M');
         Production p1 = new Production('F');
+        Securite s1 = new Securite('M');
 
         //Ajout des employés à la collection d'employés
         e.getEmployes().add(d1);
@@ -39,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
         e.getEmployes().add(m2);
         e.getEmployes().add(c1);
         e.getEmployes().add(p1);
+        //e.getEmployes().add(s1);
 
         //Incrémentation de leurs niveau de formation
         d1.incrementNiveauFormation(1);
         m1.incrementNiveauFormation(1);
         m2.incrementNiveauFormation(3);
+        //s1.incrementNiveauFormation(2);
 
         //Taux de parité dans l'entreprise
         parite = e.getParite();
@@ -51,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
         niveauMoyFormation = e.getNiveauMoyenFormation();
         niveauMoyFormMark = e.getNiveauMoyenMarketing();
 
-        e.levelUp();
-
+        niveauSecuG = e.getNiveauSecuGlobal();
+        e.setTauxBonheur();
+        tauxBonheur = e.getBonheur();
+        e.getNiveauMoyenRD();
         level = e.getNiveau();
 
     }

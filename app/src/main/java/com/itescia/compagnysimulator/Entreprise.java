@@ -153,7 +153,7 @@ public class Entreprise {
     public double getNiveauMoyenFormation(){
         double nbEmp = 0 ;
         double somme = 0 ;
-        double niveauGlobal;
+        double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
             //On additionne le niveau de formation de chaque employé et on les compte
@@ -161,7 +161,9 @@ public class Entreprise {
             nbEmp += 1;
         }
         //Calcul moyenne
-        niveauGlobal = somme / nbEmp;
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
         return niveauGlobal;
     }
 
@@ -173,7 +175,7 @@ public class Entreprise {
     public double getNiveauMoyenSecuPhysique() {
         int nbEmp = 0 ;
         int somme = 0 ;
-        double niveauGlobal;
+        double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
             //On additionne le niveau de formation de chaque employé de sécurité et on les compte
@@ -183,7 +185,9 @@ public class Entreprise {
             }
         }
         //Calcul moyenne
-        niveauGlobal = somme / nbEmp;
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
         return niveauGlobal;
     }
 
@@ -195,7 +199,7 @@ public class Entreprise {
     public double getNiveauMoyenCommercial() {
         int nbEmp = 0 ;
         int somme = 0 ;
-        double niveauGlobal;
+        double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
             //On additionne le niveau de formation de chaque employé commercial et on les compte
@@ -205,7 +209,9 @@ public class Entreprise {
             }
         }
         //Calcul moyenne
-        niveauGlobal = somme / nbEmp;
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
         return niveauGlobal;
     }
 
@@ -217,7 +223,7 @@ public class Entreprise {
     public double getNiveauMoyenComptabilite() {
         int nbEmp = 0 ;
         int somme = 0 ;
-        double niveauGlobal;
+        double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
             //On additionne le niveau de formation de chaque employé comptable et on les compte
@@ -227,7 +233,9 @@ public class Entreprise {
             }
         }
         //Calcul moyenne
-        niveauGlobal = somme / nbEmp;
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
         return niveauGlobal;
     }
 
@@ -239,7 +247,7 @@ public class Entreprise {
     public double getNiveauMoyenDirection() {
         int nbEmp = 0 ;
         int somme = 0 ;
-        double niveauGlobal;
+        double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
             //On additionne le niveau de formation de chaque employé de direction et on les compte
@@ -249,7 +257,9 @@ public class Entreprise {
             }
         }
         //Calcul moyenne
-        niveauGlobal = somme / nbEmp;
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
         return niveauGlobal;
     }
 
@@ -261,7 +271,7 @@ public class Entreprise {
     public double getNiveauMoyenMarketing() {
         int nbEmp = 0 ;
         int somme = 0 ;
-        double niveauGlobal;
+        double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
             //On additionne le niveau de formation de chaque employé marketing et on les compte
@@ -271,7 +281,9 @@ public class Entreprise {
             }
         }
         //Calcul moyenne
-        niveauGlobal = somme / nbEmp;
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
         return niveauGlobal;
     }
 
@@ -283,7 +295,7 @@ public class Entreprise {
     public double getNiveauMoyenProduction() {
         int nbEmp = 0 ;
         int somme = 0 ;
-        double niveauGlobal;
+        double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
             //On additionne le niveau de formation de chaque employé de production et on les compte
@@ -293,7 +305,9 @@ public class Entreprise {
             }
         }
         //Calcul moyenne
-        niveauGlobal = somme / nbEmp;
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
         return niveauGlobal;
     }
 
@@ -305,7 +319,7 @@ public class Entreprise {
     public double getNiveauMoyenRD() {
         int nbEmp = 0 ;
         int somme = 0 ;
-        double niveauGlobal;
+        double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
             //On additionne le niveau de formation de chaque employé RD et on les compte
@@ -315,7 +329,9 @@ public class Entreprise {
             }
         }
         //Calcul moyenne
-        niveauGlobal = somme / nbEmp;
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
         return niveauGlobal;
     }
 
@@ -430,8 +446,5 @@ public class Entreprise {
     public void setRessources(List<Ressources> ressources) {
         this.ressources = ressources;
     }
-
-
-
 
 }
