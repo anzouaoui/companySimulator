@@ -369,9 +369,20 @@ public class Entreprise {
 
     /** Retourne le taux de rapidité d'incrémentation de l'argent <br>
      * 40% Comptabilité | 30% bonheur | 10% Production | 10% Commercial | 10% Marketing
-     * @author
+     * @return taux : taux de rapidité d'incrémentation
+     * @author casag
      */
-    public void getRapiditeIncrementation(){
+    public double getRapiditeIncrementation(){
+        double taux = 0;
+        double compt = 0, bonh = 0, prod = 0, comm = 0, mark = 0;
+        compt = getNiveauMoyenComptabilite() /5;
+        bonh = getBonheur();
+        prod = getNiveauMoyenProduction() / 5;
+        comm = getNiveauMoyenCommercial() / 5;
+        mark = getNiveauMoyenMarketing() / 5;
+
+        taux = compt * (40.0/100.0) + bonh * (30.0/100.0) + prod * (10.0/100.0) + comm  * (10.0/100.0) + mark * (10.0/100.0);
+        return taux;
     }
 
     public String getNomEntreprise() {
