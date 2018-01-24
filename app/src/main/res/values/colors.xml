@@ -3,4 +3,17 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="backgroundLevel">#C9C9C9</color>
+    <color name="fontColor">#000000</color>
+    <color name="colorProgressBarRessource">#977d66</color>
+    <color name="colorBackgroundProgressBarRessource">#6e5b4a</color>
+    <color name="colorBackgroundProgressBarReputation">#9CC2CF</color>
+    <color name="colorBackgroundProgressBarSecurite">#5E9679</color>
+    <color name="colorBackgroundProgressBarFormation">#9E5C9C</color>
+    <color name="colorBackgroundProgressBarBonheur">#C2956B</color>
+    <color name="colorProgressBarReputation">#B2DCEC</color>
+    <color name="colorProgressBarSecurite">#70B692</color>
+    <color name="colorProgressBarFormation">#BE8FBD</color>
+    <color name="colorProgressBarBonheur">#EBB684</color>
+
 </resources>
