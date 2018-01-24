@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CompagnySimulator.iml" filepath="$PROJECT_DIR$/CompagnySimulator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/companySimulator.iml" filepath="$PROJECT_DIR$/companySimulator.iml" />
+      <module fileurl="file://C:\Users\zouaoui\AndroidStudioProjects\CompagnySimulator\companySimulator.iml" filepath="C:\Users\zouaoui\AndroidStudioProjects\CompagnySimulator\companySimulator.iml" />
     </modules>
   </component>
 </project>
