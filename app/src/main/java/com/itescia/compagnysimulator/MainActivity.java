@@ -1,11 +1,20 @@
 package com.itescia.compagnysimulator;
 
+
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.itescia.compagnysimulator.Employes.Commercial;
+import com.itescia.compagnysimulator.Employes.Comptabilite;
+import com.itescia.compagnysimulator.Employes.Direction;
+import com.itescia.compagnysimulator.Employes.Marketing;
+import com.itescia.compagnysimulator.Employes.Production;
+import com.itescia.compagnysimulator.Employes.Securite;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +43,5 @@ public class MainActivity extends AppCompatActivity {
         textViewArgent.setTypeface(typefaceRessource);
         textViewHomme.setTypeface(typefaceRessource);
         textViewAddRessources.setTypeface(typefaceRessource);
-
     }
 }
