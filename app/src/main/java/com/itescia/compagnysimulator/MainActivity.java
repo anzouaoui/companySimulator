@@ -17,11 +17,16 @@ import com.itescia.compagnysimulator.Employes.Marketing;
 import com.itescia.compagnysimulator.Employes.Production;
 import com.itescia.compagnysimulator.Employes.Securite;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources;
     Typeface typefaceLevel, typefaceRessource;
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources;
+    Timer _t, timer;
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         initialize();
+        incrementeArgent();
     }
 
     /**
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         typefaceLevel = Typeface.createFromAsset(getAssets(), "font/fipps_regular.ttf");
         textViewLevel.setTypeface(typefaceLevel);
         textViewArgent = (TextView) findViewById(R.id.TextViewArgent);
+        textViewArgent.setText("0");
         textViewHomme = (TextView) findViewById(R.id.TextViewHomme);
         textViewAddRessources = (TextView) findViewById(R.id.TextViewAddRessources);
         typefaceRessource = Typeface.createFromAsset(getAssets(), "font/Pixeled.ttf");
@@ -62,4 +69,28 @@ public class MainActivity extends AppCompatActivity {
         progressBarSecurite = (ProgressBar) findViewById(R.id.ProgressBarSecurite);
         progressBarSecurite.setProgress(30);
     }
+
+    /**
+     * Fonction permettant d'incrémenter automatiquement l'argent
+     */
+    private void incrementeArgent() {
+        _t = new Timer();
+        _t.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                count++;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (count <= 10000) {
+                            textViewArgent.setText(String.valueOf(count));
+                        } else {
+                            _t.cancel();
+                        }
+                    }
+                });
+            }
+        }, 500, 500);
+    }
+
 }
