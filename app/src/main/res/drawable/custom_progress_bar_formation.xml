@@ -7,6 +7,10 @@
                 android:centerColor="@color/colorBackgroundProgressBarFormation"
                 android:endColor="@color/colorBackgroundProgressBarFormation"
                 />
+            <stroke
+                android:color="#000"
+                android:width="3dp"
+                />
         </shape>
     </item>
     <item android:id="@android:id/progress">
@@ -16,6 +20,10 @@
                     android:startColor="@color/colorProgressBarFormation"
                     android:centerColor="@color/colorProgressBarFormation"
                     android:endColor="@color/colorProgressBarFormation"
+                    />
+                <stroke
+                    android:color="#000"
+                    android:width="3dp"
                     />
             </shape>
         </clip>
