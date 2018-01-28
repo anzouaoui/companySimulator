@@ -2,11 +2,14 @@ package com.itescia.compagnysimulator;
 
 
 import android.graphics.Typeface;
+import android.os.Build;
 import android.support.v7.app.ActionBar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.TranslateAnimation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,10 +25,10 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources;
+    TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources, textViewNomJoueur;
     Typeface typefaceLevel, typefaceRessource;
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources;
-    Timer _t, timer;
+    Timer _t;
     int count = 0;
 
     @Override
@@ -33,10 +36,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initialize();
+        bindListener();
         incrementeArgent();
     }
 
@@ -47,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
         //ELEMENTS TEXTES
         textViewLevel = (TextView) findViewById(R.id.TextViewLevel);
         typefaceLevel = Typeface.createFromAsset(getAssets(), "font/fipps_regular.ttf");
+        textViewNomJoueur = (TextView) findViewById(R.id.TextViewNomJoueur);
         textViewLevel.setTypeface(typefaceLevel);
+        textViewNomJoueur.setTypeface(typefaceLevel);
+        textViewNomJoueur.setVisibility(View.GONE);
         textViewArgent = (TextView) findViewById(R.id.TextViewArgent);
         textViewArgent.setText("0");
         textViewHomme = (TextView) findViewById(R.id.TextViewHomme);
@@ -68,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
         progressBarRessources.setProgress(30);
         progressBarSecurite = (ProgressBar) findViewById(R.id.ProgressBarSecurite);
         progressBarSecurite.setProgress(30);
+    }
+
+    /**
+     * Fonction permettant d'initialiser les événements liés aux éléments du graphique
+     */
+    private void bindListener() {
+        textViewLevel.setOnClickListener(textViewLevelListener);
     }
 
     /**
@@ -93,4 +105,23 @@ public class MainActivity extends AppCompatActivity {
         }, 500, 500);
     }
 
+
+    private View.OnClickListener textViewLevelListener = new View.OnClickListener() {
+        boolean show = false;
+        /**
+         * Fonction permettaant d'afficher le nom du joueur
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            if (!show) {
+                textViewNomJoueur.setVisibility(View.VISIBLE);
+                show = true;
+            } else {
+                textViewNomJoueur.setVisibility(View.GONE);
+                show = false;
+            }
+        }
+    };
 }

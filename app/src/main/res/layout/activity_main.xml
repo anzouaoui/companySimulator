@@ -9,10 +9,12 @@
     <RelativeLayout
         android:id="@+id/RelativeLayoutPrincipal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/screen_maquette_ville">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:id="@+id/RelativeLayoutTop"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -136,21 +138,56 @@
                         app:srcCompat="@drawable/happinessicon" />
                 </RelativeLayout>
             </RelativeLayout>
+        </RelativeLayout>
 
-            <TextView
-                android:id="@+id/TextViewLevel"
+        <RelativeLayout
+            android:id="@+id/relativeLayoutNomJoueur"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/RelativeLayoutTop"
+            android:background="@color/backgroundLevel">
+            <RelativeLayout
+                android:layout_centerHorizontal="true"
+                android:id="@+id/RelativeLayoutButtonLevel"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/TextViewLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:paddingBottom="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:text="NIVEAU 10"
+                    android:textColor="@color/fontColor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_centerHorizontal="true"
+                android:id="@+id/RelativeLayoutShowNomJoueur"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:background="@color/backgroundLevel"
-                android:clickable="true"
-                android:paddingBottom="10dp"
-                android:paddingEnd="5dp"
-                android:paddingStart="5dp"
-                android:paddingTop="10dp"
-                android:text="NIVEAU 10"
-                android:textColor="@color/fontColor"
-                android:textSize="17sp" />
+                android:layout_below="@+id/RelativeLayoutButtonLevel"
+                android:background="@drawable/custom_relative_layout_nom_joueur">
+                <TextView
+                    android:id="@+id/TextViewNomJoueur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Black Tiger"
+                    android:textColor="@color/fontColor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -161,6 +198,7 @@
             android:layout_alignParentTop="true">
 
             <RelativeLayout
+                android:layout_centerHorizontal="true"
                 android:id="@+id/RelativeLayoutRessources"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,6 +206,7 @@
                 android:layout_marginBottom="10dp">
 
                 <RelativeLayout
+                    android:layout_alignParentStart="true"
                     android:id="@+id/RelativeLayoutArgent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -197,12 +236,11 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:layout_centerInParent="true"
                     android:id="@+id/RelativeLayoutHomme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="68dp"
-                    android:layout_toEndOf="@+id/RelativeLayoutArgent">
+                    android:layout_alignParentTop="true">
 
                     <ImageView
                         android:id="@+id/ImageViewHommes"
@@ -230,24 +268,20 @@
                     android:id="@+id/RelativeLayoutRessource"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="86dp"
-                    android:layout_toEndOf="@+id/RelativeLayoutHomme">
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp">
 
                     <ImageView
                         android:id="@+id/ImageViewRessources"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"
-                        android:clickable="true"
                         android:contentDescription="Image argent"
                         android:src="@drawable/resourcesicon" />
 
                     <ProgressBar
                         android:id="@+id/ProgressBarRessources"
                         style="@android:style/Widget.ProgressBar.Horizontal"
-                        android:progressDrawable="@drawable/custom_progress_bar_ressources"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -260,21 +294,26 @@
                         android:maxWidth="100dp"
                         android:minHeight="30dp"
                         android:minWidth="100dp"
-                        android:progress="0"/>
+                        android:progress="0"
+                        android:progressDrawable="@drawable/custom_progress_bar_ressources" />
 
+                    <TextView
+                        android:id="@+id/TextViewAddRessources"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/ProgressBarRessources"
+                        android:text="+"
+                        android:textColor="@color/fontColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_centerHorizontal="true"
+                        android:clickable="true"
+                        />
                 </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/TextViewAddRessources"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_toEndOf="@+id/RelativeLayoutRessource"
-                    android:text="+"
-                    android:textColor="@color/fontColor"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+
             </RelativeLayout>
         </RelativeLayout>
 
