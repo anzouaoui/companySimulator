@@ -198,6 +198,192 @@
             android:layout_alignParentTop="true">
 
             <RelativeLayout
+                android:id="@+id/RelativeLayoutEmployes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                android:layout_marginTop="45dp"
+                android:alpha="0.9"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutDetailEmployes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackgroundTextView"
+                    android:layout_marginBottom="20dp"
+                    android:alpha="1">
+
+                    <TextView
+                        android:id="@+id/TextViewDetailEmployes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detail_employes"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/colorTextViewDetails"
+                        android:textSize="15sp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutContentDetailEmployes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RelativeLayoutDetailEmployes"
+                    android:layout_centerHorizontal="true">
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp">
+
+                        <ImageButton
+                            android:id="@+id/ImageButtonBackButton"
+                            android:layout_marginStart="60dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/back"
+                            android:layout_centerVertical="true"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                    </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutEmployes1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/RelativeLayoutBackButton"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="60dp">
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutCommercial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewCommercial"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/manwoman_commercial"
+                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutProduction"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@+id/RelativeLayoutCommercial"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="40dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewProduction"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/manwoman_production"
+                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutSecurite2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@+id/RelativeLayoutProduction"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="40dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewSecurite2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/manwoman_securite"
+                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutMarketing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@+id/RelativeLayoutSecurite2"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="40dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewMarketing"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/manwoman_marketing"
+                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutEmployes2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/RelativeLayoutBackButton"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="60dp"
+                            android:layout_below="@+id/RelativeLayoutEmployes1"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="10dp">
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutComptable"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageButton
+                                    android:id="@+id/ImageviewComptable"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/manwoman_comptable"
+                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutRD"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@+id/RelativeLayoutComptable"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="40dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewRD"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/manwoman_rd"
+                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutDirection"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@+id/RelativeLayoutRD"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="40dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewDirection"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/manwoman_direction"
+                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_centerHorizontal="true"
                 android:id="@+id/RelativeLayoutRessources"
                 android:layout_width="match_parent"
@@ -219,6 +405,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginStart="10dp"
                         android:clickable="true"
+                        android:focusable="true"
                         android:contentDescription="Image argent"
                         android:src="@drawable/argent" />
 
@@ -240,7 +427,9 @@
                     android:id="@+id/RelativeLayoutHomme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true">
+                    android:layout_alignParentTop="true"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <ImageView
                         android:id="@+id/ImageViewHommes"
@@ -248,8 +437,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:layout_marginStart="10dp"
-                        android:clickable="true"
-                        android:contentDescription="Image argent"
+                        android:contentDescription="@string/description_image_employes"
                         android:src="@drawable/workericon" />
 
                     <TextView
