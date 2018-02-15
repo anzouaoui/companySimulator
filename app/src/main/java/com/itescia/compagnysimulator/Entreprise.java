@@ -313,7 +313,7 @@ public class Entreprise {
 
     /**
      * Retourne le niveau de formation moyen des employés recherche et développement
-     * @return niveauGlobal : niveau de formation moyen des employés RD
+     * @return niveauGlobal : niveau de formation moyen des employés rd
      * @author casag
      */
     public double getNiveauMoyenRD() {
@@ -322,7 +322,7 @@ public class Entreprise {
         double niveauGlobal = 0;
         //Parcours de la liste d'employés
         for (Employe emp : employes) {
-            //On additionne le niveau de formation de chaque employé RD et on les compte
+            //On additionne le niveau de formation de chaque employé rd et on les compte
             if(emp instanceof RD){
                 somme += emp.getNiveauFormation();
                 nbEmp += 1;

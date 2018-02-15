@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.itescia.compagnysimulator.Employes.Commercial;
@@ -25,9 +27,12 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources, textViewNomJoueur;
+    TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources, textViewNomJoueur, textViewDetailEmployes;
     Typeface typefaceLevel, typefaceRessource;
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources;
+    RelativeLayout relativeLayoutHomme, relativeLayoutEmployes;
+    ImageButton imageButtonBackButton;
+
     Timer _t;
     int count = 0;
 
@@ -61,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         textViewArgent.setTypeface(typefaceRessource);
         textViewHomme.setTypeface(typefaceRessource);
         textViewAddRessources.setTypeface(typefaceRessource);
+        textViewDetailEmployes = (TextView) findViewById(R.id.TextViewDetailEmployes);
+        textViewDetailEmployes.setTypeface(typefaceLevel);
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
@@ -73,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
         progressBarRessources.setProgress(30);
         progressBarSecurite = (ProgressBar) findViewById(R.id.ProgressBarSecurite);
         progressBarSecurite.setProgress(30);
+
+        //ELEMENTS RELATIVE LAYOUT
+        relativeLayoutHomme = (RelativeLayout) findViewById(R.id.RelativeLayoutHomme);
+        relativeLayoutEmployes = (RelativeLayout) findViewById(R.id.RelativeLayoutEmployes);
+
+        //ELEMENTS IMAGE BUTTON
+        imageButtonBackButton = (ImageButton) findViewById(R.id.ImageButtonBackButton);
     }
 
     /**
@@ -80,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private void bindListener() {
         textViewLevel.setOnClickListener(textViewLevelListener);
+        relativeLayoutHomme.setOnClickListener(relativeLayoutHommeListener);
+        imageButtonBackButton.setOnClickListener(imageButtonBackButtonListener);
     }
 
     /**
@@ -105,11 +121,10 @@ public class MainActivity extends AppCompatActivity {
         }, 500, 500);
     }
 
-
     private View.OnClickListener textViewLevelListener = new View.OnClickListener() {
         boolean show = false;
         /**
-         * Fonction permettaant d'afficher le nom du joueur
+         * Fonction permettant d'afficher le nom du joueur
          *
          * @param v
          */
@@ -122,6 +137,40 @@ public class MainActivity extends AppCompatActivity {
                 textViewNomJoueur.setVisibility(View.GONE);
                 show = false;
             }
+        }
+    };
+
+    private View.OnClickListener relativeLayoutHommeListener = new View.OnClickListener() {
+        boolean show = false;
+
+        /**
+         * Fonction permettant d'afficher les types d'employés que l'on peut embaucher
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            if (!show) {
+                relativeLayoutEmployes.setVisibility(View.VISIBLE);
+                show = true;
+            } else {
+                relativeLayoutEmployes.setVisibility(View.GONE);
+                show = false;
+            }
+        }
+    };
+
+    private View.OnClickListener imageButtonBackButtonListener = new View.OnClickListener() {
+        boolean show = false;
+
+        /**
+         * Fonction permettant de revenir en arrière
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            relativeLayoutEmployes.setVisibility(View.GONE);
         }
     };
 }

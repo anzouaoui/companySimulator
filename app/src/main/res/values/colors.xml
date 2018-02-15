@@ -15,5 +15,8 @@
     <color name="colorProgressBarSecurite">#70B692</color>
     <color name="colorProgressBarFormation">#BE8FBD</color>
     <color name="colorProgressBarBonheur">#EBB684</color>
+    <color name="colorBackgroundRelativeLayoutEmployes">#7cb091</color>
+    <color name="colorBackgroundTextView">#618e74</color>
+    <color name="colorTextViewDetails">#2c2c29</color>
 
 </resources>
