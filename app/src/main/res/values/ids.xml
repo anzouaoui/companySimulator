@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ID des Relatives Layouts -->
+    <item name="RelativeLayoutComptableWorkerFourLine" type="id"/>
+
+    <!-- ID des Images Views -->
+    <item name="ImageViewManFour" type="id" />
+    <item name="ImageViewFemaleIconTwo" type="id" />
+    <item name="TextViewLevelFourComptableWorker" type="id"/>
+
+    <!-- ID des images Buttons -->
+    <item name="ImageButtonUp" type="id" />
+
+    <!-- ID des Relatives Layout -->
+    <item name="RelativeLayout1" type="id" />
+    <item name="RelativeLayout2" type="id" />
+    <item name="RelativeLayout3" type="id" />
+    <item name="RelativeLayout4" type="id" />
+    <item name="RelativeLayout5" type="id" />
+</resources>

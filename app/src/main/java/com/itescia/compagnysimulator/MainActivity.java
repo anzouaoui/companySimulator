@@ -1,16 +1,19 @@
 package com.itescia.compagnysimulator;
 
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.app.ActionBar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,16 +25,31 @@ import com.itescia.compagnysimulator.Employes.Marketing;
 import com.itescia.compagnysimulator.Employes.Production;
 import com.itescia.compagnysimulator.Employes.Securite;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources, textViewNomJoueur, textViewDetailEmployes,
+            textViewComptableTitle, textViewLevelOneComptableWorker, textViewLevelTwoComptableWorker, textViewLevelThreeComptableWorker;
 
-    TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources, textViewNomJoueur, textViewDetailEmployes;
-    Typeface typefaceLevel, typefaceRessource;
+    Typeface typefaceLevel, typefaceRessource, typefaceLvl;
+
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources;
-    RelativeLayout relativeLayoutHomme, relativeLayoutEmployes;
-    ImageButton imageButtonBackButton;
+
+    RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutProgressBarOneComptableWorker1_1,
+            relativeLayoutProgressBarOneComptableWorker1_2, relativeLayoutProgressBarOneComptableWorker1_3, relativeLayoutProgressBarOneComptableWorker1_4,
+            relativeLayoutProgressBarOneComptableWorker1_5, relativeLayoutProgressBarOneComptableWorker2_1, relativeLayoutProgressBarOneComptableWorker2_2,
+            relativeLayoutProgressBarOneComptableWorker2_3, relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5,
+            relativeLayoutProgressBarThreeComptableWorker, relativeLayoutProgressBarOneComptableWorker3_1, relativeLayoutProgressBarOneComptableWorker3_2,
+            relativeLayoutProgressBarOneComptableWorker3_3, relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5,
+            relativeLayoutScrollView ;
+
+    ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
+            imageButtonUpComptableWorker3, imageButtonAddComptableWorker;
+
+     ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
+     ArrayList<ImageButton> colletionImageButtonUpComptable;
 
     Timer _t;
     int count = 0;
@@ -51,23 +69,35 @@ public class MainActivity extends AppCompatActivity {
      * Fonction permettant d'initialiser les éléments du graphique principale
      */
     private void initialize() {
+        typefaceLevel = Typeface.createFromAsset(getAssets(), "font/fipps_regular.ttf");
+        typefaceRessource = Typeface.createFromAsset(getAssets(), "font/Pixeled.ttf");
+        typefaceLvl = Typeface.createFromAsset(getAssets(), "font/retganon.ttf");
+
         //ELEMENTS TEXTES
         textViewLevel = (TextView) findViewById(R.id.TextViewLevel);
-        typefaceLevel = Typeface.createFromAsset(getAssets(), "font/fipps_regular.ttf");
         textViewNomJoueur = (TextView) findViewById(R.id.TextViewNomJoueur);
-        textViewLevel.setTypeface(typefaceLevel);
-        textViewNomJoueur.setTypeface(typefaceLevel);
-        textViewNomJoueur.setVisibility(View.GONE);
         textViewArgent = (TextView) findViewById(R.id.TextViewArgent);
-        textViewArgent.setText("0");
         textViewHomme = (TextView) findViewById(R.id.TextViewHomme);
         textViewAddRessources = (TextView) findViewById(R.id.TextViewAddRessources);
-        typefaceRessource = Typeface.createFromAsset(getAssets(), "font/Pixeled.ttf");
+        textViewDetailEmployes = (TextView) findViewById(R.id.TextViewDetailEmployes);
+        textViewComptableTitle = (TextView) findViewById(R.id.TextViewComptableTitle);
+        textViewLevelOneComptableWorker = (TextView) findViewById(R.id.TextViewLevelOneComptableWorker);
+        textViewLevelTwoComptableWorker = (TextView) findViewById(R.id.TextViewLevelTwoComptableWorker);
+        textViewLevelThreeComptableWorker = (TextView) findViewById(R.id.TextViewLevelThreeComptableWorker);
+
+        textViewArgent.setText("0");
+        textViewNomJoueur.setVisibility(View.GONE);
+
+        textViewLevel.setTypeface(typefaceLevel);
+        textViewNomJoueur.setTypeface(typefaceLevel);
         textViewArgent.setTypeface(typefaceRessource);
         textViewHomme.setTypeface(typefaceRessource);
         textViewAddRessources.setTypeface(typefaceRessource);
-        textViewDetailEmployes = (TextView) findViewById(R.id.TextViewDetailEmployes);
         textViewDetailEmployes.setTypeface(typefaceLevel);
+        textViewComptableTitle.setTypeface(typefaceLevel);
+        textViewLevelOneComptableWorker.setTypeface(typefaceLvl);
+        textViewLevelTwoComptableWorker.setTypeface(typefaceLvl);
+        textViewLevelThreeComptableWorker.setTypeface(typefaceLvl);
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
@@ -84,9 +114,41 @@ public class MainActivity extends AppCompatActivity {
         //ELEMENTS RELATIVE LAYOUT
         relativeLayoutHomme = (RelativeLayout) findViewById(R.id.RelativeLayoutHomme);
         relativeLayoutEmployes = (RelativeLayout) findViewById(R.id.RelativeLayoutEmployes);
+        relativeLayoutDetailCommercial = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailCommercial);
+        relativeLayoutScrollView = (RelativeLayout) findViewById(R.id.RelativeLayoutScrollView);
+        relativeLayoutProgressBarOneComptableWorker1_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_1);
+        relativeLayoutProgressBarOneComptableWorker1_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_2);
+        relativeLayoutProgressBarOneComptableWorker1_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_3);
+        relativeLayoutProgressBarOneComptableWorker1_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_4);
+        relativeLayoutProgressBarOneComptableWorker1_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_5);
+        relativeLayoutProgressBarOneComptableWorker2_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_1);
+        relativeLayoutProgressBarOneComptableWorker2_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_2);
+        relativeLayoutProgressBarOneComptableWorker2_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_3);
+        relativeLayoutProgressBarOneComptableWorker2_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_4);
+        relativeLayoutProgressBarOneComptableWorker2_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_5);
+        relativeLayoutProgressBarThreeComptableWorker = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarThreeComptableWorker);
+        relativeLayoutProgressBarOneComptableWorker3_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
+        relativeLayoutProgressBarOneComptableWorker3_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_2);
+        relativeLayoutProgressBarOneComptableWorker3_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_3);
+        relativeLayoutProgressBarOneComptableWorker3_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_4);
+        relativeLayoutProgressBarOneComptableWorker3_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_5);
 
         //ELEMENTS IMAGE BUTTON
+        imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
         imageButtonBackButton = (ImageButton) findViewById(R.id.ImageButtonBackButton);
+        imageButtonBackButtonDetailCommercial = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailCommercial);
+        imageviewComptable = (ImageButton) findViewById(R.id.ImageviewComptable);
+        imageButtonUpComptableWorker1 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker1);
+        imageButtonUpComptableWorker2 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker2);
+        imageButtonUpComptableWorker3 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker3);
+
+        //COLLECTION D'ELEMNENTS
+        collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
+
+        colletionImageButtonUpComptable = new ArrayList<ImageButton>();
+        colletionImageButtonUpComptable.add(imageButtonUpComptableWorker1);
+        colletionImageButtonUpComptable.add(imageButtonUpComptableWorker2);
+        colletionImageButtonUpComptable.add(imageButtonUpComptableWorker3);
     }
 
     /**
@@ -96,6 +158,12 @@ public class MainActivity extends AppCompatActivity {
         textViewLevel.setOnClickListener(textViewLevelListener);
         relativeLayoutHomme.setOnClickListener(relativeLayoutHommeListener);
         imageButtonBackButton.setOnClickListener(imageButtonBackButtonListener);
+        imageButtonBackButtonDetailCommercial.setOnClickListener(imageButtonBackButtonDetailCommercialListener);
+        imageviewComptable.setOnClickListener(imageviewComptableListener);
+        imageButtonAddComptableWorker.setOnClickListener(imageButtonAddComptableWorkerListener);
+        for (ImageButton currentImagButtonUpComptable: colletionImageButtonUpComptable) {
+            currentImagButtonUpComptable.setOnClickListener(imageButtonUpComptableWorkerListener);
+        }
     }
 
     /**
@@ -171,6 +239,193 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             relativeLayoutEmployes.setVisibility(View.GONE);
+        }
+    };
+
+    private View.OnClickListener imageButtonBackButtonDetailCommercialListener = new View.OnClickListener() {
+
+        /**
+         * Fonction permettant de revenir en arrière vers la liste des employés
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            relativeLayoutDetailCommercial.setVisibility(View.GONE);
+            relativeLayoutEmployes.setVisibility(View.VISIBLE);
+        }
+    };
+
+    private View.OnClickListener imageviewComptableListener = new View.OnClickListener() {
+
+        /**
+         * Fonction permettant d'afficher les details sur les comptables
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            relativeLayoutEmployes.setVisibility(View.GONE);
+            relativeLayoutDetailCommercial.setVisibility(View.VISIBLE);
+        }
+    };
+
+    private View.OnClickListener imageButtonAddComptableWorkerListener = new View.OnClickListener() {
+
+        /**
+         * Fonction permettant d'ajouter un comptable
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            RelativeLayout currentRelativeLayout = new RelativeLayout(getApplicationContext());
+            int childCount = relativeLayoutScrollView.getChildCount();
+
+            //Ajout du relativeLayout principal
+            RelativeLayout.LayoutParams layoutParamsMain = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParamsMain.addRule(RelativeLayout.BELOW, R.id.RelativeLayoutComptableWorkerThreeLine);
+            layoutParamsMain.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutComptableWorkerThreeLine);
+            layoutParamsMain.setMargins(0, 80, 0, 0);
+            relativeLayoutScrollView.addView(currentRelativeLayout, layoutParamsMain);
+            currentRelativeLayout.setId(R.id.RelativeLayoutComptableWorkerFourLine);
+
+            //Ajout de l'image Man
+            RelativeLayout.LayoutParams layoutParamsMan = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            ImageView imageMan = new ImageView(getApplicationContext());
+            imageMan.setImageResource(R.drawable.man);
+            imageMan.setId(R.id.ImageViewManFour);
+            currentRelativeLayout.addView(imageMan, layoutParamsMan);
+
+            //Ajout de l'image Sexe
+            RelativeLayout.LayoutParams layoutParamsSex = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParamsSex.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.ImageViewManFour);
+            layoutParamsSex.addRule(RelativeLayout.END_OF, R.id.ImageViewManFour);
+            layoutParamsSex.addRule(RelativeLayout.ALIGN_START, R.id.ImageViewFemaleIconOne);
+            ImageView imageSex = new ImageView(getApplicationContext());
+            imageSex.setImageResource(R.drawable.female);
+            imageSex.setId(R.id.ImageViewFemaleIconTwo);
+            currentRelativeLayout.addView(imageSex, layoutParamsSex);
+
+            //Ajout du texte du level
+            RelativeLayout.LayoutParams layoutParamsLvl = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParamsLvl.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.ImageViewFemaleIconTwo);
+            layoutParamsLvl.addRule(RelativeLayout.END_OF, R.id.ImageViewFemaleIconTwo);
+            layoutParamsLvl.setMarginStart(35);
+            TextView textViewLvl = new TextView(getApplicationContext());
+            textViewLvl.setText(R.string.lvl3);
+            textViewLvl.setId(R.id.TextViewLevelFourComptableWorker);
+            textViewLvl.setTextColor(getResources().getColor(R.color.fontColor));
+            textViewLvl.setTypeface(typefaceLvl);
+            textViewLvl.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+            currentRelativeLayout.addView(textViewLvl, layoutParamsLvl);
+
+            //Ajout de la progressbar
+            RelativeLayout.LayoutParams layoutParamsProgressBar1 = new RelativeLayout.LayoutParams(relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width, relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width);
+            layoutParamsProgressBar1.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.TextViewLevelFourComptableWorker);
+            layoutParamsProgressBar1.addRule(RelativeLayout.END_OF, R.id.TextViewLevelFourComptableWorker);
+            layoutParamsSex.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
+            layoutParamsProgressBar1.setMarginStart(45);
+            RelativeLayout relativeLayout1 = new RelativeLayout(getApplicationContext());
+            relativeLayout1.setBackground(getResources().getDrawable(R.drawable.custom_progress_bar_levels_complete));
+            relativeLayout1.setAlpha(0.5f);
+            relativeLayout1.setId(R.id.RelativeLayout1);
+            currentRelativeLayout.addView(relativeLayout1, layoutParamsProgressBar1);
+
+            RelativeLayout.LayoutParams layoutParamsProgressBar2 = new RelativeLayout.LayoutParams(relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width, relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width);
+            layoutParamsProgressBar2.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.RelativeLayout1);
+            layoutParamsProgressBar2.addRule(RelativeLayout.END_OF, R.id.RelativeLayout1);
+            RelativeLayout relativeLayout2 = new RelativeLayout(getApplicationContext());
+            relativeLayout2.setBackground(getResources().getDrawable(R.drawable.custom_progress_bar_levels_complete));
+            relativeLayout2.setAlpha(0.5f);
+            relativeLayout2.setId(R.id.RelativeLayout2);
+            currentRelativeLayout.addView(relativeLayout2, layoutParamsProgressBar2);
+
+            RelativeLayout.LayoutParams layoutParamsProgressBar3 = new RelativeLayout.LayoutParams(relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width, relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width);
+            layoutParamsProgressBar3.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.RelativeLayout2);
+            layoutParamsProgressBar3.addRule(RelativeLayout.END_OF, R.id.RelativeLayout2);
+            RelativeLayout relativeLayout3 = new RelativeLayout(getApplicationContext());
+            relativeLayout3.setBackground(getResources().getDrawable(R.drawable.custom_progress_bar_levels_complete));
+            relativeLayout3.setAlpha(0.5f);
+            relativeLayout3.setId(R.id.RelativeLayout3);
+            currentRelativeLayout.addView(relativeLayout3, layoutParamsProgressBar3);
+
+            RelativeLayout.LayoutParams layoutParamsProgressBar4 = new RelativeLayout.LayoutParams(relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width, relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width);
+            layoutParamsProgressBar4.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.RelativeLayout3);
+            layoutParamsProgressBar4.addRule(RelativeLayout.END_OF, R.id.RelativeLayout3);
+            RelativeLayout relativeLayout4 = new RelativeLayout(getApplicationContext());
+            relativeLayout4.setBackground(getResources().getDrawable(R.drawable.custom_progress_bar_levels_complete));
+            relativeLayout4.setAlpha(0.5f);
+            relativeLayout4.setId(R.id.RelativeLayout4);
+            currentRelativeLayout.addView(relativeLayout4, layoutParamsProgressBar4);
+
+            RelativeLayout.LayoutParams layoutParamsProgressBar5 = new RelativeLayout.LayoutParams(relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width, relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width);
+            layoutParamsProgressBar5.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.RelativeLayout4);
+            layoutParamsProgressBar5.addRule(RelativeLayout.END_OF, R.id.RelativeLayout4);
+            RelativeLayout relativeLayout5 = new RelativeLayout(getApplicationContext());
+            relativeLayout5.setBackground(getResources().getDrawable(R.drawable.custom_progress_bar_levels_complete));
+            relativeLayout5.setAlpha(0.5f);
+            relativeLayout5.setId(R.id.RelativeLayout5);
+            currentRelativeLayout.addView(relativeLayout5, layoutParamsProgressBar5);
+
+            //Ajout du bouton Up
+            RelativeLayout.LayoutParams layoutParamsUp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParamsUp.addRule(RelativeLayout.END_OF, R.id.RelativeLayout5);
+            layoutParamsUp.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
+            layoutParamsUp.setMarginStart(45);
+            ImageButton imageButtonUp = new ImageButton(getApplicationContext());
+            imageButtonUp.setImageResource(R.drawable.up);
+            imageButtonUp.setBackgroundColor(getResources().getColor(R.color.colorBackgroundRelativeLayoutEmployes));
+            imageButtonUp.setId(R.id.ImageButtonUp);
+            currentRelativeLayout.addView(imageButtonUp, layoutParamsUp);
+        }
+    };
+
+    private View.OnClickListener imageButtonUpComptableWorkerListener = new View.OnClickListener() {
+        int compteur = 0;
+        RelativeLayout currentRelativeLayout;
+        /**
+         * Augmenter le niveau d'un comptable
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            ImageButton imageButtonSelected = (ImageButton) findViewById(v.getId());
+            if (compteur <5) {
+                if (imageButtonSelected == imageButtonUpComptableWorker1) {
+                    collectionRelativeLAyoutProgressBarComptable.clear();
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker1_1);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker1_2);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker1_3);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker1_4);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker1_5);
+
+                    currentRelativeLayout = collectionRelativeLAyoutProgressBarComptable.get(compteur);
+                    currentRelativeLayout.setAlpha(1);
+                } else if (imageButtonSelected == imageButtonUpComptableWorker2) {
+                    collectionRelativeLAyoutProgressBarComptable.clear();
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker2_1);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker2_2);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker2_3);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker2_4);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker2_5);
+
+                    currentRelativeLayout = collectionRelativeLAyoutProgressBarComptable.get(compteur);
+                    currentRelativeLayout.setAlpha(1);
+                } else if (imageButtonSelected == imageButtonUpComptableWorker3) {
+                    collectionRelativeLAyoutProgressBarComptable.clear();
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker3_1);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker3_2);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker3_3);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker3_4);
+                    collectionRelativeLAyoutProgressBarComptable.add(relativeLayoutProgressBarOneComptableWorker3_5);
+
+                    currentRelativeLayout = collectionRelativeLAyoutProgressBarComptable.get(compteur);
+                    currentRelativeLayout.setAlpha(1);
+                }
+            }
+            compteur++;
         }
     };
 }

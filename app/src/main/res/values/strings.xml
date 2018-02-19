@@ -3,5 +3,12 @@
 
     <!-- DESCRIPTION IMAGE -->
     <string name="description_image_employes">Image employes</string>
+
     <string name="detail_employes">DETAILS DES EMPLOYES</string>
+    <string name="comptable">COMPTABLE : 3</string>
+    <string name="lvl1">lvl 1</string>
+    <string name="lvl2">lvl 2</string>
+    <string name="lvl3">lvl 3</string>
+    <string name="lvl4">lvl 4</string>
+    <string name="lvl5">lvl 5</string>
 </resources>
