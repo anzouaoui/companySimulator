@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources;
 
-    RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutProgressBarOneComptableWorker1_1,
+    RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutDetailsCompetences, relativeLayoutProgressBarOneComptableWorker1_1,
             relativeLayoutProgressBarOneComptableWorker1_2, relativeLayoutProgressBarOneComptableWorker1_3, relativeLayoutProgressBarOneComptableWorker1_4,
             relativeLayoutProgressBarOneComptableWorker1_5, relativeLayoutProgressBarOneComptableWorker2_1, relativeLayoutProgressBarOneComptableWorker2_2,
             relativeLayoutProgressBarOneComptableWorker2_3, relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5,
@@ -48,11 +48,12 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutProgressBarOneComptableWorker3_3, relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5,
             relativeLayoutScrollView;
 
-    ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
+    ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
             imageButtonUpComptableWorker3, imageButtonAddComptableWorker;
 
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
+     ArrayList<ImageButton> collectionImageButtonBack;
 
     Timer _t;
     int count = 0;
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutHomme = (RelativeLayout) findViewById(R.id.RelativeLayoutHomme);
         relativeLayoutEmployes = (RelativeLayout) findViewById(R.id.RelativeLayoutEmployes);
         relativeLayoutDetailCommercial = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailCommercial);
+        relativeLayoutDetailsCompetences = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsCompetences);
         relativeLayoutScrollView = (RelativeLayout) findViewById(R.id.RelativeLayoutScrollView);
         relativeLayoutProgressBarOneComptableWorker1_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_1);
         relativeLayoutProgressBarOneComptableWorker1_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_2);
@@ -158,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
         imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
         imageButtonBackButton = (ImageButton) findViewById(R.id.ImageButtonBackButton);
         imageButtonBackButtonDetailCommercial = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailCommercial);
+        imageButtonBackButtonDetailCompetences = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailCompetences);
         imageviewComptable = (ImageButton) findViewById(R.id.ImageviewComptable);
         imageButtonUpComptableWorker1 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker1);
         imageButtonUpComptableWorker2 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker2);
@@ -170,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
         colletionImageButtonUpComptable.add(imageButtonUpComptableWorker1);
         colletionImageButtonUpComptable.add(imageButtonUpComptableWorker2);
         colletionImageButtonUpComptable.add(imageButtonUpComptableWorker3);
+
+        collectionImageButtonBack = new ArrayList<ImageButton>();
+        collectionImageButtonBack.add(imageButtonBackButton);
+        collectionImageButtonBack.add(imageButtonBackButtonDetailCommercial);
+        collectionImageButtonBack.add(imageButtonBackButtonDetailCompetences);
     }
 
     /**
@@ -178,13 +186,15 @@ public class MainActivity extends AppCompatActivity {
     private void bindListener() {
         textViewLevel.setOnClickListener(textViewLevelListener);
         relativeLayoutHomme.setOnClickListener(relativeLayoutHommeListener);
-        imageButtonBackButton.setOnClickListener(imageButtonBackButtonListener);
-        imageButtonBackButtonDetailCommercial.setOnClickListener(imageButtonBackButtonDetailCommercialListener);
         imageviewComptable.setOnClickListener(imageviewComptableListener);
         imageButtonAddComptableWorker.setOnClickListener(imageButtonAddComptableWorkerListener);
         for (ImageButton currentImagButtonUpComptable: colletionImageButtonUpComptable) {
             currentImagButtonUpComptable.setOnClickListener(imageButtonUpComptableWorkerListener);
         }
+        for (ImageButton currentImageButtonBack: collectionImageButtonBack) {
+            currentImageButtonBack.setOnClickListener(imageButtonBackButtonListener);
+        }
+        progressBarFormation.setOnClickListener(progressBarFormationListener);
     }
 
     /**
@@ -229,6 +239,25 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener progressBarFormationListener = new View.OnClickListener() {
+        boolean show = false;
+        /**
+         * Fonction permettant d'afficher le popup des compétences
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            if (!show) {
+                relativeLayoutDetailsCompetences.setVisibility(View.VISIBLE);
+                show = true;
+            } else {
+                relativeLayoutDetailsCompetences.setVisibility(View.GONE);
+                show = false;
+            }
+        }
+    };
+
     private View.OnClickListener relativeLayoutHommeListener = new View.OnClickListener() {
         boolean show = false;
 
@@ -250,8 +279,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private View.OnClickListener imageButtonBackButtonListener = new View.OnClickListener() {
-        boolean show = false;
-
         /**
          * Fonction permettant de revenir en arrière
          *
@@ -259,21 +286,15 @@ public class MainActivity extends AppCompatActivity {
          */
         @Override
         public void onClick(View v) {
-            relativeLayoutEmployes.setVisibility(View.GONE);
-        }
-    };
-
-    private View.OnClickListener imageButtonBackButtonDetailCommercialListener = new View.OnClickListener() {
-
-        /**
-         * Fonction permettant de revenir en arrière vers la liste des employés
-         *
-         * @param v
-         */
-        @Override
-        public void onClick(View v) {
-            relativeLayoutDetailCommercial.setVisibility(View.GONE);
-            relativeLayoutEmployes.setVisibility(View.VISIBLE);
+            ImageButton ImageButtonBackSelected = (ImageButton) findViewById(v.getId());
+            if (ImageButtonBackSelected == imageButtonBackButton) {
+                relativeLayoutEmployes.setVisibility(View.GONE);
+            } else if (ImageButtonBackSelected == imageButtonBackButtonDetailCommercial) {
+                relativeLayoutDetailCommercial.setVisibility(View.GONE);
+                relativeLayoutEmployes.setVisibility(View.VISIBLE);
+            } else if (ImageButtonBackSelected == imageButtonBackButtonDetailCompetences) {
+                relativeLayoutDetailsCompetences.setVisibility(View.GONE);
+            }
         }
     };
 
