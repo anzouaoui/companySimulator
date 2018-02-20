@@ -8,6 +8,10 @@ import com.itescia.compagnysimulator.Employes.Production;
 import com.itescia.compagnysimulator.Employes.RD;
 import com.itescia.compagnysimulator.Employes.Securite;
 
+import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
+
+
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +22,7 @@ import java.lang.*;
  *
  * @see Joueur
  *
- * @author casag
+ * @author casag, gbon
  * @version Prototype
  */
 
@@ -41,7 +45,6 @@ public class Entreprise {
      * @see Entreprise#getBonheur()
      * @see Entreprise#setBonheur(int)
      * @see Entreprise#getNiveauMoyenFormation()
-     * @see Entreprise#getNiveauSecuGlobal()
      * @see Entreprise#levelUp()
      */
     private double bonheur;
@@ -92,14 +95,18 @@ public class Entreprise {
      * @see Entreprise#getEmployes()
      * @see Entreprise#setEmployes(List)
      */
-    private List<Employe> employes;
 
-    /** Ressources de l'entreprise
-     * @see Ressources
-     * @see Entreprise#getRessources()
-     * @see Entreprise#setRessources(List)
+    /**
+     * Taux de formation en sécurité informatique des employés de l'entreprise
      */
-    private List<Ressources> ressources;
+    private double tauxFormationSecuInfo;
+
+    /**
+     * Dernière félicitation aléatoire d'un employé
+     */
+    private Date derniereFelicitation;
+
+    private List<Employe> employes;
 
     /** Constructeur de l'entreprise <br>
      * Le niveau est fixé à 1. <br>
@@ -114,9 +121,11 @@ public class Entreprise {
         this.argent = 5000;
         this.reputation = 0;
         this.tauxSecuInfo = 0;
+        this.tauxFormationSecuInfo = 0;
         this.tauxQualConditionTravail = 0;
+        this.derniereFelicitation = null;
         this.employes = new ArrayList<Employe>();
-        this.ressources = new ArrayList<>();
+        Ressources.getInstance();
     }
 
     /**
@@ -126,6 +135,22 @@ public class Entreprise {
     public void levelUp () {
         this.niveau += 1;
     }
+
+    /**
+     * Soustrait le nombre donné en paramètre à l'argent.
+     * @param number : prix
+     * @return booléen : false si le joueur n'a pas assez d'argent pour payer.
+     * @author casag
+     */
+    public boolean payer(int number) {
+        boolean done = false;
+        if (this.argent >= number) {
+            this.argent -= number;
+            done = true;
+        }
+        return done;
+    }
+
 
     /**
      * Retourne le taux de femmes dans l'entreprise
@@ -146,6 +171,72 @@ public class Entreprise {
         parite = nbFemmes / (nbFemmes + nbHommes);
         return parite;
     }
+
+    /**
+     * Retourne le niveau de formation moyen des employés du service donné en paramètre.
+     * @param service : service
+     * @return niveauGlobal : niveau de formation moyen
+     * @author casag
+     */
+    public double getNiveauMoyenDomaine(String service) {
+        int nbEmp = 0 ;
+        double somme = 0 ;
+        double niveauGlobal = 0;
+        //Parcours de la liste d'employés
+        for (Employe emp : employes) {
+            //On additionne le niveau de formation de chaque employé de sécurité et on les compte
+            switch (service) {
+                case "Commercial" :
+                    if(emp instanceof Commercial){
+                        somme += emp.getNiveauFormation();
+                        nbEmp += 1;
+                    }
+                    break;
+                case "Comptabilite" :
+                    if(emp instanceof Comptabilite){
+                        somme += emp.getNiveauFormation();
+                        nbEmp += 1;
+                    }
+                    break;
+                case "Direction" :
+                    if(emp instanceof Direction){
+                        somme += emp.getNiveauFormation();
+                        nbEmp += 1;
+                    }
+                    break;
+                case "Marketing" :
+                    if(emp instanceof Marketing){
+                        somme += emp.getNiveauFormation();
+                        nbEmp += 1;
+                    }
+                    break;
+                case "Production" :
+                    if(emp instanceof Production){
+                        somme += emp.getNiveauFormation();
+                        nbEmp += 1;
+                    }
+                    break;
+                case "RD" :
+                    if(emp instanceof RD){
+                        somme += emp.getNiveauFormation();
+                        nbEmp += 1;
+                    }
+                    break;
+                case "Securite" :
+                    if(emp instanceof Securite){
+                        somme += emp.getNiveauFormation();
+                        nbEmp += 1;
+                    }
+                    break;
+            }
+        }
+        //Calcul moyenne
+        if(nbEmp != 0) {
+            niveauGlobal = somme / nbEmp;
+        }
+        return niveauGlobal;
+    }
+
 
     /**
      * Retourne le niveau de formation moyen des employés
@@ -169,187 +260,6 @@ public class Entreprise {
         return niveauGlobal;
     }
 
-    /**
-     * Retourne le niveau de formation moyen des employés de sécurité
-     * @return niveauGlobal : niveau de formation moyen des employés de sécurité
-     * @author casag
-     */
-    public double getNiveauMoyenSecuPhysique() {
-        int nbEmp = 0 ;
-        int somme = 0 ;
-        double niveauGlobal = 0;
-        //Parcours de la liste d'employés
-        for (Employe emp : employes) {
-            //On additionne le niveau de formation de chaque employé de sécurité et on les compte
-            if(emp instanceof Securite){
-                somme += emp.getNiveauFormation();
-                nbEmp += 1;
-            }
-        }
-        //Calcul moyenne
-        if(nbEmp != 0) {
-            niveauGlobal = somme / nbEmp;
-        }
-        return niveauGlobal;
-    }
-
-    /**
-     * Retourne le niveau de formation moyen des employés commerciaux
-     * @return niveauGlobal : niveau de formation moyen des employés commerciaux
-     * @author casag
-     */
-    public double getNiveauMoyenCommercial() {
-        int nbEmp = 0 ;
-        int somme = 0 ;
-        double niveauGlobal = 0;
-        //Parcours de la liste d'employés
-        for (Employe emp : employes) {
-            //On additionne le niveau de formation de chaque employé commercial et on les compte
-            if(emp instanceof Commercial){
-                somme += emp.getNiveauFormation();
-                nbEmp += 1;
-            }
-        }
-        //Calcul moyenne
-        if(nbEmp != 0) {
-            niveauGlobal = somme / nbEmp;
-        }
-        return niveauGlobal;
-    }
-
-    /**
-     * Retourne le niveau de formation moyen des employés comptables
-     * @return niveauGlobal : niveau de formation moyen des employés comptables
-     * @author casag
-     */
-    public double getNiveauMoyenComptabilite() {
-        int nbEmp = 0 ;
-        int somme = 0 ;
-        double niveauGlobal = 0;
-        //Parcours de la liste d'employés
-        for (Employe emp : employes) {
-            //On additionne le niveau de formation de chaque employé comptable et on les compte
-            if(emp instanceof Comptabilite){
-                somme += emp.getNiveauFormation();
-                nbEmp += 1;
-            }
-        }
-        //Calcul moyenne
-        if(nbEmp != 0) {
-            niveauGlobal = somme / nbEmp;
-        }
-        return niveauGlobal;
-    }
-
-    /**
-     * Retourne le niveau de formation moyen des employés de direction
-     * @return niveauGlobal : niveau de formation moyen des employés de direction
-     * @author casag
-     */
-    public double getNiveauMoyenDirection() {
-        int nbEmp = 0 ;
-        int somme = 0 ;
-        double niveauGlobal = 0;
-        //Parcours de la liste d'employés
-        for (Employe emp : employes) {
-            //On additionne le niveau de formation de chaque employé de direction et on les compte
-            if(emp instanceof Direction){
-                somme += emp.getNiveauFormation();
-                nbEmp += 1;
-            }
-        }
-        //Calcul moyenne
-        if(nbEmp != 0) {
-            niveauGlobal = somme / nbEmp;
-        }
-        return niveauGlobal;
-    }
-
-    /**
-     * Retourne le niveau de formation moyen des employés marketing
-     * @return niveauGlobal : niveau de formation moyen des employés marketing
-     * @author casag
-     */
-    public double getNiveauMoyenMarketing() {
-        int nbEmp = 0 ;
-        int somme = 0 ;
-        double niveauGlobal = 0;
-        //Parcours de la liste d'employés
-        for (Employe emp : employes) {
-            //On additionne le niveau de formation de chaque employé marketing et on les compte
-            if(emp instanceof Marketing){
-                somme += emp.getNiveauFormation();
-                nbEmp += 1;
-            }
-        }
-        //Calcul moyenne
-        if(nbEmp != 0) {
-            niveauGlobal = somme / nbEmp;
-        }
-        return niveauGlobal;
-    }
-
-    /**
-     * Retourne le niveau de formation moyen des employés de prodution
-     * @return niveauGlobal : niveau de formation moyen des employés de production
-     * @author casag
-     */
-    public double getNiveauMoyenProduction() {
-        int nbEmp = 0 ;
-        int somme = 0 ;
-        double niveauGlobal = 0;
-        //Parcours de la liste d'employés
-        for (Employe emp : employes) {
-            //On additionne le niveau de formation de chaque employé de production et on les compte
-            if(emp instanceof Production){
-                somme += emp.getNiveauFormation();
-                nbEmp += 1;
-            }
-        }
-        //Calcul moyenne
-        if(nbEmp != 0) {
-            niveauGlobal = somme / nbEmp;
-        }
-        return niveauGlobal;
-    }
-
-    /**
-     * Retourne le niveau de formation moyen des employés recherche et développement
-     * @return niveauGlobal : niveau de formation moyen des employés rd
-     * @author casag
-     */
-    public double getNiveauMoyenRD() {
-        int nbEmp = 0 ;
-        int somme = 0 ;
-        double niveauGlobal = 0;
-        //Parcours de la liste d'employés
-        for (Employe emp : employes) {
-            //On additionne le niveau de formation de chaque employé rd et on les compte
-            if(emp instanceof RD){
-                somme += emp.getNiveauFormation();
-                nbEmp += 1;
-            }
-        }
-        //Calcul moyenne
-        if(nbEmp != 0) {
-            niveauGlobal = somme / nbEmp;
-        }
-        return niveauGlobal;
-    }
-
-    /**
-     * Retourne le niveau moyen de sécurité dans l'entreprise <br>
-     * Prend en compte le niveau de sécurité physique par rapport aux compétences
-     * des employés de sécurité, le niveau de sécurité informatique et le niveau
-     * de qualité de travail.
-     * @return niveau : Niveau de sécurité global
-     * @author casag
-     */
-    public double getNiveauSecuGlobal(){
-        double niveau = 0;
-        niveau = ((getNiveauMoyenSecuPhysique()/5) + tauxSecuInfo + tauxQualConditionTravail) / 3;
-        return niveau;
-    }
 
     /**
      * Incrémente l'argent de 1
@@ -366,7 +276,7 @@ public class Entreprise {
      * @author casag
      */
     public void setTauxBonheur(){
-        this.bonheur = ((getNiveauMoyenFormation()/5) + getReputation() + getNiveauSecuGlobal() + getTauxQualConditionTravail())/4;
+        this.bonheur = ((getNiveauMoyenFormation()/5) + getReputation() + getNiveauMoyenDomaine("Securite)") + getTauxQualConditionTravail())/4;
     }
 
     /** Retourne le taux de rapidité d'incrémentation de l'argent <br>
@@ -377,11 +287,11 @@ public class Entreprise {
     public double getRapiditeIncrementation(){
         double taux = 0;
         double compt = 0, bonh = 0, prod = 0, comm = 0, mark = 0;
-        compt = getNiveauMoyenComptabilite() /5;
+        compt = getNiveauMoyenDomaine("Comptabilite") /5;
         bonh = getBonheur();
-        prod = getNiveauMoyenProduction() / 5;
-        comm = getNiveauMoyenCommercial() / 5;
-        mark = getNiveauMoyenMarketing() / 5;
+        prod = getNiveauMoyenDomaine("Production") / 5;
+        comm = getNiveauMoyenDomaine("Commercial") / 5;
+        mark = getNiveauMoyenDomaine("Marketing") / 5;
 
         taux = compt * (40.0/100.0) + bonh * (30.0/100.0) + prod * (10.0/100.0) + comm  * (10.0/100.0) + mark * (10.0/100.0);
         return taux;
@@ -390,7 +300,7 @@ public class Entreprise {
     /** Permet d'ajouter un nouvel employé à la collection <br>
      * La création d'un employé se fait en fonction du nom de son service
      * ainsi que son sexe (F/H), tous deux transmis en paramètres
-     * @author gbon
+     * @author gbon, casag
      */
     public void Recruter (String service, char sexe) {
         switch (service) {
@@ -416,7 +326,143 @@ public class Entreprise {
                 employes.add(new Securite(sexe));
                 break;
         }
+        //Mise à jour du taux de formation en sécurité informatique
+        if (tauxFormationSecuInfo != 0){
+            tauxFormationSecuInfo = tauxFormationSecuInfo *(1.0-(1.0/(employes.size())));
+        }
     }
+
+    /**
+     * Augmente le taux de qualité des conditions de travail. <br>
+     *     Améliorer fournitures = 0.30                       <br>
+     *     Intervention médecin du travail = 0.20             <br>
+     *     Intervention ménage = 0.10                         <br>
+     *     Organiser apéro = 0.30                             <br>
+     *     Félicitations d'un employé = 0.10                  <br>
+     *
+     * @param taux
+     * @author casag
+     */
+    public void augmenterTauxConditTravail (double taux) {
+        //Si le taux est à 0, on l'initialise à 10%
+        if(tauxQualConditionTravail == 0){
+            tauxQualConditionTravail = taux;
+        }else { //sinon, on l'augmente du taux
+            if(tauxQualConditionTravail*(1+taux) >= 1) {
+                tauxQualConditionTravail = 1;
+            } else {
+                tauxQualConditionTravail *= (1+taux);
+            }
+        }
+    }
+
+    /**
+     * Augmente le taux de la sécurité informatique.                 <br>
+     *     Améliorer antivirus = 0.15                                <br>
+     *     Firewall = 0.30                                           <br>
+     *     MÀJ systèmes = 0.30                                       <br>
+     *     Former employes = voir formerSecuInfo()                   <br>
+     *     Sous-traiter pen-tester = voir pentesting()               <br>
+     *
+     * @param taux
+     * @author casag
+     */
+    public void augmenterTauxSecuInfo(double taux) {
+        //Si le taux est à 0, on l'initialise au taux
+        if (tauxSecuInfo == 0) {
+            tauxSecuInfo = taux;
+        } else { //sinon, on l'augmente de 20%
+            if (tauxSecuInfo * (1 + taux) >= 1) {
+                tauxSecuInfo = 1;
+            } else {
+                tauxSecuInfo *= (1 + taux);
+            }
+        }
+    }
+
+    /**
+     * Génère un nombre aléatoire (nombre de failles trouvées)
+     * Augmente le taux de sécurité informatique en fonction du nombre généré :
+     * Plus il y a de failles trouvées, plus le taux de sécurité informatique est augmenté
+     * @return randomNum : retourne le nombre de failles trouvées, et si le joueur n'a pas les moyens de payer, retourne 0
+     * @author casag
+     */
+    public int pentesting(){
+        int randomNum = 0;
+
+        if(this.payer(500)) {
+            randomNum = ThreadLocalRandom.current().nextInt(1, 50 + 1);
+
+            if (randomNum <= 10) {
+                augmenterTauxSecuInfo(0.10);
+            } else if (randomNum > 10 && randomNum <= 25) {
+                augmenterTauxSecuInfo(0.25);
+            } else {
+                augmenterTauxSecuInfo(0.40);
+            }
+        }
+        return randomNum;
+    }
+
+    /**
+     * Forme les employés de sécurité (taux = 100%)
+     * Décremente l'argent (fonction payer)
+     * @author casag
+     */
+    public boolean formerSecuInfo(){
+        boolean done = false;
+        //Si le joueur a les moyens
+        if(this.payer(300)) {
+            tauxFormationSecuInfo = 1;
+            done = true;
+        }
+        return done;
+    }
+
+    /**
+     * Organise un apéro si le joueur a les moyens.
+     * Augmente de 30% la qualité des conditions de travail.
+     * @return booléen : true si assez d'argent
+     * @author casag
+     */
+    public boolean organiserApero(){
+        boolean done = false;
+        if (this.payer(300)){
+            augmenterTauxConditTravail(0.30);
+            done = true;
+        }
+        return done;
+    }
+
+    /**
+     * Félicite un employé et augmente de 15% la qualité des conditions de travail
+     * (minimum 2 heures entre chaques félicitations)
+     * @return booléen : false si cela fait moins de deux heures
+     * @author casag
+     */
+    public boolean feliciterEmploye(){
+        boolean done = false;
+        Date now = new Date();
+        if (derniereFelicitation != null) {
+            //récupération du nombre d'heures entre les dernières félicitations et maintenant
+            long secs = (now.getTime() - this.derniereFelicitation.getTime()) / 1000;
+            long hours = 0;
+            hours = secs / 3600;
+            //si ça fait au moins 2h
+            if(hours >= 2) {
+                setDerniereFelicitation(now);
+                augmenterTauxConditTravail(0.15);
+                done = true;
+            }
+        } else {
+            setDerniereFelicitation(now);
+            augmenterTauxConditTravail(0.15);
+            done = true;
+        }
+        return done;
+    }
+
+    /* getters and setters */
 
     public String getNomEntreprise() {
         return nomEntreprise;
@@ -467,6 +513,14 @@ public class Entreprise {
         this.tauxSecuInfo = niveauSecuInfo;
     }
 
+    public double getTauxFormationSecuInfo() {
+        return tauxFormationSecuInfo;
+    }
+
+    public void setTauxFormationSecuInfo(double tauxFormationSecuInfo) {
+        this.tauxFormationSecuInfo = tauxFormationSecuInfo;
+    }
+
     public double getTauxQualConditionTravail() {
         return tauxQualConditionTravail;
     }
@@ -483,12 +537,12 @@ public class Entreprise {
         this.employes = employes;
     }
 
-    public List<Ressources> getRessources() {
-        return ressources;
+    public Date getDerniereFelicitation() {
+        return derniereFelicitation;
     }
 
-    public void setRessources(List<Ressources> ressources) {
-        this.ressources = ressources;
+    public void setDerniereFelicitation(Date derniereFelicitation) {
+        this.derniereFelicitation = derniereFelicitation;
     }
 
 }
