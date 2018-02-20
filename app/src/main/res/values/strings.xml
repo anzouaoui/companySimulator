@@ -6,9 +6,18 @@
 
     <string name="detail_employes">DETAILS DES EMPLOYES</string>
     <string name="comptable">COMPTABLE : 3</string>
+    <string name="competences">COMPETENCES</string>
+    
+    <!-- LEVELS DES COMPTABLES -->
     <string name="lvl1">lvl 1</string>
     <string name="lvl2">lvl 2</string>
     <string name="lvl3">lvl 3</string>
     <string name="lvl4">lvl 4</string>
     <string name="lvl5">lvl 5</string>
+    
+    <!-- NIVEAUX DES COMPETENCES -->
+    <string name="niveau0">0</string>
+    <string name="niveau1">1</string>
+    <string name="niveau2">2</string>
+    <string name="niveau3">3</string>
 </resources>
