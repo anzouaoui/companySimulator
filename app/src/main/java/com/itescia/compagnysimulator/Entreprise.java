@@ -8,8 +8,10 @@ import com.itescia.compagnysimulator.Employes.Production;
 import com.itescia.compagnysimulator.Employes.RD;
 import com.itescia.compagnysimulator.Employes.Securite;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.*;
 
 /**
  * <b> Classe représentant l'entreprise du joueur</b>
@@ -383,6 +385,37 @@ public class Entreprise {
 
         taux = compt * (40.0/100.0) + bonh * (30.0/100.0) + prod * (10.0/100.0) + comm  * (10.0/100.0) + mark * (10.0/100.0);
         return taux;
+    }
+
+    /** Permet d'ajouter un nouvel employé à la collection <br>
+     * La création d'un employé se fait en fonction du nom de son service
+     * ainsi que son sexe (F/H), tous deux transmis en paramètres
+     * @author gbon
+     */
+    public void Recruter (String service, char sexe) {
+        switch (service) {
+            case "Commercial" :
+                employes.add(new Commercial(sexe));
+                break;
+            case "Comptabilite" :
+                employes.add(new Comptabilite(sexe));
+                break;
+            case "Direction" :
+                employes.add(new Direction(sexe));
+                break;
+            case "Marketing" :
+                employes.add(new Marketing(sexe));
+                break;
+            case "Production" :
+                employes.add(new Production(sexe));
+                break;
+            case "RD" :
+                employes.add(new RD(sexe));
+                break;
+            case "Securite" :
+                employes.add(new Securite(sexe));
+                break;
+        }
     }
 
     public String getNomEntreprise() {

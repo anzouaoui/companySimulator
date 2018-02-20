@@ -394,7 +394,7 @@
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                 android:layout_marginTop="45dp"
                 android:alpha="0.9"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:id="@+id/RelativeLayoutContentDetailCommercial"
@@ -797,8 +797,252 @@
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
-        </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutDetailsCompetences"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                android:layout_marginTop="45dp"
+                android:alpha="0.9"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutContentDetailCompetences"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBackButtonDetailCompetences"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp">
+
+                        <ImageButton
+                            android:id="@+id/ImageButtonBackButtonDetailCompetences"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/back_2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailCompetences">
+
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutCompetencesTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="70dp"
+                            android:background="@color/colorBackgroundTextView">
+
+                            <TextView
+                                android:id="@+id/TextViewCompetencesTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:text="@string/competences"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/ImageViewManWomanCap"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/manwomancap" />
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutCompetences"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/ImageViewManWomanCap"
+                            android:layout_below="@+id/RelativeLayoutCompetencesTitle"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp">
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonCompetencesCommercial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/commercial"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <TextView
+                                android:id="@+id/TextViewCompetenceCommercial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau2"
+                                android:layout_toEndOf="@+id/ImageButtonCompetencesCommercial"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="35sp"
+                                android:layout_alignBottom="@+id/ImageButtonCompetencesCommercial"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonCompetenceProduction"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/production"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:layout_toEndOf="@+id/TextViewCompetenceCommercial"
+                                android:layout_marginStart="20dp"/>
+
+                            <TextView
+                                android:id="@+id/TextViewCompetenceProduction"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau1"
+                                android:layout_toEndOf="@+id/ImageButtonCompetenceProduction"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="35sp"
+                                android:layout_alignBottom="@+id/ImageButtonCompetencesCommercial"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonCompetenceSecurite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="20dp"
+                                android:layout_toEndOf="@+id/TextViewCompetenceProduction"
+                                android:alpha="0.5"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/securite" />
+
+                            <TextView
+                                android:id="@+id/TextViewCompetenceSecurite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau0"
+                                android:layout_toEndOf="@+id/ImageButtonCompetenceSecurite"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="35sp"
+                                android:layout_alignBottom="@+id/ImageButtonCompetencesCommercial"
+                                android:alpha="0.5"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonCompetenceMarketing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="20dp"
+                                android:layout_toEndOf="@+id/TextViewCompetenceSecurite"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/marketing" />
+
+                            <TextView
+                                android:id="@+id/TextViewCompetenceMarketing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau1"
+                                android:layout_toEndOf="@+id/ImageButtonCompetenceMarketing"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="35sp"
+                                android:layout_alignBottom="@+id/ImageButtonCompetencesCommercial"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonCompetenceComptable"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_below="@+id/ImageButtonCompetencesCommercial"
+                                android:layout_alignStart="@+id/ImageButtonCompetencesCommercial"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:layout_marginTop="90dp"
+                                android:src="@drawable/comptable" />
+
+                            <TextView
+                                android:id="@+id/TextViewCompetenceComptable"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau3"
+                                android:layout_toEndOf="@+id/ImageButtonCompetenceComptable"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="35sp"
+                                android:layout_alignBottom="@+id/ImageButtonCompetenceComptable"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonCompetenceRd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_toEndOf="@+id/TextViewCompetenceComptable"
+                                android:layout_alignStart="@+id/ImageButtonCompetenceProduction"
+                                android:layout_marginTop="90dp"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/rd" />
+
+                            <TextView
+                                android:id="@+id/TextViewCompetenceRd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau1"
+                                android:layout_toEndOf="@+id/ImageButtonCompetenceRd"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="35sp"
+                                android:layout_alignBottom="@+id/ImageButtonCompetenceComptable"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonCompetenceDirection"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_toEndOf="@+id/TextViewCompetenceRd"
+                                android:layout_alignStart="@+id/ImageButtonCompetenceSecurite"
+                                android:layout_marginTop="90dp"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/direction"
+                                android:alpha="0.5"/>
+
+                            <TextView
+                                android:id="@+id/TextViewCompetenceDirection"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau0"
+                                android:layout_toEndOf="@+id/ImageButtonCompetenceDirection"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="35sp"
+                                android:layout_alignBottom="@+id/ImageButtonCompetenceDirection"
+                                android:alpha="0.5"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/RelativeLayoutCompetences"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/backgroundLevel"
+                            android:alpha="0.5">
+
+                            <TextView
+                                android:id="@+id/TextViewNiveauMoyen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau_moyen"
+                                android:textColor="@color/colorTextViewDetails"
+                                android:textSize="30sp"
+                                android:paddingEnd="5dp"
+                                android:paddingStart="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
         <RelativeLayout
             android:layout_centerHorizontal="true"
             android:id="@+id/RelativeLayoutRessources"
@@ -917,5 +1161,6 @@
                         />
             </RelativeLayout>
         </RelativeLayout>
+    </RelativeLayout>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

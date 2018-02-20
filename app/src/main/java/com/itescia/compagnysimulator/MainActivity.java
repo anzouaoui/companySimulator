@@ -31,7 +31,10 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources, textViewNomJoueur, textViewDetailEmployes,
-            textViewComptableTitle, textViewLevelOneComptableWorker, textViewLevelTwoComptableWorker, textViewLevelThreeComptableWorker;
+            textViewComptableTitle, textViewLevelOneComptableWorker, textViewLevelTwoComptableWorker, textViewLevelThreeComptableWorker,
+            textViewCompetencesTitle, textViewCompetenceCommercial, textViewCompetenceProduction, textViewCompetenceSecurite,
+            textViewCompetenceMarketing, textViewCompetenceComptable, textViewCompetenceRd, textViewCompetenceDirection,
+            textViewNiveauMoyen;
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl;
 
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutProgressBarOneComptableWorker2_3, relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5,
             relativeLayoutProgressBarThreeComptableWorker, relativeLayoutProgressBarOneComptableWorker3_1, relativeLayoutProgressBarOneComptableWorker3_2,
             relativeLayoutProgressBarOneComptableWorker3_3, relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5,
-            relativeLayoutScrollView ;
+            relativeLayoutScrollView;
 
     ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
             imageButtonUpComptableWorker3, imageButtonAddComptableWorker;
@@ -84,6 +87,15 @@ public class MainActivity extends AppCompatActivity {
         textViewLevelOneComptableWorker = (TextView) findViewById(R.id.TextViewLevelOneComptableWorker);
         textViewLevelTwoComptableWorker = (TextView) findViewById(R.id.TextViewLevelTwoComptableWorker);
         textViewLevelThreeComptableWorker = (TextView) findViewById(R.id.TextViewLevelThreeComptableWorker);
+        textViewCompetencesTitle = (TextView) findViewById(R.id.TextViewCompetencesTitle);
+        textViewCompetenceCommercial = (TextView) findViewById(R.id.TextViewCompetenceCommercial);
+        textViewCompetenceProduction = (TextView) findViewById(R.id.TextViewCompetenceProduction);
+        textViewCompetenceSecurite = (TextView) findViewById(R.id.TextViewCompetenceSecurite);
+        textViewCompetenceMarketing = (TextView) findViewById(R.id.TextViewCompetenceMarketing);
+        textViewCompetenceComptable = (TextView) findViewById(R.id.TextViewCompetenceComptable);
+        textViewCompetenceRd = (TextView) findViewById(R.id.TextViewCompetenceRd);
+        textViewCompetenceDirection = (TextView) findViewById(R.id.TextViewCompetenceDirection);
+        textViewNiveauMoyen = (TextView) findViewById(R.id.TextViewNiveauMoyen);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -98,6 +110,15 @@ public class MainActivity extends AppCompatActivity {
         textViewLevelOneComptableWorker.setTypeface(typefaceLvl);
         textViewLevelTwoComptableWorker.setTypeface(typefaceLvl);
         textViewLevelThreeComptableWorker.setTypeface(typefaceLvl);
+        textViewCompetencesTitle.setTypeface(typefaceLevel);
+        textViewCompetenceCommercial.setTypeface(typefaceLvl);
+        textViewCompetenceProduction.setTypeface(typefaceLvl);
+        textViewCompetenceSecurite.setTypeface(typefaceLvl);
+        textViewCompetenceMarketing.setTypeface(typefaceLvl);
+        textViewCompetenceComptable.setTypeface(typefaceLvl);
+        textViewCompetenceRd.setTypeface(typefaceLvl);
+        textViewCompetenceDirection.setTypeface(typefaceLvl);
+        textViewNiveauMoyen.setTypeface(typefaceLvl);
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
