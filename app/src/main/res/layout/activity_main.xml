@@ -46,7 +46,8 @@
                         android:layout_alignStart="@+id/ProgressBarReputation"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="25dp"
-                        app:srcCompat="@drawable/medalicon" />
+                        app:srcCompat="@drawable/medalicon"
+                        android:contentDescription="@string/description_icone_reputation"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -77,7 +78,8 @@
                         android:layout_centerInParent="true"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="25dp"
-                        app:srcCompat="@drawable/securityicon" />
+                        app:srcCompat="@drawable/securityicon"
+                        android:contentDescription="@string/description_icone_securite"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -106,7 +108,8 @@
                         android:layout_alignEnd="@+id/ProgressBarFormation"
                         android:layout_alignParentTop="true"
                         android:layout_marginEnd="25dp"
-                        app:srcCompat="@drawable/competenceicon" />
+                        app:srcCompat="@drawable/competenceicon"
+                        android:contentDescription="@string/description_icone_formation"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -1160,5 +1163,4 @@
         </RelativeLayout>
     </RelativeLayout>
     </RelativeLayout>
-
 </android.support.constraint.ConstraintLayout>

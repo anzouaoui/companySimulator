@@ -3,6 +3,9 @@
 
     <!-- DESCRIPTION IMAGE -->
     <string name="description_image_employes">Image employes</string>
+    <string name="description_icone_reputation">Icone réputation</string>
+    <string name="description_icone_securite">Icone sécurité</string>
+    <string name="description_icone_formation">Icone formation</string>
 
     <string name="detail_employes">DETAILS DES EMPLOYES</string>
     <string name="comptable">COMPTABLE : 3</string>
