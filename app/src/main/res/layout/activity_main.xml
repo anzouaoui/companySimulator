@@ -98,6 +98,8 @@
                         android:layout_marginStart="21dp"
                         android:indeterminate="false"
                         android:indeterminateTintMode="src_atop"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:max="100"
                         android:progress="0"/>
 
@@ -808,7 +810,7 @@
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                 android:layout_marginTop="45dp"
                 android:alpha="0.9"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:id="@+id/RelativeLayoutContentDetailCompetences"
