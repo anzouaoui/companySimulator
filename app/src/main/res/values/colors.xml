@@ -18,5 +18,7 @@
     <color name="colorBackgroundRelativeLayoutEmployes">#7cb091</color>
     <color name="colorBackgroundTextView">#618e74</color>
     <color name="colorTextViewDetails">#2c2c29</color>
+    <color name="colorProgressBarLvls">#db9714</color>
+    <color name="colorBorderProgressBarLvls">#ecb44a</color>
 
 </resources>

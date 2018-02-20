@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <gradient
+                android:startColor="@color/colorProgressBarLvls"
+                android:centerColor="@color/colorProgressBarLvls"
+                android:endColor="@color/colorProgressBarLvls"
+                />
+            <stroke
+                android:color="@color/colorBorderProgressBarLvls"
+                android:width="1dp"
+                />
+        </shape>
+    </item>
+</layer-list>
