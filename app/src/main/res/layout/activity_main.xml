@@ -857,6 +857,7 @@
                             android:src="@drawable/manwomancap" />
 
                         <RelativeLayout
+                            android:id="@+id/RelativeLayoutCompetences"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toEndOf="@+id/ImageViewManWomanCap"
@@ -1013,6 +1014,28 @@
                                 android:textSize="35sp"
                                 android:layout_alignBottom="@+id/ImageButtonCompetenceDirection"
                                 android:alpha="0.5"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/RelativeLayoutCompetences"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/backgroundLevel"
+                            android:alpha="0.5">
+
+                            <TextView
+                                android:id="@+id/TextViewNiveauMoyen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveau_moyen"
+                                android:textColor="@color/colorTextViewDetails"
+                                android:textSize="30sp"
+                                android:paddingEnd="5dp"
+                                android:paddingStart="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"/>
                         </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>

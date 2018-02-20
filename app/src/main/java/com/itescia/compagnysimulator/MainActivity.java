@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources, textViewNomJoueur, textViewDetailEmployes,
             textViewComptableTitle, textViewLevelOneComptableWorker, textViewLevelTwoComptableWorker, textViewLevelThreeComptableWorker,
             textViewCompetencesTitle, textViewCompetenceCommercial, textViewCompetenceProduction, textViewCompetenceSecurite,
-            textViewCompetenceMarketing, textViewCompetenceComptable, textViewCompetenceRd, textViewCompetenceDirection;
+            textViewCompetenceMarketing, textViewCompetenceComptable, textViewCompetenceRd, textViewCompetenceDirection,
+            textViewNiveauMoyen;
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl;
 
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         textViewCompetenceComptable = (TextView) findViewById(R.id.TextViewCompetenceComptable);
         textViewCompetenceRd = (TextView) findViewById(R.id.TextViewCompetenceRd);
         textViewCompetenceDirection = (TextView) findViewById(R.id.TextViewCompetenceDirection);
+        textViewNiveauMoyen = (TextView) findViewById(R.id.TextViewNiveauMoyen);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         textViewCompetenceComptable.setTypeface(typefaceLvl);
         textViewCompetenceRd.setTypeface(typefaceLvl);
         textViewCompetenceDirection.setTypeface(typefaceLvl);
+        textViewNiveauMoyen.setTypeface(typefaceLvl);
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);

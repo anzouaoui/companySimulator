@@ -20,4 +20,5 @@
     <string name="niveau1">1</string>
     <string name="niveau2">2</string>
     <string name="niveau3">3</string>
+    <string name="niveau_moyen">NIVEAU MOYEN: 1,8</string>
 </resources>
