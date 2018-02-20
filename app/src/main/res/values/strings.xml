@@ -6,6 +6,13 @@
     <string name="description_icone_reputation">Icone réputation</string>
     <string name="description_icone_securite">Icone sécurité</string>
     <string name="description_icone_formation">Icone formation</string>
+    <string name="description_icone_bonheur">Icone bonheur</string>
+    <string name="description_back_button">Bouton back</string>
+    <string name="description_icone_commercial">Icone commercial</string>
+    <string name="description_icone_production">Icone production</string>
+    <string name="description_icone_securite_2">Icone sécurite</string>
+    <string name="description_icone_marketing">Icone marketing</string>
+
 
     <string name="detail_employes">DETAILS DES EMPLOYES</string>
     <string name="comptable">COMPTABLE : 3</string>

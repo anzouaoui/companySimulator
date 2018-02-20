@@ -138,7 +138,8 @@
                         android:layout_alignStart="@+id/ProgressBarBonheur"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="25dp"
-                        app:srcCompat="@drawable/happinessicon" />
+                        app:srcCompat="@drawable/happinessicon"
+                        android:contentDescription="@string/description_icone_bonheur"/>
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
@@ -162,6 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:paddingBottom="10dp"
                     android:paddingEnd="10dp"
                     android:paddingStart="10dp"
@@ -248,7 +250,8 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="60dp"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/back" />
+                            android:src="@drawable/back"
+                            android:contentDescription="@string/description_back_button"/>
 
                     </RelativeLayout>
 
@@ -270,11 +273,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_commercial" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:src="@drawable/manwoman_commercial"
+                                android:contentDescription="@string/description_icone_commercial"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -290,7 +290,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_production" />
+                                android:src="@drawable/manwoman_production"
+                                android:contentDescription="@string/description_icone_production"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -306,7 +307,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_securite" />
+                                android:src="@drawable/manwoman_securite"
+                                android:contentDescription="@string/description_icone_securite_2"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -322,7 +324,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_marketing" />
+                                android:src="@drawable/manwoman_marketing"
+                                android:contentDescription="@string/description_icone_marketing"/>
                         </RelativeLayout>
                     </RelativeLayout>
 
