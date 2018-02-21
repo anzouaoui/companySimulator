@@ -298,38 +298,45 @@ public class Entreprise {
     }
 
     /** Permet d'ajouter un nouvel employé à la collection <br>
-     * La création d'un employé se fait en fonction du nom de son service
-     * ainsi que son sexe (F/H), tous deux transmis en paramètres
+     * La création d'un employé est possible uniquement si le nombre d'employés actuel ne dépasse pas le niveau du joueur.
+     * L'ajout d'un employé se fait en fonction du nom de son service ainsi que son sexe (F/H), tous deux transmis en paramètres
+     * @return reussiteAjout : true si l'ajout d'un employé a réussi, false dans le cas contraire
      * @author gbon, casag
      */
-    public void Recruter (String service, char sexe) {
-        switch (service) {
-            case "Commercial" :
-                employes.add(new Commercial(sexe));
-                break;
-            case "Comptabilite" :
-                employes.add(new Comptabilite(sexe));
-                break;
-            case "Direction" :
-                employes.add(new Direction(sexe));
-                break;
-            case "Marketing" :
-                employes.add(new Marketing(sexe));
-                break;
-            case "Production" :
-                employes.add(new Production(sexe));
-                break;
-            case "RD" :
-                employes.add(new RD(sexe));
-                break;
-            case "Securite" :
-                employes.add(new Securite(sexe));
-                break;
+    public boolean recruter (String service, char sexe) {
+        boolean reussiteAjout = false;
+        if(employes.size() < getNiveau()) {
+            switch (service) {
+                case "Commercial":
+                    employes.add(new Commercial(sexe));
+                    break;
+                case "Comptabilite":
+                    employes.add(new Comptabilite(sexe));
+                    break;
+                case "Direction":
+                    employes.add(new Direction(sexe));
+                    break;
+                case "Marketing":
+                    employes.add(new Marketing(sexe));
+                    break;
+                case "Production":
+                    employes.add(new Production(sexe));
+                    break;
+                case "RD":
+                    employes.add(new RD(sexe));
+                    break;
+                case "Securite":
+                    employes.add(new Securite(sexe));
+                    break;
+                default:
+                    reussiteAjout = false;
+            }
+            //Mise à jour du taux de formation en sécurité informatique
+            if (tauxFormationSecuInfo != 0) {
+                tauxFormationSecuInfo = tauxFormationSecuInfo * (1.0 - (1.0 / (employes.size())));
+            }
         }
-        //Mise à jour du taux de formation en sécurité informatique
-        if (tauxFormationSecuInfo != 0){
-            tauxFormationSecuInfo = tauxFormationSecuInfo *(1.0-(1.0/(employes.size())));
-        }
+        return reussiteAjout;
     }
 
     /**

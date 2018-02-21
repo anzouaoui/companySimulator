@@ -34,16 +34,34 @@ public class Employe {
     }
 
     /**
-     * Incrémente le niveau de formation de l'employé
+     * Incrémente si possible le niveau de formation de l'employé
+     * @param entreprise : l'entreprise du joueur (nécessaire pour accéder au niveau de l'entreprise à ne pas dépasser à travers verificationIncrementNiveauFormation)
      * @param nb : de combien le niveau de formation doit être augmenté
-     * @author casag
+     * @author casag, gbon
      */
-    public void incrementNiveauFormation(int nb){
-        if(this.getNiveauFormation() + nb < 5) {
-            this.niveauFormation += nb;
-        } else {
-            this.niveauFormation = 5;
+    public void incrementNiveauFormation(int nb, Entreprise entreprise){
+        if(verificationIncrementNiveauFormation(nb, entreprise)) {
+            if(this.getNiveauFormation() + nb < 5) {
+                this.niveauFormation += nb;
+            } else {
+                this.niveauFormation = 5;
+            }
         }
+    }
+
+    /**
+     * Vérifie que l'incrémentation du niveau de formation de l'employé ne dépassera pas le niveau de l'entreprise
+     * @param entreprise : l'entreprise du joueur (nécessaire pour accéder au niveau de l'entreprise à ne pas dépasser)
+     * @param nb : entier représentant le niveau de formation censé être ajouté au niveau actuel
+     * @return possibiliteIncrement : true si l'augmentation du niveau de formation de l'employé ne dépasse pas celui de l'entreprise, false dans le cas contraire
+     * @author gbon
+     */
+    public boolean verificationIncrementNiveauFormation(int nb, Entreprise entreprise) {
+        boolean possibiliteIncrement = false;
+        if(this.niveauFormation + nb < entreprise.getNiveau()) {
+            possibiliteIncrement = true;
+        }
+        return  possibiliteIncrement;
     }
 
     public int getNiveauFormation() {
