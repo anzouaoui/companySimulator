@@ -35,17 +35,17 @@ public class Entreprise {
 
     /** Niveau général de l'entreprise
      * @see Entreprise#getNiveau()
-     * @see Entreprise#setNiveau(int)
+     * @see Entreprise#setNiveau(double)
+     * @see Entreprise#levelUp(double)
      */
-    private int niveau;
+    private double niveau;
 
     /** Taux de bonheur dans l'entreprise. <br>
      *  Dépend du niveau de formation général des employés, de la réputation, <br>
      *  du taux global de sécurité et du niveau de qualité des conditions de travail
      * @see Entreprise#getBonheur()
-     * @see Entreprise#setBonheur(int)
+     * @see Entreprise#setBonheur(double)
      * @see Entreprise#getNiveauMoyenFormation()
-     * @see Entreprise#levelUp()
      */
     private double bonheur;
 
@@ -56,7 +56,7 @@ public class Entreprise {
      * @see Entreprise#getArgent()
      * @see Entreprise#setArgent(int)
      */
-    private double argent;
+    private int argent;
 
     /** Taux de réputation de l'entreprise <br>
      * S'améliorera ou se déteriorera en fonction d'actions à lancer (campagnes de com...)
@@ -78,7 +78,7 @@ public class Entreprise {
     /** Niveau de sécurité informatique <br>
      * S'augmentera en améliorant anti-virus, pare feu...
      * @see Entreprise#getTauxSecuInfo()
-     * @see Entreprise#setTauxSecuInfo(int)
+     * @see Entreprise#setTauxSecuInfo(double)
       */
     private double tauxSecuInfo;
 
@@ -86,7 +86,7 @@ public class Entreprise {
      * S'améliorera en montant de niveau ou en lançant des actions visant
      * à l'améliorer (achat de sièges confortables...)
      * @see Entreprise#getTauxQualConditionTravail()
-     * @see Entreprise#setTauxQualConditionTravail(int)
+     * @see Entreprise#setTauxQualConditionTravail(double)
      */
     private double tauxQualConditionTravail;
 
@@ -129,11 +129,12 @@ public class Entreprise {
     }
 
     /**
-     * Incrémente le niveau
+     * Augmente le niveau du nombre donné en paramètre
+     * @param nombre
      * @author casag
      */
-    public void levelUp () {
-        this.niveau += 1;
+    public void levelUp(double nombre) {
+        setNiveau(this.niveau + nombre);
     }
 
     /**
@@ -145,7 +146,7 @@ public class Entreprise {
     public boolean payer(int number) {
         boolean done = false;
         if (this.argent >= number) {
-            this.argent -= number;
+            setArgent(this.argent - number);
             done = true;
         }
         return done;
@@ -266,7 +267,7 @@ public class Entreprise {
      * @author casag
      */
     public void incremArgent(){
-        this.argent +=1;
+        setArgent(this.argent +1);
     }
 
     /**
@@ -277,6 +278,7 @@ public class Entreprise {
      */
     public void setTauxBonheur(){
         this.bonheur = ((getNiveauMoyenFormation()/5) + getReputation() + getNiveauMoyenDomaine("Securite)") + getTauxQualConditionTravail())/4;
+        setBonheur(((getNiveauMoyenFormation()/5) + getReputation() + getNiveauMoyenDomaine("Securite)") + getTauxQualConditionTravail())/4);
     }
 
     /** Retourne le taux de rapidité d'incrémentation de l'argent <br>
@@ -330,6 +332,8 @@ public class Entreprise {
         if (tauxFormationSecuInfo != 0){
             tauxFormationSecuInfo = tauxFormationSecuInfo *(1.0-(1.0/(employes.size())));
         }
+
+        levelUp(0.15);
     }
 
     /**
@@ -346,14 +350,15 @@ public class Entreprise {
     public void augmenterTauxConditTravail (double taux) {
         //Si le taux est à 0, on l'initialise à 10%
         if(tauxQualConditionTravail == 0){
-            tauxQualConditionTravail = taux;
+            setTauxQualConditionTravail(taux);
         }else { //sinon, on l'augmente du taux
             if(tauxQualConditionTravail*(1+taux) >= 1) {
-                tauxQualConditionTravail = 1;
+                setTauxQualConditionTravail(1);
             } else {
-                tauxQualConditionTravail *= (1+taux);
+                setTauxQualConditionTravail(tauxQualConditionTravail * (1+taux));
             }
         }
+        levelUp(0.10);
     }
 
     /**
@@ -370,14 +375,15 @@ public class Entreprise {
     public void augmenterTauxSecuInfo(double taux) {
         //Si le taux est à 0, on l'initialise au taux
         if (tauxSecuInfo == 0) {
-            tauxSecuInfo = taux;
+            setTauxSecuInfo(taux);
         } else { //sinon, on l'augmente de 20%
             if (tauxSecuInfo * (1 + taux) >= 1) {
-                tauxSecuInfo = 1;
+                setTauxSecuInfo(1);
             } else {
-                tauxSecuInfo *= (1 + taux);
+                setTauxSecuInfo(tauxSecuInfo * (1 + taux));
             }
         }
+        levelUp(0.10);
     }
 
     /**
@@ -400,6 +406,7 @@ public class Entreprise {
             } else {
                 augmenterTauxSecuInfo(0.40);
             }
+            levelUp(0.15);
         }
         return randomNum;
     }
@@ -413,7 +420,8 @@ public class Entreprise {
         boolean done = false;
         //Si le joueur a les moyens
         if(this.payer(300)) {
-            tauxFormationSecuInfo = 1;
+            setTauxFormationSecuInfo(1);
+            levelUp(0.15);
             done = true;
         }
         return done;
@@ -429,6 +437,7 @@ public class Entreprise {
         boolean done = false;
         if (this.payer(300)){
             augmenterTauxConditTravail(0.30);
+            levelUp(0.15);
             done = true;
         }
         return done;
@@ -452,11 +461,13 @@ public class Entreprise {
             if(hours >= 2) {
                 setDerniereFelicitation(now);
                 augmenterTauxConditTravail(0.15);
+                levelUp(0.10);
                 done = true;
             }
         } else {
             setDerniereFelicitation(now);
             augmenterTauxConditTravail(0.15);
+            levelUp(0.10);
             done = true;
         }
         return done;
@@ -472,19 +483,37 @@ public class Entreprise {
         this.nomEntreprise = nomEntreprise;
     }
 
-    public int getNiveau() {
+    public double getNiveau() {
         return niveau;
     }
 
-    public void setNiveau(int niveau) {
+    /**
+     * Met à jour le niveau.
+     * Observe s'il passe à l'unité supérieure.
+     * @param niveau
+     * @author casag
+     */
+    public void setNiveau(double niveau) {
+        double ancienNiveau = getNiveau();
+
         this.niveau = niveau;
+
+        if(ancienNiveau <= 2 && niveau >= 2) {
+
+        }else if (ancienNiveau <= 3 && niveau >= 3){
+
+        } else if (ancienNiveau <= 4 && niveau >= 4) {
+
+        } else if (ancienNiveau <= 5 && niveau >= 5) {
+
+        }
     }
 
     public double getBonheur() {
         return bonheur;
     }
 
-    public void setBonheur(int bonheur) {
+    public void setBonheur(double bonheur) {
         this.bonheur = bonheur;
     }
 
@@ -509,7 +538,7 @@ public class Entreprise {
         return tauxSecuInfo;
     }
 
-    public void setTauxSecuInfo(int niveauSecuInfo) {
+    public void setTauxSecuInfo(double niveauSecuInfo) {
         this.tauxSecuInfo = niveauSecuInfo;
     }
 
@@ -525,7 +554,7 @@ public class Entreprise {
         return tauxQualConditionTravail;
     }
 
-    public void setTauxQualConditionTravail(int tauxQualConditionTravail) {
+    public void setTauxQualConditionTravail(double tauxQualConditionTravail) {
         this.tauxQualConditionTravail = tauxQualConditionTravail;
     }
 
