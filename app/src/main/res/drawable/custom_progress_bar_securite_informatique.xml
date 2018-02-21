@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <gradient
+                android:startColor="@color/colorBackgroundProgressBarSecuriteInformatique"
+                android:centerColor="@color/colorBackgroundProgressBarSecuriteInformatique"
+                android:endColor="@color/colorBackgroundProgressBarSecuriteInformatique"
+                />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <gradient
+                    android:startColor="@color/colorProgressBarSecuriteInformatique"
+                    android:centerColor="@color/colorProgressBarSecuriteInformatique"
+                    android:endColor="@color/colorProgressBarSecuriteInformatique"
+                    />
+            </shape>
+        </clip>
+    </item>
+</layer-list>
