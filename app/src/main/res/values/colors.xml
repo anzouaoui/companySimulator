@@ -20,5 +20,16 @@
     <color name="colorTextViewDetails">#2c2c29</color>
     <color name="colorProgressBarLvls">#db9714</color>
     <color name="colorBorderProgressBarLvls">#ecb44a</color>
-
+    <color name="colorProgressBarEmployesSecurite">#405c79</color>
+    <color name="colorBackgroundProgressBarEmployesSecurite">#5c8586</color>
+    <color name="colorProgressBarConditionsTravail">#794060</color>
+    <color name="colorBackgroundProgressBarConditionsTravail">#775869</color>
+    <color name="colorProgressBarSecuriteInformatique">#fff370</color>
+    <color name="colorBackgroundProgressBarSecuriteInformatique">#bbcd88</color>
+    <color name="colorNiveauSecuriteInformatique">#638f74</color>
+    <color name="colorBackgroundNomAntivirus">#233764</color>
+    <color name="colorNomAntivirus">#fff</color>
+    <color name="colorVersionAntivirus">#ce871f</color>
+    <color name="colorProgressBarFormationEmployes">#366821</color>
+    <color name="colorBackgroundProgressBarFormationEmployes">#5a8d5b</color>
 </resources>
