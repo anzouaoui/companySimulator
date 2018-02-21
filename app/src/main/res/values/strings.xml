@@ -17,6 +17,7 @@
     <string name="detail_employes">DETAILS DES EMPLOYES</string>
     <string name="comptable">COMPTABLE : 3</string>
     <string name="competences">COMPETENCES</string>
+    <string name="securite">SECURITE</string>
     
     <!-- LEVELS DES COMPTABLES -->
     <string name="lvl1">lvl 1</string>
@@ -31,4 +32,25 @@
     <string name="niveau2">2</string>
     <string name="niveau3">3</string>
     <string name="niveau_moyen">NIVEAU MOYEN: 1,8</string>
+
+    <!-- TYPES DE SECURITES -->
+    <string name="employesSecurite">EMPLOYES DE SECURITE</string>
+    <string name="conditionTravail">CONDITIONS DE TRAVAIL</string>
+    <string name="securite_informatique">SECURITE INFORMATIQUE</string>
+    
+    <!-- SECURITE INFORMATIQUE -->
+    <string name="niveau_securite_informatique">65%</string>
+    <string name="antivirus">ANTIVIRUS</string>
+    <string name="textAntivirus">150</string>
+    <string name="textFirewall">300</string>
+    <string name="textMIseAJourSysteme">300</string>
+    <string name="nomAntivirus">avast</string>
+    <string name="versionAntivirus">v 1.5</string>
+    <string name="firewall">FIREWALL</string>
+    <string name="derniereMiseAJour">derniere maj: </string>
+    <string name="heureMiseAJourFirewall">10 heures</string>
+    <string name="heureMiseAJourSysteme">30 heures</string>
+    <string name="miseAJourSysteme">MAJ SYSTEMES</string>
+    <string name="formationEmployes">FORMER EMPLOYES</string>
+    <string name="sousTraiter">SOUS TRAITER</string>
 </resources>
