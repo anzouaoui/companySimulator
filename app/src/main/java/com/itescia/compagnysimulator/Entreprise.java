@@ -35,17 +35,17 @@ public class Entreprise {
 
     /** Niveau général de l'entreprise
      * @see Entreprise#getNiveau()
-     * @see Entreprise#setNiveau(int)
+     * @see Entreprise#setNiveau(double)
+     * @see Entreprise#levelUp(double)
      */
-    private int niveau;
+    private double niveau;
 
     /** Taux de bonheur dans l'entreprise. <br>
      *  Dépend du niveau de formation général des employés, de la réputation, <br>
      *  du taux global de sécurité et du niveau de qualité des conditions de travail
      * @see Entreprise#getBonheur()
-     * @see Entreprise#setBonheur(int)
+     * @see Entreprise#setBonheur(double)
      * @see Entreprise#getNiveauMoyenFormation()
-     * @see Entreprise#levelUp()
      */
     private double bonheur;
 
@@ -56,7 +56,7 @@ public class Entreprise {
      * @see Entreprise#getArgent()
      * @see Entreprise#setArgent(int)
      */
-    private double argent;
+    private int argent;
 
     /** Taux de réputation de l'entreprise <br>
      * S'améliorera ou se déteriorera en fonction d'actions à lancer (campagnes de com...)
@@ -78,15 +78,15 @@ public class Entreprise {
     /** Niveau de sécurité informatique <br>
      * S'augmentera en améliorant anti-virus, pare feu...
      * @see Entreprise#getTauxSecuInfo()
-     * @see Entreprise#setTauxSecuInfo(int)
-      */
+     * @see Entreprise#setTauxSecuInfo(double)
+     */
     private double tauxSecuInfo;
 
     /** Niveau de qualité des conditions de travail <br>
      * S'améliorera en montant de niveau ou en lançant des actions visant
      * à l'améliorer (achat de sièges confortables...)
      * @see Entreprise#getTauxQualConditionTravail()
-     * @see Entreprise#setTauxQualConditionTravail(int)
+     * @see Entreprise#setTauxQualConditionTravail(double)
      */
     private double tauxQualConditionTravail;
 
@@ -105,6 +105,16 @@ public class Entreprise {
      * Dernière félicitation aléatoire d'un employé
      */
     private Date derniereFelicitation;
+
+    /**
+     * Niveau actuel de l'antivirus
+     */
+    private int niveauAntivirus;
+
+    /**
+     * Nom actuel de l'antivirus (ex: "Nom VX.X")
+     */
+    private String nomAntivirus;
 
     private List<Employe> employes;
 
@@ -129,11 +139,12 @@ public class Entreprise {
     }
 
     /**
-     * Incrémente le niveau
+     * Augmente le niveau du nombre donné en paramètre
+     * @param nombre
      * @author casag
      */
-    public void levelUp () {
-        this.niveau += 1;
+    public void levelUp(double nombre) {
+        setNiveau(this.niveau + nombre);
     }
 
     /**
@@ -145,7 +156,7 @@ public class Entreprise {
     public boolean payer(int number) {
         boolean done = false;
         if (this.argent >= number) {
-            this.argent -= number;
+            setArgent(this.argent - number);
             done = true;
         }
         return done;
@@ -266,7 +277,7 @@ public class Entreprise {
      * @author casag
      */
     public void incremArgent(){
-        this.argent +=1;
+        setArgent(this.argent +1);
     }
 
     /**
@@ -277,6 +288,7 @@ public class Entreprise {
      */
     public void setTauxBonheur(){
         this.bonheur = ((getNiveauMoyenFormation()/5) + getReputation() + getNiveauMoyenDomaine("Securite)") + getTauxQualConditionTravail())/4;
+        setBonheur(((getNiveauMoyenFormation()/5) + getReputation() + getNiveauMoyenDomaine("Securite)") + getTauxQualConditionTravail())/4);
     }
 
     /** Retourne le taux de rapidité d'incrémentation de l'argent <br>
@@ -298,45 +310,40 @@ public class Entreprise {
     }
 
     /** Permet d'ajouter un nouvel employé à la collection <br>
-     * La création d'un employé est possible uniquement si le nombre d'employés actuel ne dépasse pas le niveau du joueur.
-     * L'ajout d'un employé se fait en fonction du nom de son service ainsi que son sexe (F/H), tous deux transmis en paramètres
-     * @return reussiteAjout : true si l'ajout d'un employé a réussi, false dans le cas contraire
+     * La création d'un employé se fait en fonction du nom de son service
+     * ainsi que son sexe (F/H), tous deux transmis en paramètres
      * @author gbon, casag
      */
-    public boolean recruter (String service, char sexe) {
-        boolean reussiteAjout = false;
-        if(employes.size() < getNiveau()) {
-            switch (service) {
-                case "Commercial":
-                    employes.add(new Commercial(sexe));
-                    break;
-                case "Comptabilite":
-                    employes.add(new Comptabilite(sexe));
-                    break;
-                case "Direction":
-                    employes.add(new Direction(sexe));
-                    break;
-                case "Marketing":
-                    employes.add(new Marketing(sexe));
-                    break;
-                case "Production":
-                    employes.add(new Production(sexe));
-                    break;
-                case "RD":
-                    employes.add(new RD(sexe));
-                    break;
-                case "Securite":
-                    employes.add(new Securite(sexe));
-                    break;
-                default:
-                    reussiteAjout = false;
-            }
-            //Mise à jour du taux de formation en sécurité informatique
-            if (tauxFormationSecuInfo != 0) {
-                tauxFormationSecuInfo = tauxFormationSecuInfo * (1.0 - (1.0 / (employes.size())));
-            }
+    public void Recruter (String service, char sexe) {
+        switch (service) {
+            case "Commercial" :
+                employes.add(new Commercial(sexe));
+                break;
+            case "Comptabilite" :
+                employes.add(new Comptabilite(sexe));
+                break;
+            case "Direction" :
+                employes.add(new Direction(sexe));
+                break;
+            case "Marketing" :
+                employes.add(new Marketing(sexe));
+                break;
+            case "Production" :
+                employes.add(new Production(sexe));
+                break;
+            case "RD" :
+                employes.add(new RD(sexe));
+                break;
+            case "Securite" :
+                employes.add(new Securite(sexe));
+                break;
         }
-        return reussiteAjout;
+        //Mise à jour du taux de formation en sécurité informatique
+        if (tauxFormationSecuInfo != 0){
+            tauxFormationSecuInfo = tauxFormationSecuInfo *(1.0-(1.0/(employes.size())));
+        }
+
+        levelUp(0.15);
     }
 
     /**
@@ -353,14 +360,15 @@ public class Entreprise {
     public void augmenterTauxConditTravail (double taux) {
         //Si le taux est à 0, on l'initialise à 10%
         if(tauxQualConditionTravail == 0){
-            tauxQualConditionTravail = taux;
+            setTauxQualConditionTravail(taux);
         }else { //sinon, on l'augmente du taux
             if(tauxQualConditionTravail*(1+taux) >= 1) {
-                tauxQualConditionTravail = 1;
+                setTauxQualConditionTravail(1);
             } else {
-                tauxQualConditionTravail *= (1+taux);
+                setTauxQualConditionTravail(tauxQualConditionTravail * (1+taux));
             }
         }
+        levelUp(0.10);
     }
 
     /**
@@ -377,14 +385,85 @@ public class Entreprise {
     public void augmenterTauxSecuInfo(double taux) {
         //Si le taux est à 0, on l'initialise au taux
         if (tauxSecuInfo == 0) {
-            tauxSecuInfo = taux;
+            setTauxSecuInfo(taux);
         } else { //sinon, on l'augmente de 20%
             if (tauxSecuInfo * (1 + taux) >= 1) {
-                tauxSecuInfo = 1;
+                setTauxSecuInfo(1);
             } else {
-                tauxSecuInfo *= (1 + taux);
+                setTauxSecuInfo(tauxSecuInfo * (1 + taux));
             }
         }
+        levelUp(0.10);
+    }
+
+    /**
+     * Permet de déterminer la somme à payer pour améliorer le niveau d'antivirus.<br>.
+     * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau d'antivirus supérieur.
+     * La règle de calcul est : +150 par niveau d'antivirus
+     * @return sommeAmeliorationAntivirus : valeur entière à payer pour améliorer le niveau d'antivirus
+     * @author gbon
+     */
+    public int determinerSommeAmeliorationAntivirus() {
+        int sommeAmeliorationAntivirus = getNiveauAntivirus() * 150;
+        return sommeAmeliorationAntivirus;
+    }
+
+    /**
+     * Permet de gérer l'amélioration de l'antivirus.<br>.
+     * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau d'antivirus supérieur
+     * et modifie le niveau en conséquence ainsi que le nom de l'antivirus.<br>
+     * Le niveau max de l'antivirus est 99
+     * @author gbon
+     */
+    public void ameliorerAntivirus() {
+        if (getNiveauAntivirus()<99) {
+            int sommeAPayer = determinerSommeAmeliorationAntivirus();
+            // Test si le joueur à assez d'argent pour payer l'amélioration
+            if (payer(sommeAPayer)) {
+                setNiveauAntivirus(getNiveauAntivirus() + 1);
+                setNomAntivirus(changerNomAntivirus(getNiveauAntivirus()));
+                augmenterTauxSecuInfo(0.15);
+                levelUp(0.15);
+            }
+        }
+    }
+
+    /**
+     * Permet d'obtenir le nom de l'antivirus correspondant à son niveau.<br>
+     * Changement de marque d'antivirus tous les 10 niveaux jusqu'au niveau 100.
+     * Le nom se compose ainsi "Marque v1.X" ou X représente le chiffre des unités du niveau de l'antivirus
+     * @param niveauAntivirus : le niveau de l'antivirus actuel dont on souhaite connaitre le nom
+     * @return nouveauNom : le nouveau nom de l'antivirus, au format "Marque v1.X"
+     * @author gbon
+     */
+    public String changerNomAntivirus(int niveauAntivirus) {
+        String nouveauNom = "";
+        // Détermination de la marque de l'antivirus selon le niveau de l'antivirus (par palier de 10 jusqu'à 100)
+        if (niveauAntivirus <10) {
+            nouveauNom = "Aviro";
+        } else if (niveauAntivirus <20) {
+            nouveauNom = "Trend macro";
+        } else if (niveauAntivirus <30) {
+            nouveauNom = "Avist";
+        } else if (niveauAntivirus <40) {
+            nouveauNom = "Twentycent";
+        } else if (niveauAntivirus <50) {
+            nouveauNom = "Mcofee";
+        } else if (niveauAntivirus <60) {
+            nouveauNom = "G-Secure";
+        } else if (niveauAntivirus <70) {
+            nouveauNom = "Penguin";
+        } else if (niveauAntivirus <80) {
+            nouveauNom = "Nurton Security";
+        } else if (niveauAntivirus <90) {
+            nouveauNom = "Caspersky";
+        } else if (niveauAntivirus <100) {
+            nouveauNom = "Botdefender";
+        }
+        nouveauNom += " v1.";
+        // Détermination de la version de l'antivirus (chiffre des unités du niveau de l'antivirus, pour compléter "v1.X")
+        nouveauNom += Integer.toString(niveauAntivirus%10);
+        return nouveauNom;
     }
 
     /**
@@ -407,6 +486,7 @@ public class Entreprise {
             } else {
                 augmenterTauxSecuInfo(0.40);
             }
+            levelUp(0.15);
         }
         return randomNum;
     }
@@ -420,7 +500,8 @@ public class Entreprise {
         boolean done = false;
         //Si le joueur a les moyens
         if(this.payer(300)) {
-            tauxFormationSecuInfo = 1;
+            setTauxFormationSecuInfo(1);
+            levelUp(0.15);
             done = true;
         }
         return done;
@@ -436,6 +517,7 @@ public class Entreprise {
         boolean done = false;
         if (this.payer(300)){
             augmenterTauxConditTravail(0.30);
+            levelUp(0.15);
             done = true;
         }
         return done;
@@ -459,11 +541,13 @@ public class Entreprise {
             if(hours >= 2) {
                 setDerniereFelicitation(now);
                 augmenterTauxConditTravail(0.15);
+                levelUp(0.10);
                 done = true;
             }
         } else {
             setDerniereFelicitation(now);
             augmenterTauxConditTravail(0.15);
+            levelUp(0.10);
             done = true;
         }
         return done;
@@ -479,19 +563,37 @@ public class Entreprise {
         this.nomEntreprise = nomEntreprise;
     }
 
-    public int getNiveau() {
+    public double getNiveau() {
         return niveau;
     }
 
-    public void setNiveau(int niveau) {
+    /**
+     * Met à jour le niveau.
+     * Observe s'il passe à l'unité supérieure.
+     * @param niveau
+     * @author casag
+     */
+    public void setNiveau(double niveau) {
+        double ancienNiveau = getNiveau();
+
         this.niveau = niveau;
+
+        if(ancienNiveau <= 2 && niveau >= 2) {
+
+        }else if (ancienNiveau <= 3 && niveau >= 3){
+
+        } else if (ancienNiveau <= 4 && niveau >= 4) {
+
+        } else if (ancienNiveau <= 5 && niveau >= 5) {
+
+        }
     }
 
     public double getBonheur() {
         return bonheur;
     }
 
-    public void setBonheur(int bonheur) {
+    public void setBonheur(double bonheur) {
         this.bonheur = bonheur;
     }
 
@@ -516,7 +618,7 @@ public class Entreprise {
         return tauxSecuInfo;
     }
 
-    public void setTauxSecuInfo(int niveauSecuInfo) {
+    public void setTauxSecuInfo(double niveauSecuInfo) {
         this.tauxSecuInfo = niveauSecuInfo;
     }
 
@@ -532,7 +634,7 @@ public class Entreprise {
         return tauxQualConditionTravail;
     }
 
-    public void setTauxQualConditionTravail(int tauxQualConditionTravail) {
+    public void setTauxQualConditionTravail(double tauxQualConditionTravail) {
         this.tauxQualConditionTravail = tauxQualConditionTravail;
     }
 
@@ -550,6 +652,22 @@ public class Entreprise {
 
     public void setDerniereFelicitation(Date derniereFelicitation) {
         this.derniereFelicitation = derniereFelicitation;
+    }
+
+    public int getNiveauAntivirus() {
+        return niveauAntivirus;
+    }
+
+    public void setNiveauAntivirus(int niveauAntivirus) {
+        this.niveauAntivirus = niveauAntivirus;
+    }
+
+    public String getNomAntivirus() {
+        return nomAntivirus;
+    }
+
+    public void setNomAntivirus(String nomAntivirus) {
+        this.nomAntivirus = nomAntivirus;
     }
 
 }
