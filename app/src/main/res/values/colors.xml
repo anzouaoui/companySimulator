@@ -32,4 +32,5 @@
     <color name="colorVersionAntivirus">#ce871f</color>
     <color name="colorProgressBarFormationEmployes">#366821</color>
     <color name="colorBackgroundProgressBarFormationEmployes">#5a8d5b</color>
+    <color name="colorBackgroundInformation">#b9b154</color>
 </resources>
