@@ -1228,6 +1228,7 @@
                                     android:layout_toEndOf="@+id/ProgressBarSecuriteInformatique"
                                     android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                     android:src="@drawable/up" />
+
                             </RelativeLayout>
                         </RelativeLayout>
                     </RelativeLayout>
@@ -1240,7 +1241,7 @@
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                 android:layout_marginTop="40dp"
                 android:alpha="0.9"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:id="@+id/RelativeLayoutContentDetailSecuriteInformatique"
@@ -1721,6 +1722,40 @@
                                 android:layout_marginEnd="23dp"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/help" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutInformationSousTraiter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="300dp"
+                            android:layout_marginEnd="50dp"
+                            android:background="@drawable/custom_relative_layout_information"
+                            android:visibility="gone">
+
+                            <ImageButton
+                                android:layout_alignParentEnd="true"
+                                android:id="@+id/ImageButtonHideInformationSousTraiter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/cross"
+                                android:background="@color/colorBackgroundInformation"/>
+
+                            <TextView
+                                android:id="@+id/TextViewInformationSousTraiter"
+                                android:layout_below="@+id/ImageButtonHideInformationSousTraiter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/informationSousTraiter"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="20sp"/>
                         </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>

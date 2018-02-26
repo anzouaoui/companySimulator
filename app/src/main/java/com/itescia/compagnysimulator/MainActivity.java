@@ -27,26 +27,28 @@ public class MainActivity extends AppCompatActivity {
             textViewNiveauMoyen, textViewSecuriteTitle, textViewEmployesSecurite, textViewConditionTravail, textViewSecuriteInformatique, textViewSecuriteInformatiqueTitle,
             textViewNiveauSecuriteInformatique, textViewAntivirus, textViewArgentAntivirus, textViewNomAntivirus, textViewVersionAntivirus, textViewFirewall, textViewDerniereMiseAJour,
             textViewHeureDerniereMiseAJour, textViewArgentFirewall, textViewMiseAJourSysteme, textViewArgentMiseAJourSysteme, textViewDerniereMiseAJourSysteme,
-            textViewHeureDerniereMiseAJourSysteme, textViewFormationEmployes, textViewArgentFormationEmployes, textViewSousTraiter, textViewArgentSousTraiter;
+            textViewHeureDerniereMiseAJourSysteme, textViewFormationEmployes, textViewArgentFormationEmployes, textViewSousTraiter, textViewArgentSousTraiter,
+            textViewInformationSousTraiter;
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources;
 
     RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutDetailsCompetences, relativeLayoutDetailsSecurite,
-            relativeLayoutProgressBarOneComptableWorker1_1, relativeLayoutProgressBarOneComptableWorker1_2, relativeLayoutProgressBarOneComptableWorker1_3,
-            relativeLayoutProgressBarOneComptableWorker1_4, relativeLayoutProgressBarOneComptableWorker1_5, relativeLayoutProgressBarOneComptableWorker2_1,
-            relativeLayoutProgressBarOneComptableWorker2_2, relativeLayoutProgressBarOneComptableWorker2_3, relativeLayoutProgressBarOneComptableWorker2_4,
-            relativeLayoutProgressBarOneComptableWorker2_5, relativeLayoutProgressBarThreeComptableWorker, relativeLayoutProgressBarOneComptableWorker3_1,
-            relativeLayoutProgressBarOneComptableWorker3_2, relativeLayoutProgressBarOneComptableWorker3_3, relativeLayoutProgressBarOneComptableWorker3_4,
-            relativeLayoutProgressBarOneComptableWorker3_5, relativeLayoutScrollView;
+            relativeLayoutDetailsSecuriteInformatique, relativeLayoutProgressBarOneComptableWorker1_1, relativeLayoutProgressBarOneComptableWorker1_2,
+            relativeLayoutProgressBarOneComptableWorker1_3, relativeLayoutProgressBarOneComptableWorker1_4, relativeLayoutProgressBarOneComptableWorker1_5,
+            relativeLayoutProgressBarOneComptableWorker2_1, relativeLayoutProgressBarOneComptableWorker2_2, relativeLayoutProgressBarOneComptableWorker2_3,
+            relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5, relativeLayoutProgressBarThreeComptableWorker,
+            relativeLayoutProgressBarOneComptableWorker3_1, relativeLayoutProgressBarOneComptableWorker3_2, relativeLayoutProgressBarOneComptableWorker3_3,
+            relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5, relativeLayoutScrollView, relativeLayoutInformationSousTraiter;
 
-    ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
-            imageButtonUpComptableWorker3, imageButtonAddComptableWorker;
+    ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite, imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
+            imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter;
 
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
      ArrayList<ImageButton> collectionImageButtonBack;
+     ArrayList<ImageButton> collectionImageButtonHelp;
 
     Timer _t;
     int count = 0;
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentFormationEmployes = (TextView) findViewById(R.id.TextViewArgentFormationEmployes);
         textViewSousTraiter = (TextView) findViewById(R.id.TextViewSousTraiter);
         textViewArgentSousTraiter = (TextView) findViewById(R.id.TextViewArgentSousTraiter);
+        textViewInformationSousTraiter = (TextView) findViewById(R.id.TextViewInformationSousTraiter);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -157,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentAntivirus.setTypeface(typefaceLvl);
         textViewDerniereMiseAJour.setTypeface(typefaceLvl);
         textViewArgentSousTraiter.setTypeface(typefaceLvl);
+        textViewInformationSousTraiter.setTypeface(typefaceLvl);
         textViewNomAntivirus.setTypeface(typefaceRessource);
         textViewVersionAntivirus.setTypeface(typefaceRessource);
 
@@ -178,7 +182,9 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutDetailCommercial = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailCommercial);
         relativeLayoutDetailsCompetences = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsCompetences);
         relativeLayoutDetailsSecurite = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsSecurite);
+        relativeLayoutDetailsSecuriteInformatique = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsSecuriteInformatique);
         relativeLayoutScrollView = (RelativeLayout) findViewById(R.id.RelativeLayoutScrollView);
+        relativeLayoutInformationSousTraiter = (RelativeLayout) findViewById(R.id.RelativeLayoutInformationSousTraiter);
         relativeLayoutProgressBarOneComptableWorker1_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_1);
         relativeLayoutProgressBarOneComptableWorker1_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_2);
         relativeLayoutProgressBarOneComptableWorker1_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_3);
@@ -202,10 +208,14 @@ public class MainActivity extends AppCompatActivity {
         imageButtonBackButtonDetailCommercial = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailCommercial);
         imageButtonBackButtonDetailCompetences = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailCompetences);
         imageButtonBackButtonDetailSecurite = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailSecurite);
+        imageButtonBackButtonDetailSecuriteInformatique = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailSecuriteInformatique);
         imageviewComptable = (ImageButton) findViewById(R.id.ImageviewComptable);
         imageButtonUpComptableWorker1 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker1);
         imageButtonUpComptableWorker2 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker2);
         imageButtonUpComptableWorker3 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker3);
+        imageButtonUpSecuriteInformatique = (ImageButton) findViewById(R.id.ImageButtonUpSecuriteInformatique);
+        imageButtonHelpSousTraiter = (ImageButton) findViewById(R.id.ImageButtonHelpSousTraiter);
+        imageButtonHideInformationSousTraiter = (ImageButton) findViewById(R.id.ImageButtonHideInformationSousTraiter);
 
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
@@ -214,12 +224,17 @@ public class MainActivity extends AppCompatActivity {
         colletionImageButtonUpComptable.add(imageButtonUpComptableWorker1);
         colletionImageButtonUpComptable.add(imageButtonUpComptableWorker2);
         colletionImageButtonUpComptable.add(imageButtonUpComptableWorker3);
+        colletionImageButtonUpComptable.add(imageButtonUpSecuriteInformatique);
 
         collectionImageButtonBack = new ArrayList<ImageButton>();
         collectionImageButtonBack.add(imageButtonBackButton);
         collectionImageButtonBack.add(imageButtonBackButtonDetailCommercial);
         collectionImageButtonBack.add(imageButtonBackButtonDetailCompetences);
         collectionImageButtonBack.add(imageButtonBackButtonDetailSecurite);
+        collectionImageButtonBack.add(imageButtonBackButtonDetailSecuriteInformatique);
+
+        collectionImageButtonHelp = new ArrayList<ImageButton>();
+        collectionImageButtonHelp.add(imageButtonHelpSousTraiter);
     }
 
     /**
@@ -236,8 +251,13 @@ public class MainActivity extends AppCompatActivity {
         for (ImageButton currentImageButtonBack: collectionImageButtonBack) {
             currentImageButtonBack.setOnClickListener(imageButtonBackButtonListener);
         }
+        for (ImageButton currentImageButtonHekp : collectionImageButtonHelp) {
+            currentImageButtonHekp.setOnClickListener(imageButtonHelpListener);
+        }
         progressBarFormation.setOnClickListener(progressBarFormationListener);
         progressBarSecurite.setOnClickListener(progressBarSecuriteListener);
+        imageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener);
+        imageButtonHideInformationSousTraiter.setOnClickListener(imageButtonHideInformationSousTraiterListener);
     }
 
     /**
@@ -282,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+
     private View.OnClickListener progressBarFormationListener = new View.OnClickListener() {
         boolean show = false;
         /**
@@ -320,6 +341,19 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener imageButtonHideInformationSousTraiterListener = new View.OnClickListener() {
+        boolean show = false;
+        /**
+         * Fonction permettant d'afficher le popup des compétences
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            relativeLayoutInformationSousTraiter.setVisibility(View.GONE);
+        }
+    };
+
     private View.OnClickListener relativeLayoutHommeListener = new View.OnClickListener() {
         boolean show = false;
 
@@ -337,6 +371,21 @@ public class MainActivity extends AppCompatActivity {
                 relativeLayoutEmployes.setVisibility(View.GONE);
                 show = false;
             }
+        }
+    };
+
+    private View.OnClickListener imageButtonUpSecuriteInformatiqueListener = new View.OnClickListener() {
+        boolean show = false;
+
+        /**
+         * Fonction permettant d'afficher les informations concernant la sécurité informatique
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            relativeLayoutDetailsSecuriteInformatique.setVisibility(View.VISIBLE);
+            relativeLayoutDetailsSecurite.setVisibility(View.GONE);
         }
     };
 
@@ -358,6 +407,24 @@ public class MainActivity extends AppCompatActivity {
                 relativeLayoutDetailsCompetences.setVisibility(View.GONE);
             } else if (ImageButtonBackSelected == imageButtonBackButtonDetailSecurite) {
                 relativeLayoutDetailsSecurite.setVisibility(View.GONE);
+            } else if(ImageButtonBackSelected == imageButtonBackButtonDetailSecuriteInformatique) {
+                relativeLayoutDetailsSecuriteInformatique.setVisibility(View.GONE);
+                relativeLayoutDetailsSecurite.setVisibility(View.VISIBLE);
+            }
+        }
+    };
+
+    private View.OnClickListener imageButtonHelpListener = new View.OnClickListener() {
+        /**
+         * Fonction permettant de revenir en arrière
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            ImageButton ImageButtonHelpSelected = (ImageButton) findViewById(v.getId());
+            if (ImageButtonHelpSelected == imageButtonHelpSousTraiter) {
+                relativeLayoutInformationSousTraiter.setVisibility(View.VISIBLE);
             }
         }
     };
