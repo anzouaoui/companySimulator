@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.itescia.compagnysimulator.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayoutPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/screen_maquette_ville">
+
+        <ImageView
+            android:id="@+id/ImageViewLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayoutSaisiNomJoueur"
+            android:layout_below="@id/ImageViewLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:id="@+id/TextViewLabelNomJoueur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_nom_joueur"
+                android:textSize="15sp"
+                android:textColor="@color/colorNomAntivirus"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="62dp"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/TextViewLabelNomJoueur"
+                android:background="@drawable/custom_background_edit_text"
+                android:layout_marginStart="20dp">
+
+                <EditText
+                    android:id="@+id/EditTextNomJoueur"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorNomAntivirus"
+                    android:labelFor="@+id/TextViewLabelNomJoueur" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayoutSaisiNomEntreprise"
+            android:layout_below="@id/RelativeLayoutSaisiNomJoueur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/TextViewLabelNomEntreprise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_nom_entreprise"
+                android:textSize="15sp"
+                android:textColor="@color/colorNomAntivirus"
+                android:layout_centerVertical="true"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/TextViewLabelNomEntreprise"
+                android:background="@drawable/custom_background_edit_text"
+                android:layout_marginStart="20dp">
+
+                <EditText
+                    android:id="@+id/EditTextNomEntreprise"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorNomAntivirus"
+                    android:labelFor="@+id/TextViewLabelNomJoueur" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/ImageButtonStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/RelativeLayoutSaisiNomEntreprise"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/start" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
