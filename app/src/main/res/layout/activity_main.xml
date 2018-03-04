@@ -1242,7 +1242,7 @@
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                 android:layout_marginTop="40dp"
                 android:alpha="0.9"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <RelativeLayout
                     android:id="@+id/RelativeLayoutContentDetailSecuriteInformatique"
@@ -1636,7 +1636,7 @@
                                 android:id="@+id/ProgressBarFormationEmployes"
                                 style="@android:style/Widget.ProgressBar.Horizontal"
                                 android:progressDrawable="@drawable/custom_progress_bar_formation_employes"
-                                android:layout_width="197dp"
+                                android:layout_width="195dp"
                                 android:layout_height="20dp"
                                 android:layout_marginStart="30dp"
                                 android:indeterminate="false"
@@ -1720,7 +1720,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignEnd="@+id/TextViewArgentSousTraiter"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginEnd="23dp"
+                                android:layout_marginEnd="19dp"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/help" />
                         </RelativeLayout>
@@ -1730,7 +1730,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginStart="300dp"
+                            android:layout_marginStart="240dp"
                             android:layout_marginEnd="50dp"
                             android:background="@drawable/custom_relative_layout_information"
                             android:visibility="gone">
@@ -1752,11 +1752,95 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/informationSousTraiter"
                                 android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
+                                android:paddingBottom="15dp"
                                 android:paddingStart="5dp"
                                 android:paddingEnd="5dp"
                                 android:textColor="@color/fontColor"
                                 android:textSize="20sp"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutInformationAntivirus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="240dp"
+                            android:layout_marginEnd="50dp"
+                            android:background="@drawable/custom_relative_layout_information"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@color/colorBackgroundInformationAntivirus">
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPrixAntivirus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true">
+
+                                <ImageView
+                                    android:id="@+id/ImageViewPrixAntivirus"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/argent"/>
+
+                                <TextView
+                                    android:id="@+id/TextViewPrixAntivirus"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/ImageViewPrixAntivirus"
+                                    android:text="@string/prixAntivirus"
+                                    android:layout_marginStart="5dp"
+                                    android:textSize="20sp"
+                                    android:layout_centerVertical="true"/>
+                            </RelativeLayout>
+
+
+                            <TextView
+                                android:id="@+id/TextViewInformationAntivirus"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:textAlignment="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_below="@+id/RelativeLayoutPrixAntivirus"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="15dp"
+                                android:text="@string/informationAntivirus"
+                                android:textColor="@color/fontColor"
+                                android:textSize="25sp" />
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutChoix"
+                                android:layout_below="@id/TextViewInformationAntivirus"
+                                android:layout_centerHorizontal="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageButtonRefuser"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/cross" />
+
+                                <ImageButton
+                                    android:id="@+id/ImageButtonAccepter"
+                                    android:layout_toEndOf="@id/ImageButtonRefuser"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/check" />
+                            </RelativeLayout>
                         </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>

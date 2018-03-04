@@ -48,7 +48,7 @@ public class StartActivity extends AppCompatActivity {
         typefaceLevel = Typeface.createFromAsset(getAssets(), "font/fipps_regular.ttf");
         typefaceRessource = Typeface.createFromAsset(getAssets(), "font/Pixeled.ttf");
         typefaceLvl = Typeface.createFromAsset(getAssets(), "font/retganon.ttf");
-        typefaceMaj = Typeface.createFromAsset(getAssets(), "font/pixelArial.ttf");
+        //typefaceMaj = Typeface.createFromAsset(getAssets(), "font/pixelArial.ttf");
 
         //ELEMENTS TEXTES
         textViewLabelNomJoueur = (TextView) findViewById(R.id.TextViewLabelNomJoueur);

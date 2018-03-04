@@ -60,4 +60,8 @@
     <string name="informationSousTraiter">
         Un "penetration tester" evalue la securite d\'un systeme en cherchant des failles.\nPlus le nombre de failles trouve est eleve, plus la securite informatique sera ameliore
     </string>
+    <string name="informationAntivirus">
+        Etes-vous sur de vouloir investir dans un nouvel antivirus ?
+    </string>
+    <string name="prixAntivirus">150</string>
 </resources>

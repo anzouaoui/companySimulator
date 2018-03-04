@@ -33,4 +33,5 @@
     <color name="colorProgressBarFormationEmployes">#366821</color>
     <color name="colorBackgroundProgressBarFormationEmployes">#5a8d5b</color>
     <color name="colorBackgroundInformation">#b9b154</color>
+    <color name="colorBackgroundInformationAntivirus">#948e43</color>
 </resources>
