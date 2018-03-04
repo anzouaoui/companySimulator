@@ -1,6 +1,7 @@
 package com.itescia.compagnysimulator;
 
 
+import android.content.Intent;
 import android.graphics.Typeface;
 
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+
     TextView textViewLevel, textViewArgent, textViewHomme, textViewAddRessources, textViewNomJoueur, textViewDetailEmployes,
             textViewComptableTitle, textViewLevelOneComptableWorker, textViewLevelTwoComptableWorker, textViewLevelThreeComptableWorker,
             textViewCompetencesTitle, textViewCompetenceCommercial, textViewCompetenceProduction, textViewCompetenceSecurite,
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             textViewNiveauSecuriteInformatique, textViewAntivirus, textViewArgentAntivirus, textViewNomAntivirus, textViewVersionAntivirus, textViewFirewall, textViewDerniereMiseAJour,
             textViewHeureDerniereMiseAJour, textViewArgentFirewall, textViewMiseAJourSysteme, textViewArgentMiseAJourSysteme, textViewDerniereMiseAJourSysteme,
             textViewHeureDerniereMiseAJourSysteme, textViewFormationEmployes, textViewArgentFormationEmployes, textViewSousTraiter, textViewArgentSousTraiter,
-            textViewInformationSousTraiter;
+            textViewInformationSousTraiter, textViewInformationAntivirus;
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
@@ -39,18 +41,23 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutProgressBarOneComptableWorker2_1, relativeLayoutProgressBarOneComptableWorker2_2, relativeLayoutProgressBarOneComptableWorker2_3,
             relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5, relativeLayoutProgressBarThreeComptableWorker,
             relativeLayoutProgressBarOneComptableWorker3_1, relativeLayoutProgressBarOneComptableWorker3_2, relativeLayoutProgressBarOneComptableWorker3_3,
-            relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5, relativeLayoutScrollView, relativeLayoutInformationSousTraiter;
+            relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5, relativeLayoutScrollView, relativeLayoutInformationSousTraiter,
+            relativeLayoutInformationAntivirus;
 
     ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite, imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
-            imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter;
+            imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter, imageButtonUpAntivirus;
 
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
      ArrayList<ImageButton> collectionImageButtonBack;
      ArrayList<ImageButton> collectionImageButtonHelp;
+     ArrayList<ImageButton> collectionImageButtonUpSecuriteInformatique;
 
     Timer _t;
     int count = 0;
+
+    final String EXTRA_NOM_JOUEUR = "Nom du joueur";
+    final String EXTRA_NOM_ENTREPRISE = "Nom de l'entreprise";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         initialize();
         bindListener();
         incrementeArgent();
+        afficherNoms();
     }
 
     /**
@@ -70,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         typefaceLevel = Typeface.createFromAsset(getAssets(), "font/fipps_regular.ttf");
         typefaceRessource = Typeface.createFromAsset(getAssets(), "font/Pixeled.ttf");
         typefaceLvl = Typeface.createFromAsset(getAssets(), "font/retganon.ttf");
-        typefaceMaj = Typeface.createFromAsset(getAssets(), "font/pixelArial.ttf");
+        //typefaceMaj = Typeface.createFromAsset(getAssets(), "font/pixelArial.ttf");
 
         //ELEMENTS TEXTES
         textViewLevel = (TextView) findViewById(R.id.TextViewLevel);
@@ -115,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         textViewSousTraiter = (TextView) findViewById(R.id.TextViewSousTraiter);
         textViewArgentSousTraiter = (TextView) findViewById(R.id.TextViewArgentSousTraiter);
         textViewInformationSousTraiter = (TextView) findViewById(R.id.TextViewInformationSousTraiter);
+        textViewInformationAntivirus = (TextView) findViewById(R.id.TextViewInformationAntivirus);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -160,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         textViewDerniereMiseAJour.setTypeface(typefaceLvl);
         textViewArgentSousTraiter.setTypeface(typefaceLvl);
         textViewInformationSousTraiter.setTypeface(typefaceLvl);
+        textViewInformationAntivirus.setTypeface(typefaceLvl);
         textViewNomAntivirus.setTypeface(typefaceRessource);
         textViewVersionAntivirus.setTypeface(typefaceRessource);
 
@@ -200,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutProgressBarOneComptableWorker3_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_3);
         relativeLayoutProgressBarOneComptableWorker3_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_4);
         relativeLayoutProgressBarOneComptableWorker3_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_5);
+        relativeLayoutInformationAntivirus = (RelativeLayout) findViewById(R.id.RelativeLayoutInformationAntivirus);
 
         //ELEMENTS IMAGE BUTTON
         imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
@@ -215,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
         imageButtonUpSecuriteInformatique = (ImageButton) findViewById(R.id.ImageButtonUpSecuriteInformatique);
         imageButtonHelpSousTraiter = (ImageButton) findViewById(R.id.ImageButtonHelpSousTraiter);
         imageButtonHideInformationSousTraiter = (ImageButton) findViewById(R.id.ImageButtonHideInformationSousTraiter);
+        imageButtonUpAntivirus = (ImageButton) findViewById(R.id.ImageButtonUpAntivirus);
 
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
@@ -234,6 +246,9 @@ public class MainActivity extends AppCompatActivity {
 
         collectionImageButtonHelp = new ArrayList<ImageButton>();
         collectionImageButtonHelp.add(imageButtonHelpSousTraiter);
+
+        collectionImageButtonUpSecuriteInformatique = new ArrayList<ImageButton>();
+        collectionImageButtonUpSecuriteInformatique.add(imageButtonUpAntivirus);
     }
 
     /**
@@ -250,13 +265,16 @@ public class MainActivity extends AppCompatActivity {
         for (ImageButton currentImageButtonBack: collectionImageButtonBack) {
             currentImageButtonBack.setOnClickListener(imageButtonBackButtonListener);
         }
-        for (ImageButton currentImageButtonHekp : collectionImageButtonHelp) {
-            currentImageButtonHekp.setOnClickListener(imageButtonHelpListener);
+        for (ImageButton currentImageButtonHelp : collectionImageButtonHelp) {
+            currentImageButtonHelp.setOnClickListener(imageButtonHelpListener);
         }
         progressBarFormation.setOnClickListener(progressBarFormationListener);
         progressBarSecurite.setOnClickListener(progressBarSecuriteListener);
         imageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener);
         imageButtonHideInformationSousTraiter.setOnClickListener(imageButtonHideInformationSousTraiterListener);
+        for (ImageButton currentImageButtonUpSecuriteInformatique : collectionImageButtonUpSecuriteInformatique) {
+            currentImageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener2);
+        }
     }
 
     /**
@@ -385,6 +403,29 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             relativeLayoutDetailsSecuriteInformatique.setVisibility(View.VISIBLE);
             relativeLayoutDetailsSecurite.setVisibility(View.GONE);
+        }
+    };
+
+    private View.OnClickListener imageButtonUpSecuriteInformatiqueListener2 = new View.OnClickListener() {
+        boolean show = false;
+
+        /**
+         * Fonction permettant d'afficher les informations concernant la sécurité informatique
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            ImageButton ImageButtonUpSelected = (ImageButton) findViewById(v.getId());
+            if (ImageButtonUpSelected == imageButtonUpAntivirus) {
+                if (!show) {
+                    relativeLayoutInformationAntivirus.setVisibility(View.VISIBLE);
+                    show = true;
+                } else {
+                    relativeLayoutInformationAntivirus.setVisibility(View.GONE);
+                    show = false;
+                }
+            }
         }
     };
 
@@ -600,4 +641,11 @@ public class MainActivity extends AppCompatActivity {
             compteur++;
         }
     };
+
+    private void afficherNoms() {
+        Intent intentStart = getIntent();
+        if(intentStart != null) {
+            textViewNomJoueur.setText(intentStart.getStringExtra(EXTRA_NOM_JOUEUR));
+        }
+    }
 }
