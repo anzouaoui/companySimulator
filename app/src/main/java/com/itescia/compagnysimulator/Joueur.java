@@ -33,7 +33,6 @@ public class Joueur {
      *        Le nouveau nom du joueur
      */
     public void setNomJoueur(String nomJoueur) {
-
         this.nomJoueur = nomJoueur;
     }
 

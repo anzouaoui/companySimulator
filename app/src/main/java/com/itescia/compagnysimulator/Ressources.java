@@ -1,7 +1,7 @@
 package com.itescia.compagnysimulator;
 
 /**
- * <b> Classe représentant une ressource</b>
+ * <b> Classe représentant les ressources </b>
  *
  * @author casag
  * @version Prototype
@@ -9,7 +9,26 @@ package com.itescia.compagnysimulator;
 
 public class Ressources {
 
-    public Ressources(){
+    private static Ressources instance = null;
+    private int nombre;
 
+    private Ressources() {
+        nombre = 0;
+    }
+
+    public synchronized static Ressources getInstance() {
+        if (instance == null) {
+            instance = new Ressources();
+        }
+        return instance;
+    }
+
+    /**
+     * Additionne le nombre donné en paramètre au nombre de ressources.
+     * @param nombre
+     * @author casag
+     */
+    public synchronized void ajout(int nombre) {
+        nombre += nombre;
     }
 }
