@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">CompagnySimulator</string>
 
+    <!-- ECRAN DE DEMARRAGE -->
+    <string name="label_nom_joueur">nom du joueur</string>
+    <string name="label_nom_entreprise">nom de l\'entreprise</string>
+
     <!-- DESCRIPTION IMAGE -->
     <string name="description_image_employes">Image employes</string>
     <string name="description_icone_reputation">Icone réputation</string>

@@ -1,6 +1,7 @@
 package com.itescia.compagnysimulator;
 
 
+import android.content.Intent;
 import android.graphics.Typeface;
 
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
     Timer _t;
     int count = 0;
 
+    final String EXTRA_NOM_JOUEUR = "Nom du joueur";
+    final String EXTRA_NOM_ENTREPRISE = "Nom de l'entreprise";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         initialize();
         bindListener();
         incrementeArgent();
+        afficherNoms();
     }
 
     /**
@@ -600,4 +605,11 @@ public class MainActivity extends AppCompatActivity {
             compteur++;
         }
     };
+
+    private void afficherNoms() {
+        Intent intentStart = getIntent();
+        if(intentStart != null) {
+            textViewNomJoueur.setText(intentStart.getStringExtra(EXTRA_NOM_JOUEUR));
+        }
+    }
 }

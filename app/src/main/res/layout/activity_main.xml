@@ -210,7 +210,8 @@
                 android:id="@+id/RelativeLayoutEmployes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:alpha="0.9"
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                 android:visibility="gone">
@@ -254,8 +255,8 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="60dp"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/back"
-                            android:contentDescription="@string/description_back_button"/>
+                            android:contentDescription="@string/description_back_button"
+                            android:src="@drawable/back" />
 
                     </RelativeLayout>
 
@@ -277,8 +278,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_commercial"
-                                android:contentDescription="@string/description_icone_commercial"/>
+                                android:contentDescription="@string/description_icone_commercial"
+                                android:src="@drawable/manwoman_commercial" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -294,8 +295,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_production"
-                                android:contentDescription="@string/description_icone_production"/>
+                                android:contentDescription="@string/description_icone_production"
+                                android:src="@drawable/manwoman_production" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -311,8 +312,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_securite"
-                                android:contentDescription="@string/description_icone_securite_2"/>
+                                android:contentDescription="@string/description_icone_securite_2"
+                                android:src="@drawable/manwoman_securite" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -328,8 +329,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_marketing"
-                                android:contentDescription="@string/description_icone_marketing"/>
+                                android:contentDescription="@string/description_icone_marketing"
+                                android:src="@drawable/manwoman_marketing" />
                         </RelativeLayout>
                     </RelativeLayout>
 
