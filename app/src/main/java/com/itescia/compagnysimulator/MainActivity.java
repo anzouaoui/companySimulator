@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             textViewNiveauSecuriteInformatique, textViewAntivirus, textViewArgentAntivirus, textViewNomAntivirus, textViewVersionAntivirus, textViewFirewall, textViewDerniereMiseAJour,
             textViewHeureDerniereMiseAJour, textViewArgentFirewall, textViewMiseAJourSysteme, textViewArgentMiseAJourSysteme, textViewDerniereMiseAJourSysteme,
             textViewHeureDerniereMiseAJourSysteme, textViewFormationEmployes, textViewArgentFormationEmployes, textViewSousTraiter, textViewArgentSousTraiter,
-            textViewInformationSousTraiter, textViewInformationAntivirus;
+            textViewInformationSousTraiter, textViewInformationAntivirus, textViewReputationTitle, textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom;
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         textViewCompetenceDirection = (TextView) findViewById(R.id.TextViewCompetenceDirection);
         textViewNiveauMoyen = (TextView) findViewById(R.id.TextViewNiveauMoyen);
         textViewSecuriteTitle = (TextView) findViewById(R.id.TextViewSecuriteTitle);
+        textViewReputationTitle = (TextView) findViewById(R.id.TextViewReputationTitle);
         textViewEmployesSecurite = (TextView) findViewById(R.id.TextViewEmployesSecurite);
         textViewConditionTravail = (TextView) findViewById(R.id.TextViewConditionTravail);
         textViewSecuriteInformatique = (TextView) findViewById(R.id.TextViewSecuriteInformatique);
@@ -124,6 +125,10 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentSousTraiter = (TextView) findViewById(R.id.TextViewArgentSousTraiter);
         textViewInformationSousTraiter = (TextView) findViewById(R.id.TextViewInformationSousTraiter);
         textViewInformationAntivirus = (TextView) findViewById(R.id.TextViewInformationAntivirus);
+        textViewNiveauReputation = (TextView) findViewById(R.id.TextViewNiveauReputation);
+        textViewParite = (TextView) findViewById(R.id.TextViewParite);
+        textViewCampagneCom = (TextView) findViewById(R.id.TextViewCampagneCom);
+        textViewArgentCampagneCom = (TextView) findViewById(R.id.TextViewArgentCampagneCom);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -140,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         textViewLevelTwoComptableWorker.setTypeface(typefaceLvl);
         textViewLevelThreeComptableWorker.setTypeface(typefaceLvl);
         textViewCompetencesTitle.setTypeface(typefaceLevel);
+        textViewReputationTitle.setTypeface(typefaceLevel);
         textViewCompetenceCommercial.setTypeface(typefaceLvl);
         textViewCompetenceProduction.setTypeface(typefaceLvl);
         textViewCompetenceSecurite.setTypeface(typefaceLvl);
@@ -153,7 +159,10 @@ public class MainActivity extends AppCompatActivity {
         textViewSecuriteInformatique.setTypeface(typefaceLvl);
         textViewSecuriteInformatiqueTitle.setTypeface(typefaceLevel);
         textViewNiveauSecuriteInformatique.setTypeface(typefaceLevel);
+        textViewNiveauReputation.setTypeface(typefaceLevel);
         textViewAntivirus.setTypeface(typefaceLvl);
+        textViewParite.setTypeface(typefaceLvl);
+        textViewCampagneCom.setTypeface(typefaceLvl);
         textViewFirewall.setTypeface(typefaceLvl);
         textViewMiseAJourSysteme.setTypeface(typefaceLvl);
         textViewFormationEmployes.setTypeface(typefaceLvl);
@@ -166,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentMiseAJourSysteme.setTypeface(typefaceLvl);
         textViewArgentFormationEmployes.setTypeface(typefaceLvl);
         textViewArgentAntivirus.setTypeface(typefaceLvl);
+        textViewArgentCampagneCom.setTypeface(typefaceLvl);
         textViewDerniereMiseAJour.setTypeface(typefaceLvl);
         textViewArgentSousTraiter.setTypeface(typefaceLvl);
         textViewInformationSousTraiter.setTypeface(typefaceLvl);
