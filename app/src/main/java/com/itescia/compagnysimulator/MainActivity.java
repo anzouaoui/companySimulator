@@ -29,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
             textViewNiveauSecuriteInformatique, textViewAntivirus, textViewArgentAntivirus, textViewNomAntivirus, textViewVersionAntivirus, textViewFirewall, textViewDerniereMiseAJour,
             textViewHeureDerniereMiseAJour, textViewArgentFirewall, textViewMiseAJourSysteme, textViewArgentMiseAJourSysteme, textViewDerniereMiseAJourSysteme,
             textViewHeureDerniereMiseAJourSysteme, textViewFormationEmployes, textViewArgentFormationEmployes, textViewSousTraiter, textViewArgentSousTraiter,
-            textViewInformationSousTraiter, textViewInformationAntivirus;
+            textViewInformationSousTraiter, textViewInformationAntivirus, textViewConditionsTravailsTitle, textViewNiveauConditionsTravails, textViewFournitures, textViewArgentFournitures,
+            textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDerniereMenage,
+            textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite;
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
@@ -42,16 +44,19 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5, relativeLayoutProgressBarThreeComptableWorker,
             relativeLayoutProgressBarOneComptableWorker3_1, relativeLayoutProgressBarOneComptableWorker3_2, relativeLayoutProgressBarOneComptableWorker3_3,
             relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5, relativeLayoutScrollView, relativeLayoutInformationSousTraiter,
-            relativeLayoutInformationAntivirus;
+            relativeLayoutInformationAntivirus, relativeLayoutDetailsConditionsTravails;
 
-    ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite, imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
-            imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter, imageButtonUpAntivirus;
+    ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite,
+            imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
+            imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
+            imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails;
 
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
      ArrayList<ImageButton> collectionImageButtonBack;
      ArrayList<ImageButton> collectionImageButtonHelp;
      ArrayList<ImageButton> collectionImageButtonUpSecuriteInformatique;
+     ArrayList<ImageButton> collectionImageButtonUpConditionsTravails;
 
     Timer _t;
     int count = 0;
@@ -106,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         textViewSecuriteInformatique = (TextView) findViewById(R.id.TextViewSecuriteInformatique);
         textViewSecuriteInformatiqueTitle = (TextView) findViewById(R.id.TextViewSecuriteInformatiqueTitle);
         textViewNiveauSecuriteInformatique = (TextView) findViewById(R.id.TextViewNiveauSecuriteInformatique);
+        textViewNiveauConditionsTravails = (TextView) findViewById(R.id.TextViewNiveauConditionsTravails);
         textViewAntivirus = (TextView) findViewById(R.id.TextViewAntivirus);
         textViewArgentAntivirus = (TextView) findViewById(R.id.TextViewArgentAntivirus);
         textViewNomAntivirus = (TextView) findViewById(R.id.TextViewNomAntivirus);
@@ -124,6 +130,22 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentSousTraiter = (TextView) findViewById(R.id.TextViewArgentSousTraiter);
         textViewInformationSousTraiter = (TextView) findViewById(R.id.TextViewInformationSousTraiter);
         textViewInformationAntivirus = (TextView) findViewById(R.id.TextViewInformationAntivirus);
+        textViewConditionsTravailsTitle = (TextView) findViewById(R.id.TextViewConditionsTravailsTitle);
+        textViewFournitures = (TextView) findViewById(R.id.TextViewFournitures);
+        textViewArgentFournitures = (TextView) findViewById(R.id.TextViewArgentFournitures);
+        textViewNomFournitures = (TextView) findViewById(R.id.TextViewNomFournitures);
+        textViewMedecinTravail = (TextView) findViewById(R.id.TextViewMedecinTravail);
+        textViewArgentMedecinTravail = (TextView) findViewById(R.id.TextViewArgentMedecinTravail);
+        textViewMenage = (TextView) findViewById(R.id.TextViewMenage);
+        textViewArgentMenage = (TextView) findViewById(R.id.TextViewArgentMenage);
+        textViewDernierMenage = (TextView) findViewById(R.id.TextViewDernierMenage);
+        textViewHeureDerniereMenage = (TextView) findViewById(R.id.TextViewHeureDerniereMenage);
+        textViewApero = (TextView) findViewById(R.id.TextViewApero);
+        textViewArgentApero = (TextView) findViewById(R.id.TextViewArgentApero);
+        textViewFelicitaion = (TextView) findViewById(R.id.TextViewFelicitaion);
+        textViewArgentFelicitation = (TextView) findViewById(R.id.TextViewArgentFelicitation);
+        textViewPossibilite = (TextView) findViewById(R.id.TextViewPossibilite);
+        textViewHeurePossibilite = (TextView) findViewById(R.id.TextViewHeurePossibilite);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -152,25 +174,41 @@ public class MainActivity extends AppCompatActivity {
         textViewConditionTravail.setTypeface(typefaceLvl);
         textViewSecuriteInformatique.setTypeface(typefaceLvl);
         textViewSecuriteInformatiqueTitle.setTypeface(typefaceLevel);
+        textViewConditionsTravailsTitle.setTypeface(typefaceLevel);
         textViewNiveauSecuriteInformatique.setTypeface(typefaceLevel);
+        textViewNiveauConditionsTravails.setTypeface(typefaceLevel);
         textViewAntivirus.setTypeface(typefaceLvl);
+        textViewFournitures.setTypeface(typefaceLvl);
+        textViewMedecinTravail.setTypeface(typefaceLvl);
+        textViewMenage.setTypeface(typefaceLvl);
+        textViewApero.setTypeface(typefaceLvl);
         textViewFirewall.setTypeface(typefaceLvl);
         textViewMiseAJourSysteme.setTypeface(typefaceLvl);
-        textViewFormationEmployes.setTypeface(typefaceLvl);
         textViewFormationEmployes.setTypeface(typefaceLvl);
         textViewSousTraiter.setTypeface(typefaceLvl);
         textViewDerniereMiseAJourSysteme.setTypeface(typefaceLvl);
         textViewHeureDerniereMiseAJour.setTypeface(typefaceLvl);
         textViewHeureDerniereMiseAJourSysteme.setTypeface(typefaceLvl);
+        textViewHeureDerniereMenage.setTypeface(typefaceLvl);
+        textViewPossibilite.setTypeface(typefaceLvl);
+        textViewHeurePossibilite.setTypeface(typefaceLvl);
         textViewArgentFirewall.setTypeface(typefaceLvl);
         textViewArgentMiseAJourSysteme.setTypeface(typefaceLvl);
         textViewArgentFormationEmployes.setTypeface(typefaceLvl);
         textViewArgentAntivirus.setTypeface(typefaceLvl);
+        textViewArgentFournitures.setTypeface(typefaceLvl);
+        textViewArgentMedecinTravail.setTypeface(typefaceLvl);
+        textViewArgentMenage.setTypeface(typefaceLvl);
+        textViewArgentApero.setTypeface(typefaceLvl);
+        textViewArgentFelicitation.setTypeface(typefaceLvl);
+        textViewFelicitaion.setTypeface(typefaceLvl);
         textViewDerniereMiseAJour.setTypeface(typefaceLvl);
+        textViewDernierMenage.setTypeface(typefaceLvl);
         textViewArgentSousTraiter.setTypeface(typefaceLvl);
         textViewInformationSousTraiter.setTypeface(typefaceLvl);
         textViewInformationAntivirus.setTypeface(typefaceLvl);
         textViewNomAntivirus.setTypeface(typefaceRessource);
+        textViewNomFournitures.setTypeface(typefaceRessource);
         textViewVersionAntivirus.setTypeface(typefaceRessource);
 
         //ELEMENTS PROGRESSBAR
@@ -211,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutProgressBarOneComptableWorker3_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_4);
         relativeLayoutProgressBarOneComptableWorker3_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_5);
         relativeLayoutInformationAntivirus = (RelativeLayout) findViewById(R.id.RelativeLayoutInformationAntivirus);
+        relativeLayoutDetailsConditionsTravails = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsConditionsTravails);
 
         //ELEMENTS IMAGE BUTTON
         imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
@@ -227,6 +266,9 @@ public class MainActivity extends AppCompatActivity {
         imageButtonHelpSousTraiter = (ImageButton) findViewById(R.id.ImageButtonHelpSousTraiter);
         imageButtonHideInformationSousTraiter = (ImageButton) findViewById(R.id.ImageButtonHideInformationSousTraiter);
         imageButtonUpAntivirus = (ImageButton) findViewById(R.id.ImageButtonUpAntivirus);
+        imageButtonUpConditionTravail = (ImageButton) findViewById(R.id.ImageButtonUpConditionTravail);
+        imageButtonUpFournitures = (ImageButton) findViewById(R.id.ImageButtonUpFournitures);
+        imageButtonBackButtonDetailConditionsTravails = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailConditionsTravails);
 
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
@@ -243,12 +285,16 @@ public class MainActivity extends AppCompatActivity {
         collectionImageButtonBack.add(imageButtonBackButtonDetailCompetences);
         collectionImageButtonBack.add(imageButtonBackButtonDetailSecurite);
         collectionImageButtonBack.add(imageButtonBackButtonDetailSecuriteInformatique);
+        collectionImageButtonBack.add(imageButtonBackButtonDetailConditionsTravails);
 
         collectionImageButtonHelp = new ArrayList<ImageButton>();
         collectionImageButtonHelp.add(imageButtonHelpSousTraiter);
 
         collectionImageButtonUpSecuriteInformatique = new ArrayList<ImageButton>();
         collectionImageButtonUpSecuriteInformatique.add(imageButtonUpAntivirus);
+
+        collectionImageButtonUpConditionsTravails = new ArrayList<ImageButton>();
+        collectionImageButtonUpConditionsTravails.add(imageButtonUpFournitures);
     }
 
     /**
@@ -272,6 +318,7 @@ public class MainActivity extends AppCompatActivity {
         progressBarSecurite.setOnClickListener(progressBarSecuriteListener);
         imageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener);
         imageButtonHideInformationSousTraiter.setOnClickListener(imageButtonHideInformationSousTraiterListener);
+        imageButtonUpConditionTravail.setOnClickListener(imageButtonUpConditionTravailListener);
         for (ImageButton currentImageButtonUpSecuriteInformatique : collectionImageButtonUpSecuriteInformatique) {
             currentImageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener2);
         }
@@ -429,6 +476,30 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener imageButtonUpConditionTravailListener = new View.OnClickListener() {
+        boolean show = false;
+
+        /**
+         * Fonction permettant d'afficher les informations concernant la sécurité informatique
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            ImageButton ImageButtonUpSelected = (ImageButton) findViewById(v.getId());
+            if (ImageButtonUpSelected == imageButtonUpConditionTravail) {
+                if (!show) {
+                    relativeLayoutDetailsConditionsTravails.setVisibility(View.VISIBLE);
+                    relativeLayoutDetailsSecurite.setVisibility(View.GONE);
+                    show = true;
+                } else {
+                    relativeLayoutDetailsConditionsTravails.setVisibility(View.GONE);
+                    show = false;
+                }
+            }
+        }
+    };
+
     private View.OnClickListener imageButtonBackButtonListener = new View.OnClickListener() {
         /**
          * Fonction permettant de revenir en arrière
@@ -447,8 +518,11 @@ public class MainActivity extends AppCompatActivity {
                 relativeLayoutDetailsCompetences.setVisibility(View.GONE);
             } else if (ImageButtonBackSelected == imageButtonBackButtonDetailSecurite) {
                 relativeLayoutDetailsSecurite.setVisibility(View.GONE);
-            } else if(ImageButtonBackSelected == imageButtonBackButtonDetailSecuriteInformatique) {
+            } else if( ImageButtonBackSelected == imageButtonBackButtonDetailSecuriteInformatique) {
                 relativeLayoutDetailsSecuriteInformatique.setVisibility(View.GONE);
+                relativeLayoutDetailsSecurite.setVisibility(View.VISIBLE);
+            } else if (ImageButtonBackSelected == imageButtonBackButtonDetailConditionsTravails) {
+                relativeLayoutDetailsConditionsTravails.setVisibility(View.GONE);
                 relativeLayoutDetailsSecurite.setVisibility(View.VISIBLE);
             }
         }

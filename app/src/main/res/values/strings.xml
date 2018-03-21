@@ -64,4 +64,16 @@
         Etes-vous sur de vouloir investir dans un nouvel antivirus ?
     </string>
     <string name="prixAntivirus">150</string>
+
+    <!-- CONDTITION TRAVAIL -->
+    <string name="fournitures">AMELIORE FOURNITURE</string>
+    <string name="niveau_conditions_travails">81%</string>
+    <string name="nomFournitures">ikeo</string>
+    <string name="medecinTravail">MEDECIN TRAVAIL</string>
+    <string name="derniereMenage">dernier passage: </string>
+    <string name="possibilite">possible dans: </string>
+    <string name="heureMenage">05:12:00</string>
+    <string name="apero">ORGANISER APERO</string>
+    <string name="feliciter">FELICITER UN EMPLOYE</string>
+    <string name="heurePossibilite">00:28:12</string>
 </resources>
