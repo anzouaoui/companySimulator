@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5, relativeLayoutProgressBarThreeComptableWorker,
             relativeLayoutProgressBarOneComptableWorker3_1, relativeLayoutProgressBarOneComptableWorker3_2, relativeLayoutProgressBarOneComptableWorker3_3,
             relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5, relativeLayoutScrollView, relativeLayoutInformationSousTraiter,
-            relativeLayoutInformationAntivirus, relativeLayoutDetailsConditionsTravails;
+            relativeLayoutInformationAntivirus, relativeLayoutDetailsConditionsTravails, relativeLayoutDetailsReputation;
 
     ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite,
             imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
             imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
-            imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails;
+            imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation;
 
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
@@ -264,6 +264,7 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutProgressBarOneComptableWorker3_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_5);
         relativeLayoutInformationAntivirus = (RelativeLayout) findViewById(R.id.RelativeLayoutInformationAntivirus);
         relativeLayoutDetailsConditionsTravails = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsConditionsTravails);
+        relativeLayoutDetailsReputation = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsReputation);
 
         //ELEMENTS IMAGE BUTTON
         imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
@@ -283,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
         imageButtonUpConditionTravail = (ImageButton) findViewById(R.id.ImageButtonUpConditionTravail);
         imageButtonUpFournitures = (ImageButton) findViewById(R.id.ImageButtonUpFournitures);
         imageButtonBackButtonDetailConditionsTravails = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailConditionsTravails);
+        imageButtonBackButtonDetailReputation = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailReputation);
 
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
@@ -300,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
         collectionImageButtonBack.add(imageButtonBackButtonDetailSecurite);
         collectionImageButtonBack.add(imageButtonBackButtonDetailSecuriteInformatique);
         collectionImageButtonBack.add(imageButtonBackButtonDetailConditionsTravails);
+        collectionImageButtonBack.add(imageButtonBackButtonDetailReputation);
 
         collectionImageButtonHelp = new ArrayList<ImageButton>();
         collectionImageButtonHelp.add(imageButtonHelpSousTraiter);
@@ -330,6 +333,7 @@ public class MainActivity extends AppCompatActivity {
         }
         progressBarFormation.setOnClickListener(progressBarFormationListener);
         progressBarSecurite.setOnClickListener(progressBarSecuriteListener);
+        progressBarReputation.setOnClickListener(progressBarReputationListener);
         imageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener);
         imageButtonHideInformationSousTraiter.setOnClickListener(imageButtonHideInformationSousTraiterListener);
         imageButtonUpConditionTravail.setOnClickListener(imageButtonUpConditionTravailListener);
@@ -418,6 +422,26 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    private View.OnClickListener progressBarReputationListener = new View.OnClickListener() {
+        boolean show = false;
+        /**
+         * Fonction permettant d'afficher le popup des compétences
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            if (!show) {
+                relativeLayoutDetailsReputation.setVisibility(View.VISIBLE);
+                show = true;
+            } else {
+                relativeLayoutDetailsReputation.setVisibility(View.GONE);
+                show = false;
+            }
+        }
+    };
+
 
     private View.OnClickListener imageButtonHideInformationSousTraiterListener = new View.OnClickListener() {
         boolean show = false;
@@ -538,6 +562,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (ImageButtonBackSelected == imageButtonBackButtonDetailConditionsTravails) {
                 relativeLayoutDetailsConditionsTravails.setVisibility(View.GONE);
                 relativeLayoutDetailsSecurite.setVisibility(View.VISIBLE);
+            } else if (ImageButtonBackSelected == imageButtonBackButtonDetailReputation){
+                relativeLayoutDetailsReputation.setVisibility(View.GONE);
             }
         }
     };
