@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDerniereMenage,
             textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite;
 
+
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources;
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         textViewCompetenceDirection = (TextView) findViewById(R.id.TextViewCompetenceDirection);
         textViewNiveauMoyen = (TextView) findViewById(R.id.TextViewNiveauMoyen);
         textViewSecuriteTitle = (TextView) findViewById(R.id.TextViewSecuriteTitle);
+        //textViewReputationTitle = (TextView) findViewById(R.id.TextViewReputationTitle);
         textViewEmployesSecurite = (TextView) findViewById(R.id.TextViewEmployesSecurite);
         textViewConditionTravail = (TextView) findViewById(R.id.TextViewConditionTravail);
         textViewSecuriteInformatique = (TextView) findViewById(R.id.TextViewSecuriteInformatique);
@@ -162,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         textViewLevelTwoComptableWorker.setTypeface(typefaceLvl);
         textViewLevelThreeComptableWorker.setTypeface(typefaceLvl);
         textViewCompetencesTitle.setTypeface(typefaceLevel);
+        //textViewReputationTitle.setTypeface(typefaceLevel);
         textViewCompetenceCommercial.setTypeface(typefaceLvl);
         textViewCompetenceProduction.setTypeface(typefaceLvl);
         textViewCompetenceSecurite.setTypeface(typefaceLvl);
