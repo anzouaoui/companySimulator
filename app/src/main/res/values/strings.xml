@@ -76,4 +76,10 @@
     <string name="apero">ORGANISER APERO</string>
     <string name="feliciter">FELICITER UN EMPLOYE</string>
     <string name="heurePossibilite">00:28:12</string>
+
+    <!-- REPUTATION -->
+    <string name="reputation">REPUTATION</string>
+    <string name="niveau_reputation">63%</string>
+    <string name="parite">PARITE</string>
+    <string name="campagneCom">LANCER CAMPAGNE COM</string>
 </resources>

@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
             textViewHeureDerniereMiseAJourSysteme, textViewFormationEmployes, textViewArgentFormationEmployes, textViewSousTraiter, textViewArgentSousTraiter,
             textViewInformationSousTraiter, textViewInformationAntivirus, textViewConditionsTravailsTitle, textViewNiveauConditionsTravails, textViewFournitures, textViewArgentFournitures,
             textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDerniereMenage,
-            textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite;
+            textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite, textViewReputationTitle,
+            textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom;;
 
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
@@ -148,6 +149,11 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentFelicitation = (TextView) findViewById(R.id.TextViewArgentFelicitation);
         textViewPossibilite = (TextView) findViewById(R.id.TextViewPossibilite);
         textViewHeurePossibilite = (TextView) findViewById(R.id.TextViewHeurePossibilite);
+        textViewReputationTitle = (TextView) findViewById(R.id.TextViewReputationTitle);
+        textViewNiveauReputation = (TextView) findViewById(R.id.TextViewNiveauReputation);
+        textViewParite = (TextView) findViewById(R.id.TextViewParite);
+        textViewCampagneCom = (TextView) findViewById(R.id.TextViewCampagneCom);
+        textViewArgentCampagneCom = (TextView) findViewById(R.id.TextViewArgentCampagneCom);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -213,6 +219,11 @@ public class MainActivity extends AppCompatActivity {
         textViewNomAntivirus.setTypeface(typefaceRessource);
         textViewNomFournitures.setTypeface(typefaceRessource);
         textViewVersionAntivirus.setTypeface(typefaceRessource);
+        textViewReputationTitle.setTypeface(typefaceLevel);
+        textViewNiveauReputation.setTypeface(typefaceLevel);
+        textViewParite.setTypeface(typefaceLvl);
+        textViewCampagneCom.setTypeface(typefaceLvl);
+        textViewArgentCampagneCom.setTypeface(typefaceLvl);
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
