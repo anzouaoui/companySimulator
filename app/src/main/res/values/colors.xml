@@ -35,4 +35,10 @@
     <color name="colorBackgroundProgressBarFormationEmployes">#5a8d5b</color>
     <color name="colorBackgroundInformation">#b9b154</color>
     <color name="colorBackgroundInformationAntivirus">#948e43</color>
+    <color name="colorProgressBarNiveauFormation">#796094</color>
+    <color name="colorBackgroundProgressBarNiveauFormation">#937daa</color>
+    <color name="colorProgressBarNiveauReputation">#5C7A87</color>
+    <color name="colorBackgroundProgressBarNiveauReputation">#7b949e</color>
+    <color name="colorProgressBarNiveauConditionTravail">#954E4C</color>
+    <color name="colorProgressBackgroundBarNiveauConditionTravail">#957271</color>
 </resources>

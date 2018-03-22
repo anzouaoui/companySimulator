@@ -144,6 +144,8 @@
                         android:layout_alignStart="@+id/ProgressBarBonheur"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="25dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         app:srcCompat="@drawable/happinessicon"
                         android:contentDescription="@string/description_icone_bonheur"/>
                 </RelativeLayout>
@@ -2548,6 +2550,345 @@
                             </RelativeLayout>
                         </RelativeLayout>
                     </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutDetailsBonheur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                android:layout_marginTop="40dp"
+                android:alpha="0.9"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutContentDetailBonheur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBonheurTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundTextView">
+
+                        <TextView
+                            android:id="@+id/TextViewBonheurTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/bonheur"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBackButtonDetailBonheur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:layout_below="@+id/RelativeLayoutBonheurTitle">
+
+                        <ImageButton
+                            android:id="@+id/ImageButtonBackButtonDetailBonheur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/back_2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutNiveauBonheur"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailBonheur"
+                        android:layout_below="@+id/RelativeLayoutBonheurTitle"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp">
+
+                        <ProgressBar
+                            android:id="@+id/ProgressBarNiveauBonheur"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/custom_progress_bar_securite_informatique"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="12dp"
+                            android:indeterminate="false"
+                            android:indeterminateTintMode="src_atop"
+                            android:layout_centerVertical="true"
+                            android:max="100"
+                            android:progress="63"
+                            android:alpha="1"/>
+
+                        <TextView
+                            android:id="@+id/TextViewNiveauBonheur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/ProgressBarNiveauBonheur"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/niveau_reputation"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/colorNiveauSecuriteInformatique"
+                            android:textSize="15sp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_alignStart="@+id/RelativeLayoutNiveauBonheur"
+                        android:layout_below="@+id/RelativeLayoutNiveauBonheur"
+                        android:layout_alignEnd="@+id/RelativeLayoutNiveauBonheur">
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauFormation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:id="@+id/TextViewNiveauFormation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveauMoyenFormation"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpNiveauFormation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="45dp"
+                                android:layout_toEndOf="@+id/TextViewNiveauFormation"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarNiveauFormation"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_niveau_formation"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpNiveauFormation"
+                                android:max="100"
+                                android:progress="60"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpNiveauFormation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarNiveauFormation"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutbonheurSeparatorOne"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ProgressBarNiveauFormation"
+                                android:layout_alignEnd="@+id/ImageButtonHelpNiveauFormation"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauReputation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_below="@+id/RelativeLayoutContentNiveauFormation">
+                            <TextView
+                                android:id="@+id/TextViewNiveauReputation2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveauMoyenReputaiton"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpNiveauReputation2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="150dp"
+                                android:layout_toEndOf="@+id/TextViewNiveauReputation2"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarNiveauReputation2"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_niveau_reputation"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpNiveauReputation2"
+                                android:max="100"
+                                android:progress="55"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpNiveauReputation2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarNiveauReputation2"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutbonheurSeparatorTwo"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ProgressBarNiveauReputation2"
+                                android:layout_alignEnd="@+id/ImageButtonHelpNiveauReputation2"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauSecuriteGlobale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_below="@+id/RelativeLayoutContentNiveauReputation">
+                            <TextView
+                                android:id="@+id/TextViewNiveauSecuriteGlobale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveauSecuriteGlobale"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpNiveauSecuriteGlobale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="98dp"
+                                android:layout_toEndOf="@+id/TextViewNiveauSecuriteGlobale"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarNiveauSecuriteGlobale"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_niveau_securite_globale"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpNiveauSecuriteGlobale"
+                                android:max="100"
+                                android:progress="90"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpNiveauSecuriteGlobale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarNiveauSecuriteGlobale"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutbonheurSeparatorThree"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ImageButtonHelpNiveauSecuriteGlobale"
+                                android:layout_alignEnd="@+id/ImageButtonHelpNiveauSecuriteGlobale"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauConditionTravail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_below="@+id/RelativeLayoutContentNiveauSecuriteGlobale">
+                            <TextView
+                                android:id="@+id/TextViewNiveauConditionsTravails2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/conditionTravail"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpNiveauConditionsTravails"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="60dp"
+                                android:layout_toEndOf="@+id/TextViewNiveauConditionsTravails2"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarNiveauConditionsTravails2"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_niveau_condition_travail"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpNiveauConditionsTravails"
+                                android:max="100"
+                                android:progress="65"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpNiveauConditionTravails"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarNiveauConditionsTravails2"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutbonheurSeparatorFour"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ImageButtonHelpNiveauConditionTravails"
+                                android:layout_alignEnd="@+id/ImageButtonHelpNiveauConditionTravails"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
                 </RelativeLayout>
             </RelativeLayout>
             </RelativeLayout>

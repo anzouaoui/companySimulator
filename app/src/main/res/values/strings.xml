@@ -82,4 +82,11 @@
     <string name="niveau_reputation">63%</string>
     <string name="parite">PARITE</string>
     <string name="campagneCom">LANCER CAMPAGNE COM</string>
+
+    <!-- BONHEUR -->
+    <string name="bonheur">BONHEUR</string>
+    <string name="niveauMoyenFormation">NIVEAU MOYEN FORMATION</string>
+    <string name="niveauMoyenReputaiton">REPUTATION</string>
+    <string name="niveauSecuriteGlobale">SECURITE GLOBALE</string>
+    <string name="niveauConditionTravail">CONDITIONS TRAVAIL</string>
 </resources>
