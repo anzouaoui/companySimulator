@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
             textViewInformationSousTraiter, textViewInformationAntivirus, textViewConditionsTravailsTitle, textViewNiveauConditionsTravails, textViewFournitures, textViewArgentFournitures,
             textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDerniereMenage,
             textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite, textViewReputationTitle,
-            textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom;;
+            textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom, textViewBonheurTitle, textViewNiveauBonheur, textViewNiveauFormation,
+            textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2;
 
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
@@ -46,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5, relativeLayoutProgressBarThreeComptableWorker,
             relativeLayoutProgressBarOneComptableWorker3_1, relativeLayoutProgressBarOneComptableWorker3_2, relativeLayoutProgressBarOneComptableWorker3_3,
             relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5, relativeLayoutScrollView, relativeLayoutInformationSousTraiter,
-            relativeLayoutInformationAntivirus, relativeLayoutDetailsConditionsTravails, relativeLayoutDetailsReputation;
+            relativeLayoutInformationAntivirus, relativeLayoutDetailsConditionsTravails, relativeLayoutDetailsReputation, relativeLayoutDetailsBonheur;
 
     ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite,
             imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
             imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
-            imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation;
+            imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation,
+            imageButtonBackButtonDetailBonheur, imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails;
 
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
      ArrayList<ImageButton> collectionImageButtonHelp;
      ArrayList<ImageButton> collectionImageButtonUpSecuriteInformatique;
      ArrayList<ImageButton> collectionImageButtonUpConditionsTravails;
+     ArrayList<ImageButton> collectionImageButtonUpBonheur;
 
     Timer _t;
     int count = 0;
@@ -154,6 +157,12 @@ public class MainActivity extends AppCompatActivity {
         textViewParite = (TextView) findViewById(R.id.TextViewParite);
         textViewCampagneCom = (TextView) findViewById(R.id.TextViewCampagneCom);
         textViewArgentCampagneCom = (TextView) findViewById(R.id.TextViewArgentCampagneCom);
+        textViewBonheurTitle = (TextView) findViewById(R.id.TextViewBonheurTitle);
+        textViewNiveauBonheur = (TextView) findViewById(R.id.TextViewNiveauBonheur);
+        textViewNiveauFormation = (TextView) findViewById(R.id.TextViewNiveauFormation);
+        textViewNiveauReputation2 = (TextView) findViewById(R.id.TextViewNiveauReputation2);
+        textViewNiveauSecuriteGlobale = (TextView) findViewById(R.id.TextViewNiveauSecuriteGlobale);
+        textViewNiveauConditionsTravails2 = (TextView) findViewById(R.id.TextViewNiveauConditionsTravails2);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -220,10 +229,16 @@ public class MainActivity extends AppCompatActivity {
         textViewNomFournitures.setTypeface(typefaceRessource);
         textViewVersionAntivirus.setTypeface(typefaceRessource);
         textViewReputationTitle.setTypeface(typefaceLevel);
+        textViewBonheurTitle.setTypeface(typefaceLevel);
         textViewNiveauReputation.setTypeface(typefaceLevel);
         textViewParite.setTypeface(typefaceLvl);
         textViewCampagneCom.setTypeface(typefaceLvl);
         textViewArgentCampagneCom.setTypeface(typefaceLvl);
+        textViewNiveauBonheur.setTypeface(typefaceLevel);
+        textViewNiveauFormation.setTypeface(typefaceLvl);
+        textViewNiveauReputation2.setTypeface(typefaceLvl);
+        textViewNiveauSecuriteGlobale.setTypeface(typefaceLvl);
+        textViewNiveauConditionsTravails2.setTypeface(typefaceLvl);
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
@@ -265,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutInformationAntivirus = (RelativeLayout) findViewById(R.id.RelativeLayoutInformationAntivirus);
         relativeLayoutDetailsConditionsTravails = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsConditionsTravails);
         relativeLayoutDetailsReputation = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsReputation);
+        relativeLayoutDetailsBonheur = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsBonheur);
 
         //ELEMENTS IMAGE BUTTON
         imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
@@ -285,6 +301,11 @@ public class MainActivity extends AppCompatActivity {
         imageButtonUpFournitures = (ImageButton) findViewById(R.id.ImageButtonUpFournitures);
         imageButtonBackButtonDetailConditionsTravails = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailConditionsTravails);
         imageButtonBackButtonDetailReputation = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailReputation);
+        imageButtonBackButtonDetailBonheur = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailBonheur);
+        imageButtonUpNiveauFormation = (ImageButton) findViewById(R.id.ImageButtonUpNiveauFormation);
+        imageButtonUpNiveauReputation2 = (ImageButton) findViewById(R.id.ImageButtonUpNiveauReputation2);
+        imageButtonUpNiveauSecuriteGlobale = (ImageButton) findViewById(R.id.ImageButtonUpNiveauSecuriteGlobale);
+        imageButtonUpNiveauConditionsTravails = (ImageButton) findViewById(R.id.ImageButtonUpNiveauConditionsTravails);
 
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
@@ -303,6 +324,7 @@ public class MainActivity extends AppCompatActivity {
         collectionImageButtonBack.add(imageButtonBackButtonDetailSecuriteInformatique);
         collectionImageButtonBack.add(imageButtonBackButtonDetailConditionsTravails);
         collectionImageButtonBack.add(imageButtonBackButtonDetailReputation);
+        collectionImageButtonBack.add(imageButtonBackButtonDetailBonheur);
 
         collectionImageButtonHelp = new ArrayList<ImageButton>();
         collectionImageButtonHelp.add(imageButtonHelpSousTraiter);
@@ -312,6 +334,12 @@ public class MainActivity extends AppCompatActivity {
 
         collectionImageButtonUpConditionsTravails = new ArrayList<ImageButton>();
         collectionImageButtonUpConditionsTravails.add(imageButtonUpFournitures);
+
+        collectionImageButtonUpBonheur = new ArrayList<ImageButton>();
+        collectionImageButtonUpBonheur.add(imageButtonUpNiveauFormation);
+        collectionImageButtonUpBonheur.add(imageButtonUpNiveauReputation2);
+        collectionImageButtonUpBonheur.add(imageButtonUpNiveauSecuriteGlobale);
+        collectionImageButtonUpBonheur.add(imageButtonUpNiveauConditionsTravails);
     }
 
     /**
@@ -334,11 +362,15 @@ public class MainActivity extends AppCompatActivity {
         progressBarFormation.setOnClickListener(progressBarFormationListener);
         progressBarSecurite.setOnClickListener(progressBarSecuriteListener);
         progressBarReputation.setOnClickListener(progressBarReputationListener);
+        progressBarBonheur.setOnClickListener(progressBarBonheurListener);
         imageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener);
         imageButtonHideInformationSousTraiter.setOnClickListener(imageButtonHideInformationSousTraiterListener);
         imageButtonUpConditionTravail.setOnClickListener(imageButtonUpConditionTravailListener);
         for (ImageButton currentImageButtonUpSecuriteInformatique : collectionImageButtonUpSecuriteInformatique) {
             currentImageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener2);
+        }
+        for (ImageButton currentImageButtonUpBonheur : collectionImageButtonUpBonheur) {
+            currentImageButtonUpBonheur.setOnClickListener(imageButtonUpBonheurListener);
         }
     }
 
@@ -442,6 +474,25 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener progressBarBonheurListener = new View.OnClickListener() {
+        boolean show = false;
+        /**
+         * Fonction permettant d'afficher le popup des compétences
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            if (!show) {
+                relativeLayoutDetailsBonheur.setVisibility(View.VISIBLE);
+                show = true;
+            } else {
+                relativeLayoutDetailsBonheur.setVisibility(View.GONE);
+                show = false;
+            }
+        }
+    };
+
 
     private View.OnClickListener imageButtonHideInformationSousTraiterListener = new View.OnClickListener() {
         boolean show = false;
@@ -514,6 +565,33 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener imageButtonUpBonheurListener = new View.OnClickListener() {
+        boolean show = false;
+
+        /**
+         * Fonction permettant d'afficher les informations concernant la sécurité informatique
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            ImageButton ImageButtonUpSelected = (ImageButton) findViewById(v.getId());
+            if (ImageButtonUpSelected == imageButtonUpNiveauFormation) {
+                relativeLayoutDetailsCompetences.setVisibility(View.VISIBLE);
+                relativeLayoutDetailsBonheur.setVisibility(View.GONE);
+            } else if (ImageButtonUpSelected == imageButtonUpNiveauReputation2) {
+                relativeLayoutDetailsReputation.setVisibility(View.VISIBLE);
+                relativeLayoutDetailsBonheur.setVisibility(View.GONE);
+            } else if (ImageButtonUpSelected == imageButtonUpNiveauSecuriteGlobale) {
+                relativeLayoutDetailsSecuriteInformatique.setVisibility(View.VISIBLE);
+                relativeLayoutDetailsBonheur.setVisibility(View.GONE);
+            } else if (ImageButtonUpSelected == imageButtonUpNiveauConditionsTravails) {
+                relativeLayoutDetailsConditionsTravails.setVisibility(View.VISIBLE);
+                relativeLayoutDetailsBonheur.setVisibility(View.GONE);
+            }
+        }
+    };
+
     private View.OnClickListener imageButtonUpConditionTravailListener = new View.OnClickListener() {
         boolean show = false;
 
@@ -564,6 +642,8 @@ public class MainActivity extends AppCompatActivity {
                 relativeLayoutDetailsSecurite.setVisibility(View.VISIBLE);
             } else if (ImageButtonBackSelected == imageButtonBackButtonDetailReputation){
                 relativeLayoutDetailsReputation.setVisibility(View.GONE);
+            } else if (ImageButtonBackSelected == imageButtonBackButtonDetailBonheur) {
+                relativeLayoutDetailsBonheur.setVisibility(View.GONE);
             }
         }
     };
