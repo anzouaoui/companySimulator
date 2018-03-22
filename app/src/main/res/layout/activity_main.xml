@@ -2891,6 +2891,247 @@
 
                 </RelativeLayout>
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutDetailsRessources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                android:layout_marginTop="40dp"
+                android:alpha="0.9"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutContentDetailRessources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutRessourcesTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundTextView">
+
+                        <TextView
+                            android:id="@+id/TextViewRessourcesTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/ressources"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBackButtonDetailRessources"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:layout_below="@+id/RelativeLayoutRessourcesTitle">
+
+                        <ImageButton
+                            android:id="@+id/ImageButtonBackButtonDetailRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/back_2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutRessources2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailRessources"
+                        android:layout_below="@+id/RelativeLayoutRessourcesTitle"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp">
+
+                        <ProgressBar
+                            android:id="@+id/ProgressBarNiveauRessources"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/custom_progress_bar_securite_informatique"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="12dp"
+                            android:indeterminate="false"
+                            android:indeterminateTintMode="src_atop"
+                            android:layout_centerVertical="true"
+                            android:max="100"
+                            android:progress="63"
+                            android:alpha="1"/>
+
+                        <TextView
+                            android:id="@+id/TextViewNiveauRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/ProgressBarNiveauRessources"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/niveau_reputation"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/colorNiveauSecuriteInformatique"
+                            android:textSize="15sp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginEnd="60dp"
+                        android:layout_alignStart="@+id/RelativeLayoutRessources2"
+                        android:layout_below="@+id/RelativeLayoutRessources2"
+                        android:layout_alignEnd="@+id/RelativeLayoutRessources2">
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentPremiereRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="30dp">
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPremiereRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:background="@drawable/custom_relative_layout_ressources"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:alpha="0.8">
+
+                                <TextView
+                                    android:id="@+id/TextViewNombrePremiereRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/premiereRessources"
+                                    android:textSize="30sp"
+                                    android:layout_centerVertical="true"/>
+
+                                <ImageView
+                                    android:id="@+id/ImageViewPremiereRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/TextViewNombrePremiereRessources"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@drawable/ressources"/>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPrixPremiereRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_below="@+id/RelativeLayoutPremiereRessources">
+
+                                <ImageView
+                                    android:id="@+id/ImageViewArgentPremiereRessource"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/argent"/>
+
+                                <TextView
+                                    android:id="@+id/TextViewArgentPremiereRessource"
+                                    android:layout_toEndOf="@+id/ImageViewArgentPremiereRessource"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/argentPremiereRessources"
+                                    android:textSize="30sp"
+                                    android:layout_centerVertical="true"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentDeuxiemeRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="30dp">
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutDeuxiemeRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:background="@drawable/custom_relative_layout_ressources"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:alpha="0.8">
+
+                                <TextView
+                                    android:id="@+id/TextViewNombrePremiereRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/premiereRessources"
+                                    android:textSize="30sp"
+                                    android:layout_centerVertical="true"/>
+
+                                <ImageView
+                                    android:id="@+id/ImageViewPremiereRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/TextViewNombrePremiereRessources"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@drawable/ressources"/>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPrixPremiereRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_below="@+id/RelativeLayoutPremiereRessources">
+
+                                <ImageView
+                                    android:id="@+id/ImageViewArgentPremiereRessource"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/argent"/>
+
+                                <TextView
+                                    android:id="@+id/TextViewArgentPremiereRessource"
+                                    android:layout_toEndOf="@+id/ImageViewArgentPremiereRessource"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/argentPremiereRessources"
+                                    android:textSize="30sp"
+                                    android:layout_centerVertical="true"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauSecuriteGlobale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_below="@+id/RelativeLayoutContentNiveauReputation">
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauConditionTravail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_below="@+id/RelativeLayoutContentNiveauSecuriteGlobale">
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
             </RelativeLayout>
         <RelativeLayout
             android:layout_centerHorizontal="true"

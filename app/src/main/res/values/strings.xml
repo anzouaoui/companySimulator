@@ -89,4 +89,10 @@
     <string name="niveauMoyenReputaiton">REPUTATION</string>
     <string name="niveauSecuriteGlobale">SECURITE GLOBALE</string>
     <string name="niveauConditionTravail">CONDITIONS TRAVAIL</string>
+
+    <!-- RESSOURCES -->
+    <string name="ressources">RESSOURCES</string>
+    <string name="niveau_ressources">2791500</string>
+    <string name="premiereRessources">50</string>
+    <string name="argentPremiereRessources">50</string>
 </resources>

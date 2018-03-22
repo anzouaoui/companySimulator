@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDerniereMenage,
             textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite, textViewReputationTitle,
             textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom, textViewBonheurTitle, textViewNiveauBonheur, textViewNiveauFormation,
-            textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2;
+            textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2, textViewRessourcesTitle, textViewNiveauRessources;
 
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
@@ -163,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
         textViewNiveauReputation2 = (TextView) findViewById(R.id.TextViewNiveauReputation2);
         textViewNiveauSecuriteGlobale = (TextView) findViewById(R.id.TextViewNiveauSecuriteGlobale);
         textViewNiveauConditionsTravails2 = (TextView) findViewById(R.id.TextViewNiveauConditionsTravails2);
+        textViewRessourcesTitle = (TextView) findViewById(R.id.TextViewRessourcesTitle);
+        textViewNiveauRessources = (TextView) findViewById(R.id.TextViewNiveauRessources);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -239,6 +241,8 @@ public class MainActivity extends AppCompatActivity {
         textViewNiveauReputation2.setTypeface(typefaceLvl);
         textViewNiveauSecuriteGlobale.setTypeface(typefaceLvl);
         textViewNiveauConditionsTravails2.setTypeface(typefaceLvl);
+        textViewNiveauConditionsTravails2.setTypeface(typefaceLevel);
+        textViewNiveauRessources.setTypeface(typefaceLevel);
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
