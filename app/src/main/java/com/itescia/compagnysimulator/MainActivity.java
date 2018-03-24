@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
             textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDerniereMenage,
             textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite, textViewReputationTitle,
             textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom, textViewBonheurTitle, textViewNiveauBonheur, textViewNiveauFormation,
-            textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2, textViewRessourcesTitle, textViewNiveauRessources;
+            textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2, textViewRessourcesTitle, textViewNiveauRessources,
+            textViewNombrePremiereRessources, textViewArgentPremiereRessource, textViewNombreDeuxiemeRessources, textViewArgentDeuxiemeRessource, textViewNombreTroisiemeRessources,
+            textViewArgentTroisiemeRessource;
 
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
@@ -47,13 +49,14 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutProgressBarOneComptableWorker2_4, relativeLayoutProgressBarOneComptableWorker2_5, relativeLayoutProgressBarThreeComptableWorker,
             relativeLayoutProgressBarOneComptableWorker3_1, relativeLayoutProgressBarOneComptableWorker3_2, relativeLayoutProgressBarOneComptableWorker3_3,
             relativeLayoutProgressBarOneComptableWorker3_4, relativeLayoutProgressBarOneComptableWorker3_5, relativeLayoutScrollView, relativeLayoutInformationSousTraiter,
-            relativeLayoutInformationAntivirus, relativeLayoutDetailsConditionsTravails, relativeLayoutDetailsReputation, relativeLayoutDetailsBonheur;
+            relativeLayoutInformationAntivirus, relativeLayoutDetailsConditionsTravails, relativeLayoutDetailsReputation, relativeLayoutDetailsBonheur, relativeLayoutDetailsRessources;
 
     ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite,
             imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
             imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
             imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation,
-            imageButtonBackButtonDetailBonheur, imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails;
+            imageButtonBackButtonDetailBonheur, imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails,
+            imageButtonBackButtonDetailRessources;
 
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
@@ -165,6 +168,12 @@ public class MainActivity extends AppCompatActivity {
         textViewNiveauConditionsTravails2 = (TextView) findViewById(R.id.TextViewNiveauConditionsTravails2);
         textViewRessourcesTitle = (TextView) findViewById(R.id.TextViewRessourcesTitle);
         textViewNiveauRessources = (TextView) findViewById(R.id.TextViewNiveauRessources);
+        textViewNombrePremiereRessources = (TextView) findViewById(R.id.TextViewNombrePremiereRessources);
+        textViewArgentPremiereRessource = (TextView) findViewById(R.id.TextViewArgentPremiereRessource);
+        textViewNombreDeuxiemeRessources = (TextView) findViewById(R.id.TextViewNombreDeuxiemeRessources);
+        textViewArgentDeuxiemeRessource = (TextView) findViewById(R.id.TextViewArgentDeuxiemeRessource);
+        textViewNombreTroisiemeRessources = (TextView) findViewById(R.id.TextViewNombreTroisiemeRessources);
+        textViewArgentTroisiemeRessource = (TextView) findViewById(R.id.TextViewArgentTroisiemeRessource);
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -243,6 +252,13 @@ public class MainActivity extends AppCompatActivity {
         textViewNiveauConditionsTravails2.setTypeface(typefaceLvl);
         textViewNiveauConditionsTravails2.setTypeface(typefaceLevel);
         textViewNiveauRessources.setTypeface(typefaceLevel);
+        textViewNombrePremiereRessources.setTypeface(typefaceLvl);
+        textViewArgentPremiereRessource.setTypeface(typefaceLvl);
+        textViewNombreDeuxiemeRessources.setTypeface(typefaceLvl);
+        textViewArgentDeuxiemeRessource.setTypeface(typefaceLvl);
+        textViewNombreTroisiemeRessources.setTypeface(typefaceLvl);
+        textViewArgentTroisiemeRessource.setTypeface(typefaceLvl);
+        textViewRessourcesTitle.setTypeface(typefaceLevel);
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
@@ -285,6 +301,7 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutDetailsConditionsTravails = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsConditionsTravails);
         relativeLayoutDetailsReputation = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsReputation);
         relativeLayoutDetailsBonheur = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsBonheur);
+        relativeLayoutDetailsRessources = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsRessources);
 
         //ELEMENTS IMAGE BUTTON
         imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
@@ -310,6 +327,7 @@ public class MainActivity extends AppCompatActivity {
         imageButtonUpNiveauReputation2 = (ImageButton) findViewById(R.id.ImageButtonUpNiveauReputation2);
         imageButtonUpNiveauSecuriteGlobale = (ImageButton) findViewById(R.id.ImageButtonUpNiveauSecuriteGlobale);
         imageButtonUpNiveauConditionsTravails = (ImageButton) findViewById(R.id.ImageButtonUpNiveauConditionsTravails);
+        imageButtonBackButtonDetailRessources = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailRessources);
 
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
@@ -329,6 +347,7 @@ public class MainActivity extends AppCompatActivity {
         collectionImageButtonBack.add(imageButtonBackButtonDetailConditionsTravails);
         collectionImageButtonBack.add(imageButtonBackButtonDetailReputation);
         collectionImageButtonBack.add(imageButtonBackButtonDetailBonheur);
+        collectionImageButtonBack.add(imageButtonBackButtonDetailRessources);
 
         collectionImageButtonHelp = new ArrayList<ImageButton>();
         collectionImageButtonHelp.add(imageButtonHelpSousTraiter);
@@ -376,6 +395,7 @@ public class MainActivity extends AppCompatActivity {
         for (ImageButton currentImageButtonUpBonheur : collectionImageButtonUpBonheur) {
             currentImageButtonUpBonheur.setOnClickListener(imageButtonUpBonheurListener);
         }
+        textViewAddRessources.setOnClickListener(textViewAddRessourcesListener);
     }
 
     /**
@@ -648,6 +668,8 @@ public class MainActivity extends AppCompatActivity {
                 relativeLayoutDetailsReputation.setVisibility(View.GONE);
             } else if (ImageButtonBackSelected == imageButtonBackButtonDetailBonheur) {
                 relativeLayoutDetailsBonheur.setVisibility(View.GONE);
+            } else if (ImageButtonBackSelected == imageButtonBackButtonDetailRessources) {
+                relativeLayoutDetailsRessources.setVisibility(View.GONE);
             }
         }
     };
@@ -837,6 +859,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             compteur++;
+        }
+    };
+
+    private View.OnClickListener textViewAddRessourcesListener = new View.OnClickListener() {
+        /**
+         * Fonction permettant d'augmenter le nombre de ressources
+         *
+         * @param v
+         */
+        @Override
+        public void onClick(View v) {
+            relativeLayoutDetailsRessources.setVisibility(View.VISIBLE);
         }
     };
 
