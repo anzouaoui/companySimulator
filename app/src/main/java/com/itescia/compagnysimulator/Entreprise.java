@@ -116,6 +116,16 @@ public class Entreprise {
      */
     private String nomAntivirus;
 
+    /**
+     * Niveau actuel du mobilier de bureau
+     */
+    private int niveauMobilier;
+
+    /**
+     * Nom/marque actuelle du mobilier de bureau
+     */
+    private String nomMobilier;
+
     private List<Employe> employes;
 
     /** Constructeur de l'entreprise <br>
@@ -133,6 +143,10 @@ public class Entreprise {
         this.tauxSecuInfo = 0;
         this.tauxFormationSecuInfo = 0;
         this.tauxQualConditionTravail = 0;
+        this.niveauAntivirus = 1;
+        this.nomAntivirus = "Aviro v1.0";
+        this.nomMobilier = "Ikeo";
+        this.niveauMobilier = 1;
         this.derniereFelicitation = null;
         this.employes = new ArrayList<Employe>();
         Ressources.getInstance();
@@ -467,6 +481,72 @@ public class Entreprise {
     }
 
     /**
+     * Permet de déterminer la somme à payer pour améliorer le mobilier de bureau.<br>.
+     * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau supérieur du mobilier.
+     * La règle de calcul est : +1500 par niveau
+     * @return sommeAmeliorationMobilier : valeur entière à payer pour améliorer le niveau de mobilier
+     * @author gbon
+     */
+    public int determinerSommeAmeliorationMobilier() {
+        int sommeAmeliorationMobilier = getNiveauAntivirus() * 1500;
+        return sommeAmeliorationMobilier;
+    }
+
+    /**
+     * Permet de gérer l'amélioration du mobilier.<br>.
+     * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau de mobilier supérieur
+     * et modifie le niveau en conséquence ainsi que le nom/marque du mobilier.<br>
+     * Le niveau max du mobilier est 10
+     * @author gbon
+     */
+    public void ameliorerMobilier() {
+        if (getNiveauMobilier()<10) {
+            int sommeAPayer = determinerSommeAmeliorationMobilier();
+            // Test si le joueur à assez d'argent pour payer l'amélioration
+            if (payer(sommeAPayer)) {
+                setNiveauMobilier(getNiveauMobilier() + 1);
+                setNomMobilier(changerNomMobilier(getNiveauMobilier()));
+                augmenterTauxConditTravail(0.45);
+                levelUp(0.35);
+            }
+        }
+    }
+
+    /**
+     * Permet d'obtenir le nom/marque du mobilier correspondant à son niveau.<br>
+     * La marque est différente pour chaque niveau.
+     * @param niveauMobilier : le niveau du mobilier actuel dont on souhaite connaitre le nom
+     * @return nouveauNom : le nouveau nom de la marque du mobilier
+     * @author gbon
+     */
+    public String changerNomMobilier(int niveauMobilier) {
+        String nouveauNom = "";
+        switch (niveauMobilier) {
+            case 1: nouveauNom = "Ikeo";
+                break;
+            case 2: nouveauNom = "Manutan";
+                break;
+            case 3: nouveauNom = "Office Pro";
+                break;
+            case 4: nouveauNom = "Vitro";
+                break;
+            case 5: nouveauNom = "Herman Milheures";
+                break;
+            case 6: nouveauNom = "Voltax";
+                break;
+            case 7: nouveauNom = "Caray";
+                break;
+            case 8: nouveauNom = "Knoll";
+                break;
+            case 9: nouveauNom = "Haworth";
+                break;
+            case 10: nouveauNom = "Ironcase";
+                break;
+        }
+        return nouveauNom;
+    }
+
+    /**
      * Génère un nombre aléatoire (nombre de failles trouvées)
      * Augmente le taux de sécurité informatique en fonction du nombre généré :
      * Plus il y a de failles trouvées, plus le taux de sécurité informatique est augmenté
@@ -670,4 +750,19 @@ public class Entreprise {
         this.nomAntivirus = nomAntivirus;
     }
 
+    public int getNiveauMobilier() {
+        return niveauMobilier;
+    }
+
+    public void setNiveauMobilier(int niveauMobilier) {
+        this.niveauMobilier = niveauMobilier;
+    }
+
+    public String getNomMobilier() {
+        return nomMobilier;
+    }
+
+    public void setNomMobilier(String nomMobilier) {
+        this.nomMobilier = nomMobilier;
+    }
 }
