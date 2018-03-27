@@ -118,7 +118,7 @@ public class Entreprise {
         this.nomEntreprise = nomEntreprise;
         this.niveau = 1;
         this.bonheur = 0.5;
-        this.argent = 5000;
+        this.argent = 1;
         this.reputation = 0;
         this.tauxSecuInfo = 0;
         this.tauxFormationSecuInfo = 0;
@@ -471,6 +471,27 @@ public class Entreprise {
             done = true;
         }
         return done;
+    }
+
+    /**
+     * Permet d'acheter des ressources
+     * @param nombre
+     * @return booléen
+     */
+    public boolean acheterRessources(int nombre) {
+        boolean ok = false;
+        switch (nombre) {
+            case 5 :   Ressources.ajout(5);
+                        payer(50);
+                        ok = true; break;
+            case 10 :  Ressources.ajout(10);
+                        payer(90);
+                        ok = true; break;
+            case 20 :  Ressources.ajout(20);
+                        payer(50);
+                        ok = true; break;
+        }
+        return ok;
     }
 
     /* getters and setters */

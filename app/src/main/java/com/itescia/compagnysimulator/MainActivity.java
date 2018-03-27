@@ -56,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
             imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
             imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation,
             imageButtonBackButtonDetailBonheur, imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails,
-            imageButtonBackButtonDetailRessources;
-
+            imageButtonBackButtonDetailRessources, ImageViewArgentPremiereRessource, ImageViewArgentDeuxiemeRessource, ImageViewArgentTroisiemeRessource;
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
      ArrayList<ImageButton> collectionImageButtonBack;
@@ -71,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
     final String EXTRA_NOM_JOUEUR = "Nom du joueur";
     final String EXTRA_NOM_ENTREPRISE = "Nom de l'entreprise";
+
+    Entreprise entreprise = new Entreprise(EXTRA_NOM_ENTREPRISE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
      * Fonction permettant d'initialiser les éléments du graphique principale
      */
     private void initialize() {
+
         typefaceLevel = Typeface.createFromAsset(getAssets(), "font/fipps_regular.ttf");
         typefaceRessource = Typeface.createFromAsset(getAssets(), "font/Pixeled.ttf");
         typefaceLvl = Typeface.createFromAsset(getAssets(), "font/retganon.ttf");
@@ -268,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
         progressBarReputation = (ProgressBar) findViewById(R.id.ProgressBarReputation);
         progressBarReputation.setProgress(30);
         progressBarRessources = (ProgressBar) findViewById(R.id.ProgressBarRessources);
-        progressBarRessources.setProgress(30);
+        progressBarRessources.setProgress(Ressources.getInstance());
         progressBarSecurite = (ProgressBar) findViewById(R.id.ProgressBarSecurite);
         progressBarSecurite.setProgress(30);
 
@@ -328,6 +330,10 @@ public class MainActivity extends AppCompatActivity {
         imageButtonUpNiveauSecuriteGlobale = (ImageButton) findViewById(R.id.ImageButtonUpNiveauSecuriteGlobale);
         imageButtonUpNiveauConditionsTravails = (ImageButton) findViewById(R.id.ImageButtonUpNiveauConditionsTravails);
         imageButtonBackButtonDetailRessources = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailRessources);
+        //Boutons achat ressources
+        ImageViewArgentPremiereRessource = (ImageButton) findViewById(R.id.ImageViewArgentPremiereRessource);
+        ImageViewArgentDeuxiemeRessource = (ImageButton) findViewById(R.id.ImageViewArgentDeuxiemeRessource);
+        ImageViewArgentTroisiemeRessource = (ImageButton) findViewById(R.id.ImageViewArgentTroisiemeRessource);
 
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
@@ -366,7 +372,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Fonction permettant d'initialiser les événements liés aux éléments du graphique
+     * Fonction permettant d'initialiser les événements liés aux éléments du graphisme
      */
     private void bindListener() {
         textViewLevel.setOnClickListener(textViewLevelListener);
@@ -396,6 +402,7 @@ public class MainActivity extends AppCompatActivity {
             currentImageButtonUpBonheur.setOnClickListener(imageButtonUpBonheurListener);
         }
         textViewAddRessources.setOnClickListener(textViewAddRessourcesListener);
+        ImageViewArgentPremiereRessource.setOnClickListener(imageViewArgentPremiereRessourceListener);
     }
 
     /**
@@ -406,12 +413,13 @@ public class MainActivity extends AppCompatActivity {
         _t.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                count++;
+                //count++;
+                entreprise.setArgent((int)(entreprise.getArgent()+1));
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         if (count <= 10000) {
-                            textViewArgent.setText(String.valueOf(count));
+                            textViewArgent.setText(String.valueOf(entreprise.getArgent()));
                         } else {
                             _t.cancel();
                         }
@@ -862,6 +870,10 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /* ********************************** *
+     *            RESSOURCES              *
+     * ********************************** */
+
     private View.OnClickListener textViewAddRessourcesListener = new View.OnClickListener() {
         /**
          * Fonction permettant d'augmenter le nombre de ressources
@@ -873,6 +885,23 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutDetailsRessources.setVisibility(View.VISIBLE);
         }
     };
+
+    private View.OnClickListener imageViewArgentPremiereRessourceListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            double test = entreprise.getArgent();
+            if(entreprise.getArgent() >= 50) {
+                entreprise.acheterRessources(5);
+                textViewArgent.setText(String.valueOf(entreprise.getArgent()));
+                progressBarRessources.setProgress(Ressources.getInstance());
+
+            } else {
+                //appeler fonction affichage message erreur manque argent
+            }
+        }
+    };
+
+
 
     private void afficherNoms() {
         Intent intentStart = getIntent();
