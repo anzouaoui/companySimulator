@@ -1,6 +1,8 @@
 package com.itescia.compagnysimulator;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 
@@ -14,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -35,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
             textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom, textViewBonheurTitle, textViewNiveauBonheur, textViewNiveauFormation,
             textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2, textViewRessourcesTitle, textViewNiveauRessources,
             textViewNombrePremiereRessources, textViewArgentPremiereRessource, textViewNombreDeuxiemeRessources, textViewArgentDeuxiemeRessource, textViewNombreTroisiemeRessources,
-            textViewArgentTroisiemeRessource;
+            textViewArgentTroisiemeRessource, TextViewNiveauRessources;
 
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
-    ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources;
+    ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources, ProgressBarNiveauRessources;
 
     RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutDetailsCompetences, relativeLayoutDetailsSecurite,
             relativeLayoutDetailsSecuriteInformatique, relativeLayoutProgressBarOneComptableWorker1_1, relativeLayoutProgressBarOneComptableWorker1_2,
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
      ArrayList<ImageButton> collectionImageButtonUpBonheur;
 
     Timer _t;
+    Timer _t2;
     int count = 0;
 
     final String EXTRA_NOM_JOUEUR = "Nom du joueur";
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         initialize();
         bindListener();
         incrementeArgent();
+        decrementeRessources();
         afficherNoms();
     }
 
@@ -176,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentDeuxiemeRessource = (TextView) findViewById(R.id.TextViewArgentDeuxiemeRessource);
         textViewNombreTroisiemeRessources = (TextView) findViewById(R.id.TextViewNombreTroisiemeRessources);
         textViewArgentTroisiemeRessource = (TextView) findViewById(R.id.TextViewArgentTroisiemeRessource);
+        TextViewNiveauRessources = (TextView) findViewById(R.id.TextViewNiveauRessources);
+        TextViewNiveauRessources.setText(String.valueOf(Ressources.getInstance()));
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -273,6 +280,8 @@ public class MainActivity extends AppCompatActivity {
         progressBarRessources.setProgress(Ressources.getInstance());
         progressBarSecurite = (ProgressBar) findViewById(R.id.ProgressBarSecurite);
         progressBarSecurite.setProgress(30);
+        ProgressBarNiveauRessources = (ProgressBar) findViewById(R.id.ProgressBarNiveauRessources);
+        ProgressBarNiveauRessources.setProgress(Ressources.getInstance());
 
         //ELEMENTS RELATIVE LAYOUT
         relativeLayoutHomme = (RelativeLayout) findViewById(R.id.RelativeLayoutHomme);
@@ -403,6 +412,8 @@ public class MainActivity extends AppCompatActivity {
         }
         textViewAddRessources.setOnClickListener(textViewAddRessourcesListener);
         ImageViewArgentPremiereRessource.setOnClickListener(imageViewArgentPremiereRessourceListener);
+        ImageViewArgentDeuxiemeRessource.setOnClickListener(imageViewArgentDeuxiemeRessourceListener);
+        ImageViewArgentTroisiemeRessource.setOnClickListener(imageViewArgentTroisiemeRessourceListener);
     }
 
     /**
@@ -418,7 +429,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (count <= 10000) {
+                        if (entreprise.getArgent() <= 10000) {
                             textViewArgent.setText(String.valueOf(entreprise.getArgent()));
                         } else {
                             _t.cancel();
@@ -426,8 +437,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, 500, 500);
+        }, 500,
+                500);
     }
+
 
     private View.OnClickListener textViewLevelListener = new View.OnClickListener() {
         boolean show = false;
@@ -874,6 +887,39 @@ public class MainActivity extends AppCompatActivity {
      *            RESSOURCES              *
      * ********************************** */
 
+    /**
+     *  Met à jour les deux progressbar et le texte indiquant le nombre de ressources
+     */
+    private void majGraphRessources() {
+        progressBarRessources.setProgress(Ressources.getInstance());
+        ProgressBarNiveauRessources.setProgress(Ressources.getInstance());
+        TextViewNiveauRessources.setText(String.valueOf(Ressources.getInstance()));
+    }
+
+    /**
+     * Fonction permettant de décrémenter automatiquement les ressources
+     */
+    private void decrementeRessources() {
+        _t2 = new Timer();
+        _t2.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Ressources.setInstance(Ressources.getInstance()-1);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (Ressources.getInstance() >= 0) {
+                            majGraphRessources();
+                        } else {
+                            _t2.cancel();
+                            gameOver("Vous n'avez plus assez de ressources. L'entreprise a fait faillite !");
+                        }
+                    }
+                });
+            }
+        }, 2000, 2000);
+    }
+
     private View.OnClickListener textViewAddRessourcesListener = new View.OnClickListener() {
         /**
          * Fonction permettant d'augmenter le nombre de ressources
@@ -893,15 +939,76 @@ public class MainActivity extends AppCompatActivity {
             if(entreprise.getArgent() >= 50) {
                 entreprise.acheterRessources(5);
                 textViewArgent.setText(String.valueOf(entreprise.getArgent()));
-                progressBarRessources.setProgress(Ressources.getInstance());
+                majGraphRessources();
+                successfullyPaidResources(5);
 
             } else {
-                //appeler fonction affichage message erreur manque argent
+                notEnoughMoney(50);
             }
         }
     };
 
+    private View.OnClickListener imageViewArgentDeuxiemeRessourceListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            double test = entreprise.getArgent();
+            if(entreprise.getArgent() >= 90) {
+                entreprise.acheterRessources(10);
+                textViewArgent.setText(String.valueOf(entreprise.getArgent()));
+                progressBarRessources.setProgress(Ressources.getInstance());
+                majGraphRessources();
+                successfullyPaidResources(10);
 
+            } else {
+                notEnoughMoney(90);
+            }
+        }
+    };
+
+    private View.OnClickListener imageViewArgentTroisiemeRessourceListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            double test = entreprise.getArgent();
+            if(entreprise.getArgent() >= 180) {
+                entreprise.acheterRessources(20);
+                textViewArgent.setText(String.valueOf(entreprise.getArgent()));
+                majGraphRessources();
+                successfullyPaidResources(20);
+            } else {
+                notEnoughMoney(180);
+            }
+        }
+    };
+
+    /**
+     * Permet d'afficher un message indiquant le nombre d'argent manquant à l'utilisateur pour acheter
+     * @param cout : prix de l'élément que l'utilisateur voulait acheter
+     * @author casag
+     */
+    private void notEnoughMoney(int cout) {
+        Toast.makeText(getApplicationContext(), "Pas assez d'argent ! " + (int)(cout - entreprise.getArgent()) + "$ manquant", Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * Permet d'afficher un message précisant le nombre de ressources achetées
+     * @param nbRes : nombre de ressources achetées
+     * @author casag
+     */
+    private void successfullyPaidResources(int nbRes) {
+        Toast.makeText(getApplicationContext(), nbRes + " ressources achetées !", Toast.LENGTH_LONG).show();
+    }
+
+    private void gameOver(String raison) {
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(MainActivity.this);
+        dlgAlert.setMessage(raison);
+        dlgAlert.setTitle("Game Over !");
+        dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                System.exit(0);
+            }});
+        dlgAlert.setCancelable(false);
+        dlgAlert.create().show();
+    }
 
     private void afficherNoms() {
         Intent intentStart = getIntent();

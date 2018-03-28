@@ -477,6 +477,7 @@ public class Entreprise {
      * Permet d'acheter des ressources
      * @param nombre
      * @return booléen
+     * @author casag
      */
     public boolean acheterRessources(int nombre) {
         boolean ok = false;
@@ -488,7 +489,7 @@ public class Entreprise {
                         payer(90);
                         ok = true; break;
             case 20 :  Ressources.ajout(20);
-                        payer(50);
+                        payer(180);
                         ok = true; break;
         }
         return ok;

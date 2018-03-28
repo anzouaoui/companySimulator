@@ -13,7 +13,7 @@ public class Ressources {
     private int nombre;
 
     private Ressources() {
-        nombre = 0;
+        nombre = 50;
     }
 
     public synchronized static int getInstance() {
@@ -39,9 +39,10 @@ public class Ressources {
     /**
      * Met à jour l'instance selon le nombre donné en paramètre
      * @param nb
+     * @author casag
      */
     public synchronized static void setInstance(int nb) {
-        instance.nombre = 100;
+        instance.nombre = nb;
     }
 
 }
