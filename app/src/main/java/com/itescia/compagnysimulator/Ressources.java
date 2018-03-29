@@ -13,7 +13,7 @@ public class Ressources {
     private int nombre;
 
     private Ressources() {
-        nombre = 50;
+        nombre = 200;
     }
 
     public synchronized static int getInstance() {

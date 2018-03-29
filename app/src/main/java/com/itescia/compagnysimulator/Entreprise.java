@@ -119,10 +119,10 @@ public class Entreprise {
         this.niveau = 1;
         this.bonheur = 0.5;
         this.argent = 1;
-        this.reputation = 0;
-        this.tauxSecuInfo = 0;
+        this.reputation = 0.5;
+        this.tauxSecuInfo = 0.5;
         this.tauxFormationSecuInfo = 0;
-        this.tauxQualConditionTravail = 0;
+        this.tauxQualConditionTravail = 0.5;
         this.derniereFelicitation = null;
         this.employes = new ArrayList<Employe>();
         Ressources.getInstance();
@@ -494,6 +494,18 @@ public class Entreprise {
         }
         return ok;
     }
+
+    /**
+     * Retourne le taux de sécurité global
+     * @return taux sécu global
+     * @author casag
+     */
+    public double getTauxSecuGlobal() {
+        double taux;
+        taux = (getNiveauMoyenDomaine("securite") + getTauxQualConditionTravail() + getTauxSecuInfo())/3;
+        return taux;
+    }
+
 
     /* getters and setters */
 

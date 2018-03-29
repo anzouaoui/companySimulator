@@ -2,6 +2,7 @@ package com.itescia.compagnysimulator;
 
 
 import android.app.AlertDialog;
+import android.app.Presentation;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
-    ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources, ProgressBarNiveauRessources;
+    ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources, ProgressBarNiveauRessources, progressBarNiveauBonheur,
+                progressBarNiveauFormation, ProgressBarNiveauReputation2, ProgressBarNiveauSecuriteGlobale;
 
     RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutDetailsCompetences, relativeLayoutDetailsSecurite,
             relativeLayoutDetailsSecuriteInformatique, relativeLayoutProgressBarOneComptableWorker1_1, relativeLayoutProgressBarOneComptableWorker1_2,
@@ -184,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
         TextViewNiveauRessources = (TextView) findViewById(R.id.TextViewNiveauRessources);
         TextViewNiveauRessources.setText(String.valueOf(Ressources.getInstance()));
 
+        textViewNiveauBonheur.setText(String.valueOf(entreprise.getBonheur() * 100));
+
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
 
@@ -259,7 +263,6 @@ public class MainActivity extends AppCompatActivity {
         textViewNiveauReputation2.setTypeface(typefaceLvl);
         textViewNiveauSecuriteGlobale.setTypeface(typefaceLvl);
         textViewNiveauConditionsTravails2.setTypeface(typefaceLvl);
-        textViewNiveauConditionsTravails2.setTypeface(typefaceLevel);
         textViewNiveauRessources.setTypeface(typefaceLevel);
         textViewNombrePremiereRessources.setTypeface(typefaceLvl);
         textViewArgentPremiereRessource.setTypeface(typefaceLvl);
@@ -282,6 +285,14 @@ public class MainActivity extends AppCompatActivity {
         progressBarSecurite.setProgress(30);
         ProgressBarNiveauRessources = (ProgressBar) findViewById(R.id.ProgressBarNiveauRessources);
         ProgressBarNiveauRessources.setProgress(Ressources.getInstance());
+        progressBarNiveauBonheur = (ProgressBar) findViewById(R.id.ProgressBarNiveauBonheur);
+        progressBarNiveauBonheur.setProgress((int)(entreprise.getBonheur()*100));
+        progressBarNiveauFormation = (ProgressBar) findViewById(R.id.ProgressBarNiveauFormation);
+        progressBarNiveauFormation.setProgress((int)entreprise.getNiveauMoyenFormation()*100);
+        ProgressBarNiveauReputation2 = (ProgressBar) findViewById(R.id.ProgressBarNiveauReputation2);
+        ProgressBarNiveauReputation2.setProgress((int)entreprise.getReputation()*100);
+//        ProgressBarNiveauSecuriteGlobale = (ProgressBar) findViewById(R.id.ProgressBarNiveauSecuriteGlobale);
+//        ProgressBarNiveauSecuriteGlobale.setProgress((int)entreprise.getTauxSecuGlobal()*100);
 
         //ELEMENTS RELATIVE LAYOUT
         relativeLayoutHomme = (RelativeLayout) findViewById(R.id.RelativeLayoutHomme);
