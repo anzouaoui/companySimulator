@@ -77,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
 
     Entreprise entreprise = new Entreprise(EXTRA_NOM_ENTREPRISE);
 
+    /**
+     * Fonction d'initialisation de l'activité principale
+     *
+     * @param savedInstanceState
+     * @author zoua
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Fonction permettant d'initialiser les éléments du graphique principale
+     *
+     * @author zoua
      */
     private void initialize() {
 
@@ -382,6 +390,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Fonction permettant d'initialiser les événements liés aux éléments du graphisme
+     *
+     * @author zoua
      */
     private void bindListener() {
         textViewLevel.setOnClickListener(textViewLevelListener);
@@ -418,6 +428,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Fonction permettant d'incrémenter automatiquement l'argent
+     *
+     * @author zoua
      */
     private void incrementeArgent() {
         _t = new Timer();
@@ -447,7 +459,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le nom du joueur
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -467,7 +480,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -486,7 +500,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: : élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -505,7 +520,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -524,7 +540,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -538,13 +555,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
     private View.OnClickListener imageButtonHideInformationSousTraiterListener = new View.OnClickListener() {
         boolean show = false;
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -558,7 +575,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les types d'employés que l'on peut embaucher
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -578,7 +596,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les informations concernant la sécurité informatique
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -593,7 +612,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les informations concernant la sécurité informatique
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -616,7 +636,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les informations concernant la sécurité informatique
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -643,7 +664,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les informations concernant la sécurité informatique
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -665,7 +687,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant de revenir en arrière
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -699,7 +722,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant de revenir en arrière
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -715,7 +739,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les details sur les comptables
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -729,7 +754,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'ajouter un comptable
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -841,7 +867,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Augmenter le niveau d'un comptable
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -924,7 +951,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'augmenter le nombre de ressources
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -982,6 +1010,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Permet d'afficher un message indiquant le nombre d'argent manquant à l'utilisateur pour acheter
+     *
      * @param cout : prix de l'élément que l'utilisateur voulait acheter
      * @author casag
      */
@@ -991,6 +1020,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Permet d'afficher un message précisant le nombre de ressources achetées
+     * 
      * @param nbRes : nombre de ressources achetées
      * @author casag
      */
