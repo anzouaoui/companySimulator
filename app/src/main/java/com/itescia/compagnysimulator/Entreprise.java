@@ -66,11 +66,55 @@ public class Entreprise {
      */
     private double reputation;
 
-    /** Niveau de réputation de l'entreprise <br>
-     * S'améliorera ou se déteriorera en fonction d'actions à lancer (campagnes de com...)
-     * ou d'évènements aléatoire (grèves...)
-     * @see Entreprise#getReputation()
-     * @see Entreprise#setReputation(int)
+    /**
+     * Taux de formation en sécurité informatique des employés de l'entreprise
+     */
+    private double tauxFormationSecuInfo;
+
+    /** Niveau de qualité des conditions de travail <br>
+     * S'améliorera en montant de niveau ou en lançant des actions visant
+     * à l'améliorer (achat de sièges confortables...)
+     * @see Entreprise#getTauxQualConditionTravail()
+     * @see Entreprise#setTauxQualConditionTravail(double)
+     */
+    private double tauxQualConditionTravail;
+
+    /**
+     * Niveau actuel du mobilier de bureau
+     */
+    private int niveauMobilier;
+
+    /**
+     * Nom/marque actuelle du mobilier de bureau
+     */
+    private String nomMobilier;
+
+    /**
+     * Nombre d'heures passées depuis la dernière intervention de la médecine du travail
+     */
+    private int derniereInterventionMedecineTravail;
+
+    /**
+     * Nombre d'heures passées depuis la dernière intervention du personnel de ménage
+     */
+    private int derniereInterventionMenage;
+
+    /**
+     * Date du dernier apéro organisé
+     */
+    private Date dernierApero;
+
+    private int nombreApero;
+
+    /**
+     * Dernière félicitation aléatoire d'un employé
+     */
+    private Date derniereFelicitation;
+
+    /** Liste des employés de l'entreprise
+     * @see Employe
+     * @see Entreprise#getEmployes()
+     * @see Entreprise#setEmployes(List)
      */
 
     //private int niveauSecuPhysique; //dépend des employés sécurité : voir fonction
@@ -81,30 +125,6 @@ public class Entreprise {
      * @see Entreprise#setTauxSecuInfo(double)
      */
     private double tauxSecuInfo;
-
-    /** Niveau de qualité des conditions de travail <br>
-     * S'améliorera en montant de niveau ou en lançant des actions visant
-     * à l'améliorer (achat de sièges confortables...)
-     * @see Entreprise#getTauxQualConditionTravail()
-     * @see Entreprise#setTauxQualConditionTravail(double)
-     */
-    private double tauxQualConditionTravail;
-
-    /** Liste des employés de l'entreprise
-     * @see Employe
-     * @see Entreprise#getEmployes()
-     * @see Entreprise#setEmployes(List)
-     */
-
-    /**
-     * Taux de formation en sécurité informatique des employés de l'entreprise
-     */
-    private double tauxFormationSecuInfo;
-
-    /**
-     * Dernière félicitation aléatoire d'un employé
-     */
-    private Date derniereFelicitation;
 
     /**
      * Niveau actuel de l'antivirus
@@ -117,14 +137,14 @@ public class Entreprise {
     private String nomAntivirus;
 
     /**
-     * Niveau actuel du mobilier de bureau
+     * Nombre d'heures passées depuis la dernière MAJ du firewall
      */
-    private int niveauMobilier;
+    private int derniereMAJFirewall;
 
     /**
-     * Nom/marque actuelle du mobilier de bureau
+     * Nombre d'heures passées depuis la dernière MAJ du système
      */
-    private String nomMobilier;
+    private int derniereMAJSysteme;
 
     private List<Employe> employes;
 
@@ -145,6 +165,7 @@ public class Entreprise {
         this.tauxQualConditionTravail = 0;
         this.niveauAntivirus = 1;
         this.nomAntivirus = "Aviro v1.0";
+        this.derniereMAJFirewall = 0;
         this.nomMobilier = "Ikeo";
         this.niveauMobilier = 1;
         this.derniereFelicitation = null;
@@ -175,7 +196,6 @@ public class Entreprise {
         }
         return done;
     }
-
 
     /**
      * Retourne le taux de femmes dans l'entreprise
@@ -262,7 +282,6 @@ public class Entreprise {
         return niveauGlobal;
     }
 
-
     /**
      * Retourne le niveau de formation moyen des employés
      * @return niveauGlobal : niveau de formation moyen des employés
@@ -284,7 +303,6 @@ public class Entreprise {
         }
         return niveauGlobal;
     }
-
 
     /**
      * Incrémente l'argent de 1
@@ -386,6 +404,144 @@ public class Entreprise {
     }
 
     /**
+     * Permet de déterminer la somme à payer pour améliorer le mobilier de bureau.<br>.
+     * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau supérieur du mobilier.
+     * La règle de calcul est : +1500 par niveau
+     * @return sommeAmeliorationMobilier : valeur entière à payer pour améliorer le niveau de mobilier
+     * @author gbon
+     */
+    public int determinerSommeAmeliorationMobilier() {
+        int sommeAmeliorationMobilier = getNiveauAntivirus() * 1500;
+        return sommeAmeliorationMobilier;
+    }
+
+    /**
+     * Permet de gérer l'amélioration du mobilier.<br>.
+     * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau de mobilier supérieur
+     * et modifie le niveau en conséquence ainsi que le nom/marque du mobilier.<br>
+     * Le niveau max du mobilier est 10
+     * @author gbon
+     */
+    public void ameliorerMobilier() {
+        if (getNiveauMobilier()<10) {
+            int sommeAPayer = determinerSommeAmeliorationMobilier();
+            // Test si le joueur à assez d'argent pour payer l'amélioration
+            if (payer(sommeAPayer)) {
+                setNiveauMobilier(getNiveauMobilier() + 1);
+                setNomMobilier(changerNomMobilier(getNiveauMobilier()));
+                augmenterTauxConditTravail(0.45);
+                levelUp(0.35);
+            }
+        }
+    }
+
+    /**
+     * Permet d'obtenir le nom/marque du mobilier correspondant à son niveau.<br>
+     * La marque est différente pour chaque niveau.
+     * @param niveauMobilier : le niveau du mobilier actuel dont on souhaite connaitre le nom
+     * @return nouveauNom : le nouveau nom de la marque du mobilier
+     * @author gbon
+     */
+    public String changerNomMobilier(int niveauMobilier) {
+        String nouveauNom = "";
+        switch (niveauMobilier) {
+            case 1: nouveauNom = "Ikeo";
+                break;
+            case 2: nouveauNom = "Manutan";
+                break;
+            case 3: nouveauNom = "Office Pro";
+                break;
+            case 4: nouveauNom = "Vitro";
+                break;
+            case 5: nouveauNom = "Herman Milheures";
+                break;
+            case 6: nouveauNom = "Voltax";
+                break;
+            case 7: nouveauNom = "Caray";
+                break;
+            case 8: nouveauNom = "Knoll";
+                break;
+            case 9: nouveauNom = "Haworth";
+                break;
+            case 10: nouveauNom = "Ironcase";
+                break;
+        }
+        return nouveauNom;
+    }
+
+    /**
+     * Organise un apéro si le joueur a les moyens.
+     * Augmente de 30% la qualité des conditions de travail.
+     * @return booléen : true si 3h sont passées depuis dernier et si assez d'argent
+     * @author casag, gbon
+     */
+    public boolean organiserApero(){
+        boolean done = false;
+        Date now = new Date();
+        if (dernierApero != null) {
+            //récupération du nombre d'heures entre la date du dernier apéro et maintenant
+            long secs = (now.getTime() - this.dernierApero.getTime()) / 1000;
+            long hours = 0;
+            hours = secs / 3600;
+            //si la différence est d'au moins 3h
+            if(hours >= 3) {
+                // et si le joueur peut payer
+                if (this.payer(300)){
+                    setDernierApero(now);
+                    augmenterTauxConditTravail(0.30);
+                    levelUp(0.15);
+                    setNombreApero(getNombreApero() + 1);
+                    done = true;
+                    // si le joueur organise trop d'apéro (30 ou plus au total), certains de ses employés deviennent alcooliques et d'autres passeront leur temps à s'amuser
+                    if (getNombreApero() >= 30 ) {
+                        // ce qui entrainera une importante baisse de la productivité/ conditions de travail
+                        setTauxQualConditionTravail(-0.50);
+                    }
+                }
+            }
+        } else {
+            if (this.payer(300)){
+                setDernierApero(now);
+                augmenterTauxConditTravail(0.30);
+                levelUp(0.15);
+                setNombreApero(1);
+                done = true;
+            }
+        }
+        return done;
+    }
+
+    /**
+     * Félicite un employé et augmente de 15% la qualité des conditions de travail
+     * (minimum 2 heures entre chaques félicitations)
+     * @return booléen : false si cela fait moins de deux heures
+     * @author casag
+     */
+    public boolean feliciterEmploye(){
+        boolean done = false;
+        Date now = new Date();
+        if (derniereFelicitation != null) {
+            //récupération du nombre d'heures entre les dernières félicitations et maintenant
+            long secs = (now.getTime() - this.derniereFelicitation.getTime()) / 1000;
+            long hours = 0;
+            hours = secs / 3600;
+            //si ça fait au moins 2h
+            if(hours >= 2) {
+                setDerniereFelicitation(now);
+                augmenterTauxConditTravail(0.15);
+                levelUp(0.10);
+                done = true;
+            }
+        } else {
+            setDerniereFelicitation(now);
+            augmenterTauxConditTravail(0.15);
+            levelUp(0.10);
+            done = true;
+        }
+        return done;
+    }
+
+    /**
      * Augmente le taux de la sécurité informatique.                 <br>
      *     Améliorer antivirus = 0.15                                <br>
      *     Firewall = 0.30                                           <br>
@@ -480,70 +636,25 @@ public class Entreprise {
         return nouveauNom;
     }
 
-    /**
-     * Permet de déterminer la somme à payer pour améliorer le mobilier de bureau.<br>.
-     * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau supérieur du mobilier.
-     * La règle de calcul est : +1500 par niveau
-     * @return sommeAmeliorationMobilier : valeur entière à payer pour améliorer le niveau de mobilier
-     * @author gbon
-     */
-    public int determinerSommeAmeliorationMobilier() {
-        int sommeAmeliorationMobilier = getNiveauAntivirus() * 1500;
-        return sommeAmeliorationMobilier;
+    public void actualiserDerniereMAJFirewall() {
+        derniereMAJFirewall ++;
+        augmenterTauxSecuInfo(-0.15);
     }
 
     /**
-     * Permet de gérer l'amélioration du mobilier.<br>.
-     * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau de mobilier supérieur
-     * et modifie le niveau en conséquence ainsi que le nom/marque du mobilier.<br>
-     * Le niveau max du mobilier est 10
-     * @author gbon
+     * Forme les employés de sécurité (taux = 100%)
+     * Décremente l'argent (fonction payer)
+     * @author casag
      */
-    public void ameliorerMobilier() {
-        if (getNiveauMobilier()<10) {
-            int sommeAPayer = determinerSommeAmeliorationMobilier();
-            // Test si le joueur à assez d'argent pour payer l'amélioration
-            if (payer(sommeAPayer)) {
-                setNiveauMobilier(getNiveauMobilier() + 1);
-                setNomMobilier(changerNomMobilier(getNiveauMobilier()));
-                augmenterTauxConditTravail(0.45);
-                levelUp(0.35);
-            }
+    public boolean formerSecuInfo(){
+        boolean done = false;
+        //Si le joueur a les moyens
+        if(this.payer(300)) {
+            setTauxFormationSecuInfo(1);
+            levelUp(0.15);
+            done = true;
         }
-    }
-
-    /**
-     * Permet d'obtenir le nom/marque du mobilier correspondant à son niveau.<br>
-     * La marque est différente pour chaque niveau.
-     * @param niveauMobilier : le niveau du mobilier actuel dont on souhaite connaitre le nom
-     * @return nouveauNom : le nouveau nom de la marque du mobilier
-     * @author gbon
-     */
-    public String changerNomMobilier(int niveauMobilier) {
-        String nouveauNom = "";
-        switch (niveauMobilier) {
-            case 1: nouveauNom = "Ikeo";
-                break;
-            case 2: nouveauNom = "Manutan";
-                break;
-            case 3: nouveauNom = "Office Pro";
-                break;
-            case 4: nouveauNom = "Vitro";
-                break;
-            case 5: nouveauNom = "Herman Milheures";
-                break;
-            case 6: nouveauNom = "Voltax";
-                break;
-            case 7: nouveauNom = "Caray";
-                break;
-            case 8: nouveauNom = "Knoll";
-                break;
-            case 9: nouveauNom = "Haworth";
-                break;
-            case 10: nouveauNom = "Ironcase";
-                break;
-        }
-        return nouveauNom;
+        return done;
     }
 
     /**
@@ -569,68 +680,6 @@ public class Entreprise {
             levelUp(0.15);
         }
         return randomNum;
-    }
-
-    /**
-     * Forme les employés de sécurité (taux = 100%)
-     * Décremente l'argent (fonction payer)
-     * @author casag
-     */
-    public boolean formerSecuInfo(){
-        boolean done = false;
-        //Si le joueur a les moyens
-        if(this.payer(300)) {
-            setTauxFormationSecuInfo(1);
-            levelUp(0.15);
-            done = true;
-        }
-        return done;
-    }
-
-    /**
-     * Organise un apéro si le joueur a les moyens.
-     * Augmente de 30% la qualité des conditions de travail.
-     * @return booléen : true si assez d'argent
-     * @author casag
-     */
-    public boolean organiserApero(){
-        boolean done = false;
-        if (this.payer(300)){
-            augmenterTauxConditTravail(0.30);
-            levelUp(0.15);
-            done = true;
-        }
-        return done;
-    }
-
-    /**
-     * Félicite un employé et augmente de 15% la qualité des conditions de travail
-     * (minimum 2 heures entre chaques félicitations)
-     * @return booléen : false si cela fait moins de deux heures
-     * @author casag
-     */
-    public boolean feliciterEmploye(){
-        boolean done = false;
-        Date now = new Date();
-        if (derniereFelicitation != null) {
-            //récupération du nombre d'heures entre les dernières félicitations et maintenant
-            long secs = (now.getTime() - this.derniereFelicitation.getTime()) / 1000;
-            long hours = 0;
-            hours = secs / 3600;
-            //si ça fait au moins 2h
-            if(hours >= 2) {
-                setDerniereFelicitation(now);
-                augmenterTauxConditTravail(0.15);
-                levelUp(0.10);
-                done = true;
-            }
-        } else {
-            setDerniereFelicitation(now);
-            augmenterTauxConditTravail(0.15);
-            levelUp(0.10);
-            done = true;
-        }
-        return done;
     }
 
     /* getters and setters */
@@ -685,7 +734,6 @@ public class Entreprise {
         this.argent = argent;
     }
 
-
     public double getReputation() {
         return reputation;
     }
@@ -702,45 +750,11 @@ public class Entreprise {
         this.tauxSecuInfo = niveauSecuInfo;
     }
 
-    public double getTauxFormationSecuInfo() {
-        return tauxFormationSecuInfo;
-    }
-
-    public void setTauxFormationSecuInfo(double tauxFormationSecuInfo) {
-        this.tauxFormationSecuInfo = tauxFormationSecuInfo;
-    }
-
-    public double getTauxQualConditionTravail() {
-        return tauxQualConditionTravail;
-    }
-
-    public void setTauxQualConditionTravail(double tauxQualConditionTravail) {
-        this.tauxQualConditionTravail = tauxQualConditionTravail;
-    }
-
-    public List<Employe> getEmployes() {
-        return employes;
-    }
-
-    public void setEmployes(List<Employe> employes) {
-        this.employes = employes;
-    }
-
-    public Date getDerniereFelicitation() {
-        return derniereFelicitation;
-    }
-
-    public void setDerniereFelicitation(Date derniereFelicitation) {
-        this.derniereFelicitation = derniereFelicitation;
-    }
-
     public int getNiveauAntivirus() {
         return niveauAntivirus;
     }
 
-    public void setNiveauAntivirus(int niveauAntivirus) {
-        this.niveauAntivirus = niveauAntivirus;
-    }
+    public void setNiveauAntivirus(int niveauAntivirus) { this.niveauAntivirus = niveauAntivirus; }
 
     public String getNomAntivirus() {
         return nomAntivirus;
@@ -749,6 +763,26 @@ public class Entreprise {
     public void setNomAntivirus(String nomAntivirus) {
         this.nomAntivirus = nomAntivirus;
     }
+
+    public int getDerniereMAJFirewall() { return derniereMAJFirewall; }
+
+    public void setDerniereMAJFirewall(int derniereMAJFirewall) { this.derniereMAJFirewall = derniereMAJFirewall; }
+
+    public int getDerniereMAJSysteme() { return derniereMAJSysteme; }
+
+    public void setDerniereMAJSysteme(int derniereMAJSysteme) { this.derniereMAJSysteme = derniereMAJSysteme; }
+
+    public double getTauxFormationSecuInfo() {
+        return tauxFormationSecuInfo;
+    }
+
+    public void setTauxFormationSecuInfo(double tauxFormationSecuInfo) { this.tauxFormationSecuInfo = tauxFormationSecuInfo; }
+
+    public double getTauxQualConditionTravail() {
+        return tauxQualConditionTravail;
+    }
+
+    public void setTauxQualConditionTravail(double tauxQualConditionTravail) { this.tauxQualConditionTravail = tauxQualConditionTravail; }
 
     public int getNiveauMobilier() {
         return niveauMobilier;
@@ -765,4 +799,35 @@ public class Entreprise {
     public void setNomMobilier(String nomMobilier) {
         this.nomMobilier = nomMobilier;
     }
+
+    public int getDerniereInterventionMedecineTravail() { return derniereInterventionMedecineTravail; }
+
+    public void setDerniereInterventionMedecineTravail(int derniereInterventionMedecineTravail) { this.derniereInterventionMedecineTravail = derniereInterventionMedecineTravail; }
+
+    public int getDerniereInterventionMenage() { return derniereInterventionMenage; }
+
+    public void setDerniereInterventionMenage(int derniereInterventionMenage) { this.derniereInterventionMenage = derniereInterventionMenage; }
+
+    public Date getDernierApero() { return dernierApero; }
+
+    public void setDernierApero(Date dernierApero) { this.dernierApero = dernierApero; }
+
+    public int getNombreApero() { return nombreApero; }
+
+    public void setNombreApero(int nombreApero) { this.nombreApero = nombreApero; }
+
+    public Date getDerniereFelicitation() {
+        return derniereFelicitation;
+    }
+
+    public void setDerniereFelicitation(Date derniereFelicitation) { this.derniereFelicitation = derniereFelicitation; }
+
+    public List<Employe> getEmployes() {
+        return employes;
+    }
+
+    public void setEmployes(List<Employe> employes) {
+        this.employes = employes;
+    }
+
 }
