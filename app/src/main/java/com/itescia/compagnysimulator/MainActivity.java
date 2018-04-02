@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
     Timer _tMAJSysteme;
     Timer _tInterventionMedecineTravail;
     Timer _tInterventionMenage;
-    int count = 0;
 
     // Entreprise entreprise = new Entreprise("Nom entreprise");
 

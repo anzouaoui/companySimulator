@@ -78,13 +78,6 @@ public class Entreprise {
 
     //private int niveauSecuPhysique; //dépend des employés sécurité : voir fonction
 
-    /** Niveau de sécurité informatique <br>
-     * S'augmentera en améliorant anti-virus, pare feu...
-     *
-     * @see Entreprise#getTauxSecuInfo()
-     * @see Entreprise#setTauxSecuInfo(double)
-      */
-    private double tauxSecuInfo;
 
     /** Niveau de qualité des conditions de travail <br>
      * S'améliorera en montant de niveau ou en lançant des actions visant
@@ -444,19 +437,6 @@ public class Entreprise {
         int sommeAmeliorationMobilier = getNiveauAntivirus() * 1500;
         return sommeAmeliorationMobilier;
     }
-    public void augmenterTauxSecuInfo(double taux) {
-        //Si le taux est à 0, on l'initialise au taux
-        if (tauxSecuInfo == 0) {
-            setTauxSecuInfo(taux);
-        } else { //sinon, on l'augmente de 20%
-            if (tauxSecuInfo * (1 + taux) >= 1) {
-                setTauxSecuInfo(1);
-            } else {
-                setTauxSecuInfo(tauxSecuInfo * (1 + taux));
-            }
-        }
-        levelUp(0.10);
-    }
 
     /**
      * Permet de gérer l'amélioration du mobilier.<br>.
@@ -491,34 +471,36 @@ public class Entreprise {
     public String changerNomMobilier(int niveauMobilier) {
         String nouveauNom = "";
         switch (niveauMobilier) {
-            case 1: nouveauNom = "Ikeo";
+            case 1:
+                nouveauNom = "Ikeo";
                 break;
-            case 2: nouveauNom = "Manutan";
+            case 2:
+                nouveauNom = "Manutan";
                 break;
-            case 3: nouveauNom = "Office Pro";
+            case 3:
+                nouveauNom = "Office Pro";
                 break;
-            case 4: nouveauNom = "Vitro";
+            case 4:
+                nouveauNom = "Vitro";
                 break;
-            case 5: nouveauNom = "Herman Milheures";
+            case 5:
+                nouveauNom = "Herman Milheures";
                 break;
-            case 6: nouveauNom = "Voltax";
+            case 6:
+                nouveauNom = "Voltax";
                 break;
-            case 7: nouveauNom = "Caray";
+            case 7:
+                nouveauNom = "Caray";
                 break;
-            case 8: nouveauNom = "Knoll";
+            case 8:
+                nouveauNom = "Knoll";
                 break;
-            case 9: nouveauNom = "Haworth";
+            case 9:
+                nouveauNom = "Haworth";
                 break;
-            case 10: nouveauNom = "Ironcase";
+            case 10:
+                nouveauNom = "Ironcase";
                 break;
-            
-    public boolean formerSecuInfo(){
-        boolean done = false;
-        //Si le joueur a les moyens
-        if(this.payer(300)) {
-            setTauxFormationSecuInfo(1);
-            levelUp(0.15);
-            done = true;
         }
         return nouveauNom;
     }
@@ -530,7 +512,7 @@ public class Entreprise {
      *
      * @author casag, gbon
      */
-    public boolean organiserApero(){
+    public boolean organiserApero() {
         boolean done = false;
         Date now = new Date();
         if (dernierApero != null) {
@@ -539,33 +521,34 @@ public class Entreprise {
             long hours = 0;
             hours = secs / 3600;
             //si la différence est d'au moins 3h
-            if(hours >= 3) {
+            if (hours >= 3) {
                 // et si le joueur peut payer
-                if (this.payer(300)){
+                if (this.payer(300)) {
                     setDernierApero(now);
                     augmenterTauxConditTravail(0.30);
                     levelUp(0.15);
                     setNombreApero(getNombreApero() + 1);
                     done = true;
                     // si le joueur organise trop d'apéro (30 ou plus au total), certains de ses employés deviennent alcooliques et d'autres passeront leur temps à s'amuser
-                    if (getNombreApero() >= 30 ) {
+                    if (getNombreApero() >= 30) {
                         // ce qui entrainera une importante baisse de la productivité/ conditions de travail
                         setTauxQualConditionTravail(-0.50);
                     }
                 }
             }
         } else {
-            if (this.payer(300)){
+            if (this.payer(300)) {
                 setDernierApero(now);
                 augmenterTauxConditTravail(0.30);
                 levelUp(0.15);
                 setNombreApero(1);
                 done = true;
             }
-        if (this.payer(300)){
-            augmenterTauxConditTravail(0.30);
-            levelUp(0.15);
-            done = true;
+            if (this.payer(300)) {
+                augmenterTauxConditTravail(0.30);
+                levelUp(0.15);
+                done = true;
+            }
         }
         return done;
     }
@@ -728,10 +711,10 @@ public class Entreprise {
      * @return randomNum : retourne le nombre de failles trouvées, et si le joueur n'a pas les moyens de payer, retourne 0
      * @author casag
      */
-    public int pentesting(){
+    public int pentesting() {
         int randomNum = 0;
 
-        if(this.payer(500)) {
+        if (this.payer(500)) {
             randomNum = ThreadLocalRandom.current().nextInt(1, 50 + 1);
 
             if (randomNum <= 10) {
@@ -744,6 +727,7 @@ public class Entreprise {
             levelUp(0.15);
         }
         return randomNum;
+    }
       
      /* 
      * Permet d'acheter des ressources
@@ -869,12 +853,12 @@ public class Entreprise {
         return tauxQualConditionTravail;
     }
 
-    public void setTauxQualConditionTravail(double tauxQualConditionTravail) { this.tauxQualConditionTravail = tauxQualConditionTravail; }
+    public void setTauxQualConditionTravail(double tauxQualConditionTravail) {
+        this.tauxQualConditionTravail = tauxQualConditionTravail;
+    }
 
     public int getNiveauMobilier() {
         return niveauMobilier;
-    public void setTauxQualConditionTravail(double tauxQualConditionTravail) {
-        this.tauxQualConditionTravail = tauxQualConditionTravail;
     }
 
     public void setNiveauMobilier(int niveauMobilier) {
