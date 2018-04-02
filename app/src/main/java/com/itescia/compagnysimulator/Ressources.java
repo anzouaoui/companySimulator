@@ -13,22 +13,36 @@ public class Ressources {
     private int nombre;
 
     private Ressources() {
-        nombre = 0;
+        nombre = 50;
     }
 
-    public synchronized static Ressources getInstance() {
+    public synchronized static int getInstance() {
         if (instance == null) {
             instance = new Ressources();
         }
-        return instance;
+        return instance.nombre;
     }
 
     /**
      * Additionne le nombre donné en paramètre au nombre de ressources.
-     * @param nombre
+     * @param nb
      * @author casag
      */
-    public synchronized void ajout(int nombre) {
-        nombre += nombre;
+    public synchronized static void ajout(int nb) {
+        if(Ressources.getInstance() + nb > 100) {
+            Ressources.setInstance(100);
+        } else {
+            instance.nombre += nb;
+        }
     }
+
+    /**
+     * Met à jour l'instance selon le nombre donné en paramètre
+     * @param nb
+     * @author casag
+     */
+    public synchronized static void setInstance(int nb) {
+        instance.nombre = nb;
+    }
+
 }

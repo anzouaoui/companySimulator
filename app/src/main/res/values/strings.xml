@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">CompagnySimulator</string>
 
+    <!-- ECRAN DE DEMARRAGE -->
+    <string name="label_nom_joueur">nom du joueur</string>
+    <string name="label_nom_entreprise">nom de l\'entreprise</string>
+
     <!-- DESCRIPTION IMAGE -->
     <string name="description_image_employes">Image employes</string>
     <string name="description_icone_reputation">Icone réputation</string>
@@ -53,4 +57,46 @@
     <string name="miseAJourSysteme">MAJ SYSTEMES</string>
     <string name="formationEmployes">FORMER EMPLOYES</string>
     <string name="sousTraiter">SOUS TRAITER</string>
+    <string name="informationSousTraiter">
+        Un "penetration tester" evalue la securite d\'un systeme en cherchant des failles.\nPlus le nombre de failles trouve est eleve, plus la securite informatique sera ameliore
+    </string>
+    <string name="informationAntivirus">
+        Etes-vous sur de vouloir investir dans un nouvel antivirus ?
+    </string>
+    <string name="prixAntivirus">150</string>
+
+    <!-- CONDTITION TRAVAIL -->
+    <string name="fournitures">AMELIORE FOURNITURE</string>
+    <string name="niveau_conditions_travails">81%</string>
+    <string name="nomFournitures">ikeo</string>
+    <string name="medecinTravail">MEDECIN TRAVAIL</string>
+    <string name="derniereMenage">dernier passage: </string>
+    <string name="possibilite">possible dans: </string>
+    <string name="heureMenage">05:12:00</string>
+    <string name="apero">ORGANISER APERO</string>
+    <string name="feliciter">FELICITER UN EMPLOYE</string>
+    <string name="heurePossibilite">00:28:12</string>
+
+    <!-- REPUTATION -->
+    <string name="reputation">REPUTATION</string>
+    <string name="niveau_reputation">63%</string>
+    <string name="parite">PARITE</string>
+    <string name="campagneCom">LANCER CAMPAGNE COM</string>
+
+    <!-- BONHEUR -->
+    <string name="bonheur">BONHEUR</string>
+    <string name="niveauMoyenFormation">NIVEAU MOYEN FORMATION</string>
+    <string name="niveauMoyenReputaiton">REPUTATION</string>
+    <string name="niveauSecuriteGlobale">SECURITE GLOBALE</string>
+    <string name="niveauConditionTravail">CONDITIONS TRAVAIL</string>
+
+    <!-- RESSOURCES -->
+    <string name="ressources">RESSOURCES</string>
+    <string name="niveau_ressources">2791500</string>
+    <string name="premiereRessources">5</string>
+    <string name="deuxiemeRessources">10</string>
+    <string name="troisiemeRessources">20</string>
+    <string name="argentPremiereRessources">50</string>
+    <string name="argenteDeuxiemeRessources">90</string>
+    <string name="argenteTroisiemeRessources">180</string>
 </resources>

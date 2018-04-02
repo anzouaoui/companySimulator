@@ -29,7 +29,16 @@
     <color name="colorNiveauSecuriteInformatique">#638f74</color>
     <color name="colorBackgroundNomAntivirus">#233764</color>
     <color name="colorNomAntivirus">#fff</color>
+    <color name="colorNomFourniture">#D0D663</color>
     <color name="colorVersionAntivirus">#ce871f</color>
     <color name="colorProgressBarFormationEmployes">#366821</color>
     <color name="colorBackgroundProgressBarFormationEmployes">#5a8d5b</color>
+    <color name="colorBackgroundInformation">#b9b154</color>
+    <color name="colorBackgroundInformationAntivirus">#948e43</color>
+    <color name="colorProgressBarNiveauFormation">#796094</color>
+    <color name="colorBackgroundProgressBarNiveauFormation">#937daa</color>
+    <color name="colorProgressBarNiveauReputation">#5C7A87</color>
+    <color name="colorBackgroundProgressBarNiveauReputation">#7b949e</color>
+    <color name="colorProgressBarNiveauConditionTravail">#954E4C</color>
+    <color name="colorProgressBackgroundBarNiveauConditionTravail">#957271</color>
 </resources>

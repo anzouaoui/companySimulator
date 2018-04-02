@@ -35,6 +35,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="12dp"
                         android:indeterminate="false"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:indeterminateTintMode="src_atop"
                         android:max="100"
                         android:progress="0"/>
@@ -142,6 +144,8 @@
                         android:layout_alignStart="@+id/ProgressBarBonheur"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="25dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         app:srcCompat="@drawable/happinessicon"
                         android:contentDescription="@string/description_icone_bonheur"/>
                 </RelativeLayout>
@@ -210,7 +214,8 @@
                 android:id="@+id/RelativeLayoutEmployes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:alpha="0.9"
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                 android:visibility="gone">
@@ -254,8 +259,8 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="60dp"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/back"
-                            android:contentDescription="@string/description_back_button"/>
+                            android:contentDescription="@string/description_back_button"
+                            android:src="@drawable/back" />
 
                     </RelativeLayout>
 
@@ -277,8 +282,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_commercial"
-                                android:contentDescription="@string/description_icone_commercial"/>
+                                android:contentDescription="@string/description_icone_commercial"
+                                android:src="@drawable/manwoman_commercial" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -294,8 +299,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_production"
-                                android:contentDescription="@string/description_icone_production"/>
+                                android:contentDescription="@string/description_icone_production"
+                                android:src="@drawable/manwoman_production" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -311,8 +316,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_securite"
-                                android:contentDescription="@string/description_icone_securite_2"/>
+                                android:contentDescription="@string/description_icone_securite_2"
+                                android:src="@drawable/manwoman_securite" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -328,8 +333,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                android:src="@drawable/manwoman_marketing"
-                                android:contentDescription="@string/description_icone_marketing"/>
+                                android:contentDescription="@string/description_icone_marketing"
+                                android:src="@drawable/manwoman_marketing" />
                         </RelativeLayout>
                     </RelativeLayout>
 
@@ -1228,6 +1233,7 @@
                                     android:layout_toEndOf="@+id/ProgressBarSecuriteInformatique"
                                     android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                     android:src="@drawable/up" />
+
                             </RelativeLayout>
                         </RelativeLayout>
                     </RelativeLayout>
@@ -1240,7 +1246,7 @@
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                 android:layout_marginTop="40dp"
                 android:alpha="0.9"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:id="@+id/RelativeLayoutContentDetailSecuriteInformatique"
@@ -1634,7 +1640,7 @@
                                 android:id="@+id/ProgressBarFormationEmployes"
                                 style="@android:style/Widget.ProgressBar.Horizontal"
                                 android:progressDrawable="@drawable/custom_progress_bar_formation_employes"
-                                android:layout_width="197dp"
+                                android:layout_width="195dp"
                                 android:layout_height="20dp"
                                 android:layout_marginStart="30dp"
                                 android:indeterminate="false"
@@ -1718,9 +1724,1465 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignEnd="@+id/TextViewArgentSousTraiter"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginEnd="23dp"
+                                android:layout_marginEnd="19dp"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/help" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutInformationSousTraiter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="240dp"
+                            android:layout_marginEnd="50dp"
+                            android:background="@drawable/custom_relative_layout_information"
+                            android:visibility="gone">
+
+                            <ImageButton
+                                android:layout_alignParentEnd="true"
+                                android:id="@+id/ImageButtonHideInformationSousTraiter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/cross"
+                                android:background="@color/colorBackgroundInformation"/>
+
+                            <TextView
+                                android:id="@+id/TextViewInformationSousTraiter"
+                                android:layout_below="@+id/ImageButtonHideInformationSousTraiter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/informationSousTraiter"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="15dp"
+                                android:paddingStart="5dp"
+                                android:paddingEnd="5dp"
+                                android:textColor="@color/fontColor"
+                                android:textSize="20sp"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutInformationAntivirus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="240dp"
+                            android:layout_marginEnd="50dp"
+                            android:background="@drawable/custom_relative_layout_information"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@color/colorBackgroundInformationAntivirus">
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPrixAntivirus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true">
+
+                                <ImageView
+                                    android:id="@+id/ImageViewPrixAntivirus"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/argent"/>
+
+                                <TextView
+                                    android:id="@+id/TextViewPrixAntivirus"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/ImageViewPrixAntivirus"
+                                    android:text="@string/prixAntivirus"
+                                    android:layout_marginStart="5dp"
+                                    android:textSize="20sp"
+                                    android:layout_centerVertical="true"/>
+                            </RelativeLayout>
+
+
+                            <TextView
+                                android:id="@+id/TextViewInformationAntivirus"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:textAlignment="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_below="@+id/RelativeLayoutPrixAntivirus"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="15dp"
+                                android:text="@string/informationAntivirus"
+                                android:textColor="@color/fontColor"
+                                android:textSize="25sp" />
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutChoix"
+                                android:layout_below="@id/TextViewInformationAntivirus"
+                                android:layout_centerHorizontal="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageButtonRefuser"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/cross" />
+
+                                <ImageButton
+                                    android:id="@+id/ImageButtonAccepter"
+                                    android:layout_toEndOf="@id/ImageButtonRefuser"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/check" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutDetailsConditionsTravails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                android:layout_marginTop="40dp"
+                android:alpha="0.9"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutContentDetailConditionsTravails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutConditionsTravailsTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundTextView">
+
+                        <TextView
+                            android:id="@+id/TextViewConditionsTravailsTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/conditionTravail"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBackButtonDetailConditionsTravails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:layout_below="@+id/RelativeLayoutConditionsTravailsTitle">
+
+                        <ImageButton
+                            android:id="@+id/ImageButtonBackButtonDetailConditionsTravails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/back_2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutNiveauConditionsTravails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailConditionsTravails"
+                        android:layout_below="@+id/RelativeLayoutConditionsTravailsTitle"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp">
+
+                        <ProgressBar
+                            android:id="@+id/ProgressBarNiveauConditionsTravails"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/custom_progress_bar_securite_informatique"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="12dp"
+                            android:indeterminate="false"
+                            android:indeterminateTintMode="src_atop"
+                            android:layout_centerVertical="true"
+                            android:max="100"
+                            android:progress="81"
+                            android:alpha="1"/>
+
+                        <TextView
+                            android:id="@+id/TextViewNiveauConditionsTravails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/ProgressBarNiveauConditionsTravails"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/niveau_conditions_travails"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/colorNiveauSecuriteInformatique"
+                            android:textSize="15sp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_alignStart="@+id/RelativeLayoutNiveauConditionsTravails"
+                        android:layout_below="@+id/RelativeLayoutNiveauConditionsTravails"
+                        android:layout_alignEnd="@+id/RelativeLayoutNiveauConditionsTravails">
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentFournitures"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:id="@+id/TextViewFournitures"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/fournitures"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpFournitures"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="25dp"
+                                android:layout_toEndOf="@+id/TextViewFournitures"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ImageView
+                                android:id="@+id/ImageViewArgentFournitures"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/argent_antivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageButtonUpFournitures"/>
+
+                            <TextView
+                                android:id="@+id/TextViewArgentFournitures"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/textAntivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageViewArgentFournitures"
+                                android:textSize="25sp"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelatvieLayoutNomFournitures"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@+id/TextViewArgentFournitures"
+                                android:layout_marginStart="45dp"
+                                android:layout_marginEnd="40dp"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/custom_relative_layout_nom_antivirus">
+
+                                <TextView
+                                    android:id="@+id/TextViewNomFournitures"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorNomFourniture"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="@string/nomFournitures"
+                                    android:textSize="12sp"
+                                    android:layout_marginStart="20dp"/>
+                            </RelativeLayout>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpFournitures"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@+id/RelatvieLayoutNomFournitures"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutConditionsTravailsSeparatorOne"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/RelatvieLayoutNomFournitures"
+                                android:layout_alignEnd="@+id/ImageButtonHelpFournitures"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutMedecinTravail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/RelativeLayoutContentFournitures"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:id="@+id/TextViewMedecinTravail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/medecinTravail"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpMedecinTravail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="60dp"
+                                android:layout_toEndOf="@+id/TextViewMedecinTravail"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ImageView
+                                android:id="@+id/ImageViewArgentMedecinTravail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/argent_antivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageButtonUpMedecinTravail"/>
+
+                            <TextView
+                                android:id="@+id/TextViewArgentMedecinTravail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/textAntivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageViewArgentMedecinTravail"
+                                android:textSize="25sp"/>
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarMedecinTravail"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_formation_employes"
+                                android:layout_width="180dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="15dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/TextViewArgentMedecinTravail"
+                                android:max="100"
+                                android:progress="65"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpMedecinTravail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_toEndOf="@+id/ProgressBarMedecinTravail"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutConditionsTravailsSeparatorTwo"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/TextViewMedecinTravail"
+                                android:layout_alignEnd="@+id/ImageButtonHelpMedecinTravail"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContenMenage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/RelativeLayoutMedecinTravail"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:id="@+id/TextViewMenage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/miseAJourSysteme"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpMenage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="77dp"
+                                android:layout_toEndOf="@+id/TextViewMenage"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ImageView
+                                android:id="@+id/ImageViewArgentMenage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/argent_antivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageButtonUpMenage"/>
+
+                            <TextView
+                                android:id="@+id/TextViewArgentMenage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/textMIseAJourSysteme"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageViewArgentMenage"
+                                android:textSize="25sp"/>
+
+                            <TextView
+                                android:id="@+id/TextViewDernierMenage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/derniereMenage"
+                                android:layout_toEndOf="@+id/TextViewArgentMenage"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:textSize="20sp"/>
+
+                            <TextView
+                                android:id="@+id/TextViewHeureDerniereMenage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/heureMenage"
+                                android:layout_toEndOf="@+id/TextViewDernierMenage"
+                                android:layout_marginStart="5dp"
+                                android:layout_centerVertical="true"
+                                android:textSize="25sp"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpMenage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_toEndOf="@+id/TextViewHeureDerniereMenage"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutConditionsTravailsSeparatorThree"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/TextViewMenage"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentApero"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/RelativeLayoutContenMenage"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:id="@+id/TextViewApero"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/apero"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpApero"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="60dp"
+                                android:layout_toEndOf="@+id/TextViewApero"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ImageView
+                                android:id="@+id/ImageViewArgentApero"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/argent_antivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageButtonUpApero"/>
+
+                            <TextView
+                                android:id="@+id/TextViewArgentApero"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/textMIseAJourSysteme"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageViewArgentApero"
+                                android:textSize="25sp"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpApero"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="200dp"
+                                android:layout_toEndOf="@+id/TextViewArgentApero"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutConditionsTravailsSeparatorFour"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/TextViewApero"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentFelicitation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/RelativeLayoutContentApero"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp">
+                            <TextView
+                                android:id="@+id/TextViewFelicitaion"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/feliciter"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpFelicitation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_toEndOf="@+id/TextViewFelicitaion"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ImageView
+                                android:id="@+id/ImageViewArgentFelicitation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/argent_antivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageButtonUpFelicitation"/>
+
+                            <TextView
+                                android:id="@+id/TextViewArgentFelicitation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/textMIseAJourSysteme"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageViewArgentFelicitation"
+                                android:textSize="25sp"/>
+
+                            <TextView
+                                android:id="@+id/TextViewPossibilite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/possibilite"
+                                android:layout_toEndOf="@+id/TextViewArgentFelicitation"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:textSize="20sp"/>
+
+                            <TextView
+                                android:id="@+id/TextViewHeurePossibilite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/heurePossibilite"
+                                android:layout_toEndOf="@+id/TextViewPossibilite"
+                                android:layout_marginStart="5dp"
+                                android:layout_centerVertical="true"
+                                android:textSize="25sp"/>
+
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpFelicitation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignEnd="@+id/TextViewArgentFelicitation"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="5dp"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/help" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutDetailsReputation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                android:layout_marginTop="40dp"
+                android:alpha="0.9"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutContentDetailReputation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutReputationTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundTextView">
+
+                        <TextView
+                            android:id="@+id/TextViewReputationTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/reputation"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBackButtonDetailReputation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:layout_below="@+id/RelativeLayoutReputationTitle">
+
+                        <ImageButton
+                            android:id="@+id/ImageButtonBackButtonDetailReputation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/back_2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutNiveauReputation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailReputation"
+                        android:layout_below="@+id/RelativeLayoutReputationTitle"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp">
+
+                        <ProgressBar
+                            android:id="@+id/ProgressBarNiveauReputation"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/custom_progress_bar_securite_informatique"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="12dp"
+                            android:indeterminate="false"
+                            android:indeterminateTintMode="src_atop"
+                            android:layout_centerVertical="true"
+                            android:max="100"
+                            android:progress="63"
+                            android:alpha="1"/>
+
+                        <TextView
+                            android:id="@+id/TextViewNiveauReputation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/ProgressBarNiveauReputation"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/niveau_reputation"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/colorNiveauSecuriteInformatique"
+                            android:textSize="15sp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_alignStart="@+id/RelativeLayoutNiveauReputation"
+                        android:layout_below="@+id/RelativeLayoutNiveauReputation"
+                        android:layout_alignEnd="@+id/RelativeLayoutNiveauReputation">
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentParite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:id="@+id/TextViewParite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/parite"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpParite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="150dp"
+                                android:layout_toEndOf="@+id/TextViewParite"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarParite"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_formation_employes"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpParite"
+                                android:max="100"
+                                android:progress="90"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpParite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarParite"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutReputationSeparatorOne"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ProgressBarParite"
+                                android:layout_alignEnd="@+id/ImageButtonHelpParite"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentCampagneCom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/RelativeLayoutContentParite"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:id="@+id/TextViewCampagneCom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/campagneCom"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpCampagneCOm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="27dp"
+                                android:layout_toEndOf="@+id/TextViewCampagneCom"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ImageView
+                                android:id="@+id/ImageViewArgentCampagneCom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/argent_antivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="20dp"
+                                android:layout_toEndOf="@+id/ImageButtonUpCampagneCOm"/>
+
+                            <TextView
+                                android:id="@+id/TextViewArgentCampagneCom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/textAntivirus"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@+id/ImageViewArgentCampagneCom"
+                                android:textSize="25sp"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpCampagneCom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="150dp"
+                                android:layout_toEndOf="@+id/TextViewArgentCampagneCom"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutReputationSeparatorTwo"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/TextViewCampagneCom"
+                                android:layout_alignEnd="@+id/ImageButtonHelpCampagneCom"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutDetailsBonheur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                android:layout_marginTop="40dp"
+                android:alpha="0.9"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutContentDetailBonheur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBonheurTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundTextView">
+
+                        <TextView
+                            android:id="@+id/TextViewBonheurTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/bonheur"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBackButtonDetailBonheur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:layout_below="@+id/RelativeLayoutBonheurTitle">
+
+                        <ImageButton
+                            android:id="@+id/ImageButtonBackButtonDetailBonheur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/back_2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutNiveauBonheur"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailBonheur"
+                        android:layout_below="@+id/RelativeLayoutBonheurTitle"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp">
+
+                        <ProgressBar
+                            android:id="@+id/ProgressBarNiveauBonheur"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/custom_progress_bar_securite_informatique"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="12dp"
+                            android:indeterminate="false"
+                            android:indeterminateTintMode="src_atop"
+                            android:layout_centerVertical="true"
+                            android:max="100"
+                            android:progress="63"
+                            android:alpha="1"/>
+
+                        <TextView
+                            android:id="@+id/TextViewNiveauBonheur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/ProgressBarNiveauBonheur"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/niveau_reputation"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/colorNiveauSecuriteInformatique"
+                            android:textSize="15sp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_alignStart="@+id/RelativeLayoutNiveauBonheur"
+                        android:layout_below="@+id/RelativeLayoutNiveauBonheur"
+                        android:layout_alignEnd="@+id/RelativeLayoutNiveauBonheur">
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauFormation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:id="@+id/TextViewNiveauFormation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveauMoyenFormation"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpNiveauFormation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="45dp"
+                                android:layout_toEndOf="@+id/TextViewNiveauFormation"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarNiveauFormation"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_niveau_formation"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpNiveauFormation"
+                                android:max="100"
+                                android:progress="60"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpNiveauFormation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarNiveauFormation"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutbonheurSeparatorOne"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ProgressBarNiveauFormation"
+                                android:layout_alignEnd="@+id/ImageButtonHelpNiveauFormation"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauReputation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_below="@+id/RelativeLayoutContentNiveauFormation">
+                            <TextView
+                                android:id="@+id/TextViewNiveauReputation2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveauMoyenReputaiton"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpNiveauReputation2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="150dp"
+                                android:layout_toEndOf="@+id/TextViewNiveauReputation2"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarNiveauReputation2"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_niveau_reputation"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpNiveauReputation2"
+                                android:max="100"
+                                android:progress="55"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpNiveauReputation2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarNiveauReputation2"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutbonheurSeparatorTwo"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ProgressBarNiveauReputation2"
+                                android:layout_alignEnd="@+id/ImageButtonHelpNiveauReputation2"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauSecuriteGlobale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_below="@+id/RelativeLayoutContentNiveauReputation">
+                            <TextView
+                                android:id="@+id/TextViewNiveauSecuriteGlobale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/niveauSecuriteGlobale"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpNiveauSecuriteGlobale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="98dp"
+                                android:layout_toEndOf="@+id/TextViewNiveauSecuriteGlobale"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarNiveauSecuriteGlobale"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_niveau_securite_globale"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpNiveauSecuriteGlobale"
+                                android:max="100"
+                                android:progress="90"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpNiveauSecuriteGlobale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarNiveauSecuriteGlobale"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutbonheurSeparatorThree"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ImageButtonHelpNiveauSecuriteGlobale"
+                                android:layout_alignEnd="@+id/ImageButtonHelpNiveauSecuriteGlobale"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentNiveauConditionTravail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_below="@+id/RelativeLayoutContentNiveauSecuriteGlobale">
+                            <TextView
+                                android:id="@+id/TextViewNiveauConditionsTravails2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/conditionTravail"
+                                android:textSize="25sp"
+                                android:layout_centerVertical="true"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonUpNiveauConditionsTravails"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="60dp"
+                                android:layout_toEndOf="@+id/TextViewNiveauConditionsTravails2"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                                android:src="@drawable/up" />
+
+                            <ProgressBar
+                                android:id="@+id/ProgressBarNiveauConditionsTravails2"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/custom_progress_bar_niveau_condition_travail"
+                                android:layout_width="195dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:indeterminate="false"
+                                android:indeterminateTintMode="src_atop"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/ImageButtonUpNiveauConditionsTravails"
+                                android:max="100"
+                                android:progress="65"
+                                android:alpha="1"/>
+
+                            <ImageButton
+                                android:id="@+id/ImageButtonHelpNiveauConditionTravails"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/help"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@+id/ProgressBarNiveauConditionsTravails2"
+                                android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutbonheurSeparatorFour"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/ImageButtonHelpNiveauConditionTravails"
+                                android:layout_alignEnd="@+id/ImageButtonHelpNiveauConditionTravails"
+                                android:background="@color/colorBackgroundTextView">
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutDetailsRessources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:alpha="0.9"
+                android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                android:visibility="invisible">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutContentDetailRessources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutRessourcesTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundTextView">
+
+                        <TextView
+                            android:id="@+id/TextViewRessourcesTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/ressources"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutBackButtonDetailRessources"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:layout_below="@+id/RelativeLayoutRessourcesTitle">
+
+                        <ImageButton
+                            android:id="@+id/ImageButtonBackButtonDetailRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/back_2" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutRessources2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/RelativeLayoutRessourcesTitle"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailRessources">
+
+                        <ProgressBar
+                            android:id="@+id/ProgressBarNiveauRessources"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginStart="8dp"
+                            android:alpha="1"
+                            android:indeterminate="false"
+                            android:indeterminateTintMode="src_atop"
+                            android:max="100"
+                            android:progress="63"
+                            android:progressDrawable="@drawable/custom_progress_bar_securite_informatique" />
+
+                        <TextView
+                            android:id="@+id/TextViewNiveauRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/ProgressBarNiveauRessources"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/niveau_reputation"
+                            android:textColor="@color/colorNiveauSecuriteInformatique"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/RelativeLayoutRessources2"
+                        android:layout_alignStart="@+id/RelativeLayoutRessources2"
+                        android:layout_below="@+id/RelativeLayoutRessources2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="40dp">
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentPremiereRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true">
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPremiereRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:background="@drawable/custom_relative_layout_ressources"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:paddingBottom="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:id="@+id/TextViewNombrePremiereRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/premiereRessources"
+                                    android:textSize="35sp" />
+
+                                <ImageView
+                                    android:id="@+id/ImageViewPremiereRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_toEndOf="@+id/TextViewNombrePremiereRessources"
+                                    android:alpha="1"
+                                    android:src="@drawable/ressources" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPrixPremiereRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/RelativeLayoutPremiereRessources"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewArgentPremiereRessource"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/argent" />
+
+                                <TextView
+                                    android:id="@+id/TextViewArgentPremiereRessource"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_toEndOf="@+id/ImageViewArgentPremiereRessource"
+                                    android:text="@string/argentPremiereRessources"
+                                    android:textSize="35sp" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContentDeuxiemeRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginStart="55dp"
+                            android:layout_toEndOf="@+id/RelativeLayoutContentPremiereRessources">
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutDeuxiemeRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:background="@drawable/custom_relative_layout_ressources"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:paddingBottom="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:id="@+id/TextViewNombreDeuxiemeRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/deuxiemeRessources"
+                                    android:textSize="35sp" />
+
+                                <ImageView
+                                    android:id="@+id/ImageViewDeuxiemeRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_toEndOf="@+id/TextViewNombreDeuxiemeRessources"
+                                    android:src="@drawable/ressources" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPrixDeuxiemeRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/RelativeLayoutDeuxiemeRessources"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewArgentDeuxiemeRessource"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/argent" />
+
+                                <TextView
+                                    android:id="@+id/TextViewArgentDeuxiemeRessource"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_toEndOf="@+id/ImageViewArgentDeuxiemeRessource"
+                                    android:text="@string/argenteDeuxiemeRessources"
+                                    android:textSize="35sp" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutContenTroisiemeRessources"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_toEndOf="@+id/RelativeLayoutContentDeuxiemeRessources">
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutTroisiemeRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:alpha="0.9"
+                                android:background="@drawable/custom_relative_layout_ressources"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:paddingBottom="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp">
+
+                                <TextView
+                                    android:id="@+id/TextViewNombreTroisiemeRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/troisiemeRessources"
+                                    android:textSize="35sp" />
+
+                                <ImageView
+                                    android:id="@+id/ImageViewTroisiemeRessources"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_toEndOf="@+id/TextViewNombreTroisiemeRessources"
+                                    android:src="@drawable/ressources" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/RelativeLayoutPrixTroisiemeRessources"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/RelativeLayoutTroisiemeRessources"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp">
+
+                                <ImageButton
+                                    android:id="@+id/ImageViewArgentTroisiemeRessource"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/argent" />
+
+                                <TextView
+                                    android:id="@+id/TextViewArgentTroisiemeRessource"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_toEndOf="@+id/ImageViewArgentTroisiemeRessource"
+                                    android:text="@string/argenteTroisiemeRessources"
+                                    android:textSize="35sp" />
+                            </RelativeLayout>
                         </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>
@@ -1841,6 +3303,7 @@
                         android:textStyle="bold"
                         android:layout_centerHorizontal="true"
                         android:clickable="true"
+                        android:focusable="true"
                         />
             </RelativeLayout>
         </RelativeLayout>

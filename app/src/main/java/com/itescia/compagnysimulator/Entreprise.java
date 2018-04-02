@@ -28,12 +28,14 @@ import java.lang.*;
 
 public class Entreprise {
     /** Nom de l'entreprise
+     *
      * @see Entreprise#getNomEntreprise()
      * @see Entreprise#setNomEntreprise(String)
      */
     private String nomEntreprise;
 
     /** Niveau général de l'entreprise
+     *
      * @see Entreprise#getNiveau()
      * @see Entreprise#setNiveau(double)
      * @see Entreprise#levelUp(double)
@@ -43,6 +45,7 @@ public class Entreprise {
     /** Taux de bonheur dans l'entreprise. <br>
      *  Dépend du niveau de formation général des employés, de la réputation, <br>
      *  du taux global de sécurité et du niveau de qualité des conditions de travail
+     *
      * @see Entreprise#getBonheur()
      * @see Entreprise#setBonheur(double)
      * @see Entreprise#getNiveauMoyenFormation()
@@ -53,6 +56,7 @@ public class Entreprise {
      *  S'incrémente constamment en fonction du niveau de compétences des employés
      *  et du niveau de bonheur : <br>
      *  40% Comptabilité | 30% bonheur | 10% Production | 10% Commercial | 10% Marketing
+     *
      * @see Entreprise#getArgent()
      * @see Entreprise#setArgent(int)
      */
@@ -61,6 +65,7 @@ public class Entreprise {
     /** Taux de réputation de l'entreprise <br>
      * S'améliorera ou se déteriorera en fonction d'actions à lancer (campagnes de com...)
      * ou d'évènements aléatoire (grèves...)
+     *
      * @see Entreprise#getReputation()
      * @see Entreprise#setReputation(int)
      */
@@ -71,9 +76,20 @@ public class Entreprise {
      */
     private double tauxFormationSecuInfo;
 
+    //private int niveauSecuPhysique; //dépend des employés sécurité : voir fonction
+
+    /** Niveau de sécurité informatique <br>
+     * S'augmentera en améliorant anti-virus, pare feu...
+     *
+     * @see Entreprise#getTauxSecuInfo()
+     * @see Entreprise#setTauxSecuInfo(double)
+      */
+    private double tauxSecuInfo;
+
     /** Niveau de qualité des conditions de travail <br>
      * S'améliorera en montant de niveau ou en lançant des actions visant
      * à l'améliorer (achat de sièges confortables...)
+     *
      * @see Entreprise#getTauxQualConditionTravail()
      * @see Entreprise#setTauxQualConditionTravail(double)
      */
@@ -111,7 +127,9 @@ public class Entreprise {
      */
     private Date derniereFelicitation;
 
-    /** Liste des employés de l'entreprise
+    /** 
+     * Liste des employés de l'entreprise
+     *
      * @see Employe
      * @see Entreprise#getEmployes()
      * @see Entreprise#setEmployes(List)
@@ -121,6 +139,7 @@ public class Entreprise {
 
     /** Niveau de sécurité informatique <br>
      * S'augmentera en améliorant anti-virus, pare feu...
+     *
      * @see Entreprise#getTauxSecuInfo()
      * @see Entreprise#setTauxSecuInfo(double)
      */
@@ -152,13 +171,14 @@ public class Entreprise {
      * Le niveau est fixé à 1. <br>
      * Le bonheur est fixé à 0.5 (moyenne) <br>
      * L'argent est fixé à 5000.
+     *
      * @param nomEntreprise : Le nom de l'entreprise
      */
     public Entreprise (String nomEntreprise) {
         this.nomEntreprise = nomEntreprise;
         this.niveau = 1;
         this.bonheur = 0.5;
-        this.argent = 5000;
+        this.argent = 1;
         this.reputation = 0;
         this.tauxSecuInfo = 0;
         this.tauxFormationSecuInfo = 0;
@@ -175,6 +195,7 @@ public class Entreprise {
 
     /**
      * Augmente le niveau du nombre donné en paramètre
+     *
      * @param nombre
      * @author casag
      */
@@ -184,6 +205,7 @@ public class Entreprise {
 
     /**
      * Soustrait le nombre donné en paramètre à l'argent.
+     *
      * @param number : prix
      * @return booléen : false si le joueur n'a pas assez d'argent pour payer.
      * @author casag
@@ -199,6 +221,7 @@ public class Entreprise {
 
     /**
      * Retourne le taux de femmes dans l'entreprise
+     *
      * @return parité : Taux de femmes dans l'entreprise
      * @author casag
      */
@@ -219,6 +242,7 @@ public class Entreprise {
 
     /**
      * Retourne le niveau de formation moyen des employés du service donné en paramètre.
+     *
      * @param service : service
      * @return niveauGlobal : niveau de formation moyen
      * @author casag
@@ -284,6 +308,7 @@ public class Entreprise {
 
     /**
      * Retourne le niveau de formation moyen des employés
+     *
      * @return niveauGlobal : niveau de formation moyen des employés
      * @author casag
      */
@@ -306,6 +331,7 @@ public class Entreprise {
 
     /**
      * Incrémente l'argent de 1
+     *
      * @author casag
      */
     public void incremArgent(){
@@ -316,6 +342,7 @@ public class Entreprise {
      * Mise à jour du taux de bonheur <br>
      * Dépend du niveau de formation général des employés, de la réputation, <br>
      * du taux global de sécurité et du niveau de qualité des conditions de travail
+     *
      * @author casag
      */
     public void setTauxBonheur(){
@@ -325,6 +352,7 @@ public class Entreprise {
 
     /** Retourne le taux de rapidité d'incrémentation de l'argent <br>
      * 40% Comptabilité | 30% bonheur | 10% Production | 10% Commercial | 10% Marketing
+     *
      * @return taux : taux de rapidité d'incrémentation
      * @author casag
      */
@@ -344,6 +372,7 @@ public class Entreprise {
     /** Permet d'ajouter un nouvel employé à la collection <br>
      * La création d'un employé se fait en fonction du nom de son service
      * ainsi que son sexe (F/H), tous deux transmis en paramètres
+     *
      * @author gbon, casag
      */
     public void Recruter (String service, char sexe) {
@@ -407,6 +436,7 @@ public class Entreprise {
      * Permet de déterminer la somme à payer pour améliorer le mobilier de bureau.<br>.
      * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau supérieur du mobilier.
      * La règle de calcul est : +1500 par niveau
+     *
      * @return sommeAmeliorationMobilier : valeur entière à payer pour améliorer le niveau de mobilier
      * @author gbon
      */
@@ -414,12 +444,26 @@ public class Entreprise {
         int sommeAmeliorationMobilier = getNiveauAntivirus() * 1500;
         return sommeAmeliorationMobilier;
     }
+    public void augmenterTauxSecuInfo(double taux) {
+        //Si le taux est à 0, on l'initialise au taux
+        if (tauxSecuInfo == 0) {
+            setTauxSecuInfo(taux);
+        } else { //sinon, on l'augmente de 20%
+            if (tauxSecuInfo * (1 + taux) >= 1) {
+                setTauxSecuInfo(1);
+            } else {
+                setTauxSecuInfo(tauxSecuInfo * (1 + taux));
+            }
+        }
+        levelUp(0.10);
+    }
 
     /**
      * Permet de gérer l'amélioration du mobilier.<br>.
      * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau de mobilier supérieur
      * et modifie le niveau en conséquence ainsi que le nom/marque du mobilier.<br>
      * Le niveau max du mobilier est 10
+     *
      * @author gbon
      */
     public void ameliorerMobilier() {
@@ -432,6 +476,7 @@ public class Entreprise {
                 augmenterTauxConditTravail(0.45);
                 levelUp(0.35);
             }
+            levelUp(0.15);
         }
     }
 
@@ -439,6 +484,7 @@ public class Entreprise {
      * Permet d'obtenir le nom/marque du mobilier correspondant à son niveau.<br>
      * La marque est différente pour chaque niveau.
      * @param niveauMobilier : le niveau du mobilier actuel dont on souhaite connaitre le nom
+     *
      * @return nouveauNom : le nouveau nom de la marque du mobilier
      * @author gbon
      */
@@ -465,6 +511,14 @@ public class Entreprise {
                 break;
             case 10: nouveauNom = "Ironcase";
                 break;
+            
+    public boolean formerSecuInfo(){
+        boolean done = false;
+        //Si le joueur a les moyens
+        if(this.payer(300)) {
+            setTauxFormationSecuInfo(1);
+            levelUp(0.15);
+            done = true;
         }
         return nouveauNom;
     }
@@ -473,6 +527,7 @@ public class Entreprise {
      * Organise un apéro si le joueur a les moyens.
      * Augmente de 30% la qualité des conditions de travail.
      * @return booléen : true si 3h sont passées depuis dernier et si assez d'argent
+     *
      * @author casag, gbon
      */
     public boolean organiserApero(){
@@ -507,6 +562,10 @@ public class Entreprise {
                 setNombreApero(1);
                 done = true;
             }
+        if (this.payer(300)){
+            augmenterTauxConditTravail(0.30);
+            levelUp(0.15);
+            done = true;
         }
         return done;
     }
@@ -514,6 +573,7 @@ public class Entreprise {
     /**
      * Félicite un employé et augmente de 15% la qualité des conditions de travail
      * (minimum 2 heures entre chaques félicitations)
+     *
      * @return booléen : false si cela fait moins de deux heures
      * @author casag
      */
@@ -570,6 +630,7 @@ public class Entreprise {
      * Permet de déterminer la somme à payer pour améliorer le niveau d'antivirus.<br>.
      * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau d'antivirus supérieur.
      * La règle de calcul est : +150 par niveau d'antivirus
+     *
      * @return sommeAmeliorationAntivirus : valeur entière à payer pour améliorer le niveau d'antivirus
      * @author gbon
      */
@@ -583,6 +644,7 @@ public class Entreprise {
      * Vérifie si le joueur peut payer la somme correspondante à l'amélioration du niveau d'antivirus supérieur
      * et modifie le niveau en conséquence ainsi que le nom de l'antivirus.<br>
      * Le niveau max de l'antivirus est 99
+     *
      * @author gbon
      */
     public void ameliorerAntivirus() {
@@ -603,6 +665,7 @@ public class Entreprise {
      * Changement de marque d'antivirus tous les 10 niveaux jusqu'au niveau 100.
      * Le nom se compose ainsi "Marque v1.X" ou X représente le chiffre des unités du niveau de l'antivirus
      * @param niveauAntivirus : le niveau de l'antivirus actuel dont on souhaite connaitre le nom
+     *
      * @return nouveauNom : le nouveau nom de l'antivirus, au format "Marque v1.X"
      * @author gbon
      */
@@ -661,6 +724,7 @@ public class Entreprise {
      * Génère un nombre aléatoire (nombre de failles trouvées)
      * Augmente le taux de sécurité informatique en fonction du nombre généré :
      * Plus il y a de failles trouvées, plus le taux de sécurité informatique est augmenté
+     *
      * @return randomNum : retourne le nombre de failles trouvées, et si le joueur n'a pas les moyens de payer, retourne 0
      * @author casag
      */
@@ -680,6 +744,28 @@ public class Entreprise {
             levelUp(0.15);
         }
         return randomNum;
+      
+     /* 
+     * Permet d'acheter des ressources
+     *
+     * @param nombre
+     * @return booléen
+     * @author casag
+     */
+    public boolean acheterRessources(int nombre) {
+        boolean ok = false;
+        switch (nombre) {
+            case 5 :   Ressources.ajout(5);
+                        payer(50);
+                        ok = true; break;
+            case 10 :  Ressources.ajout(10);
+                        payer(90);
+                        ok = true; break;
+            case 20 :  Ressources.ajout(20);
+                        payer(180);
+                        ok = true; break;
+        }
+        return ok;
     }
 
     /* getters and setters */
@@ -699,6 +785,7 @@ public class Entreprise {
     /**
      * Met à jour le niveau.
      * Observe s'il passe à l'unité supérieure.
+     *
      * @param niveau
      * @author casag
      */
@@ -786,6 +873,8 @@ public class Entreprise {
 
     public int getNiveauMobilier() {
         return niveauMobilier;
+    public void setTauxQualConditionTravail(double tauxQualConditionTravail) {
+        this.tauxQualConditionTravail = tauxQualConditionTravail;
     }
 
     public void setNiveauMobilier(int niveauMobilier) {
