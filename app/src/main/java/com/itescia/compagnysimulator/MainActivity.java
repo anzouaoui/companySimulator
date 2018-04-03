@@ -71,6 +71,14 @@ public class MainActivity extends AppCompatActivity {
      ArrayList<ImageButton> collectionImageButtonUpBonheur;
 
     Timer _t;
+    Timer _tMAJFirewall;
+    Timer _tMAJSysteme;
+    Timer _tInterventionMedecineTravail;
+    Timer _tInterventionMenage;
+
+    // Entreprise entreprise = new Entreprise("Nom entreprise");
+
+
     Timer _t2;
     int count = 0;
 
@@ -79,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
 
     Entreprise entreprise = new Entreprise(EXTRA_NOM_ENTREPRISE);
 
+    /**
+     * Fonction d'initialisation de l'activité principale
+     *
+     * @param savedInstanceState
+     * @author zoua
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,12 +102,18 @@ public class MainActivity extends AppCompatActivity {
         initialize();
         bindListener();
         incrementeArgent();
+        verifierDerniereMAJFirewall();
+        verifierDerniereMAJSysteme();
+        verifierDerniereInterventionMedecineTravail();
+        verifierDerniereInterventionMenage();
         decrementeRessources();
         afficherNoms();
     }
 
     /**
      * Fonction permettant d'initialiser les éléments du graphique principale
+     *
+     * @author zoua
      */
     private void initialize() {
 
@@ -393,6 +413,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Fonction permettant d'initialiser les événements liés aux éléments du graphisme
+     *
+     * @author zoua
      */
     private void bindListener() {
         textViewLevel.setOnClickListener(textViewLevelListener);
@@ -429,6 +451,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Fonction permettant d'incrémenter automatiquement l'argent
+     *
+     * @author zoua
      */
     private void incrementeArgent() {
         _t = new Timer();
@@ -452,13 +476,141 @@ public class MainActivity extends AppCompatActivity {
                 500);
     }
 
+    /**
+     * Fonction permettant de gérer le temps passé depuis la dernière MAJ du firewall ainsi que les malus en découlant
+     */
+    private void verifierDerniereMAJFirewall() {
+        _tMAJFirewall = new Timer();
+        TimerTask verificationMAJFirewall = new TimerTask () {
+            @Override
+            public void run () {
+                // augmentation du nombre d'heures passées depuis la derière MAJ du Firewall
+                entreprise.setDerniereMAJFirewall(entreprise.getDerniereMAJFirewall() + 1);
+                // diminution du taux de sécurité informatique
+                entreprise.augmenterTauxSecuInfo(-0.15);
+            }
+        };
+
+        // planification de la tâche du timer toutes les heures à partir de la première heure
+        _tMAJFirewall.schedule (verificationMAJFirewall, 1000*60*60, 1000*60*60);
+    }
+
+    /**
+     * Fonction permettant de mettre à jour le firewall
+     */
+    private void MAJFirewall() {
+            // remise à 0 du nombre d'heures passées depuis la derière MAJ du Firewall
+            entreprise.setDerniereMAJFirewall(0);
+            // augmentation du taux de sécurité informatique
+            entreprise.augmenterTauxSecuInfo(0.30);
+            // relance du timer de vérification de la denière MAJ du firewall
+            _tMAJFirewall.cancel();
+            verifierDerniereMAJFirewall();
+    }
+
+    /**
+     * Fonction permettant de gérer le temps passé depuis la dernière MAJ du système ainsi que les malus en découlant
+     */
+    private void verifierDerniereMAJSysteme() {
+        _tMAJSysteme = new Timer();
+        TimerTask verificationMAJSysteme = new TimerTask () {
+            @Override
+            public void run () {
+                // augmentation du nombre d'heures passées depuis la derière MAJ du système
+                entreprise.setDerniereMAJSysteme(entreprise.getDerniereMAJSysteme() + 1);
+                // diminution du taux de sécurité informatique
+                entreprise.augmenterTauxSecuInfo(-0.15);
+            }
+        };
+
+        // planification de la tâche du timer toutes les heures à partir de la première heure
+        _tMAJSysteme.schedule (verificationMAJSysteme, 1000*60*60, 1000*60*60);
+    }
+
+    /**
+     * Fonction permettant de mettre à jour le système
+     */
+    private void MAJSysteme() {
+        // remise à 0 du nombre d'heures passées depuis la derière MAJ du système
+        entreprise.setDerniereMAJSysteme(0);
+        // augmentation du taux de sécurité informatique
+        entreprise.augmenterTauxSecuInfo(0.30);
+        // relance du timer de vérification de la denière MAJ du système
+        _tMAJSysteme.cancel();
+        verifierDerniereMAJSysteme();
+    }
+
+    /**
+     * Fonction permettant de gérer le temps passé depuis la dernière intervention de la médecine du travail ainsi que les malus en découlant
+     */
+    private void verifierDerniereInterventionMedecineTravail() {
+        _tInterventionMedecineTravail = new Timer();
+        TimerTask verificationInterventionMedecineTravail = new TimerTask () {
+            @Override
+            public void run () {
+                // augmentation du nombre d'heures passées depuis la dernière intervention de la médecine du travail
+                entreprise.setDerniereInterventionMedecineTravail(entreprise.getDerniereInterventionMedecineTravail() + 1);
+                // diminution du taux des conditions de travail
+                entreprise.augmenterTauxConditTravail(-0.15);
+            }
+        };
+
+        // planification de la tâche du timer toutes les 4 heures
+        _tInterventionMedecineTravail.schedule (verificationInterventionMedecineTravail, 1000*60*60*4, 1000*60*60*4);
+    }
+
+    /**
+     * Fonction permettant d'actualiser le nombre d'heures depuis la dernière intervention de la médecine du travail
+     */
+    private void set_tInterventionMedecineTravail() {
+        // remise à 0 du nombre d'heures passées depuis la derière intervention de la médecine du travail
+        entreprise.setDerniereInterventionMedecineTravail(0);
+        // augmentation du taux des conditions de travail
+        entreprise.augmenterTauxConditTravail(0.20);
+        // relance du timer de vérification de la denière intervention de la médecine du travail
+        _tInterventionMedecineTravail.cancel();
+        verifierDerniereInterventionMedecineTravail();
+    }
+
+    /**
+     * Fonction permettant de gérer le temps passé depuis la dernière intervention du personnel de ménage ainsi que les malus en découlant
+     */
+    private void verifierDerniereInterventionMenage() {
+        _tInterventionMenage = new Timer();
+        TimerTask verificationInterventionMenage = new TimerTask () {
+            @Override
+            public void run () {
+                // augmentation du nombre d'heures passées depuis la dernière intervention
+                entreprise.setDerniereInterventionMenage(entreprise.getDerniereInterventionMenage() + 1);
+                // diminution du taux des conditions de travail
+                entreprise.augmenterTauxConditTravail(-0.15);
+            }
+        };
+
+        // planification de la tâche du timer toutes les 2 heures
+        _tInterventionMenage.schedule (verificationInterventionMenage, 1000*60*60*2, 1000*60*60*2);
+    }
+
+    /**
+     * Fonction permettant d'actualiser le nombre d'heures depuis la dernière intervention du personnel de ménage
+     */
+    private void interventionMenage() {
+        // remise à 0 du nombre d'heures passées depuis la derière intervention du personnel de ménage
+        entreprise.setDerniereInterventionMenage(0);
+        // augmentation du taux des conditions de travail
+        entreprise.augmenterTauxConditTravail(0.10);
+        // relance du timer de vérification de la denière intervention du personnel de ménage
+        _tInterventionMenage.cancel();
+        verifierDerniereInterventionMenage();
+    }
 
     private View.OnClickListener textViewLevelListener = new View.OnClickListener() {
         boolean show = false;
         /**
          * Fonction permettant d'afficher le nom du joueur
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -478,7 +630,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -497,7 +650,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: : élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -516,7 +670,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -535,7 +690,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -549,13 +705,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
     private View.OnClickListener imageButtonHideInformationSousTraiterListener = new View.OnClickListener() {
         boolean show = false;
         /**
          * Fonction permettant d'afficher le popup des compétences
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -569,7 +725,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les types d'employés que l'on peut embaucher
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -589,7 +746,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les informations concernant la sécurité informatique
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -604,7 +762,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les informations concernant la sécurité informatique
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -627,7 +786,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les informations concernant la sécurité informatique
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -654,7 +814,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les informations concernant la sécurité informatique
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -676,7 +837,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant de revenir en arrière
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -710,7 +872,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant de revenir en arrière
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -726,7 +889,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'afficher les details sur les comptables
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -740,7 +904,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'ajouter un comptable
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -852,7 +1017,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Augmenter le niveau d'un comptable
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -935,7 +1101,8 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Fonction permettant d'augmenter le nombre de ressources
          *
-         * @param v
+         * @param v: élement de la vue sur lequel on clique
+         * @author zoua
          */
         @Override
         public void onClick(View v) {
@@ -993,6 +1160,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Permet d'afficher un message indiquant le nombre d'argent manquant à l'utilisateur pour acheter
+     *
      * @param cout : prix de l'élément que l'utilisateur voulait acheter
      * @author casag
      */
@@ -1002,6 +1170,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Permet d'afficher un message précisant le nombre de ressources achetées
+     * 
      * @param nbRes : nombre de ressources achetées
      * @author casag
      */
