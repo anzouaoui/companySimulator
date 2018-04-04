@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources, ProgressBarNiveauRessources, progressBarNiveauBonheur,
-                progressBarNiveauFormation, ProgressBarNiveauReputation2, ProgressBarNiveauSecuriteGlobale;
+                progressBarNiveauFormation, ProgressBarNiveauReputation2, ProgressBarNiveauSecuriteGlobale, ProgressBarNiveauConditionsTravails2;
 
     RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutDetailsCompetences, relativeLayoutDetailsSecurite,
             relativeLayoutDetailsSecuriteInformatique, relativeLayoutProgressBarOneComptableWorker1_1, relativeLayoutProgressBarOneComptableWorker1_2,
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         TextViewNiveauRessources = (TextView) findViewById(R.id.TextViewNiveauRessources);
         TextViewNiveauRessources.setText(String.valueOf(Ressources.getInstance()));
 
-        textViewNiveauBonheur.setText(String.valueOf(entreprise.getBonheur() * 100));
+        //textViewNiveauBonheur.setText(String.valueOf(entreprise.getBonheur() * 100));
 
         textViewArgent.setText("0");
         textViewNomJoueur.setVisibility(View.GONE);
@@ -308,11 +308,13 @@ public class MainActivity extends AppCompatActivity {
         progressBarNiveauBonheur = (ProgressBar) findViewById(R.id.ProgressBarNiveauBonheur);
         progressBarNiveauBonheur.setProgress((int)(entreprise.getBonheur()*100));
         progressBarNiveauFormation = (ProgressBar) findViewById(R.id.ProgressBarNiveauFormation);
-        progressBarNiveauFormation.setProgress((int)entreprise.getNiveauMoyenFormation()*100);
+        progressBarNiveauFormation.setProgress((int)(entreprise.getNiveauMoyenFormation()*100));
         ProgressBarNiveauReputation2 = (ProgressBar) findViewById(R.id.ProgressBarNiveauReputation2);
-        ProgressBarNiveauReputation2.setProgress((int)entreprise.getReputation()*100);
-//        ProgressBarNiveauSecuriteGlobale = (ProgressBar) findViewById(R.id.ProgressBarNiveauSecuriteGlobale);
-//        ProgressBarNiveauSecuriteGlobale.setProgress((int)entreprise.getTauxSecuGlobal()*100);
+        ProgressBarNiveauReputation2.setProgress((int)(entreprise.getReputation()*100));
+        ProgressBarNiveauSecuriteGlobale = (ProgressBar) findViewById(R.id.ProgressBarNiveauSecuriteGlobale);
+        ProgressBarNiveauSecuriteGlobale.setProgress((int)(entreprise.getTauxSecuGlobal()*100));
+        ProgressBarNiveauConditionsTravails2 = (ProgressBar) findViewById(R.id.ProgressBarNiveauConditionsTravails2);
+        ProgressBarNiveauConditionsTravails2.setProgress((int)(entreprise.getTauxQualConditionTravail()*100));
 
         //ELEMENTS RELATIVE LAYOUT
         relativeLayoutHomme = (RelativeLayout) findViewById(R.id.RelativeLayoutHomme);
@@ -1066,15 +1068,36 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      *  Met à jour les deux progressbar et le texte indiquant le nombre de ressources
+     *  @author casag
      */
     private void majGraphRessources() {
         progressBarRessources.setProgress(Ressources.getInstance());
-        ProgressBarNiveauRessources.setProgress(Ressources.getInstance());
-        TextViewNiveauRessources.setText(String.valueOf(Ressources.getInstance()));
+        if(relativeLayoutDetailsRessources.getVisibility() == View.VISIBLE) {
+            ProgressBarNiveauRessources.setProgress(Ressources.getInstance());
+            TextViewNiveauRessources.setText(String.valueOf(Ressources.getInstance()));
+        }
     }
 
     /**
-     * Fonction permettant de décrémenter automatiquement les ressources
+     * Met à jour les dex progressbar et le texte indiquant le taux de bonheur
+     */
+    private void majGraphBonheur() {
+        entreprise.setTauxBonheur();
+        progressBarBonheur.setProgress((int)(entreprise.getBonheur()*100));
+        if(relativeLayoutDetailsBonheur.getVisibility() == View.VISIBLE) {
+            textViewNiveauBonheur.setText(String.valueOf(entreprise.getBonheur() * 100));
+            progressBarNiveauBonheur.setProgress((int) (entreprise.getBonheur() * 100));
+            progressBarNiveauFormation.setProgress((int)(entreprise.getNiveauMoyenFormation()*100));
+            ProgressBarNiveauReputation2.setProgress((int)(entreprise.getReputation()*100));
+            ProgressBarNiveauSecuriteGlobale.setProgress((int)(entreprise.getTauxSecuGlobal()*100));
+            ProgressBarNiveauConditionsTravails2.setProgress((int)(entreprise.getTauxQualConditionTravail()*100));
+        }
+    }
+
+    /**
+     * Fonction permettant de décrémenter automatiquement les ressources.
+     * Met à jour de multiples éléments
+     * @author casag
      */
     private void decrementeRessources() {
         _t2 = new Timer();
@@ -1087,6 +1110,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         if (Ressources.getInstance() >= 0) {
                             majGraphRessources();
+                            majGraphBonheur();
                         } else {
                             _t2.cancel();
                             gameOver("Vous n'avez plus assez de ressources. L'entreprise a fait faillite !");
@@ -1178,6 +1202,11 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), nbRes + " ressources achetées !", Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * Affiche un message de Game Over et redémarre le jeu
+     * @param raison : ce sera le message à l'intérieur de la popup
+     * @author casag
+     */
     private void gameOver(String raison) {
         AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(MainActivity.this);
         dlgAlert.setMessage(raison);
