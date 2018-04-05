@@ -2560,7 +2560,7 @@
                 android:layout_marginTop="40dp"
                 android:alpha="0.9"
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:id="@+id/RelativeLayoutContentDetailBonheur"
@@ -3188,123 +3188,124 @@
                 </RelativeLayout>
             </RelativeLayout>
             </RelativeLayout>
+
         <RelativeLayout
-            android:layout_centerHorizontal="true"
             android:id="@+id/RelativeLayoutRessources"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp">
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone">
 
-                <RelativeLayout
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutArgent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true">
+
+                <ImageView
+                    android:id="@+id/ImageViewArgent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:id="@+id/RelativeLayoutArgent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/ImageViewArgent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:contentDescription="Image argent"
-                        android:src="@drawable/argent" />
-
-                    <TextView
-                        android:id="@+id/TextViewArgent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@+id/ImageViewArgent"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginStart="50dp"
-                        android:text="10000"
-                        android:textColor="@color/fontColor"
-                        android:textSize="15sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_centerInParent="true"
-                    android:id="@+id/RelativeLayoutHomme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
+                    android:layout_marginStart="10dp"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:contentDescription="Image argent"
+                    android:focusable="true"
+                    android:src="@drawable/argent" />
 
-                    <ImageView
-                        android:id="@+id/ImageViewHommes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"
-                        android:contentDescription="@string/description_image_employes"
-                        android:src="@drawable/workericon" />
-
-                    <TextView
-                        android:id="@+id/TextViewHomme"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@+id/ImageViewHommes"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="50dp"
-                        android:text="12"
-                        android:textColor="@color/fontColor"
-                        android:textSize="15sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/RelativeLayoutRessource"
+                <TextView
+                    android:id="@+id/TextViewArgent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="10dp">
+                    android:layout_alignStart="@+id/ImageViewArgent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="50dp"
+                    android:text="10000"
+                    android:textColor="@color/fontColor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
-                    <ImageView
-                        android:id="@+id/ImageViewRessources"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:contentDescription="Image argent"
-                        android:src="@drawable/resourcesicon" />
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutHomme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:focusable="true">
 
-                    <ProgressBar
-                        android:id="@+id/ProgressBarRessources"
-                        style="@android:style/Widget.ProgressBar.Horizontal"
-                        android:layout_width="97dp"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toEndOf="@+id/ImageViewRessources"
-                        android:clickable="false"
-                        android:indeterminate="false"
-                        android:indeterminateTintMode="src_atop"
-                        android:max="100"
-                        android:maxHeight="30dp"
-                        android:maxWidth="100dp"
-                        android:minHeight="30dp"
-                        android:minWidth="100dp"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/custom_progress_bar_ressources" />
+                <ImageView
+                    android:id="@+id/ImageViewHommes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="@string/description_image_employes"
+                    android:src="@drawable/workericon" />
 
-                    <TextView
-                        android:id="@+id/TextViewAddRessources"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_toEndOf="@+id/ProgressBarRessources"
-                        android:text="+"
-                        android:textColor="@color/fontColor"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_centerHorizontal="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        />
+                <TextView
+                    android:id="@+id/TextViewHomme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/ImageViewHommes"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:text="12"
+                    android:textColor="@color/fontColor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutRessource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:id="@+id/ImageViewRessources"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="Image argent"
+                    android:src="@drawable/resourcesicon" />
+
+                <ProgressBar
+                    android:id="@+id/ProgressBarRessources"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="97dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/ImageViewRessources"
+                    android:clickable="false"
+                    android:indeterminate="false"
+                    android:indeterminateTintMode="src_atop"
+                    android:max="100"
+                    android:maxHeight="30dp"
+                    android:maxWidth="100dp"
+                    android:minHeight="30dp"
+                    android:minWidth="100dp"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/custom_progress_bar_ressources" />
+
+                <TextView
+                    android:id="@+id/TextViewAddRessources"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/ProgressBarRessources"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="+"
+                    android:textColor="@color/fontColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
