@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
             imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
             imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation,
             imageButtonBackButtonDetailBonheur, imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails,
-            imageButtonBackButtonDetailRessources, ImageViewArgentPremiereRessource, ImageViewArgentDeuxiemeRessource, ImageViewArgentTroisiemeRessource;
+            imageButtonBackButtonDetailRessources, ImageViewArgentPremiereRessource, ImageViewArgentDeuxiemeRessource, ImageViewArgentTroisiemeRessource, ImageButtonHelpNiveauFormation,
+            ImageButtonHelpNiveauSecuriteGlobale, ImageButtonHelpNiveauConditionTravails, ImageButtonHelpNiveauReputation2;
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
      ArrayList<ImageButton> collectionImageButtonBack;
@@ -376,6 +377,12 @@ public class MainActivity extends AppCompatActivity {
         ImageViewArgentPremiereRessource = (ImageButton) findViewById(R.id.ImageViewArgentPremiereRessource);
         ImageViewArgentDeuxiemeRessource = (ImageButton) findViewById(R.id.ImageViewArgentDeuxiemeRessource);
         ImageViewArgentTroisiemeRessource = (ImageButton) findViewById(R.id.ImageViewArgentTroisiemeRessource);
+        //Boutons aide
+        //Bonheur
+        ImageButtonHelpNiveauFormation = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauFormation);
+        ImageButtonHelpNiveauReputation2 = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauReputation2);
+        ImageButtonHelpNiveauSecuriteGlobale = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauSecuriteGlobale);
+        ImageButtonHelpNiveauConditionTravails = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauConditionTravails);
 
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
@@ -449,6 +456,10 @@ public class MainActivity extends AppCompatActivity {
         ImageViewArgentPremiereRessource.setOnClickListener(imageViewArgentPremiereRessourceListener);
         ImageViewArgentDeuxiemeRessource.setOnClickListener(imageViewArgentDeuxiemeRessourceListener);
         ImageViewArgentTroisiemeRessource.setOnClickListener(imageViewArgentTroisiemeRessourceListener);
+        ImageButtonHelpNiveauFormation.setOnClickListener(ImageButtonHelpNiveauFormationListener);
+        ImageButtonHelpNiveauReputation2.setOnClickListener(ImageButtonHelpNiveauReputation2Listener);
+        ImageButtonHelpNiveauSecuriteGlobale.setOnClickListener(ImageButtonHelpNiveauSecuriteGlobaleListener);
+        ImageButtonHelpNiveauConditionTravails.setOnClickListener(ImageButtonHelpNiveauConditionTravailsListener);
     }
 
     /**
@@ -801,7 +812,7 @@ public class MainActivity extends AppCompatActivity {
                 relativeLayoutDetailsReputation.setVisibility(View.VISIBLE);
                 relativeLayoutDetailsBonheur.setVisibility(View.GONE);
             } else if (ImageButtonUpSelected == imageButtonUpNiveauSecuriteGlobale) {
-                relativeLayoutDetailsSecuriteInformatique.setVisibility(View.VISIBLE);
+                relativeLayoutDetailsSecurite.setVisibility(View.VISIBLE);
                 relativeLayoutDetailsBonheur.setVisibility(View.GONE);
             } else if (ImageButtonUpSelected == imageButtonUpNiveauConditionsTravails) {
                 relativeLayoutDetailsConditionsTravails.setVisibility(View.VISIBLE);
@@ -1079,7 +1090,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Met à jour les dex progressbar et le texte indiquant le taux de bonheur
+     * Met à jour l'écran du détail des bonheurs
+     * @author casag
      */
     private void majGraphBonheur() {
         entreprise.setTauxBonheur();
@@ -1182,6 +1194,37 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener ImageButtonHelpNiveauFormationListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Cette barre de progression indique le niveau de formation moyen de tes employés.");
+        }
+    };
+
+    private View.OnClickListener ImageButtonHelpNiveauReputation2Listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Cette barre de progression indique le niveau de réputation de ton entreprise.");
+        }
+    };
+
+    private View.OnClickListener ImageButtonHelpNiveauSecuriteGlobaleListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Cette barre de progression indique le niveau de sécurité globale de ton entreprise : cela prend en compte la formation de tes employés de sécurité, la sécurité informatique et les conditions de travail. ");
+        }
+    };
+
+    private View.OnClickListener ImageButtonHelpNiveauConditionTravailsListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Cette barre de progression indique le niveau des conditions de travail. ");
+        }
+    };
+
+
+
+
     /**
      * Permet d'afficher un message indiquant le nombre d'argent manquant à l'utilisateur pour acheter
      *
@@ -1216,6 +1259,18 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }});
         dlgAlert.setCancelable(false);
+        dlgAlert.create().show();
+    }
+
+    private void popUpInfo(String explication) {
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(MainActivity.this);
+        dlgAlert.setMessage(explication);
+        dlgAlert.setTitle("Information");
+        dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }});
+        dlgAlert.setCancelable(true);
         dlgAlert.create().show();
     }
 
