@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         verifierDerniereMAJSysteme();
         verifierDerniereInterventionMedecineTravail();
         verifierDerniereInterventionMenage();
+        Temps.getTemps();
         decrementeRessources();
         afficherNoms();
     }
@@ -465,7 +467,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Fonction permettant d'incrémenter automatiquement l'argent
      *
-     * @author zoua
+     * @author zoua, casag
      */
     private void incrementeArgent() {
         _t = new Timer();
@@ -1123,6 +1125,7 @@ public class MainActivity extends AppCompatActivity {
                         if (Ressources.getInstance() >= 0) {
                             majGraphRessources();
                             majGraphBonheur();
+                            checkTime();
                         } else {
                             _t2.cancel();
                             gameOver("Vous n'avez plus assez de ressources. L'entreprise a fait faillite !");
@@ -1262,6 +1265,11 @@ public class MainActivity extends AppCompatActivity {
         dlgAlert.create().show();
     }
 
+    /**
+     * Lance une pop up d'information
+     * @param explication : message à afficher
+     * @author casag
+     */
     private void popUpInfo(String explication) {
         AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(MainActivity.this);
         dlgAlert.setMessage(explication);
@@ -1280,4 +1288,16 @@ public class MainActivity extends AppCompatActivity {
             textViewNomJoueur.setText(intentStart.getStringExtra(EXTRA_NOM_JOUEUR));
         }
     }
+
+    private void checkTime(){
+        long timeMillis = Temps.getTemps();
+        if(TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 1){
+            popUpInfo("Vous avez joué pendant une minute, félicitations");
+        }
+        String time;
+        time = String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(timeMillis), TimeUnit.MILLISECONDS.toSeconds(timeMillis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeMillis)));
+
+    }
+
+
 }
