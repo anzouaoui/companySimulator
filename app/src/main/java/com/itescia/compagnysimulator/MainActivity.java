@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom, textViewBonheurTitle, textViewNiveauBonheur, textViewNiveauFormation,
             textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2, textViewRessourcesTitle, textViewNiveauRessources,
             textViewNombrePremiereRessources, textViewArgentPremiereRessource, textViewNombreDeuxiemeRessources, textViewArgentDeuxiemeRessource, textViewNombreTroisiemeRessources,
-            textViewArgentTroisiemeRessource, TextViewNiveauRessources;
+            textViewArgentTroisiemeRessource, TextViewNiveauRessources, textViewClock;
 
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
@@ -206,15 +206,14 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentTroisiemeRessource = (TextView) findViewById(R.id.TextViewArgentTroisiemeRessource);
         TextViewNiveauRessources = (TextView) findViewById(R.id.TextViewNiveauRessources);
         TextViewNiveauRessources.setText(String.valueOf(Ressources.getInstance()));
-
+        textViewClock = (TextView) findViewById(R.id.TextViewClock);
         //textViewNiveauBonheur.setText(String.valueOf(entreprise.getBonheur() * 100));
 
         textViewArgent.setText("0");
-        textViewNomJoueur.setVisibility(View.GONE);
-
         textViewLevel.setTypeface(typefaceLevel);
         textViewNomJoueur.setTypeface(typefaceLevel);
         textViewArgent.setTypeface(typefaceRessource);
+        textViewClock.setTypeface(typefaceRessource);
         textViewHomme.setTypeface(typefaceRessource);
         textViewAddRessources.setTypeface(typefaceRessource);
         textViewDetailEmployes.setTypeface(typefaceLevel);
@@ -295,15 +294,15 @@ public class MainActivity extends AppCompatActivity {
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
-        progressBarBonheur.setProgress(30);
+        progressBarBonheur.setProgress(70);
         progressBarFormation = (ProgressBar) findViewById(R.id.ProgressBarFormation);
-        progressBarFormation.setProgress(30);
+        progressBarFormation.setProgress(99);
         progressBarReputation = (ProgressBar) findViewById(R.id.ProgressBarReputation);
-        progressBarReputation.setProgress(30);
+        progressBarReputation.setProgress(80);
         progressBarRessources = (ProgressBar) findViewById(R.id.ProgressBarRessources);
         progressBarRessources.setProgress(Ressources.getInstance());
         progressBarSecurite = (ProgressBar) findViewById(R.id.ProgressBarSecurite);
-        progressBarSecurite.setProgress(30);
+        progressBarSecurite.setProgress(90);
         ProgressBarNiveauRessources = (ProgressBar) findViewById(R.id.ProgressBarNiveauRessources);
         ProgressBarNiveauRessources.setProgress(Ressources.getInstance());
         progressBarNiveauBonheur = (ProgressBar) findViewById(R.id.ProgressBarNiveauBonheur);
@@ -426,7 +425,6 @@ public class MainActivity extends AppCompatActivity {
      * @author zoua
      */
     private void bindListener() {
-        textViewLevel.setOnClickListener(textViewLevelListener);
         relativeLayoutHomme.setOnClickListener(relativeLayoutHommeListener);
         imageviewComptable.setOnClickListener(imageviewComptableListener);
         imageButtonAddComptableWorker.setOnClickListener(imageButtonAddComptableWorkerListener);
@@ -616,26 +614,6 @@ public class MainActivity extends AppCompatActivity {
         _tInterventionMenage.cancel();
         verifierDerniereInterventionMenage();
     }
-
-    private View.OnClickListener textViewLevelListener = new View.OnClickListener() {
-        boolean show = false;
-        /**
-         * Fonction permettant d'afficher le nom du joueur
-         *
-         * @param v: élement de la vue sur lequel on clique
-         * @author zoua
-         */
-        @Override
-        public void onClick(View v) {
-            if (!show) {
-                textViewNomJoueur.setVisibility(View.VISIBLE);
-                show = true;
-            } else {
-                textViewNomJoueur.setVisibility(View.GONE);
-                show = false;
-            }
-        }
-    };
 
 
     private View.OnClickListener progressBarFormationListener = new View.OnClickListener() {
