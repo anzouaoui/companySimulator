@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="backgroundLevel">#C9C9C9</color>
+    <color name="backgroundName">#B2B1B1</color>
     <color name="fontColor">#000000</color>
     <color name="colorProgressBarRessource">#977d66</color>
     <color name="colorBackgroundProgressBarRessource">#6e5b4a</color>

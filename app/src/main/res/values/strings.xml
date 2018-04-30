@@ -4,6 +4,9 @@
     <!-- ECRAN DE DEMARRAGE -->
     <string name="label_nom_joueur">nom du joueur</string>
     <string name="label_nom_entreprise">nom de l\'entreprise</string>
+    <string name="nom_entreprise">DEVMOB</string>
+    <string name="heure">05:13</string>
+    <string name="niveau">NIVEAU 10</string>
 
     <!-- DESCRIPTION IMAGE -->
     <string name="description_image_employes">Image employes</string>
@@ -13,9 +16,28 @@
     <string name="description_icone_bonheur">Icone bonheur</string>
     <string name="description_back_button">Bouton back</string>
     <string name="description_icone_commercial">Icone commercial</string>
+    <string name="description_icone_comptable">Icone comptable</string>
+    <string name="description_icone_rd">Icone rd</string>
+    <string name="description_icone_direction">Icone direction</string>
     <string name="description_icone_production">Icone production</string>
     <string name="description_icone_securite_2">Icone sécurite</string>
     <string name="description_icone_marketing">Icone marketing</string>
+    <string name="description_icone_clock">Icone clock</string>
+    <string name="description_image_comptable">Image comptable</string>
+    <string name="description_image_rh">Image RH</string>
+    <string name="description_image_direction">Image direction</string>
+    <string name="description_image_argent">Image argent</string>
+    <string name="description_image_ressources">Image ressources</string>
+    <string name="description_image_help">Image help</string>
+    <string name="description_image_manwomancap">Image manwomancap</string>
+    <string name="description_icone_back_button">Icone back button</string>
+    <string name="description_icone_man">Icone man</string>
+    <string name="description_icone_female">Icone female</string>
+    <string name="description_icone_male">Icone male</string>
+    <string name="description_icone_up">Icone up</string>
+    <string name="description_icone_plus">Icone plus</string>
+    <string name="description_icone_close">Icone close</string>
+    <string name="description_icone_check">Icone check</string>
 
 
     <string name="detail_employes">DETAILS DES EMPLOYES</string>
