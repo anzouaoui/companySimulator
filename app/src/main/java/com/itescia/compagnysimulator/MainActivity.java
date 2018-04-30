@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
         textViewArgent.setText("0");
         textViewLevel.setTypeface(typefaceLevel);
+        textViewLevel.setText("NIveau 1");
         textViewNomJoueur.setTypeface(typefaceLevel);
         textViewArgent.setTypeface(typefaceRessource);
         textViewClock.setTypeface(typefaceRessource);
@@ -474,11 +475,13 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 //count++;
                 entreprise.setArgent((int)(entreprise.getArgent()+1));
+                Temps.getTemps();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         if (entreprise.getArgent() <= 10000) {
                             textViewArgent.setText(String.valueOf(entreprise.getArgent()));
+                            textViewClock.setText(Temps.getTempsString());
                         } else {
                             _t.cancel();
                         }
@@ -1103,7 +1106,6 @@ public class MainActivity extends AppCompatActivity {
                         if (Ressources.getInstance() >= 0) {
                             majGraphRessources();
                             majGraphBonheur();
-                            checkTime();
                         } else {
                             _t2.cancel();
                             gameOver("Vous n'avez plus assez de ressources. L'entreprise a fait faillite !");
@@ -1267,15 +1269,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Vérifie le temps, augmente de niveau et fait les modifications adéquates
+     * @author casag
+     */
     private void checkTime(){
         long timeMillis = Temps.getTemps();
         if(TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 1){
-            popUpInfo("Vous avez joué pendant une minute, félicitations");
+            //popUpInfo("Vous avez joué pendant une minute, félicitations");
+            textViewLevel.setText("Niveau 2");
         }
-        String time;
-        time = String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(timeMillis), TimeUnit.MILLISECONDS.toSeconds(timeMillis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeMillis)));
-
     }
-
-
 }

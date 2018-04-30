@@ -29,6 +29,17 @@ public class Temps {
         return t.estimatedTimeMillis;
     }
 
+    /**
+     * Permet de récupérer le temps écoulé en chaîne de caractères
+     * @return durée en chaîne de caractères
+     * @author casag
+     */
+    public synchronized  static String getTempsString() {
+        String temps = String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(t.estimatedTimeMillis), TimeUnit.MILLISECONDS.toSeconds(t.estimatedTimeMillis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(t.estimatedTimeMillis)));
+        return temps;
+    }
+
+
 
 
 }
