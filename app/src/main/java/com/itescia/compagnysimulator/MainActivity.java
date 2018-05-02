@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
         textViewArgent.setText("0");
         textViewLevel.setTypeface(typefaceLevel);
-        textViewLevel.setText("NIveau 1");
+        textViewLevel.setText("NIVEAU 1");
         textViewNomJoueur.setTypeface(typefaceLevel);
         textViewArgent.setTypeface(typefaceRessource);
         textViewClock.setTypeface(typefaceRessource);
@@ -465,7 +465,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Fonction permettant d'incrémenter automatiquement l'argent
-     *
+     * Met à jour le temps passé sur la jeu
      * @author zoua, casag
      */
     private void incrementeArgent() {
@@ -474,7 +474,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //count++;
-                entreprise.setArgent((int)(entreprise.getArgent()+1));
+                entreprise.setArgent((int)(entreprise.getArgent()+5));
                 Temps.getTemps();
                 runOnUiThread(new Runnable() {
                     @Override
@@ -482,6 +482,7 @@ public class MainActivity extends AppCompatActivity {
                         if (entreprise.getArgent() <= 10000) {
                             textViewArgent.setText(String.valueOf(entreprise.getArgent()));
                             textViewClock.setText(Temps.getTempsString());
+                            checkTime(); // Vérifications pour augmenter niveau
                         } else {
                             _t.cancel();
                         }
@@ -1099,7 +1100,7 @@ public class MainActivity extends AppCompatActivity {
         _t2.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                Ressources.setInstance(Ressources.getInstance()-1);
+                Ressources.setInstance(Ressources.getInstance()-entreprise.getIndiceDecrem());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -1262,6 +1263,23 @@ public class MainActivity extends AppCompatActivity {
         dlgAlert.create().show();
     }
 
+    /**
+     * Lance une pop up d'information
+     * @param explication : message à afficher
+     * @author casag
+     */
+    private void popUpInfo(String explication, String titre) {
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(MainActivity.this);
+        dlgAlert.setMessage(explication);
+        dlgAlert.setTitle(titre);
+        dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }});
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();
+    }
+
     private void afficherNoms() {
         Intent intentStart = getIntent();
         if(intentStart != null) {
@@ -1275,9 +1293,43 @@ public class MainActivity extends AppCompatActivity {
      */
     private void checkTime(){
         long timeMillis = Temps.getTemps();
+
+        //NIVEAU 2 : 1 minute
         if(TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 1){
-            //popUpInfo("Vous avez joué pendant une minute, félicitations");
-            textViewLevel.setText("Niveau 2");
+            textViewLevel.setText("NIVEAU 2");
+            entreprise.setIndiceDecrem(2);
+            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) > 60000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 60500){
+                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 2");
+            }
+            //NIVEAU 3 : 3 minutes
+        } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 3){
+            long t = TimeUnit.MILLISECONDS.toMillis(timeMillis);
+            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 180000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 180500){
+                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 3");
+            }
+            textViewLevel.setText("NIVEAU 3");
+            entreprise.setIndiceDecrem(3);
+            //NIVEAU 4 : 5 minutes
+        } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 5) {
+            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 300000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 300500){
+                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 4");
+            }
+            textViewLevel.setText("NIVEAU 4");
+            entreprise.setIndiceDecrem(4);
+            //NIVEAU 5
+        } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 7) {
+            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 420000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 420500){
+                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 5");
+            }
+            textViewLevel.setText("NIVEAU 5");
+            entreprise.setIndiceDecrem(5);
+            //NIVEAU 6
+        } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 9) {
+            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 540000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 540500){
+                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 6");
+            }
+            textViewLevel.setText("NIVEAU 6");
+            entreprise.setIndiceDecrem(6);
         }
     }
 }
