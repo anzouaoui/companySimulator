@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
         textViewApero = (TextView) findViewById(R.id.TextViewApero);
         textViewArgentApero = (TextView) findViewById(R.id.TextViewArgentApero);
         textViewFelicitaion = (TextView) findViewById(R.id.TextViewFelicitaion);
-        textViewArgentFelicitation = (TextView) findViewById(R.id.TextViewArgentFelicitation);
+        //textViewArgentFelicitation = (TextView) findViewById(R.id.TextViewArgentFelicitation);
         //textViewPossibilite = (TextView) findViewById(R.id.TextViewPossibilite);
         //textViewHeurePossibilite = (TextView) findViewById(R.id.TextViewHeurePossibilite);
         textViewReputationTitle = (TextView) findViewById(R.id.TextViewReputationTitle);
@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
         textViewArgentMedecinTravail.setTypeface(typefaceLvl);
         textViewArgentMenage.setTypeface(typefaceLvl);
         textViewArgentApero.setTypeface(typefaceLvl);
-        textViewArgentFelicitation.setTypeface(typefaceLvl);
+        //textViewArgentFelicitation.setTypeface(typefaceLvl);
         textViewFelicitaion.setTypeface(typefaceLvl);
         textViewDerniereMiseAJour.setTypeface(typefaceLvl);
         textViewDernierMenage.setTypeface(typefaceLvl);
