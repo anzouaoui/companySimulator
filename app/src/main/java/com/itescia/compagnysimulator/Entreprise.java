@@ -349,6 +349,18 @@ public class Entreprise {
         return taux;
     }
 
+    /**
+     * Retourne la quantité de ressources retirée : prend en compte le niveau moyen de formation du service production
+     * @return quantité de ressources retirée
+     * @author casag
+     */
+    public int getDiminutionRess() {
+        int dim;
+        double prod = getNiveauMoyenDomaine("Production") /5;
+        dim = (int)(getIndiceDecrem() * (1.0-prod));
+        return dim;
+    }
+
     /** Permet d'ajouter un nouvel employé à la collection <br>
      * La création d'un employé se fait en fonction du nom de son service
      * ainsi que son sexe (F/H), tous deux transmis en paramètres

@@ -1099,7 +1099,7 @@ public class MainActivity extends AppCompatActivity {
         _t2.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                Ressources.setInstance(Ressources.getInstance()-entreprise.getIndiceDecrem());
+                Ressources.setInstance(Ressources.getInstance()-entreprise.getDiminutionRess());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -1299,7 +1299,7 @@ public class MainActivity extends AppCompatActivity {
             entreprise.setIndiceDecrem(2);
             entreprise.setIndiceIncremArgent(25);
             if(TimeUnit.MILLISECONDS.toMillis(timeMillis) > 60000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 60500){
-                popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais les ressources décrémentent plus rapidement.", "NIVEAU 2");
+                popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais attention, les ressources décrémentent...", "NIVEAU 2");
             }
             //NIVEAU 3 : 3 minutes
         } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 3){
