@@ -185,7 +185,7 @@ public class Entreprise {
         this.derniereFelicitation = null;
         this.employes = new ArrayList<Employe>();
         this.indiceDecrem = 1;
-        this.indiceIncremArgent = 10;
+        this.indiceIncremArgent = 20;
         Ressources.getInstance();
     }
 
@@ -344,7 +344,8 @@ public class Entreprise {
         double taux = 0;
         double tauxPerf = getTauxGlobal();
         double compt = getNiveauMoyenDomaine("Comptabilite") /5;
-        taux = compt * (25.0/100.0) + tauxPerf * (75.0/100.0);
+        double commerc = getNiveauMoyenDomaine("Commercial") /5;
+        taux = compt * (25.0/100.0) + commerc * (20.0*100.0) + tauxPerf * (55.0/100.0);
         return taux;
     }
 

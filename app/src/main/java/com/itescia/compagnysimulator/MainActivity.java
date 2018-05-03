@@ -1297,7 +1297,7 @@ public class MainActivity extends AppCompatActivity {
         if(TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 1){
             textViewLevel.setText("NIVEAU 2");
             entreprise.setIndiceDecrem(2);
-            entreprise.setIndiceIncremArgent(20);
+            entreprise.setIndiceIncremArgent(25);
             if(TimeUnit.MILLISECONDS.toMillis(timeMillis) > 60000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 60500){
                 popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais les ressources décrémentent plus rapidement.", "NIVEAU 2");
             }
@@ -1309,6 +1309,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textViewLevel.setText("NIVEAU 3");
             entreprise.setIndiceDecrem(3);
+            entreprise.setIndiceIncremArgent(30);
             //NIVEAU 4 : 5 minutes
         } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 5) {
             if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 300000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 300500){
@@ -1316,6 +1317,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textViewLevel.setText("NIVEAU 4");
             entreprise.setIndiceDecrem(4);
+            entreprise.setIndiceIncremArgent(35);
             //NIVEAU 5
         } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 7) {
             if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 420000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 420500){
@@ -1323,6 +1325,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textViewLevel.setText("NIVEAU 5");
             entreprise.setIndiceDecrem(5);
+            entreprise.setIndiceIncremArgent(40);
             //NIVEAU 6
         } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 9) {
             if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 540000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 540500){
@@ -1330,6 +1333,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textViewLevel.setText("NIVEAU 6");
             entreprise.setIndiceDecrem(6);
+            entreprise.setIndiceIncremArgent(45);
         }
     }
 }
