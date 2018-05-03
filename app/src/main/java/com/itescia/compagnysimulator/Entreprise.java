@@ -162,6 +162,8 @@ public class Entreprise {
 
     private int indiceDecrem;
 
+    private int indiceIncremArgent;
+
     /** Constructeur de l'entreprise <br>
      * Le niveau est fixé à 1. <br>
      * Le bonheur est fixé à 0.5 (moyenne) <br>
@@ -186,6 +188,7 @@ public class Entreprise {
         this.derniereFelicitation = null;
         this.employes = new ArrayList<Employe>();
         this.indiceDecrem = 1;
+        this.indiceIncremArgent = 10;
         Ressources.getInstance();
     }
 
@@ -766,6 +769,16 @@ public class Entreprise {
         return taux;
     }
 
+    /**
+     * Retourne le taux de performance global de l'entreprise
+     * @return taux global
+     */
+    public double getTauxGlobal(){
+        double taux;
+        taux = (getReputation() + getTauxSecuGlobal() + getNiveauMoyenFormation() + getBonheur()) / 4;
+        return taux;
+    }
+
 
     /* getters and setters */
 
@@ -924,6 +937,14 @@ public class Entreprise {
 
     public void setIndiceDecrem(int indiceDecrem) {
         this.indiceDecrem = indiceDecrem;
+    }
+
+    public int getIndiceIncremArgent() {
+        return indiceIncremArgent;
+    }
+
+    public void setIndiceIncremArgent(int indiceIncremArgent) {
+        this.indiceIncremArgent = indiceIncremArgent;
     }
 
 }

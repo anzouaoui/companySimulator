@@ -88,12 +88,11 @@ public class MainActivity extends AppCompatActivity {
     final String EXTRA_NOM_ENTREPRISE = "Nom de l'entreprise";
 
     Entreprise entreprise = new Entreprise(EXTRA_NOM_ENTREPRISE);
-
     /**
      * Fonction d'initialisation de l'activité principale
      *
      * @param savedInstanceState
-     * @author zoua
+     * @author zoua, casag, gbon
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -297,7 +296,6 @@ public class MainActivity extends AppCompatActivity {
 
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
-        progressBarBonheur.setProgress(70);
         progressBarFormation = (ProgressBar) findViewById(R.id.ProgressBarFormation);
         progressBarFormation.setProgress(99);
         progressBarReputation = (ProgressBar) findViewById(R.id.ProgressBarReputation);
@@ -420,6 +418,8 @@ public class MainActivity extends AppCompatActivity {
         collectionImageButtonUpBonheur.add(imageButtonUpNiveauReputation2);
         collectionImageButtonUpBonheur.add(imageButtonUpNiveauSecuriteGlobale);
         collectionImageButtonUpBonheur.add(imageButtonUpNiveauConditionsTravails);
+
+        double test = entreprise.getTauxGlobal();
     }
 
     /**
@@ -473,8 +473,8 @@ public class MainActivity extends AppCompatActivity {
         _t.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                //count++;
-                entreprise.setArgent((int)(entreprise.getArgent()+5));
+                // Augmentation de l'argent en fonction du taux global de performance de l'entreprise
+                entreprise.setArgent((int)(entreprise.getArgent()+(entreprise.getIndiceIncremArgent() * entreprise.getTauxGlobal())));
                 Temps.getTemps();
                 runOnUiThread(new Runnable() {
                     @Override
@@ -1298,14 +1298,15 @@ public class MainActivity extends AppCompatActivity {
         if(TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 1){
             textViewLevel.setText("NIVEAU 2");
             entreprise.setIndiceDecrem(2);
+            entreprise.setIndiceIncremArgent(20);
             if(TimeUnit.MILLISECONDS.toMillis(timeMillis) > 60000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 60500){
-                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 2");
+                popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais les ressources décrémentent plus rapidement.", "NIVEAU 2");
             }
             //NIVEAU 3 : 3 minutes
         } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 3){
             long t = TimeUnit.MILLISECONDS.toMillis(timeMillis);
             if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 180000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 180500){
-                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 3");
+                popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais les ressources décrémentent plus rapidement.", "NIVEAU 3");
             }
             textViewLevel.setText("NIVEAU 3");
             entreprise.setIndiceDecrem(3);
