@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             textViewHeureDerniereMiseAJourSysteme, textViewFormationEmployes, textViewArgentFormationEmployes, textViewSousTraiter, textViewArgentSousTraiter,
             textViewInformationSousTraiter, textViewInformationAntivirus, textViewConditionsTravailsTitle, textViewNiveauConditionsTravails, textViewFournitures, textViewArgentFournitures,
             textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewHeureDerniereInterventionMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDernierMenage,
-            textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, /*textViewPossibilite, textViewHeurePossibilite,*/ textViewReputationTitle,
+            textViewApero, textViewArgentApero, textViewFelicitaion, /*textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite,*/ textViewReputationTitle,
             textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom, textViewBonheurTitle, textViewNiveauBonheur, textViewNiveauFormation,
             textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2, textViewRessourcesTitle, textViewNiveauRessources,
             textViewNombrePremiereRessources, textViewArgentPremiereRessource, textViewNombreDeuxiemeRessources, textViewArgentDeuxiemeRessource, textViewNombreTroisiemeRessources,
@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources, ProgressBarNiveauRessources, progressBarNiveauBonheur,
-                progressBarNiveauFormation, ProgressBarNiveauReputation2, ProgressBarNiveauSecuriteGlobale, ProgressBarNiveauConditionsTravails2, progressBarFormationSecuriteInfo;
+                progressBarNiveauFormation, ProgressBarNiveauReputation2, ProgressBarNiveauSecuriteGlobale, progressBarEmployesSecurite, progressBarConditionTravail, progressBarSecuriteInformatique,
+                ProgressBarNiveauConditionsTravails2, progressBarFormationSecuriteInfo, progressBarNiveauConditionsTravails, progressBarNiveauSecuriteInformatique;
 
     RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutDetailsCompetences, relativeLayoutDetailsSecurite,
             relativeLayoutDetailsSecuriteInformatique, relativeLayoutProgressBarOneComptableWorker1_1, relativeLayoutProgressBarOneComptableWorker1_2,
@@ -321,6 +322,16 @@ public class MainActivity extends AppCompatActivity {
         ProgressBarNiveauSecuriteGlobale.setProgress((int)(entreprise.getTauxSecuGlobal()*100));
         ProgressBarNiveauConditionsTravails2 = (ProgressBar) findViewById(R.id.ProgressBarNiveauConditionsTravails2);
         ProgressBarNiveauConditionsTravails2.setProgress((int)(entreprise.getTauxQualConditionTravail()*100));
+        progressBarEmployesSecurite = (ProgressBar) findViewById(R.id.ProgressBarEmployesSecurite);
+        progressBarEmployesSecurite.setProgress((int)(entreprise.getNiveauMoyenDomaine("Securite")));
+        progressBarConditionTravail = (ProgressBar) findViewById(R.id.ProgressBarConditionTravail);
+        progressBarConditionTravail.setProgress((int)(entreprise.getTauxQualConditionTravail()*100));
+        progressBarSecuriteInformatique = (ProgressBar) findViewById(R.id.ProgressBarSecuriteInformatique);
+        progressBarSecuriteInformatique.setProgress((int)(entreprise.getTauxSecuInfo()*100));
+        progressBarNiveauConditionsTravails = (ProgressBar) findViewById(R.id.ProgressBarNiveauConditionsTravails);
+        progressBarNiveauConditionsTravails.setProgress((int)(entreprise.getTauxQualConditionTravail()*100));
+        progressBarNiveauSecuriteInformatique = (ProgressBar) findViewById(R.id.ProgressBarNiveauSecuriteInformatique);
+        progressBarNiveauSecuriteInformatique.setProgress((int)(entreprise.getTauxSecuInfo()*100));
 
         //ELEMENTS RELATIVE LAYOUT
         relativeLayoutHomme = (RelativeLayout) findViewById(R.id.RelativeLayoutHomme);
@@ -507,7 +518,7 @@ public class MainActivity extends AppCompatActivity {
         imageButtonUpFormationEmployes.setOnClickListener(imageButtonUpFormationEmployesListener);
         imageButtonHelpFormationEmployes.setOnClickListener(imageButtonHelpFormationEmployesListener);
         imageButtonUpFormationSousTraiter.setOnClickListener(imageButtonUpFormationSousTraiterListener);
-        //imageButtonHelpSousTraiter.setOnClickListener(imageButtonHelpSousTraiterListener);
+        imageButtonHelpSousTraiter.setOnClickListener(imageButtonHelpSousTraiterListener);
         textViewAddRessources.setOnClickListener(textViewAddRessourcesListener);
         ImageViewArgentPremiereRessource.setOnClickListener(imageViewArgentPremiereRessourceListener);
         ImageViewArgentDeuxiemeRessource.setOnClickListener(imageViewArgentDeuxiemeRessourceListener);
@@ -1441,12 +1452,36 @@ public class MainActivity extends AppCompatActivity {
             popUpInfo("Former vos employés permet de les rendre plus compétents dans la prévention des risques de sécurité liés à l'informatique");
         }
     };
-    /*private View.OnClickListener imageButtonHelpSousTraiterListener = new View.OnClickListener() {
+    private View.OnClickListener imageButtonHelpSousTraiterListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            popUpInfo("");
+            popUpInfo("Faire appel à un pen tester permet d'essayer de trouver des failles de sécurité dans le système informatique pour les corriger et ainsi limiter les risques d'intrusion");
         }
-    };*/
+    };
+
+    /**
+     * Met à jour l'écran du détail de la sécurité
+     * @author gbon
+     */
+    private void majGraphSecurite() {
+        progressBarSecurite.setProgress((int)(entreprise.getTauxSecuGlobal()*100));
+        // MAJ des progressbar de l'onglet Sécurité
+        if(relativeLayoutDetailsSecurite.getVisibility() == View.VISIBLE) {
+            progressBarEmployesSecurite.setProgress((int) (entreprise.getNiveauMoyenDomaine("Securite")));
+            progressBarConditionTravail.setProgress((int) (entreprise.getTauxQualConditionTravail() * 100));
+            progressBarSecuriteInformatique.setProgress((int) (entreprise.getTauxSecuInfo() * 100));
+        }
+        // MAJ de la progressar + taux de l'onglet détail conditions de travail
+        if(relativeLayoutDetailsConditionsTravails.getVisibility() == View.VISIBLE) {
+            progressBarNiveauConditionsTravails.setProgress((int) (entreprise.getTauxQualConditionTravail() * 100));
+            textViewNiveauConditionsTravails.setText(String.valueOf(entreprise.getTauxQualConditionTravail() * 100));
+        }
+        // MAJ de la progressbar + taux de l'onglet détail sécurité informatique
+        if(relativeLayoutDetailsSecuriteInformatique.getVisibility() == View.VISIBLE) {
+            progressBarNiveauSecuriteInformatique.setProgress((int)(entreprise.getTauxSecuInfo()*100));
+            textViewNiveauSecuriteInformatique.setText(String.valueOf(entreprise.getTauxSecuInfo() * 100));
+        }
+    }
 
     /* ********************************** *
      *            RESSOURCES              *
@@ -1498,6 +1533,7 @@ public class MainActivity extends AppCompatActivity {
                         if (Ressources.getInstance() >= 0) {
                             majGraphRessources();
                             majGraphBonheur();
+                            majGraphSecurite();
                         } else {
                             _t2.cancel();
                             gameOver("Vous n'avez plus assez de ressources. L'entreprise a fait faillite !");

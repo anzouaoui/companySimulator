@@ -714,6 +714,7 @@ public class Entreprise {
         //Si le joueur a les moyens
         if(this.payer(300)) {
             setTauxFormationSecuInfo(1);
+            augmenterTauxSecuInfo(0.15);
             levelUp(0.15);
             done = true;
         }
