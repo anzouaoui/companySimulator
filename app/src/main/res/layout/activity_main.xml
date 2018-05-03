@@ -1246,7 +1246,7 @@
                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                 android:layout_marginTop="40dp"
                 android:alpha="0.9"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:id="@+id/RelativeLayoutContentDetailSecuriteInformatique"
