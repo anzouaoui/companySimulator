@@ -160,6 +160,8 @@ public class Entreprise {
 
     private List<Employe> employes;
 
+    private int indiceDecrem;
+
     /** Constructeur de l'entreprise <br>
      * Le niveau est fixé à 1. <br>
      * Le bonheur est fixé à 0.5 (moyenne) <br>
@@ -183,6 +185,7 @@ public class Entreprise {
         this.niveauMobilier = 1;
         this.derniereFelicitation = null;
         this.employes = new ArrayList<Employe>();
+        this.indiceDecrem = 1;
         Ressources.getInstance();
     }
 
@@ -913,6 +916,14 @@ public class Entreprise {
 
     public void setEmployes(List<Employe> employes) {
         this.employes = employes;
+    }
+
+    public int getIndiceDecrem() {
+        return indiceDecrem;
+    }
+
+    public void setIndiceDecrem(int indiceDecrem) {
+        this.indiceDecrem = indiceDecrem;
     }
 
 }
