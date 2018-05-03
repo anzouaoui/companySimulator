@@ -1,18 +1,15 @@
 package com.itescia.compagnysimulator;
 import com.itescia.compagnysimulator.Employes.Commercial;
+import com.itescia.compagnysimulator.Employes.Communication;
 import com.itescia.compagnysimulator.Employes.Comptabilite;
-import com.itescia.compagnysimulator.Employes.Direction;
 import com.itescia.compagnysimulator.Employes.Employe;
-import com.itescia.compagnysimulator.Employes.Marketing;
 import com.itescia.compagnysimulator.Employes.Production;
-import com.itescia.compagnysimulator.Employes.RD;
 import com.itescia.compagnysimulator.Employes.Securite;
 
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.*;
@@ -55,7 +52,7 @@ public class Entreprise {
     /** Argent possédé dans l'entreprise <br>
      *  S'incrémente constamment en fonction du niveau de compétences des employés
      *  et du niveau de bonheur : <br>
-     *  40% Comptabilité | 30% bonheur | 10% Production | 10% Commercial | 10% Marketing
+     *  40% Comptabilité | 30% bonheur | 10% Production | 10% Commercial | 10% Communication
      *
      * @see Entreprise#getArgent()
      * @see Entreprise#setArgent(int)
@@ -266,26 +263,14 @@ public class Entreprise {
                         nbEmp += 1;
                     }
                     break;
-                case "Direction" :
-                    if(emp instanceof Direction){
-                        somme += emp.getNiveauFormation();
-                        nbEmp += 1;
-                    }
-                    break;
-                case "Marketing" :
-                    if(emp instanceof Marketing){
+                case "Communication" :
+                    if(emp instanceof Communication){
                         somme += emp.getNiveauFormation();
                         nbEmp += 1;
                     }
                     break;
                 case "Production" :
                     if(emp instanceof Production){
-                        somme += emp.getNiveauFormation();
-                        nbEmp += 1;
-                    }
-                    break;
-                case "RD" :
-                    if(emp instanceof RD){
                         somme += emp.getNiveauFormation();
                         nbEmp += 1;
                     }
@@ -350,21 +335,16 @@ public class Entreprise {
     }
 
     /** Retourne le taux de rapidité d'incrémentation de l'argent <br>
-     * 40% Comptabilité | 30% bonheur | 10% Production | 10% Commercial | 10% Marketing
+     * 25% Comptabilité | 75% Performance globale
      *
      * @return taux : taux de rapidité d'incrémentation
      * @author casag
      */
-    public double getRapiditeIncrementation(){
+    public double getTauxIncremArgent(){
         double taux = 0;
-        double compt = 0, bonh = 0, prod = 0, comm = 0, mark = 0;
-        compt = getNiveauMoyenDomaine("Comptabilite") /5;
-        bonh = getBonheur();
-        prod = getNiveauMoyenDomaine("Production") / 5;
-        comm = getNiveauMoyenDomaine("Commercial") / 5;
-        mark = getNiveauMoyenDomaine("Marketing") / 5;
-
-        taux = compt * (40.0/100.0) + bonh * (30.0/100.0) + prod * (10.0/100.0) + comm  * (10.0/100.0) + mark * (10.0/100.0);
+        double tauxPerf = getTauxGlobal();
+        double compt = getNiveauMoyenDomaine("Comptabilite") /5;
+        taux = compt * (25.0/100.0) + tauxPerf * (75.0/100.0);
         return taux;
     }
 
@@ -382,17 +362,11 @@ public class Entreprise {
             case "Comptabilite" :
                 employes.add(new Comptabilite(sexe));
                 break;
-            case "Direction" :
-                employes.add(new Direction(sexe));
-                break;
-            case "Marketing" :
-                employes.add(new Marketing(sexe));
+            case "Communication" :
+                employes.add(new Communication(sexe));
                 break;
             case "Production" :
                 employes.add(new Production(sexe));
-                break;
-            case "RD" :
-                employes.add(new RD(sexe));
                 break;
             case "Securite" :
                 employes.add(new Securite(sexe));

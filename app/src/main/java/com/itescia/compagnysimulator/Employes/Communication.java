@@ -1,7 +1,7 @@
 package com.itescia.compagnysimulator.Employes;
 
 /**
- * <b> Classe représentant un employé du pôle recherche et développement</b> <br>
+ * <b> Classe représentant un employé du pôle marketing</b> <br>
  * Hérite de la classe Employe
  *
  * @see Employe
@@ -9,13 +9,13 @@ package com.itescia.compagnysimulator.Employes;
  * @version Prototype
  */
 
-public class RD extends Employe {
+public class Communication extends Employe {
 
-    /** Constructeur de l'employé de recherche et développement <br>
+    /** Constructeur de l'employé de marketing <br>
      * Hérite du constructeur de la super classe
      * @param sexe : Le sexe de l'employé
      */
-    public RD(char sexe){
+    public Communication(char sexe){
         super(sexe);
     }
 }

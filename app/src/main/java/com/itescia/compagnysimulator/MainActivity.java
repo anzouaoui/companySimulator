@@ -419,7 +419,6 @@ public class MainActivity extends AppCompatActivity {
         collectionImageButtonUpBonheur.add(imageButtonUpNiveauSecuriteGlobale);
         collectionImageButtonUpBonheur.add(imageButtonUpNiveauConditionsTravails);
 
-        double test = entreprise.getTauxGlobal();
     }
 
     /**
@@ -474,7 +473,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Augmentation de l'argent en fonction du taux global de performance de l'entreprise
-                entreprise.setArgent((int)(entreprise.getArgent()+(entreprise.getIndiceIncremArgent() * entreprise.getTauxGlobal())));
+                entreprise.setArgent((int)(entreprise.getArgent()+(entreprise.getIndiceIncremArgent() * entreprise.getTauxIncremArgent())));
                 Temps.getTemps();
                 runOnUiThread(new Runnable() {
                     @Override
