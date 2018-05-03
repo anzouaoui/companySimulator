@@ -1349,7 +1349,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="95dp"
+                                android:layout_marginStart="104dp"
                                 android:layout_toEndOf="@+id/TextViewAntivirus"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/up" />
@@ -1392,17 +1392,6 @@
                                     android:text="Aviro v1.1"
                                     android:textSize="12sp"
                                     android:layout_marginStart="20dp"/>
-
-                                <!--<TextView
-                                    android:id="@+id/TextViewVersionAntivirus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/colorVersionAntivirus"
-                                    android:layout_toEndOf="@+id/TextViewNomAntivirus"
-                                    android:text="@string/versionAntivirus"
-                                    android:textSize="12sp"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginEnd="20dp"/>-->
                             </RelativeLayout>
 
                             <ImageButton
@@ -1412,7 +1401,7 @@
                                 android:src="@drawable/help"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginStart="36dp"
+                                android:layout_marginStart="5dp"
                                 android:layout_toEndOf="@+id/RelatvieLayoutNomAntivirus"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
 
@@ -1446,29 +1435,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="102dp"
+                                android:layout_marginStart="111dp"
                                 android:layout_toEndOf="@+id/TextViewFirewall"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/up" />
-
-                            <!--<ImageView
-                                android:id="@+id/ImageViewArgentFirewall"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/argent_antivirus"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:layout_toEndOf="@+id/ImageButtonUpFirewall"/>
-
-                            <TextView
-                                android:id="@+id/TextViewArgentFirewall"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/textAntivirus"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:layout_toEndOf="@+id/ImageViewArgentFirewall"
-                                android:textSize="25sp"/>-->
 
                             <TextView
                                 android:id="@+id/TextViewDerniereMiseAJour"
@@ -1488,7 +1458,7 @@
                                 android:layout_toEndOf="@+id/TextViewDerniereMiseAJour"
                                 android:layout_marginStart="5dp"
                                 android:layout_centerVertical="true"
-                                android:textSize="20sp"/>
+                                android:textSize="15sp"/>
 
                             <ImageButton
                                 android:id="@+id/ImageButtonHelpFirewall"
@@ -1498,6 +1468,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_toEndOf="@+id/TextViewHeureDerniereMiseAJour"
+                                android:layout_marginStart="10dp"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
 
                             <RelativeLayout
@@ -1530,29 +1501,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="66dp"
+                                android:layout_marginStart="76dp"
                                 android:layout_toEndOf="@+id/TextViewMiseAJourSysteme"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/up" />
-
-                            <!--<ImageView
-                                android:id="@+id/ImageViewArgentMiseAJourSysteme"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/argent_antivirus"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:layout_toEndOf="@+id/ImageButtonUpMiseAJourSysteme"/>
-
-                            <TextView
-                                android:id="@+id/TextViewArgentMiseAJourSysteme"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/textMIseAJourSysteme"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:layout_toEndOf="@+id/ImageViewArgentMiseAJourSysteme"
-                                android:textSize="25sp"/>-->
 
                             <TextView
                                 android:id="@+id/TextViewDerniereMiseAJourSysteme"
@@ -1572,7 +1524,7 @@
                                 android:layout_toEndOf="@+id/TextViewDerniereMiseAJourSysteme"
                                 android:layout_marginStart="5dp"
                                 android:layout_centerVertical="true"
-                                android:textSize="20sp"/>
+                                android:textSize="15sp"/>
 
                             <ImageButton
                                 android:id="@+id/ImageButtonHelpMiseAJourSysteme"
@@ -1582,6 +1534,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_toEndOf="@+id/TextViewHeureDerniereMiseAJourSysteme"
+                                android:layout_marginStart="10dp"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
 
                             <RelativeLayout
@@ -1613,7 +1566,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="30dp"
+                                android:layout_marginStart="40dp"
                                 android:layout_toEndOf="@+id/TextViewFormationEmployes"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/up" />
@@ -1641,7 +1594,7 @@
                                 android:id="@+id/ProgressBarFormationEmployes"
                                 style="@android:style/Widget.ProgressBar.Horizontal"
                                 android:progressDrawable="@drawable/custom_progress_bar_formation_employes"
-                                android:layout_width="195dp"
+                                android:layout_width="160dp"
                                 android:layout_height="20dp"
                                 android:layout_marginStart="15dp"
                                 android:indeterminate="false"
@@ -1659,7 +1612,7 @@
                                 android:src="@drawable/help"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginStart="1dp"
+                                android:layout_marginStart="5dp"
                                 android:layout_toEndOf="@+id/ProgressBarFormationEmployes"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
 
@@ -1694,7 +1647,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="65dp"
+                                android:layout_marginStart="90dp"
                                 android:layout_toEndOf="@+id/TextViewSousTraiter"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/up" />
@@ -1725,7 +1678,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignEnd="@+id/TextViewArgentSousTraiter"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginEnd="10dp"
+                                android:layout_marginEnd="15dp"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/help" />
                         </RelativeLayout>
@@ -1991,7 +1944,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toEndOf="@+id/TextViewArgentFournitures"
                                 android:layout_marginStart="45dp"
-                                android:layout_marginEnd="40dp"
+                                android:layout_marginEnd="23dp"
                                 android:layout_centerVertical="true"
                                 android:background="@drawable/custom_relative_layout_nom_antivirus">
 
@@ -2013,7 +1966,6 @@
                                 android:src="@drawable/help"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginStart="8dp"
                                 android:layout_toEndOf="@+id/RelatvieLayoutNomFournitures"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
 
@@ -2075,11 +2027,11 @@
                                 android:id="@+id/TextViewDerniereInterventionMedecinTravail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="derniere intervention : "
+                                android:text=""
                                 android:layout_toEndOf="@+id/TextViewArgentMedecinTravail"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="30dp"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp"/>
 
                             <TextView
                                 android:id="@+id/TextViewHeureDerniereInterventionMedecinTravail"
@@ -2089,7 +2041,7 @@
                                 android:layout_toEndOf="@+id/TextViewDerniereInterventionMedecinTravail"
                                 android:layout_marginStart="5dp"
                                 android:layout_centerVertical="true"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp"/>
 
                             <ImageButton
                                 android:id="@+id/ImageButtonHelpMedecinTravail"
@@ -2131,7 +2083,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="77dp"
+                                android:layout_marginStart="135dp"
                                 android:layout_toEndOf="@+id/TextViewMenage"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/up" />
@@ -2159,7 +2111,7 @@
                                 android:id="@+id/TextViewDernierMenage"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="dernier passage : "
+                                android:text=""
                                 android:layout_toEndOf="@+id/TextViewArgentMenage"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="10dp"
@@ -2171,9 +2123,9 @@
                                 android:layout_height="wrap_content"
                                 android:text="pas encore effectue"
                                 android:layout_toEndOf="@+id/TextViewDernierMenage"
-                                android:layout_marginStart="5dp"
+                                android:layout_marginStart="25dp"
                                 android:layout_centerVertical="true"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp"/>
 
                             <ImageButton
                                 android:id="@+id/ImageButtonHelpMenage"
@@ -2183,6 +2135,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_toEndOf="@+id/TextViewHeureDernierMenage"
+                                android:layout_marginStart="5dp"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
 
                             <RelativeLayout
@@ -2245,7 +2198,7 @@
                                 android:src="@drawable/help"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginStart="200dp"
+                                android:layout_marginStart="175dp"
                                 android:layout_toEndOf="@+id/TextViewArgentApero"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
 
@@ -2280,7 +2233,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="18dp"
+                                android:layout_marginStart="15dp"
                                 android:layout_toEndOf="@+id/TextViewFelicitaion"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/up" />
@@ -2289,9 +2242,9 @@
                                 android:id="@+id/ImageButtonHelpFelicitation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignEnd="@+id/ImageButtonUpFelicitation"
+                                android:layout_toEndOf="@+id/ImageButtonUpFelicitation"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginEnd="5dp"
+                                android:layout_marginStart="240dp"
                                 android:background="@color/colorBackgroundRelativeLayoutEmployes"
                                 android:src="@drawable/help" />
                         </RelativeLayout>
