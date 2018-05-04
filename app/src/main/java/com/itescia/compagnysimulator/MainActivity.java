@@ -1457,12 +1457,12 @@ public class MainActivity extends AppCompatActivity {
         // MAJ de la progressar + taux de l'onglet détail conditions de travail
         if(relativeLayoutDetailsConditionsTravails.getVisibility() == View.VISIBLE) {
             progressBarNiveauConditionsTravails.setProgress((int) (entreprise.getTauxQualConditionTravail() * 100));
-            textViewNiveauConditionsTravails.setText(String.valueOf(entreprise.getTauxQualConditionTravail() * 100));
+            textViewNiveauConditionsTravails.setText(String.valueOf((int) (entreprise.getTauxQualConditionTravail() * 100)));
         }
         // MAJ de la progressbar + taux de l'onglet détail sécurité informatique
         if(relativeLayoutDetailsSecuriteInformatique.getVisibility() == View.VISIBLE) {
             progressBarNiveauSecuriteInformatique.setProgress((int)(entreprise.getTauxSecuInfo()*100));
-            textViewNiveauSecuriteInformatique.setText(String.valueOf(entreprise.getTauxSecuInfo() * 100));
+            textViewNiveauSecuriteInformatique.setText(String.valueOf((int) (entreprise.getTauxSecuInfo() * 100)));
         }
     }
 
@@ -1490,7 +1490,7 @@ public class MainActivity extends AppCompatActivity {
         entreprise.setTauxBonheur();
         progressBarBonheur.setProgress((int)(entreprise.getBonheur()*100));
         if(relativeLayoutDetailsBonheur.getVisibility() == View.VISIBLE) {
-            textViewNiveauBonheur.setText(String.valueOf(entreprise.getBonheur() * 100));
+            textViewNiveauBonheur.setText(String.valueOf((int) (entreprise.getBonheur() * 100)));
             progressBarNiveauBonheur.setProgress((int) (entreprise.getBonheur() * 100));
             progressBarNiveauFormation.setProgress((int)(entreprise.getNiveauMoyenFormation()*100));
             ProgressBarNiveauReputation2.setProgress((int)(entreprise.getReputation()*100));
