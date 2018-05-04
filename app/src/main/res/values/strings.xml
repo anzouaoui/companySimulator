@@ -78,7 +78,7 @@
     <string name="heureMiseAJourSysteme">30 heures</string>
     <string name="miseAJourSysteme">MAJ SYSTEMES</string>
     <string name="formationEmployes">FORMER EMPLOYES</string>
-    <string name="sousTraiter">SOUS TRAITER</string>
+    <string name="sousTraiter">PEN TESTER</string>
     <string name="informationSousTraiter">
         Un "penetration tester" evalue la securite d\'un systeme en cherchant des failles.\nPlus le nombre de failles trouve est eleve, plus la securite informatique sera ameliore
     </string>

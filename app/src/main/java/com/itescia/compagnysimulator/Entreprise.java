@@ -172,16 +172,21 @@ public class Entreprise {
         this.nomEntreprise = nomEntreprise;
         this.niveau = 1;
         this.bonheur = 0.5;
-        this.argent = 1;
+        this.argent = 0;
         this.reputation = 0.5;
         this.tauxSecuInfo = 0.5;
-        this.tauxFormationSecuInfo = 0;
+        this.tauxFormationSecuInfo = 0.5;
         this.tauxQualConditionTravail = 0.5;
         this.niveauAntivirus = 1;
-        this.nomAntivirus = "Aviro v1.0";
+        this.nomAntivirus = "Aviro v1.1";
         this.derniereMAJFirewall = 0;
+        this.derniereMAJSysteme = 0;
         this.nomMobilier = "Ikeo";
         this.niveauMobilier = 1;
+        this.derniereInterventionMedecineTravail = 0;
+        this.derniereInterventionMenage = 0;
+        this.dernierApero = null;
+        this.nombreApero = 0;
         this.derniereFelicitation = null;
         this.employes = new ArrayList<Employe>();
         this.indiceDecrem = 1;
@@ -427,7 +432,7 @@ public class Entreprise {
      * @author gbon
      */
     public int determinerSommeAmeliorationMobilier() {
-        int sommeAmeliorationMobilier = getNiveauAntivirus() * 1500;
+        int sommeAmeliorationMobilier = getNiveauMobilier() * 1500;
         return sommeAmeliorationMobilier;
     }
 
@@ -437,20 +442,25 @@ public class Entreprise {
      * et modifie le niveau en conséquence ainsi que le nom/marque du mobilier.<br>
      * Le niveau max du mobilier est 10
      *
+     * @return reussi : 0 si pas assez d'argent, 1 si niveau max atteind et 2 si réussi
      * @author gbon
      */
-    public void ameliorerMobilier() {
-        if (getNiveauMobilier()<10) {
-            int sommeAPayer = determinerSommeAmeliorationMobilier();
-            // Test si le joueur à assez d'argent pour payer l'amélioration
-            if (payer(sommeAPayer)) {
+    public int ameliorerMobilier() {
+        int reussi = 0;
+        int sommeAPayer = determinerSommeAmeliorationMobilier();
+        // Test si le joueur à assez d'argent pour payer l'amélioration
+        if (payer(sommeAPayer)) {
+            reussi = 1;
+            // Test du niveau (niveau max : 10)
+            if (getNiveauMobilier()<10) {
                 setNiveauMobilier(getNiveauMobilier() + 1);
-                setNomMobilier(changerNomMobilier(getNiveauMobilier()));
+                changerNomMobilier(getNiveauMobilier());
                 augmenterTauxConditTravail(0.45);
-                levelUp(0.35);
+                levelUp(0.30);
+                reussi = 2;
             }
-            levelUp(0.15);
         }
+        return reussi;
     }
 
     /**
@@ -461,7 +471,7 @@ public class Entreprise {
      * @return nouveauNom : le nouveau nom de la marque du mobilier
      * @author gbon
      */
-    public String changerNomMobilier(int niveauMobilier) {
+    public void changerNomMobilier(int niveauMobilier) {
         String nouveauNom = "";
         switch (niveauMobilier) {
             case 1:
@@ -495,38 +505,44 @@ public class Entreprise {
                 nouveauNom = "Ironcase";
                 break;
         }
-        return nouveauNom;
+        nomMobilier = nouveauNom;
     }
 
     /**
      * Organise un apéro si le joueur a les moyens.
      * Augmente de 30% la qualité des conditions de travail.
-     * @return booléen : true si 3h sont passées depuis dernier et si assez d'argent
+     *
+     * @return resultat : 0 si le joueur n'a pas assez d'argent, 1 s'il n'y a pas assez de temps écoulé depuis le dernier apéro et 2 si réussi
      *
      * @author casag, gbon
      */
-    public boolean organiserApero() {
-        boolean done = false;
+    public int organiserApero() {
+        int resultat = 0;
         Date now = new Date();
         if (dernierApero != null) {
-            //récupération du nombre d'heures entre la date du dernier apéro et maintenant
-            long secs = (now.getTime() - this.dernierApero.getTime()) / 1000;
-            long hours = 0;
-            hours = secs / 3600;
-            //si la différence est d'au moins 3h
-            if (hours >= 3) {
-                // et si le joueur peut payer
-                if (this.payer(300)) {
+            // si le joueur peut payer
+            if (this.payer(300)) {
+                resultat = 1;
+                //récupération du nombre d'heures entre la date du dernier apéro et maintenant
+                long secs = (now.getTime() - this.dernierApero.getTime()) / 1000;
+                long hours = 0;
+                hours = secs / 3600;
+                // si la différence est d'au moins 3h
+                if (hours >= 3) {
                     setDernierApero(now);
                     augmenterTauxConditTravail(0.30);
                     levelUp(0.15);
                     setNombreApero(getNombreApero() + 1);
-                    done = true;
-                    // si le joueur organise trop d'apéro (30 ou plus au total), certains de ses employés deviennent alcooliques et d'autres passeront leur temps à s'amuser
-                    if (getNombreApero() >= 30) {
+                    resultat = 2;
+                    // si le joueur organise trop d'apéro (10 ou plus au total), certains de ses employés deviennent alcooliques et d'autres passeront leur temps à s'amuser
+                    if (getNombreApero() >= 10) {
                         // ce qui entrainera une importante baisse de la productivité/ conditions de travail
                         setTauxQualConditionTravail(-0.50);
+                        resultat = 3;
                     }
+                } else {
+                    //sinon on organise pas d'apéro et on redonne l'argent au joueur
+                    setArgent(this.argent + 300);
                 }
             }
         } else {
@@ -535,15 +551,10 @@ public class Entreprise {
                 augmenterTauxConditTravail(0.30);
                 levelUp(0.15);
                 setNombreApero(1);
-                done = true;
-            }
-            if (this.payer(300)) {
-                augmenterTauxConditTravail(0.30);
-                levelUp(0.15);
-                done = true;
+                resultat = 2;
             }
         }
-        return done;
+        return resultat;
     }
 
     /**
@@ -621,19 +632,25 @@ public class Entreprise {
      * et modifie le niveau en conséquence ainsi que le nom de l'antivirus.<br>
      * Le niveau max de l'antivirus est 99
      *
+     * @return reussi : 0 si pas assez d'argent, 1 si niveau max atteind et 2 si réussi
      * @author gbon
      */
-    public void ameliorerAntivirus() {
-        if (getNiveauAntivirus()<99) {
-            int sommeAPayer = determinerSommeAmeliorationAntivirus();
-            // Test si le joueur à assez d'argent pour payer l'amélioration
-            if (payer(sommeAPayer)) {
+    public int ameliorerAntivirus() {
+        int reussi = 0;
+        int sommeAPayer = determinerSommeAmeliorationAntivirus();
+        // Test si le joueur à assez d'argent pour payer l'amélioration
+        if (payer(sommeAPayer)){
+            reussi = 1;
+            // Test du niveau de l'antivirus (niveau max : 99)
+             if (getNiveauAntivirus()<99){
                 setNiveauAntivirus(getNiveauAntivirus() + 1);
-                setNomAntivirus(changerNomAntivirus(getNiveauAntivirus()));
+                changerNomAntivirus(getNiveauAntivirus());
                 augmenterTauxSecuInfo(0.15);
                 levelUp(0.15);
+                reussi = 2;
             }
         }
+        return reussi;
     }
 
     /**
@@ -645,7 +662,7 @@ public class Entreprise {
      * @return nouveauNom : le nouveau nom de l'antivirus, au format "Marque v1.X"
      * @author gbon
      */
-    public String changerNomAntivirus(int niveauAntivirus) {
+    public void changerNomAntivirus(int niveauAntivirus) {
         String nouveauNom = "";
         // Détermination de la marque de l'antivirus selon le niveau de l'antivirus (par palier de 10 jusqu'à 100)
         if (niveauAntivirus <10) {
@@ -672,7 +689,7 @@ public class Entreprise {
         nouveauNom += " v1.";
         // Détermination de la version de l'antivirus (chiffre des unités du niveau de l'antivirus, pour compléter "v1.X")
         nouveauNom += Integer.toString(niveauAntivirus%10);
-        return nouveauNom;
+        nomAntivirus = nouveauNom;
     }
 
     public void actualiserDerniereMAJFirewall() {
@@ -690,6 +707,7 @@ public class Entreprise {
         //Si le joueur a les moyens
         if(this.payer(300)) {
             setTauxFormationSecuInfo(1);
+            augmenterTauxSecuInfo(0.15);
             levelUp(0.15);
             done = true;
         }

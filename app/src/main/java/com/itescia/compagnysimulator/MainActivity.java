@@ -31,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
             textViewCompetencesTitle, textViewCompetenceCommercial, textViewCompetenceProduction, textViewCompetenceSecurite,
             textViewCompetenceMarketing, textViewCompetenceComptable, textViewCompetenceRd, textViewCompetenceDirection,
             textViewNiveauMoyen, textViewSecuriteTitle, textViewEmployesSecurite, textViewConditionTravail, textViewSecuriteInformatique, textViewSecuriteInformatiqueTitle,
-            textViewNiveauSecuriteInformatique, textViewAntivirus, textViewArgentAntivirus, textViewNomAntivirus, textViewVersionAntivirus, textViewFirewall, textViewDerniereMiseAJour,
-            textViewHeureDerniereMiseAJour, textViewArgentFirewall, textViewMiseAJourSysteme, textViewArgentMiseAJourSysteme, textViewDerniereMiseAJourSysteme,
+            textViewNiveauSecuriteInformatique, textViewAntivirus, textViewArgentAntivirus, textViewNomAntivirus, /*textViewVersionAntivirus,*/ textViewFirewall, textViewDerniereMiseAJour,
+            textViewHeureDerniereMiseAJour, /*textViewArgentFirewall,*/ textViewMiseAJourSysteme, /*textViewArgentMiseAJourSysteme,*/ textViewDerniereMiseAJourSysteme,
             textViewHeureDerniereMiseAJourSysteme, textViewFormationEmployes, textViewArgentFormationEmployes, textViewSousTraiter, textViewArgentSousTraiter,
             textViewInformationSousTraiter, textViewInformationAntivirus, textViewConditionsTravailsTitle, textViewNiveauConditionsTravails, textViewFournitures, textViewArgentFournitures,
-            textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDerniereMenage,
-            textViewApero, textViewArgentApero, textViewFelicitaion, textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite, textViewReputationTitle,
+            textViewNomFournitures, textViewMedecinTravail, textViewArgentMedecinTravail, textViewHeureDerniereInterventionMedecinTravail, textViewMenage, textViewArgentMenage, textViewDernierMenage, textViewHeureDernierMenage,
+            textViewApero, textViewArgentApero, textViewFelicitaion, /*textViewArgentFelicitation, textViewPossibilite, textViewHeurePossibilite,*/ textViewReputationTitle,
             textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom, textViewBonheurTitle, textViewNiveauBonheur, textViewNiveauFormation,
             textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2, textViewRessourcesTitle, textViewNiveauRessources,
             textViewNombrePremiereRessources, textViewArgentPremiereRessource, textViewNombreDeuxiemeRessources, textViewArgentDeuxiemeRessource, textViewNombreTroisiemeRessources,
@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
     ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources, ProgressBarNiveauRessources, progressBarNiveauBonheur,
-                progressBarNiveauFormation, ProgressBarNiveauReputation2, ProgressBarNiveauSecuriteGlobale, ProgressBarNiveauConditionsTravails2;
+                progressBarNiveauFormation, ProgressBarNiveauReputation2, ProgressBarNiveauSecuriteGlobale, progressBarEmployesSecurite, progressBarConditionTravail, progressBarSecuriteInformatique,
+                ProgressBarNiveauConditionsTravails2, progressBarFormationSecuriteInfo, progressBarNiveauConditionsTravails, progressBarNiveauSecuriteInformatique;
 
     RelativeLayout relativeLayoutHomme, relativeLayoutEmployes, relativeLayoutDetailCommercial, relativeLayoutDetailsCompetences, relativeLayoutDetailsSecurite,
             relativeLayoutDetailsSecuriteInformatique, relativeLayoutProgressBarOneComptableWorker1_1, relativeLayoutProgressBarOneComptableWorker1_2,
@@ -59,11 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite,
             imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
-            imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpSecuriteInformatique, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
-            imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation,
-            imageButtonBackButtonDetailBonheur, imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails,
-            imageButtonBackButtonDetailRessources, ImageViewArgentPremiereRessource, ImageViewArgentDeuxiemeRessource, ImageViewArgentTroisiemeRessource, ImageButtonHelpNiveauFormation,
-            ImageButtonHelpNiveauSecuriteGlobale, ImageButtonHelpNiveauConditionTravails, ImageButtonHelpNiveauReputation2;
+            imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpCEmployesSecurite, imageButtonUpSecuriteInformatique, imageButtonUpFirewall, imageButtonUpMiseAJourSysteme,
+            imageButtonUpFormationEmployes, imageButtonUpFormationSousTraiter, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
+            imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonUpMedecinTravail, imageButtonUpMenage, imageButtonUpApero,
+            imageButtonUpFelicitation, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation, imageButtonBackButtonDetailBonheur,
+            imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails,
+            imageButtonBackButtonDetailRessources, ImageViewArgentPremiereRessource, ImageViewArgentDeuxiemeRessource, ImageViewArgentTroisiemeRessource,
+            ImageButtonHelpNiveauFormation, ImageButtonHelpNiveauSecuriteGlobale, ImageButtonHelpNiveauConditionTravails, ImageButtonHelpNiveauReputation2,
+            imageButtonHelpAntivirus, imageButtonHelpFirewall, imageButtonHelpMiseAJourSysteme, imageButtonHelpFormationEmployes, imageButtonHelpFournitures,
+            imageButtonHelpMedecinTravail, imageButtonHelpMenage, imageButtonHelpApero, imageButtonHelpFelicitation;
      ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
      ArrayList<ImageButton> collectionImageButtonBack;
@@ -77,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
     Timer _tMAJSysteme;
     Timer _tInterventionMedecineTravail;
     Timer _tInterventionMenage;
-
-    // Entreprise entreprise = new Entreprise("Nom entreprise");
-
 
     Timer _t2;
     int count = 0;
@@ -155,13 +157,13 @@ public class MainActivity extends AppCompatActivity {
         textViewAntivirus = (TextView) findViewById(R.id.TextViewAntivirus);
         textViewArgentAntivirus = (TextView) findViewById(R.id.TextViewArgentAntivirus);
         textViewNomAntivirus = (TextView) findViewById(R.id.TextViewNomAntivirus);
-        textViewVersionAntivirus = (TextView) findViewById(R.id.TextViewVersionAntivirus);
+        //textViewVersionAntivirus = (TextView) findViewById(R.id.TextViewVersionAntivirus);
         textViewFirewall = (TextView) findViewById(R.id.TextViewFirewall);
         textViewDerniereMiseAJour = (TextView) findViewById(R.id.TextViewDerniereMiseAJour);
         textViewHeureDerniereMiseAJour = (TextView) findViewById(R.id.TextViewHeureDerniereMiseAJour);
-        textViewArgentFirewall = (TextView) findViewById(R.id.TextViewArgentFirewall);
+        //textViewArgentFirewall = (TextView) findViewById(R.id.TextViewArgentFirewall);
         textViewMiseAJourSysteme = (TextView) findViewById(R.id.TextViewMiseAJourSysteme);
-        textViewArgentMiseAJourSysteme = (TextView) findViewById(R.id.TextViewArgentMiseAJourSysteme);
+        //textViewArgentMiseAJourSysteme = (TextView) findViewById(R.id.TextViewArgentMiseAJourSysteme);
         textViewDerniereMiseAJourSysteme = (TextView) findViewById(R.id.TextViewDerniereMiseAJourSysteme);
         textViewHeureDerniereMiseAJourSysteme = (TextView) findViewById(R.id.TextViewHeureDerniereMiseAJourSysteme);
         textViewFormationEmployes = (TextView) findViewById(R.id.TextViewFormationEmployes);
@@ -176,16 +178,17 @@ public class MainActivity extends AppCompatActivity {
         textViewNomFournitures = (TextView) findViewById(R.id.TextViewNomFournitures);
         textViewMedecinTravail = (TextView) findViewById(R.id.TextViewMedecinTravail);
         textViewArgentMedecinTravail = (TextView) findViewById(R.id.TextViewArgentMedecinTravail);
+        textViewHeureDerniereInterventionMedecinTravail = (TextView) findViewById(R.id.TextViewHeureDerniereInterventionMedecinTravail);
         textViewMenage = (TextView) findViewById(R.id.TextViewMenage);
         textViewArgentMenage = (TextView) findViewById(R.id.TextViewArgentMenage);
         textViewDernierMenage = (TextView) findViewById(R.id.TextViewDernierMenage);
-        textViewHeureDerniereMenage = (TextView) findViewById(R.id.TextViewHeureDerniereMenage);
+        textViewHeureDernierMenage = (TextView) findViewById(R.id.TextViewHeureDernierMenage);
         textViewApero = (TextView) findViewById(R.id.TextViewApero);
         textViewArgentApero = (TextView) findViewById(R.id.TextViewArgentApero);
         textViewFelicitaion = (TextView) findViewById(R.id.TextViewFelicitaion);
-        textViewArgentFelicitation = (TextView) findViewById(R.id.TextViewArgentFelicitation);
-        textViewPossibilite = (TextView) findViewById(R.id.TextViewPossibilite);
-        textViewHeurePossibilite = (TextView) findViewById(R.id.TextViewHeurePossibilite);
+        //textViewArgentFelicitation = (TextView) findViewById(R.id.TextViewArgentFelicitation);
+        //textViewPossibilite = (TextView) findViewById(R.id.TextViewPossibilite);
+        //textViewHeurePossibilite = (TextView) findViewById(R.id.TextViewHeurePossibilite);
         textViewReputationTitle = (TextView) findViewById(R.id.TextViewReputationTitle);
         textViewNiveauReputation = (TextView) findViewById(R.id.TextViewNiveauReputation);
         textViewParite = (TextView) findViewById(R.id.TextViewParite);
@@ -253,18 +256,19 @@ public class MainActivity extends AppCompatActivity {
         textViewDerniereMiseAJourSysteme.setTypeface(typefaceLvl);
         textViewHeureDerniereMiseAJour.setTypeface(typefaceLvl);
         textViewHeureDerniereMiseAJourSysteme.setTypeface(typefaceLvl);
-        textViewHeureDerniereMenage.setTypeface(typefaceLvl);
-        textViewPossibilite.setTypeface(typefaceLvl);
-        textViewHeurePossibilite.setTypeface(typefaceLvl);
-        textViewArgentFirewall.setTypeface(typefaceLvl);
-        textViewArgentMiseAJourSysteme.setTypeface(typefaceLvl);
+        textViewHeureDerniereInterventionMedecinTravail.setTypeface(typefaceLvl);
+        textViewHeureDernierMenage.setTypeface(typefaceLvl);
+        //textViewPossibilite.setTypeface(typefaceLvl);
+        //textViewHeurePossibilite.setTypeface(typefaceLvl);
+        //textViewArgentFirewall.setTypeface(typefaceLvl);
+        //textViewArgentMiseAJourSysteme.setTypeface(typefaceLvl);
         textViewArgentFormationEmployes.setTypeface(typefaceLvl);
         textViewArgentAntivirus.setTypeface(typefaceLvl);
         textViewArgentFournitures.setTypeface(typefaceLvl);
         textViewArgentMedecinTravail.setTypeface(typefaceLvl);
         textViewArgentMenage.setTypeface(typefaceLvl);
         textViewArgentApero.setTypeface(typefaceLvl);
-        textViewArgentFelicitation.setTypeface(typefaceLvl);
+        //textViewArgentFelicitation.setTypeface(typefaceLvl);
         textViewFelicitaion.setTypeface(typefaceLvl);
         textViewDerniereMiseAJour.setTypeface(typefaceLvl);
         textViewDernierMenage.setTypeface(typefaceLvl);
@@ -273,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
         textViewInformationAntivirus.setTypeface(typefaceLvl);
         textViewNomAntivirus.setTypeface(typefaceRessource);
         textViewNomFournitures.setTypeface(typefaceRessource);
-        textViewVersionAntivirus.setTypeface(typefaceRessource);
+        //textViewVersionAntivirus.setTypeface(typefaceRessource);
         textViewReputationTitle.setTypeface(typefaceLevel);
         textViewBonheurTitle.setTypeface(typefaceLevel);
         textViewNiveauReputation.setTypeface(typefaceLevel);
@@ -303,7 +307,9 @@ public class MainActivity extends AppCompatActivity {
         progressBarRessources = (ProgressBar) findViewById(R.id.ProgressBarRessources);
         progressBarRessources.setProgress(Ressources.getInstance());
         progressBarSecurite = (ProgressBar) findViewById(R.id.ProgressBarSecurite);
-        progressBarSecurite.setProgress(90);
+        progressBarSecurite.setProgress(0);
+        progressBarFormationSecuriteInfo = (ProgressBar) findViewById(R.id.ProgressBarFormationEmployes);
+        progressBarFormationSecuriteInfo.setProgress(50);
         ProgressBarNiveauRessources = (ProgressBar) findViewById(R.id.ProgressBarNiveauRessources);
         ProgressBarNiveauRessources.setProgress(Ressources.getInstance());
         progressBarNiveauBonheur = (ProgressBar) findViewById(R.id.ProgressBarNiveauBonheur);
@@ -316,6 +322,16 @@ public class MainActivity extends AppCompatActivity {
         ProgressBarNiveauSecuriteGlobale.setProgress((int)(entreprise.getTauxSecuGlobal()*100));
         ProgressBarNiveauConditionsTravails2 = (ProgressBar) findViewById(R.id.ProgressBarNiveauConditionsTravails2);
         ProgressBarNiveauConditionsTravails2.setProgress((int)(entreprise.getTauxQualConditionTravail()*100));
+        progressBarEmployesSecurite = (ProgressBar) findViewById(R.id.ProgressBarEmployesSecurite);
+        progressBarEmployesSecurite.setProgress((int)(entreprise.getNiveauMoyenDomaine("Securite")));
+        progressBarConditionTravail = (ProgressBar) findViewById(R.id.ProgressBarConditionTravail);
+        progressBarConditionTravail.setProgress((int)(entreprise.getTauxQualConditionTravail()*100));
+        progressBarSecuriteInformatique = (ProgressBar) findViewById(R.id.ProgressBarSecuriteInformatique);
+        progressBarSecuriteInformatique.setProgress((int)(entreprise.getTauxSecuInfo()*100));
+        progressBarNiveauConditionsTravails = (ProgressBar) findViewById(R.id.ProgressBarNiveauConditionsTravails);
+        progressBarNiveauConditionsTravails.setProgress((int)(entreprise.getTauxQualConditionTravail()*100));
+        progressBarNiveauSecuriteInformatique = (ProgressBar) findViewById(R.id.ProgressBarNiveauSecuriteInformatique);
+        progressBarNiveauSecuriteInformatique.setProgress((int)(entreprise.getTauxSecuInfo()*100));
 
         //ELEMENTS RELATIVE LAYOUT
         relativeLayoutHomme = (RelativeLayout) findViewById(R.id.RelativeLayoutHomme);
@@ -359,20 +375,42 @@ public class MainActivity extends AppCompatActivity {
         imageButtonUpComptableWorker1 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker1);
         imageButtonUpComptableWorker2 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker2);
         imageButtonUpComptableWorker3 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker3);
+        imageButtonUpCEmployesSecurite = (ImageButton) findViewById(R.id.ImageButtonUpCEmployesSecurite);
+        // Boutons sécurité informatique
         imageButtonUpSecuriteInformatique = (ImageButton) findViewById(R.id.ImageButtonUpSecuriteInformatique);
+        imageButtonUpAntivirus = (ImageButton) findViewById(R.id.ImageButtonUpAntivirus);
+        imageButtonHelpAntivirus = (ImageButton) findViewById(R.id.ImageButtonHelpAntivirus);
+        imageButtonUpFirewall = (ImageButton) findViewById(R.id.ImageButtonUpFirewall);
+        imageButtonHelpFirewall = (ImageButton) findViewById(R.id.ImageButtonHelpFirewall);
+        imageButtonUpMiseAJourSysteme = (ImageButton) findViewById(R.id.ImageButtonUpMiseAJourSysteme);
+        imageButtonHelpMiseAJourSysteme = (ImageButton) findViewById(R.id.ImageButtonHelpMiseAJourSysteme);
+        imageButtonUpFormationEmployes = (ImageButton) findViewById(R.id.ImageButtonUpFormationEmployes);
+        imageButtonHelpFormationEmployes = (ImageButton) findViewById(R.id.ImageButtonHelpFormationEmployes);
+        imageButtonUpFormationSousTraiter = (ImageButton) findViewById(R.id.ImageButtonUpFormationSousTraiter);
         imageButtonHelpSousTraiter = (ImageButton) findViewById(R.id.ImageButtonHelpSousTraiter);
         imageButtonHideInformationSousTraiter = (ImageButton) findViewById(R.id.ImageButtonHideInformationSousTraiter);
-        imageButtonUpAntivirus = (ImageButton) findViewById(R.id.ImageButtonUpAntivirus);
+        // Boutons conditions de travail
         imageButtonUpConditionTravail = (ImageButton) findViewById(R.id.ImageButtonUpConditionTravail);
         imageButtonUpFournitures = (ImageButton) findViewById(R.id.ImageButtonUpFournitures);
+        imageButtonHelpFournitures = (ImageButton) findViewById(R.id.ImageButtonHelpFournitures);
+        imageButtonUpMedecinTravail = (ImageButton) findViewById(R.id.ImageButtonUpMedecinTravail);
+        imageButtonHelpMedecinTravail = (ImageButton) findViewById(R.id.ImageButtonHelpMedecinTravail);
+        imageButtonUpMenage = (ImageButton) findViewById(R.id.ImageButtonUpMenage);
+        imageButtonHelpMenage = (ImageButton) findViewById(R.id.ImageButtonHelpMenage);
+        imageButtonUpApero = (ImageButton) findViewById(R.id.ImageButtonUpApero);
+        imageButtonHelpApero = (ImageButton) findViewById(R.id.ImageButtonHelpApero);
+        imageButtonUpFelicitation = (ImageButton) findViewById(R.id.ImageButtonUpFelicitation);
+        imageButtonHelpFelicitation = (ImageButton) findViewById(R.id.ImageButtonHelpFelicitation);
+        // Boutons back détails
         imageButtonBackButtonDetailConditionsTravails = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailConditionsTravails);
         imageButtonBackButtonDetailReputation = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailReputation);
         imageButtonBackButtonDetailBonheur = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailBonheur);
+        imageButtonBackButtonDetailRessources = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailRessources);
+        // Boutons niveaux
         imageButtonUpNiveauFormation = (ImageButton) findViewById(R.id.ImageButtonUpNiveauFormation);
         imageButtonUpNiveauReputation2 = (ImageButton) findViewById(R.id.ImageButtonUpNiveauReputation2);
         imageButtonUpNiveauSecuriteGlobale = (ImageButton) findViewById(R.id.ImageButtonUpNiveauSecuriteGlobale);
         imageButtonUpNiveauConditionsTravails = (ImageButton) findViewById(R.id.ImageButtonUpNiveauConditionsTravails);
-        imageButtonBackButtonDetailRessources = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailRessources);
         //Boutons achat ressources
         ImageViewArgentPremiereRessource = (ImageButton) findViewById(R.id.ImageViewArgentPremiereRessource);
         ImageViewArgentDeuxiemeRessource = (ImageButton) findViewById(R.id.ImageViewArgentDeuxiemeRessource);
@@ -409,9 +447,17 @@ public class MainActivity extends AppCompatActivity {
 
         collectionImageButtonUpSecuriteInformatique = new ArrayList<ImageButton>();
         collectionImageButtonUpSecuriteInformatique.add(imageButtonUpAntivirus);
+        collectionImageButtonUpSecuriteInformatique.add(imageButtonUpFirewall);
+        collectionImageButtonUpSecuriteInformatique.add(imageButtonUpMiseAJourSysteme);
+        collectionImageButtonUpSecuriteInformatique.add(imageButtonUpFormationEmployes);
+        collectionImageButtonUpSecuriteInformatique.add(imageButtonUpFormationSousTraiter);
 
         collectionImageButtonUpConditionsTravails = new ArrayList<ImageButton>();
         collectionImageButtonUpConditionsTravails.add(imageButtonUpFournitures);
+        collectionImageButtonUpConditionsTravails.add(imageButtonUpMedecinTravail);
+        collectionImageButtonUpConditionsTravails.add(imageButtonUpMenage);
+        collectionImageButtonUpConditionsTravails.add(imageButtonUpApero);
+        collectionImageButtonUpConditionsTravails.add(imageButtonUpFelicitation);
 
         collectionImageButtonUpBonheur = new ArrayList<ImageButton>();
         collectionImageButtonUpBonheur.add(imageButtonUpNiveauFormation);
@@ -443,6 +489,7 @@ public class MainActivity extends AppCompatActivity {
         progressBarSecurite.setOnClickListener(progressBarSecuriteListener);
         progressBarReputation.setOnClickListener(progressBarReputationListener);
         progressBarBonheur.setOnClickListener(progressBarBonheurListener);
+        imageButtonUpCEmployesSecurite.setOnClickListener(imageButtonUpCEmployesSecuriteListener);
         imageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener);
         imageButtonHideInformationSousTraiter.setOnClickListener(imageButtonHideInformationSousTraiterListener);
         imageButtonUpConditionTravail.setOnClickListener(imageButtonUpConditionTravailListener);
@@ -452,6 +499,26 @@ public class MainActivity extends AppCompatActivity {
         for (ImageButton currentImageButtonUpBonheur : collectionImageButtonUpBonheur) {
             currentImageButtonUpBonheur.setOnClickListener(imageButtonUpBonheurListener);
         }
+        imageButtonUpFournitures.setOnClickListener(imageButtonUpFournituresListener);
+        imageButtonHelpFournitures.setOnClickListener(imageButtonHelpFournituresListener);
+        imageButtonUpMedecinTravail.setOnClickListener(imageButtonUpMedecinTravailListener);
+        imageButtonHelpMedecinTravail.setOnClickListener(imageButtonHelpMedecinTravailListener);
+        imageButtonUpMenage.setOnClickListener(imageButtonUpMenageListener);
+        imageButtonHelpMenage.setOnClickListener(imageButtonHelpMenageListener);
+        imageButtonUpApero.setOnClickListener(imageButtonUpAperoListener);
+        imageButtonHelpApero.setOnClickListener(imageButtonHelpAperoListener);
+        imageButtonUpFelicitation.setOnClickListener(imageButtonUpFelicitationListener);
+        imageButtonHelpFelicitation.setOnClickListener(imageButtonHelpFelicitationListener);
+        imageButtonUpAntivirus.setOnClickListener(imageButtonUpAntivirusListener);
+        imageButtonHelpAntivirus.setOnClickListener(imageButtonHelpAntivirusListener);
+        imageButtonUpFirewall.setOnClickListener(imageButtonUpFirewallListener);
+        imageButtonHelpFirewall.setOnClickListener(imageButtonHelpFirewallListener);
+        imageButtonUpMiseAJourSysteme.setOnClickListener(imageButtonUpMiseAJourSystemeListener);
+        imageButtonHelpMiseAJourSysteme.setOnClickListener(imageButtonHelpMiseAJourSystemeListener);
+        imageButtonUpFormationEmployes.setOnClickListener(imageButtonUpFormationEmployesListener);
+        imageButtonHelpFormationEmployes.setOnClickListener(imageButtonHelpFormationEmployesListener);
+        imageButtonUpFormationSousTraiter.setOnClickListener(imageButtonUpFormationSousTraiterListener);
+        imageButtonHelpSousTraiter.setOnClickListener(imageButtonHelpSousTraiterListener);
         textViewAddRessources.setOnClickListener(textViewAddRessourcesListener);
         ImageViewArgentPremiereRessource.setOnClickListener(imageViewArgentPremiereRessourceListener);
         ImageViewArgentDeuxiemeRessource.setOnClickListener(imageViewArgentDeuxiemeRessourceListener);
@@ -500,10 +567,17 @@ public class MainActivity extends AppCompatActivity {
         TimerTask verificationMAJFirewall = new TimerTask () {
             @Override
             public void run () {
-                // augmentation du nombre d'heures passées depuis la derière MAJ du Firewall
+                // augmentation du nombre d'heures passées depuis la derière MAJ du firewall
                 entreprise.setDerniereMAJFirewall(entreprise.getDerniereMAJFirewall() + 1);
                 // diminution du taux de sécurité informatique
                 entreprise.augmenterTauxSecuInfo(-0.15);
+                // affichage du nombre d'heures passées depuis la dernière MAJ du firewall
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textViewHeureDerniereMiseAJour.setText("il y a "+entreprise.getDerniereMAJFirewall()+" heure(s)");
+                    }
+                });
             }
         };
 
@@ -515,10 +589,12 @@ public class MainActivity extends AppCompatActivity {
      * Fonction permettant de mettre à jour le firewall
      */
     private void MAJFirewall() {
+            // augmentation du taux de sécurité informatique, seulement si la dernière MAJ date d'au moins 1 heure (afin d'éviter d'exploiter infiniment le bonus)
+            if (entreprise.getDerniereMAJFirewall()>=1) {
+                entreprise.augmenterTauxSecuInfo(0.30);
+            }
             // remise à 0 du nombre d'heures passées depuis la derière MAJ du Firewall
             entreprise.setDerniereMAJFirewall(0);
-            // augmentation du taux de sécurité informatique
-            entreprise.augmenterTauxSecuInfo(0.30);
             // relance du timer de vérification de la denière MAJ du firewall
             _tMAJFirewall.cancel();
             verifierDerniereMAJFirewall();
@@ -536,6 +612,13 @@ public class MainActivity extends AppCompatActivity {
                 entreprise.setDerniereMAJSysteme(entreprise.getDerniereMAJSysteme() + 1);
                 // diminution du taux de sécurité informatique
                 entreprise.augmenterTauxSecuInfo(-0.15);
+                // affichage du nombre d'heures passées depuis la dernière MAJ du systeme
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textViewHeureDerniereMiseAJourSysteme.setText("il y a "+entreprise.getDerniereMAJSysteme()+" heure(s)");
+                    }
+                });
             }
         };
 
@@ -547,10 +630,12 @@ public class MainActivity extends AppCompatActivity {
      * Fonction permettant de mettre à jour le système
      */
     private void MAJSysteme() {
-        // remise à 0 du nombre d'heures passées depuis la derière MAJ du système
+        // augmentation du taux de sécurité informatique, seulement si la dernière MAJ date d'au moins 1 heure (afin d'éviter d'exploiter infiniment le bonus)
+        if (entreprise.getDerniereMAJSysteme()>=1) {
+            entreprise.augmenterTauxSecuInfo(0.30);
+        }
+        // remise à 0 du nombre d'heures passées depuis la derière MAJ du Firewall
         entreprise.setDerniereMAJSysteme(0);
-        // augmentation du taux de sécurité informatique
-        entreprise.augmenterTauxSecuInfo(0.30);
         // relance du timer de vérification de la denière MAJ du système
         _tMAJSysteme.cancel();
         verifierDerniereMAJSysteme();
@@ -566,19 +651,28 @@ public class MainActivity extends AppCompatActivity {
             public void run () {
                 // augmentation du nombre d'heures passées depuis la dernière intervention de la médecine du travail
                 entreprise.setDerniereInterventionMedecineTravail(entreprise.getDerniereInterventionMedecineTravail() + 1);
-                // diminution du taux des conditions de travail
-                entreprise.augmenterTauxConditTravail(-0.15);
+                // diminution du taux des conditions de travail toutes les 4 heures passées sans intervention
+                if(entreprise.getDerniereInterventionMedecineTravail()%4==0) {
+                    entreprise.augmenterTauxConditTravail(-0.15);
+                }
+                // affichage du nombre d'heures passées depuis la dernière intervention de la médecine du travail
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textViewHeureDerniereInterventionMedecinTravail.setText("il y a "+entreprise.getDerniereInterventionMedecineTravail()+" heure(s)");
+                    }
+                });
             }
         };
 
-        // planification de la tâche du timer toutes les 4 heures
-        _tInterventionMedecineTravail.schedule (verificationInterventionMedecineTravail, 1000*60*60*4, 1000*60*60*4);
+        // planification de la tâche du timer toutes les heures à partir de la première heure
+        _tInterventionMedecineTravail.schedule (verificationInterventionMedecineTravail, 1000*60*60, 1000*60*60);
     }
 
     /**
      * Fonction permettant d'actualiser le nombre d'heures depuis la dernière intervention de la médecine du travail
      */
-    private void set_tInterventionMedecineTravail() {
+    private void interventionMedecineTravail() {
         // remise à 0 du nombre d'heures passées depuis la derière intervention de la médecine du travail
         entreprise.setDerniereInterventionMedecineTravail(0);
         // augmentation du taux des conditions de travail
@@ -598,13 +692,22 @@ public class MainActivity extends AppCompatActivity {
             public void run () {
                 // augmentation du nombre d'heures passées depuis la dernière intervention
                 entreprise.setDerniereInterventionMenage(entreprise.getDerniereInterventionMenage() + 1);
-                // diminution du taux des conditions de travail
-                entreprise.augmenterTauxConditTravail(-0.15);
+                // diminution du taux des conditions de travail toutes les 2 heures passées sans intervention
+                if(entreprise.getDerniereInterventionMenage()%2==0) {
+                    entreprise.augmenterTauxConditTravail(-0.15);
+                }
+                // affichage du nombre d'heures passées depuis la dernière intervention de l'équipe d'entretien
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textViewHeureDernierMenage.setText("il y a "+entreprise.getDerniereInterventionMenage()+" heure(s)");
+                    }
+                });
             }
         };
 
-        // planification de la tâche du timer toutes les 2 heures
-        _tInterventionMenage.schedule (verificationInterventionMenage, 1000*60*60*2, 1000*60*60*2);
+        // planification de la tâche du timer toutes les heures
+        _tInterventionMenage.schedule (verificationInterventionMenage, 1000*60*60, 1000*60*60);
     }
 
     /**
@@ -1056,6 +1159,313 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener imageButtonUpCEmployesSecuriteListener = new View.OnClickListener() {
+        /**
+         * Redirection vers l'écran de compétences informatiques
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            // redirection vers écran de compétences info à coder ici
+        }
+    };
+
+
+    /* ********************************** *
+     *        CONDITIONS DE TRAVAIL       *
+     * ********************************** */
+
+    private View.OnClickListener imageButtonUpFournituresListener = new View.OnClickListener() {
+        /**
+         * Permet d'améliorer le mobilier/fournitures de travail et de mettre à jour le prix et le nom
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            switch (entreprise.ameliorerMobilier()) {
+                case 0:
+                    notEnoughMoney(entreprise.determinerSommeAmeliorationMobilier());
+                    break;
+                case 1:
+                    successfulMessage("Meilleur mobilier dejà acheté !");
+                    break;
+                case 2:
+                    successfulMessage("Mobilier amélioré !");
+                    break;
+        }
+            textViewArgentFournitures.setText(Integer.toString(entreprise.determinerSommeAmeliorationMobilier()));
+            textViewNomFournitures.setText(entreprise.getNomMobilier());
+        }
+    };
+
+    private View.OnClickListener imageButtonUpMedecinTravailListener = new View.OnClickListener() {
+        /**
+         * Permet d'effectuer une visite du médecin de travail
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            if (entreprise.payer(150)) {
+                interventionMedecineTravail();
+                successfulMessage("Intervention du médecin du travail effectuée !");
+                textViewHeureDerniereInterventionMedecinTravail.setText("il y a moins d'une heure");
+            } else {
+                notEnoughMoney(150);
+            }
+        }
+    };
+
+    private View.OnClickListener imageButtonUpMenageListener = new View.OnClickListener() {
+        /**
+         * Permet d'effectuer une intervention de l'équipe d'entretien
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            if (entreprise.payer(100)) {
+                interventionMenage();
+                successfulMessage("Intervention de l'équipe d'entretien effectuée !");
+                textViewHeureDernierMenage.setText("il y a moins d'une heure");
+            } else {
+                notEnoughMoney(100);
+            }
+        }
+    };
+
+    private View.OnClickListener imageButtonUpAperoListener = new View.OnClickListener() {
+        /**
+         * Permet d'organiser un apéro pour les salariés
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            switch (entreprise.organiserApero()) {
+                case 0:
+                    notEnoughMoney(300);
+                    break;
+                case 1:
+                    successfulMessage("Dernier apéro il y a moins de 3h !");
+                    break;
+                case 2:
+                    successfulMessage("Vous organisez un apéro !");
+                    break;
+                case 3:
+                    successfulMessage("Vos employés sont devenus alcooliques ou ne veulent plus travailler !");
+                    break;
+            }
+        }
+    };
+
+    private View.OnClickListener imageButtonUpFelicitationListener = new View.OnClickListener() {
+        /**
+         * Permet de féliciter un employé
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            if (entreprise.feliciterEmploye()) {
+                successfulMessage("Vous félicitez un employé !");
+            } else {
+                successfulMessage("Vous devriez attendre au moins 2h entre chaque félicitation !");
+            }
+        }
+    };
+
+    /* Boutons help conditions de travail */
+    private View.OnClickListener imageButtonHelpFournituresListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("L'amélioration des fournitures de bureau permet aux employés de travailler dans de meilleures conditions");
+        }
+    };
+    private View.OnClickListener imageButtonHelpMedecinTravailListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Pensez à faire intervenir la médecine du travail régulièrement afin de détecter les problèmes de vos employés et ainsi améliorer leurs conditions de travail (conseillé toutes les 4h)");
+        }
+    };
+    private View.OnClickListener imageButtonHelpMenageListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Il est important de travailler dans un environnement sain (conseillé toutes les 2h");
+        }
+    };
+    private View.OnClickListener imageButtonHelpAperoListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Organisez un apéro auquel vous conviez tous vos employés afin de renforcer les liens et la bonne humeur au bureau ! (disponible toutes les 3h)");
+        }
+    };
+    private View.OnClickListener imageButtonHelpFelicitationListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Félicitez au hasard un employé pour son travail accomplit afin de motiver vos employés à continuer de bien travailler (disponible toutes les 2h)");
+        }
+    };
+
+    /* ********************************** *
+     *        SECURITE INFORMATIQUE       *
+     * ********************************** */
+
+    private View.OnClickListener imageButtonUpAntivirusListener = new View.OnClickListener() {
+        /**
+         * Permet d'améliorer l'antivirus et de mettre à jour le prix ainsi que le nom de celui-ci
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            switch (entreprise.ameliorerAntivirus()){
+                case 0:
+                    notEnoughMoney(entreprise.determinerSommeAmeliorationAntivirus());
+                    break;
+                case 1:
+                    successfulMessage("Meilleur antivirus dejà acheté !");
+                    break;
+                case 2:
+                    successfulMessage("Antivirus amélioré !");
+                    break;
+            }
+            textViewArgentAntivirus.setText(Integer.toString(entreprise.determinerSommeAmeliorationAntivirus()));
+            textViewNomAntivirus.setText(entreprise.getNomAntivirus());
+        }
+    };
+
+    private View.OnClickListener imageButtonUpFirewallListener = new View.OnClickListener() {
+        /**
+         * Permet de mettre à jour le firewall
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            MAJFirewall();
+            textViewHeureDerniereMiseAJour.setText("il y a moins d'1 heure");
+            successfulMessage("Firewall mis à jour !");
+        }
+    };
+
+    private View.OnClickListener imageButtonUpMiseAJourSystemeListener = new View.OnClickListener() {
+        /**
+         * Permet de mettre à jour le système
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            MAJSysteme();
+            textViewHeureDerniereMiseAJourSysteme.setText("il y a moins d'1 heure");
+            successfulMessage("Système mis à jour !");
+        }
+    };
+
+    private View.OnClickListener imageButtonUpFormationEmployesListener = new View.OnClickListener() {
+        /**
+         * Permet de former les employés sur la sécurité informatique
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            if(entreprise.formerSecuInfo()){
+                successfulMessage("Employés formés à la sécurité informatique !");
+                progressBarFormationSecuriteInfo.setProgress(100);
+            } else {
+                notEnoughMoney(300);
+            }
+        }
+    };
+
+    private View.OnClickListener imageButtonUpFormationSousTraiterListener = new View.OnClickListener() {
+        /**
+         * Permet de faire appel à un pentester afin de détecter des failles éventuelles de sécurité informatique
+         *
+         * @param v: élement de la vue sur lequel on clique
+         * @author gbon
+         */
+        @Override
+        public void onClick(View v) {
+            int nbreFailles = entreprise.pentesting();
+            if(nbreFailles == 0){
+                notEnoughMoney(500);
+            } else {
+                successfulMessage(nbreFailles+" failles trouvées !");
+            }
+        }
+    };
+
+    /* Boutons help sécurité informatique */
+    private View.OnClickListener imageButtonHelpAntivirusListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Améliorer votre antivirus vous permet de mieux défendre votre système informatique contre les virus");
+        }
+    };
+    private View.OnClickListener imageButtonHelpFirewallListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Mettre à jour votre firewall vous permet de mieux vous défendre contre les intrusions");
+        }
+    };
+    private View.OnClickListener imageButtonHelpMiseAJourSystemeListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Mettre à jour votre systeme vous permet de limiter les failles dans votre systeme informatique");
+        }
+    };
+    private View.OnClickListener imageButtonHelpFormationEmployesListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Former vos employés permet de les rendre plus compétents dans la prévention des risques de sécurité liés à l'informatique");
+        }
+    };
+    private View.OnClickListener imageButtonHelpSousTraiterListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Faire appel à un pen tester permet d'essayer de trouver des failles de sécurité dans le système informatique pour les corriger et ainsi limiter les risques d'intrusion");
+        }
+    };
+
+    /**
+     * Met à jour l'écran du détail de la sécurité
+     * @author gbon
+     */
+    private void majGraphSecurite() {
+        progressBarSecurite.setProgress((int)(entreprise.getTauxSecuGlobal()*100));
+        // MAJ des progressbar de l'onglet Sécurité
+        if(relativeLayoutDetailsSecurite.getVisibility() == View.VISIBLE) {
+            progressBarEmployesSecurite.setProgress((int) (entreprise.getNiveauMoyenDomaine("Securite")));
+            progressBarConditionTravail.setProgress((int) (entreprise.getTauxQualConditionTravail() * 100));
+            progressBarSecuriteInformatique.setProgress((int) (entreprise.getTauxSecuInfo() * 100));
+        }
+        // MAJ de la progressar + taux de l'onglet détail conditions de travail
+        if(relativeLayoutDetailsConditionsTravails.getVisibility() == View.VISIBLE) {
+            progressBarNiveauConditionsTravails.setProgress((int) (entreprise.getTauxQualConditionTravail() * 100));
+            textViewNiveauConditionsTravails.setText(String.valueOf(entreprise.getTauxQualConditionTravail() * 100));
+        }
+        // MAJ de la progressbar + taux de l'onglet détail sécurité informatique
+        if(relativeLayoutDetailsSecuriteInformatique.getVisibility() == View.VISIBLE) {
+            progressBarNiveauSecuriteInformatique.setProgress((int)(entreprise.getTauxSecuInfo()*100));
+            textViewNiveauSecuriteInformatique.setText(String.valueOf(entreprise.getTauxSecuInfo() * 100));
+        }
+    }
+
     /* ********************************** *
      *            RESSOURCES              *
      * ********************************** */
@@ -1106,6 +1516,7 @@ public class MainActivity extends AppCompatActivity {
                         if (Ressources.getInstance() >= 0) {
                             majGraphRessources();
                             majGraphBonheur();
+                            majGraphSecurite();
                         } else {
                             _t2.cancel();
                             gameOver("Vous n'avez plus assez de ressources. L'entreprise a fait faillite !");
@@ -1226,6 +1637,16 @@ public class MainActivity extends AppCompatActivity {
      */
     private void successfullyPaidResources(int nbRes) {
         Toast.makeText(getApplicationContext(), nbRes + " ressources achetées !", Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * Permet d'afficher un message dont le texte est indiqué en paramètre
+     *
+     * @param message : message à afficher
+     * @author gbon
+     */
+    private void successfulMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
     /**
