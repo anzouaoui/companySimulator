@@ -2233,7 +2233,7 @@
                             android:id="@+id/TextViewArgentApero"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/textMIseAJourSysteme"
+                            android:text="@string/prixApero"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ImageViewArgentApero"

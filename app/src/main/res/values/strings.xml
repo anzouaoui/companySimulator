@@ -98,6 +98,7 @@
     <string name="apero">ORGANISER APERO</string>
     <string name="feliciter">FELICITER UN EMPLOYE</string>
     <string name="heurePossibilite">00:28:12</string>
+    <string name="prixApero">100</string>
 
     <!-- REPUTATION -->
     <string name="reputation">REPUTATION</string>

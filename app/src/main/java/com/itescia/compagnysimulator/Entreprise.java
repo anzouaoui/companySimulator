@@ -521,14 +521,16 @@ public class Entreprise {
         Date now = new Date();
         if (dernierApero != null) {
             // si le joueur peut payer
-            if (this.payer(300)) {
+            if (this.payer(100)) {
                 resultat = 1;
                 //récupération du nombre d'heures entre la date du dernier apéro et maintenant
                 long secs = (now.getTime() - this.dernierApero.getTime()) / 1000;
                 long hours = 0;
+                long minutes;
+                minutes = secs / 60;
                 hours = secs / 3600;
                 // si la différence est d'au moins 3h
-                if (hours >= 3) {
+                if (minutes >= 3) {
                     setDernierApero(now);
                     augmenterTauxConditTravail(0.30);
                     levelUp(0.15);
@@ -541,12 +543,11 @@ public class Entreprise {
                         resultat = 3;
                     }
                 } else {
-                    //sinon on organise pas d'apéro et on redonne l'argent au joueur
-                    setArgent(this.argent + 300);
+                    resultat = 4;
                 }
             }
         } else {
-            if (this.payer(300)) {
+            if (this.payer(100)) {
                 setDernierApero(now);
                 augmenterTauxConditTravail(0.30);
                 levelUp(0.15);

@@ -32,12 +32,16 @@ public class Evenement {
      */
     private String messageChoix1;
 
+    private int prix1;
+
     /** Le message du bouton 2
      * @see Evenement#getMessageChoix2() ()
      *
      * @author gbon
      */
     private String messageChoix2;
+
+    private int prix2;
 
     /**
      * Permet de créer un nouvel évènement
@@ -49,11 +53,13 @@ public class Evenement {
      *
      * @author gbon
      */
-    public Evenement(int numero, String message, String messageChoix1, String  messageChoix2){
+    public Evenement(int numero, String message, String messageChoix1, int prix1, String  messageChoix2, int prix2){
         this.numero = numero;
         this.message = message;
         this.messageChoix1 = messageChoix1;
         this.messageChoix2 = messageChoix2;
+        this.prix1 = prix1;
+        this.prix2 = prix2;
     }
 
     /**
@@ -63,4 +69,20 @@ public class Evenement {
     public String getMessage() { return message; }
     public String getMessageChoix1() { return messageChoix1; }
     public String getMessageChoix2() { return messageChoix2; }
+
+    public int getPrix2() {
+        return prix2;
+    }
+
+    public void setPrix2(int prix2) {
+        this.prix2 = prix2;
+    }
+
+    public int getPrix1() {
+        return prix1;
+    }
+
+    public void setPrix1(int prix1) {
+        this.prix1 = prix1;
+    }
 }

@@ -112,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
         Temps.getTemps();
         decrementeRessources();
         afficherNoms();
+
+        GestionEvenements.getGestionEvenements().initialize(entreprise); //initialisation de la gestion des évènements
     }
 
     /**
@@ -545,13 +547,10 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (entreprise.getArgent() <= 10000) {
-                            textViewArgent.setText(String.valueOf(entreprise.getArgent()));
-                            textViewClock.setText(Temps.getTempsString());
-                            checkTime(); // Vérifications pour augmenter niveau
-                        } else {
-                            _t.cancel();
-                        }
+                        textViewArgent.setText(String.valueOf(entreprise.getArgent()));
+                        textViewClock.setText(Temps.getTempsString());
+                        checkTime(); // Vérifications pour augmenter niveau
+                        gestionEvenements();
                     }
                 });
             }
@@ -1245,13 +1244,13 @@ public class MainActivity extends AppCompatActivity {
          * Permet d'organiser un apéro pour les salariés
          *
          * @param v: élement de la vue sur lequel on clique
-         * @author gbon
+         * @author gbon, casag
          */
         @Override
         public void onClick(View v) {
             switch (entreprise.organiserApero()) {
                 case 0:
-                    notEnoughMoney(300);
+                    notEnoughMoney(100);
                     break;
                 case 1:
                     successfulMessage("Dernier apéro il y a moins de 3h !");
@@ -1262,6 +1261,8 @@ public class MainActivity extends AppCompatActivity {
                 case 3:
                     successfulMessage("Vos employés sont devenus alcooliques ou ne veulent plus travailler !");
                     break;
+                case 4: // Trop d'apéros
+                    popUpChoice(GestionEvenements.getGestionEvenements().getEventByNum(2));
             }
         }
     };
@@ -1671,7 +1672,7 @@ public class MainActivity extends AppCompatActivity {
      * @param explication : message à afficher
      * @author casag
      */
-    private void popUpInfo(String explication) {
+    public void popUpInfo(String explication) {
         AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(MainActivity.this);
         dlgAlert.setMessage(explication);
         dlgAlert.setTitle("Information");
@@ -1718,6 +1719,7 @@ public class MainActivity extends AppCompatActivity {
         if(TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 1){
             textViewLevel.setText("NIVEAU 2");
             entreprise.setIndiceDecrem(2);
+            entreprise.setNiveau(2);
             entreprise.setIndiceIncremArgent(25);
             if(TimeUnit.MILLISECONDS.toMillis(timeMillis) > 60000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 60500){
                 popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais attention, les ressources décrémentent...", "NIVEAU 2");
@@ -1730,6 +1732,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textViewLevel.setText("NIVEAU 3");
             entreprise.setIndiceDecrem(3);
+            entreprise.setNiveau(3);
             entreprise.setIndiceIncremArgent(30);
             //NIVEAU 4 : 5 minutes
         } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 5) {
@@ -1738,6 +1741,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textViewLevel.setText("NIVEAU 4");
             entreprise.setIndiceDecrem(4);
+            entreprise.setNiveau(4);
             entreprise.setIndiceIncremArgent(35);
             //NIVEAU 5
         } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 7) {
@@ -1746,6 +1750,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textViewLevel.setText("NIVEAU 5");
             entreprise.setIndiceDecrem(5);
+            entreprise.setNiveau(5);
             entreprise.setIndiceIncremArgent(40);
             //NIVEAU 6
         } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 9) {
@@ -1754,7 +1759,44 @@ public class MainActivity extends AppCompatActivity {
             }
             textViewLevel.setText("NIVEAU 6");
             entreprise.setIndiceDecrem(6);
+            entreprise.setNiveau(6);
             entreprise.setIndiceIncremArgent(45);
         }
+    }
+
+    /**
+     * Gère les évènements
+     *
+     * @author casag
+     */
+    private void gestionEvenements() {
+        // Vérification de la parité
+        if(entreprise.getEmployes().size() > 3 && (entreprise.getParite() < 0.3 || entreprise.getParite() > 0.6)) {
+
+        }
+    }
+
+    /**
+     * Ouvre une pop up affichant un choix à l'utilisateur, suite à un evenement
+     * @param e : Evenement concerné
+     * @author casag
+     */
+    private void popUpChoice(final Evenement e){
+        final MainActivity ma = this;
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        GestionEvenements.getGestionEvenements().doEvent(e.getNumero(), 1, ma);
+                        break;
+                    case DialogInterface.BUTTON_NEUTRAL:
+                        GestionEvenements.getGestionEvenements().doEvent(e.getNumero(), 2, ma);
+                        break;
+                }
+            }
+        };
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(e.getMessage()).setNegativeButton(e.getMessageChoix1(), dialogClickListener).setNeutralButton(e.getMessageChoix2(), dialogClickListener).show();
     }
 }
