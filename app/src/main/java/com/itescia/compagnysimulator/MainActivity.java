@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     Timer _tMAJSysteme;
     Timer _tInterventionMedecineTravail;
     Timer _tInterventionMenage;
+    Timer _tRandomEvent;
 
     Timer _t2;
     int count = 0;
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         afficherNoms();
 
         GestionEvenements.getGestionEvenements().initialize(entreprise); //initialisation de la gestion des évènements
+        gestionRandomEvent();
     }
 
     /**
@@ -720,6 +723,39 @@ public class MainActivity extends AppCompatActivity {
         // relance du timer de vérification de la denière intervention du personnel de ménage
         _tInterventionMenage.cancel();
         verifierDerniereInterventionMenage();
+    }
+
+    /**
+     * Fonction permettant de gérer le timer des événements aléatoires
+     */
+    private void gestionRandomEvent() {
+        _tRandomEvent = new Timer();
+        // génération d'un entier aléatorie pour définir au bout de combien de temps l'événement interviendra
+        int randomNum = ThreadLocalRandom.current().nextInt(10, 61);
+        TimerTask gestionRandomEvent = new TimerTask () {
+            @Override
+            public void run () {
+                // appel de la fonction gérant l'événement aléatoire
+                callEvent();
+            }
+        };
+
+        // Exécution de la tâche au bout du temps aléatoire généré
+        _tRandomEvent.schedule (gestionRandomEvent, 1000*randomNum);
+    }
+
+    /**
+     * Fonction permettant d'appeler l'événement aléatoire et de relancer gestionTimerEvent()
+     */
+    private void callEvent() {
+        // Détermination aléatoire du numéro de l'événement aléatoire à appeler
+        int randomEvent = ThreadLocalRandom.current().nextInt(101, 103);
+        // Appel de l'événement précédemment déterminé avec la fonction popUpChoice()
+        popUpChoice(GestionEvenements.getGestionEvenements().getEventByNum(randomEvent));
+
+        // reset du timer et de la fonction gestionTimerEvent()
+        _tRandomEvent.cancel();
+        gestionRandomEvent();
     }
 
 
