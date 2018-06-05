@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     Timer _tInterventionMedecineTravail;
     Timer _tInterventionMenage;
     Timer _tRandomEvent;
+    MainActivity ma;
 
     Timer _t2;
     int count = 0;
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ma = this;
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initialize();
         bindListener();
@@ -1653,9 +1654,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
-
-
     /**
      * Permet d'afficher un message indiquant le nombre d'argent manquant à l'utilisateur pour acheter
      *
@@ -1818,8 +1816,7 @@ public class MainActivity extends AppCompatActivity {
      * @author casag
      */
     private void popUpChoice(final Evenement e){
-        final MainActivity ma = this;
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        final DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
@@ -1832,7 +1829,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(e.getMessage()).setNegativeButton(e.getMessageChoix1(), dialogClickListener).setNeutralButton(e.getMessageChoix2(), dialogClickListener).show();
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ma);
+
+        ma.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                builder.setMessage(e.getMessage()).setNegativeButton(e.getMessageChoix1(), dialogClickListener).setNeutralButton(e.getMessageChoix2(), dialogClickListener).show();
+            }
+        });
     }
 }
