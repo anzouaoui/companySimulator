@@ -40,13 +40,11 @@ public class Employe {
      * @author casag, gbon
      */
     public void incrementNiveauFormation(int nb, Entreprise entreprise){
-        if(verificationIncrementNiveauFormation(nb, entreprise)) {
-            if(this.getNiveauFormation() + nb < 5) {
+            if((this.getNiveauFormation() + nb) < 5) {
                 this.niveauFormation += nb;
             } else {
                 this.niveauFormation = 5;
             }
-        }
     }
 
     /**

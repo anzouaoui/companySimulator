@@ -250,14 +250,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:visibility="visible">
 
         <RelativeLayout
             android:id="@+id/RelativeLayoutEmployes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
             android:alpha="0.9"
             android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:visibility="gone">
@@ -268,7 +270,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:alpha="1"
-                android:background="@color/colorBackgroundTextView">
+                android:background="@color/colorBackgroundTextView"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/TextViewDetailEmployes"
@@ -318,13 +321,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                        <ImageButton
-                            android:id="@+id/ImageViewCommercial"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:contentDescription="@string/description_icone_commercial"
-                            android:src="@drawable/manwoman_commercial" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -339,6 +335,9 @@
                             android:id="@+id/ImageViewProduction"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="10dp"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
                             android:contentDescription="@string/description_icone_production"
                             android:src="@drawable/manwoman_production" />
@@ -352,13 +351,6 @@
                         android:layout_marginStart="40dp"
                         android:layout_toEndOf="@+id/RelativeLayoutProduction">
 
-                        <ImageButton
-                            android:id="@+id/ImageViewSecurite2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:contentDescription="@string/description_icone_securite_2"
-                            android:src="@drawable/manwoman_securite" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -370,13 +362,27 @@
                         android:layout_toEndOf="@+id/RelativeLayoutSecurite2">
 
                         <ImageButton
-                            android:id="@+id/ImageViewMarketing"
+                            android:id="@+id/ImageViewCom"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="30dp"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
                             android:contentDescription="@string/description_icone_marketing"
                             android:src="@drawable/manwoman_marketing" />
                     </RelativeLayout>
+
+                    <ImageButton
+                        android:id="@+id/ImageViewSecurite2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="24dp"
+                        android:layout_toEndOf="@+id/RelativeLayoutProduction"
+                        android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                        android:contentDescription="@string/description_icone_securite_2"
+                        android:src="@drawable/manwoman_securite" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -395,13 +401,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                        <ImageButton
-                            android:id="@+id/ImageviewComptable"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/manwoman_comptable"
-                            android:contentDescription="@string/description_image_comptable"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -412,13 +411,6 @@
                         android:layout_marginStart="40dp"
                         android:layout_toEndOf="@+id/RelativeLayoutComptable">
 
-                        <ImageButton
-                            android:id="@+id/ImageViewRD"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/manwoman_rd"
-                            android:contentDescription="@string/description_image_rh"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -429,15 +421,52 @@
                         android:layout_marginStart="40dp"
                         android:layout_toEndOf="@+id/RelativeLayoutRD">
 
-                        <ImageButton
-                            android:id="@+id/ImageViewDirection"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/manwoman_direction"
-                            android:contentDescription="@string/description_image_direction"/>
                     </RelativeLayout>
                 </RelativeLayout>
+
+                <ImageButton
+                    android:id="@+id/ImageviewComptable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_toEndOf="@+id/RelativeLayoutEmployes1"
+                    android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                    android:contentDescription="@string/description_image_comptable"
+                    android:src="@drawable/manwoman_comptable" />
+
+                <ImageButton
+                    android:id="@+id/ImageViewCommercial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/RelativeLayoutEmployes2"
+                    android:layout_marginStart="26dp"
+                    android:layout_toEndOf="@+id/RelativeLayoutBackButton"
+                    android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                    android:contentDescription="@string/description_icone_commercial"
+                    android:src="@drawable/manwoman_commercial" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RelativeLayoutEmployes2"
+                    android:layout_marginEnd="11dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toStartOf="@+id/tv_niveaumoyen"
+                    android:text="NIVEAU MOYEN :"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_niveaumoyen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textView3"
+                    android:layout_alignBottom="@+id/textView3"
+                    android:layout_marginEnd="54dp"
+                    android:layout_toStartOf="@+id/ImageviewComptable"
+                    android:text="0"
+                    android:textSize="20sp" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -469,8 +498,8 @@
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="10dp"
                         android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                        android:src="@drawable/back_2"
-                        android:contentDescription="@string/description_icone_back_button"/>
+                        android:contentDescription="@string/description_icone_back_button"
+                        android:src="@drawable/back_2" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -492,355 +521,80 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:text="@string/comptable"
+                            android:text="COMPTABLE"
                             android:textSize="15sp" />
+
                     </RelativeLayout>
 
                     <ImageView
                         android:id="@+id/ImageViewComptableWorker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/comptableworker"
-                        android:contentDescription="@string/description_image_comptable"/>
-
-                    <ScrollView
-                        android:id="@+id/scrollViewComptableWorker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:layout_below="@id/RelativeLayoutComptableTitle"
-                        android:layout_toEndOf="@id/ImageViewComptableWorker">
-
-                        <RelativeLayout
-                            android:id="@+id/RelativeLayoutScrollView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <RelativeLayout
-                                android:id="@+id/RelativeLayoutComptableWorkerFirstLine"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="30dp"
-                                android:layout_marginTop="10dp">
-
-                                <ImageView
-                                    android:id="@+id/ImageViewManOne"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/man"
-                                    android:contentDescription="@string/description_icone_man"/>
-
-                                <ImageView
-                                    android:id="@+id/ImageViewFemaleIconOne"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManOne"
-                                    android:layout_marginStart="1dp"
-                                    android:layout_toEndOf="@+id/ImageViewManOne"
-                                    android:src="@drawable/female"
-                                    android:contentDescription="@string/description_icone_female"/>
-
-                                <TextView
-                                    android:id="@+id/TextViewLevelOneComptableWorker"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManOne"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/ImageViewFemaleIconOne"
-                                    android:text="@string/lvl2"
-                                    android:textColor="@color/fontColor"
-                                    android:textSize="20sp" />
-
-                                <RelativeLayout
-                                    android:id="@+id/RelativeLayoutProgressBarOneComptableWorker"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_alignBottom="@+id/ImageViewManOne"
-                                    android:layout_alignTop="@+id/ImageViewFemaleIconOne"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/TextViewLevelOneComptableWorker">
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker1_1"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_alignParentStart="true"
-                                        android:layout_alignParentTop="true"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker1_2"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker1_1"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker1_3"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker1_2"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker1_4"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker1_3"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker1_5"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker1_4"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-                                </RelativeLayout>
-
-                                <ImageButton
-                                    android:id="@+id/ImageButtonUpComptableWorker1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManOne"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker"
-                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                    android:src="@drawable/up"
-                                    android:contentDescription="@string/description_icone_up"/>
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/RelativeLayoutComptableWorkerSecondLine"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignStart="@+id/RelativeLayoutComptableWorkerFirstLine"
-                                android:layout_below="@+id/RelativeLayoutComptableWorkerFirstLine"
-                                android:layout_marginTop="20dp">
-
-                                <ImageView
-                                    android:id="@+id/ImageViewManTwo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/man"
-                                    android:contentDescription="@string/description_icone_man"/>
-
-                                <ImageView
-                                    android:id="@+id/ImageViewMaleIconOne"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManTwo"
-                                    android:layout_marginStart="1dp"
-                                    android:layout_toEndOf="@+id/ImageViewManTwo"
-                                    android:src="@drawable/male"
-                                    android:contentDescription="@string/description_icone_male"/>
-
-                                <TextView
-                                    android:id="@+id/TextViewLevelTwoComptableWorker"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManTwo"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/ImageViewMaleIconOne"
-                                    android:text="@string/lvl1"
-                                    android:textColor="@color/fontColor"
-                                    android:textSize="20sp" />
-
-                                <RelativeLayout
-                                    android:id="@+id/RelativeLayoutProgressBarTwoComptableWorker"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_alignBottom="@+id/ImageViewManTwo"
-                                    android:layout_alignTop="@+id/ImageViewMaleIconOne"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/TextViewLevelTwoComptableWorker">
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker2_1"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker2_2"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker2_1"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker2_3"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker2_2"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker2_4"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker2_3"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker2_5"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker2_4"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-                                </RelativeLayout>
-
-                                <ImageButton
-                                    android:id="@+id/ImageButtonUpComptableWorker2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManTwo"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/RelativeLayoutProgressBarTwoComptableWorker"
-                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                    android:src="@drawable/up"
-                                    android:contentDescription="@string/description_icone_up"/>
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/RelativeLayoutComptableWorkerThreeLine"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignStart="@+id/RelativeLayoutComptableWorkerSecondLine"
-                                android:layout_below="@+id/RelativeLayoutComptableWorkerSecondLine"
-                                android:layout_marginTop="20dp">
-
-                                <ImageView
-                                    android:id="@+id/ImageViewManThree"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/man"
-                                    android:contentDescription="@string/description_icone_man"/>
-
-                                <ImageView
-                                    android:id="@+id/ImageViewMaleIconThree"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManThree"
-                                    android:layout_marginStart="1dp"
-                                    android:layout_toEndOf="@+id/ImageViewManThree"
-                                    android:src="@drawable/male"
-                                    android:contentDescription="@string/description_icone_male"/>
-
-                                <TextView
-                                    android:id="@+id/TextViewLevelThreeComptableWorker"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManThree"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/ImageViewMaleIconThree"
-                                    android:text="@string/lvl4"
-                                    android:textColor="@color/fontColor"
-                                    android:textSize="20sp" />
-
-                                <RelativeLayout
-                                    android:id="@+id/RelativeLayoutProgressBarThreeComptableWorker"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_alignBottom="@+id/ImageViewManThree"
-                                    android:layout_alignTop="@+id/ImageViewMaleIconThree"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/TextViewLevelThreeComptableWorker">
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker3_1"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker3_2"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker3_1"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker3_3"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker3_2"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker3_4"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker3_3"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:id="@+id/RelativeLayoutProgressBarOneComptableWorker3_5"
-                                        android:layout_width="25dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_toEndOf="@+id/RelativeLayoutProgressBarOneComptableWorker3_4"
-                                        android:alpha="0.5"
-                                        android:background="@drawable/custom_progress_bar_levels_complete">
-                                    </RelativeLayout>
-                                </RelativeLayout>
-
-                                <ImageButton
-                                    android:id="@+id/ImageButtonUpComptableWorker3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignBottom="@+id/ImageViewManThree"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_toEndOf="@+id/RelativeLayoutProgressBarThreeComptableWorker"
-                                    android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                                    android:src="@drawable/up"
-                                    android:contentDescription="@string/description_icone_up"/>
-                            </RelativeLayout>
-                        </RelativeLayout>
-                    </ScrollView>
+                        android:contentDescription="@string/description_image_comptable"
+                        android:src="@drawable/comptableworker" />
 
                     <RelativeLayout
+                        android:id="@+id/relativeLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/scrollViewComptableWorker"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="15dp"
                         android:layout_toEndOf="@+id/ImageViewComptableWorker">
 
-                        <ImageButton
-                            android:id="@+id/ImageButtonAddComptableWorker"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/plus"
-                            android:contentDescription="@string/description_icone_plus"/>
                     </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/button_embaucher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/relativeLayout"
+                        android:layout_below="@+id/RelativeLayoutComptableTitle"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="22dp"
+                        android:tag="Comptable"
+                        android:text="EMBAUCHER" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/relativeLayout"
+                        android:layout_below="@+id/button_embaucher"
+                        android:layout_marginTop="36dp"
+                        android:text="Niveau :"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvNiveau"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/textView"
+                        android:layout_alignBottom="@+id/textView"
+                        android:layout_marginStart="6dp"
+                        android:layout_toEndOf="@+id/textView"
+                        android:text="?"
+                        android:textSize="20sp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton_addLevel"
+                        style="@style/Widget.AppCompat.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/tvNiveau"
+                        android:layout_toEndOf="@+id/button_embaucher"
+                        android:background="#0000"
+                        app:srcCompat="@drawable/plus" />
+
+                    <ImageView
+                        android:id="@+id/imageViewGenre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/tvNiveau"
+                        android:layout_marginEnd="17dp"
+                        android:layout_toStartOf="@+id/imageButton_addLevel"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/male" />
+
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
@@ -849,254 +603,12 @@
             android:id="@+id/RelativeLayoutDetailsCompetences"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:alpha="0.9"
             android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:visibility="gone">
 
-            <RelativeLayout
-                android:id="@+id/RelativeLayoutContentDetailCompetences"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true">
-
-                <RelativeLayout
-                    android:id="@+id/RelativeLayoutBackButtonDetailCompetences"
-                    android:layout_width="wrap_content"
-                    android:layout_height="180dp">
-
-                    <ImageButton
-                        android:id="@+id/ImageButtonBackButtonDetailCompetences"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                        android:src="@drawable/back_2"
-                        android:contentDescription="@string/description_icone_back_button"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailCompetences">
-
-                    <RelativeLayout
-                        android:id="@+id/RelativeLayoutCompetencesTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="70dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/colorBackgroundTextView">
-
-                        <TextView
-                            android:id="@+id/TextViewCompetencesTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:text="@string/competences"
-                            android:textSize="15sp" />
-                    </RelativeLayout>
-
-                    <ImageView
-                        android:id="@+id/ImageViewManWomanCap"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/manwomancap"
-                        android:contentDescription="@string/description_image_manwomancap"/>
-
-                    <RelativeLayout
-                        android:id="@+id/RelativeLayoutCompetences"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/RelativeLayoutCompetencesTitle"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_toEndOf="@+id/ImageViewManWomanCap">
-
-                        <ImageButton
-                            android:id="@+id/ImageButtonCompetencesCommercial"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/commercial"
-                            android:contentDescription="@string/description_icone_commercial"/>
-
-                        <TextView
-                            android:id="@+id/TextViewCompetenceCommercial"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/ImageButtonCompetencesCommercial"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@+id/ImageButtonCompetencesCommercial"
-                            android:text="@string/niveau2"
-                            android:textColor="@color/fontColor"
-                            android:textSize="35sp" />
-
-                        <ImageButton
-                            android:id="@+id/ImageButtonCompetenceProduction"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_toEndOf="@+id/TextViewCompetenceCommercial"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/production"
-                            android:contentDescription="@string/description_icone_production"/>
-
-                        <TextView
-                            android:id="@+id/TextViewCompetenceProduction"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/ImageButtonCompetencesCommercial"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@+id/ImageButtonCompetenceProduction"
-                            android:text="@string/niveau1"
-                            android:textColor="@color/fontColor"
-                            android:textSize="35sp" />
-
-                        <ImageButton
-                            android:id="@+id/ImageButtonCompetenceSecurite"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginStart="20dp"
-                            android:layout_toEndOf="@+id/TextViewCompetenceProduction"
-                            android:alpha="0.5"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/securite"
-                            android:contentDescription="@string/description_icone_securite"/>
-
-                        <TextView
-                            android:id="@+id/TextViewCompetenceSecurite"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/ImageButtonCompetencesCommercial"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@+id/ImageButtonCompetenceSecurite"
-                            android:alpha="0.5"
-                            android:text="@string/niveau0"
-                            android:textColor="@color/fontColor"
-                            android:textSize="35sp" />
-
-                        <ImageButton
-                            android:id="@+id/ImageButtonCompetenceMarketing"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginStart="20dp"
-                            android:layout_toEndOf="@+id/TextViewCompetenceSecurite"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/marketing"
-                            android:contentDescription="@string/description_icone_marketing"/>
-
-                        <TextView
-                            android:id="@+id/TextViewCompetenceMarketing"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/ImageButtonCompetencesCommercial"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@+id/ImageButtonCompetenceMarketing"
-                            android:text="@string/niveau1"
-                            android:textColor="@color/fontColor"
-                            android:textSize="35sp" />
-
-                        <ImageButton
-                            android:id="@+id/ImageButtonCompetenceComptable"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignStart="@+id/ImageButtonCompetencesCommercial"
-                            android:layout_below="@+id/ImageButtonCompetencesCommercial"
-                            android:layout_marginTop="90dp"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/comptable"
-                            android:contentDescription="@string/description_icone_comptable"/>
-
-                        <TextView
-                            android:id="@+id/TextViewCompetenceComptable"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/ImageButtonCompetenceComptable"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@+id/ImageButtonCompetenceComptable"
-                            android:text="@string/niveau3"
-                            android:textColor="@color/fontColor"
-                            android:textSize="35sp" />
-
-                        <ImageButton
-                            android:id="@+id/ImageButtonCompetenceRd"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignStart="@+id/ImageButtonCompetenceProduction"
-                            android:layout_marginTop="90dp"
-                            android:layout_toEndOf="@+id/TextViewCompetenceComptable"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/rd"
-                            android:contentDescription="@string/description_icone_rd"/>
-
-                        <TextView
-                            android:id="@+id/TextViewCompetenceRd"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/ImageButtonCompetenceComptable"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@+id/ImageButtonCompetenceRd"
-                            android:text="@string/niveau1"
-                            android:textColor="@color/fontColor"
-                            android:textSize="35sp" />
-
-                        <ImageButton
-                            android:id="@+id/ImageButtonCompetenceDirection"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignStart="@+id/ImageButtonCompetenceSecurite"
-                            android:layout_marginTop="90dp"
-                            android:layout_toEndOf="@+id/TextViewCompetenceRd"
-                            android:alpha="0.5"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/direction"
-                            android:contentDescription="@string/description_icone_direction"/>
-
-                        <TextView
-                            android:id="@+id/TextViewCompetenceDirection"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/ImageButtonCompetenceDirection"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@+id/ImageButtonCompetenceDirection"
-                            android:alpha="0.5"
-                            android:text="@string/niveau0"
-                            android:textColor="@color/fontColor"
-                            android:textSize="35sp" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/RelativeLayoutCompetences"
-                        android:layout_marginTop="5dp"
-                        android:alpha="0.5"
-                        android:background="@color/backgroundLevel">
-
-                        <TextView
-                            android:id="@+id/TextViewNiveauMoyen"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="5dp"
-                            android:paddingEnd="5dp"
-                            android:paddingStart="5dp"
-                            android:paddingTop="5dp"
-                            android:text="@string/niveau_moyen"
-                            android:textColor="@color/colorTextViewDetails"
-                            android:textSize="30sp" />
-                    </RelativeLayout>
-                </RelativeLayout>
-            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -1144,8 +656,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                        android:src="@drawable/back_2"
-                        android:contentDescription="@string/description_icone_back_button"/>
+                        android:contentDescription="@string/description_icone_back_button"
+                        android:src="@drawable/back_2" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -1193,8 +705,8 @@
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ProgressBarEmployesSecurite"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -1236,8 +748,8 @@
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ProgressBarConditionTravail"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -1280,8 +792,8 @@
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ProgressBarSecuriteInformatique"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
@@ -1291,9 +803,9 @@
             android:id="@+id/RelativeLayoutDetailsSecuriteInformatique"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:layout_marginTop="40dp"
             android:alpha="0.9"
+            android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:visibility="gone">
 
             <RelativeLayout
@@ -1338,59 +850,60 @@
                     android:id="@+id/RelativeLayoutNiveauSecuriteInformatique"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailSecuriteInformatique"
                     android:layout_below="@+id/RelativeLayoutSecuriteInformatiqueTitle"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp">
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailSecuriteInformatique">
 
                     <ProgressBar
                         android:id="@+id/ProgressBarNiveauSecuriteInformatique"
                         style="@android:style/Widget.ProgressBar.Horizontal"
-                        android:progressDrawable="@drawable/custom_progress_bar_securite_informatique"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_centerVertical="true"
                         android:layout_marginEnd="12dp"
+                        android:layout_marginStart="8dp"
+                        android:alpha="1"
                         android:indeterminate="false"
                         android:indeterminateTintMode="src_atop"
-                        android:layout_centerVertical="true"
                         android:max="100"
                         android:progress="65"
-                        android:alpha="1"/>
+                        android:progressDrawable="@drawable/custom_progress_bar_securite_informatique" />
 
                     <TextView
                         android:id="@+id/TextViewNiveauSecuriteInformatique"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/ProgressBarNiveauSecuriteInformatique"
+                        android:layout_centerVertical="true"
                         android:layout_marginEnd="10dp"
                         android:text="@string/niveau_securite_informatique"
-                        android:layout_centerVertical="true"
                         android:textColor="@color/colorNiveauSecuriteInformatique"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_alignEnd="@+id/RelativeLayoutNiveauSecuriteInformatique"
                     android:layout_alignStart="@+id/RelativeLayoutNiveauSecuriteInformatique"
                     android:layout_below="@+id/RelativeLayoutNiveauSecuriteInformatique"
-                    android:layout_alignEnd="@+id/RelativeLayoutNiveauSecuriteInformatique">
+                    android:layout_marginTop="2dp">
 
                     <RelativeLayout
                         android:id="@+id/RelativeLayoutContentAntivirus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp">
+
                         <TextView
                             android:id="@+id/TextViewAntivirus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="@string/antivirus"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpAntivirus"
@@ -1406,62 +919,61 @@
                             android:id="@+id/ImageViewArgentAntivirus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/argent_antivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:layout_toEndOf="@+id/ImageButtonUpAntivirus"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpAntivirus"
+                            android:src="@drawable/argent_antivirus" />
 
                         <TextView
                             android:id="@+id/TextViewArgentAntivirus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/textAntivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ImageViewArgentAntivirus"
-                            android:textSize="25sp"/>
+                            android:text="@string/textAntivirus"
+                            android:textSize="25sp" />
 
                         <RelativeLayout
                             android:id="@+id/RelatvieLayoutNomAntivirus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/TextViewArgentAntivirus"
-                            android:layout_marginStart="45dp"
-                            android:layout_marginEnd="20dp"
                             android:layout_centerVertical="true"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginStart="45dp"
+                            android:layout_toEndOf="@+id/TextViewArgentAntivirus"
                             android:background="@drawable/custom_relative_layout_nom_antivirus">
 
                             <TextView
                                 android:id="@+id/TextViewNomAntivirus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/colorNomAntivirus"
                                 android:layout_centerHorizontal="true"
+                                android:layout_marginStart="20dp"
                                 android:text="Aviro v1.1"
-                                android:textSize="12sp"
-                                android:layout_marginStart="20dp"/>
+                                android:textColor="@color/colorNomAntivirus"
+                                android:textSize="12sp" />
                         </RelativeLayout>
 
                         <ImageButton
                             android:id="@+id/ImageButtonHelpAntivirus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/help"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="5dp"
                             android:layout_toEndOf="@+id/RelatvieLayoutNomAntivirus"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutSeparatorOne"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="10dp"
                             android:layout_height="2dp"
-                            android:layout_below="@+id/RelatvieLayoutNomAntivirus"
                             android:layout_alignEnd="@+id/ImageButtonHelpAntivirus"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:layout_below="@+id/RelatvieLayoutNomAntivirus"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -1470,13 +982,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/RelativeLayoutContentAntivirus"
                         android:layout_marginStart="10dp">
+
                         <TextView
                             android:id="@+id/TextViewFirewall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="@string/firewall"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpFirewall"
@@ -1492,42 +1005,41 @@
                             android:id="@+id/TextViewDerniereMiseAJour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="derniere maj : "
-                            android:layout_toEndOf="@+id/ImageButtonUpFirewall"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="20dp"
-                            android:textSize="20sp"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpFirewall"
+                            android:text="derniere maj : "
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/TextViewHeureDerniereMiseAJour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="pas encore effectuee"
-                            android:layout_toEndOf="@+id/TextViewDerniereMiseAJour"
-                            android:layout_marginStart="5dp"
                             android:layout_centerVertical="true"
-                            android:textSize="15sp"/>
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/TextViewDerniereMiseAJour"
+                            android:text="pas encore effectuee"
+                            android:textSize="15sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonHelpFirewall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/help"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_toEndOf="@+id/TextViewHeureDerniereMiseAJour"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            android:layout_toEndOf="@+id/TextViewHeureDerniereMiseAJour"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutSeparatorTwo"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="10dp"
                             android:layout_height="2dp"
-                            android:layout_below="@+id/TextViewFirewall"
                             android:layout_alignEnd="@+id/ImageButtonHelpFirewall"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:layout_below="@+id/TextViewFirewall"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -1536,13 +1048,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/RelativeLayoutContentFirewall"
                         android:layout_marginStart="10dp">
+
                         <TextView
                             android:id="@+id/TextViewMiseAJourSysteme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="MAJ SYSTEME"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpMiseAJourSysteme"
@@ -1558,41 +1071,40 @@
                             android:id="@+id/TextViewDerniereMiseAJourSysteme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="derniere maj : "
-                            android:layout_toEndOf="@+id/ImageButtonUpMiseAJourSysteme"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="20dp"
-                            android:textSize="20sp"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpMiseAJourSysteme"
+                            android:text="derniere maj : "
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/TextViewHeureDerniereMiseAJourSysteme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="pas encore effectuee"
-                            android:layout_toEndOf="@+id/TextViewDerniereMiseAJourSysteme"
-                            android:layout_marginStart="5dp"
                             android:layout_centerVertical="true"
-                            android:textSize="15sp"/>
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/TextViewDerniereMiseAJourSysteme"
+                            android:text="pas encore effectuee"
+                            android:textSize="15sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonHelpMiseAJourSysteme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/help"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_toEndOf="@+id/TextViewHeureDerniereMiseAJourSysteme"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            android:layout_toEndOf="@+id/TextViewHeureDerniereMiseAJourSysteme"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutSeparatorThree"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="10dp"
                             android:layout_height="2dp"
                             android:layout_below="@+id/TextViewMiseAJourSysteme"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -1601,13 +1113,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/RelativeLayoutContenMiseAJourSysteme"
                         android:layout_marginStart="10dp">
+
                         <TextView
                             android:id="@+id/TextViewFormationEmployes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="@string/formationEmployes"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpFormationEmployes"
@@ -1623,55 +1136,54 @@
                             android:id="@+id/ImageViewArgentFormationEmployes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/argent_antivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:layout_toEndOf="@+id/ImageButtonUpFormationEmployes"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpFormationEmployes"
+                            android:src="@drawable/argent_antivirus" />
 
                         <TextView
                             android:id="@+id/TextViewArgentFormationEmployes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/textMIseAJourSysteme"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ImageViewArgentFormationEmployes"
-                            android:textSize="25sp"/>
+                            android:text="@string/textMIseAJourSysteme"
+                            android:textSize="25sp" />
 
                         <ProgressBar
                             android:id="@+id/ProgressBarFormationEmployes"
                             style="@android:style/Widget.ProgressBar.Horizontal"
-                            android:progressDrawable="@drawable/custom_progress_bar_formation_employes"
                             android:layout_width="160dp"
                             android:layout_height="20dp"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
+                            android:layout_toEndOf="@+id/TextViewArgentFormationEmployes"
+                            android:alpha="1"
                             android:indeterminate="false"
                             android:indeterminateTintMode="src_atop"
-                            android:layout_centerVertical="true"
-                            android:layout_toEndOf="@+id/TextViewArgentFormationEmployes"
                             android:max="100"
                             android:progress="50"
-                            android:alpha="1"/>
+                            android:progressDrawable="@drawable/custom_progress_bar_formation_employes" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonHelpFormationEmployes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/help"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="5dp"
                             android:layout_toEndOf="@+id/ProgressBarFormationEmployes"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutSeparatorFour"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="10dp"
                             android:layout_height="2dp"
                             android:layout_below="@+id/TextViewFormationEmployes"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -1679,16 +1191,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/RelativeLayoutContentFormationEnmployes"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp">
+                        android:layout_marginTop="5dp">
+
                         <TextView
                             android:id="@+id/TextViewSousTraiter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="@string/sousTraiter"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpFormationSousTraiter"
@@ -1704,20 +1217,20 @@
                             android:id="@+id/ImageViewArgentSousTraiter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/argent_antivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:layout_toEndOf="@+id/ImageButtonUpFormationSousTraiter"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpFormationSousTraiter"
+                            android:src="@drawable/argent_antivirus" />
 
                         <TextView
                             android:id="@+id/TextViewArgentSousTraiter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="500"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ImageViewArgentSousTraiter"
-                            android:textSize="25sp"/>
+                            android:text="500"
+                            android:textSize="25sp" />
 
 
                         <ImageButton
@@ -1736,33 +1249,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="240dp"
                         android:layout_marginEnd="50dp"
+                        android:layout_marginStart="240dp"
                         android:background="@drawable/custom_relative_layout_information"
                         android:visibility="gone">
 
                         <ImageButton
-                            android:layout_alignParentEnd="true"
                             android:id="@+id/ImageButtonHideInformationSousTraiter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
                             android:layout_marginEnd="15dp"
                             android:layout_marginTop="15dp"
-                            android:src="@drawable/cross"
-                            android:background="@color/colorBackgroundInformation"/>
+                            android:background="@color/colorBackgroundInformation"
+                            android:src="@drawable/cross" />
 
                         <TextView
                             android:id="@+id/TextViewInformationSousTraiter"
-                            android:layout_below="@+id/ImageButtonHideInformationSousTraiter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/informationSousTraiter"
-                            android:paddingTop="10dp"
+                            android:layout_below="@+id/ImageButtonHideInformationSousTraiter"
                             android:paddingBottom="15dp"
-                            android:paddingStart="5dp"
                             android:paddingEnd="5dp"
+                            android:paddingStart="5dp"
+                            android:paddingTop="10dp"
+                            android:text="@string/informationSousTraiter"
                             android:textColor="@color/fontColor"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -1770,8 +1283,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="240dp"
                         android:layout_marginEnd="50dp"
+                        android:layout_marginStart="240dp"
                         android:background="@drawable/custom_relative_layout_information"
                         android:visibility="visible">
 
@@ -1779,8 +1292,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:layout_marginTop="20dp"
-                            android:background="@color/colorBackgroundInformationAntivirus">
-                        </RelativeLayout>
+                            android:background="@color/colorBackgroundInformationAntivirus"></RelativeLayout>
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutPrixAntivirus"
@@ -1790,45 +1302,45 @@
 
                             <ImageView
                                 android:id="@+id/ImageViewPrixAntivirus"
-                                android:layout_marginTop="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/argent"/>
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/argent" />
 
                             <TextView
                                 android:id="@+id/TextViewPrixAntivirus"
-                                android:layout_marginTop="15dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="15dp"
                                 android:layout_toEndOf="@+id/ImageViewPrixAntivirus"
                                 android:text="@string/prixAntivirus"
-                                android:layout_marginStart="5dp"
-                                android:textSize="20sp"
-                                android:layout_centerVertical="true"/>
+                                android:textSize="20sp" />
                         </RelativeLayout>
 
 
                         <TextView
                             android:id="@+id/TextViewInformationAntivirus"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:textAlignment="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_below="@+id/RelativeLayoutPrixAntivirus"
-                            android:paddingTop="10dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
                             android:paddingBottom="15dp"
+                            android:paddingTop="10dp"
                             android:text="@string/informationAntivirus"
+                            android:textAlignment="center"
                             android:textColor="@color/fontColor"
                             android:textSize="25sp" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutChoix"
-                            android:layout_below="@id/TextViewInformationAntivirus"
-                            android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/TextViewInformationAntivirus"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginBottom="5dp">
 
                             <ImageButton
@@ -1840,10 +1352,10 @@
 
                             <ImageButton
                                 android:id="@+id/ImageButtonAccepter"
-                                android:layout_toEndOf="@id/ImageButtonRefuser"
-                                android:layout_marginStart="10dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_toEndOf="@id/ImageButtonRefuser"
                                 android:background="@android:color/transparent"
                                 android:src="@drawable/check" />
                         </RelativeLayout>
@@ -1856,9 +1368,9 @@
             android:id="@+id/RelativeLayoutDetailsConditionsTravails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:layout_marginTop="40dp"
             android:alpha="0.9"
+            android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:visibility="gone">
 
             <RelativeLayout
@@ -1903,59 +1415,60 @@
                     android:id="@+id/RelativeLayoutNiveauConditionsTravails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailConditionsTravails"
                     android:layout_below="@+id/RelativeLayoutConditionsTravailsTitle"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp">
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailConditionsTravails">
 
                     <ProgressBar
                         android:id="@+id/ProgressBarNiveauConditionsTravails"
                         style="@android:style/Widget.ProgressBar.Horizontal"
-                        android:progressDrawable="@drawable/custom_progress_bar_securite_informatique"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_centerVertical="true"
                         android:layout_marginEnd="12dp"
+                        android:layout_marginStart="8dp"
+                        android:alpha="1"
                         android:indeterminate="false"
                         android:indeterminateTintMode="src_atop"
-                        android:layout_centerVertical="true"
                         android:max="100"
                         android:progress="81"
-                        android:alpha="1"/>
+                        android:progressDrawable="@drawable/custom_progress_bar_securite_informatique" />
 
                     <TextView
                         android:id="@+id/TextViewNiveauConditionsTravails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/ProgressBarNiveauConditionsTravails"
+                        android:layout_centerVertical="true"
                         android:layout_marginEnd="10dp"
                         android:text="@string/niveau_conditions_travails"
-                        android:layout_centerVertical="true"
                         android:textColor="@color/colorNiveauSecuriteInformatique"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_alignEnd="@+id/RelativeLayoutNiveauConditionsTravails"
                     android:layout_alignStart="@+id/RelativeLayoutNiveauConditionsTravails"
                     android:layout_below="@+id/RelativeLayoutNiveauConditionsTravails"
-                    android:layout_alignEnd="@+id/RelativeLayoutNiveauConditionsTravails">
+                    android:layout_marginTop="2dp">
 
                     <RelativeLayout
                         android:id="@+id/RelativeLayoutContentFournitures"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp">
+
                         <TextView
                             android:id="@+id/TextViewFournitures"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="@string/fournitures"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpFournitures"
@@ -1971,61 +1484,60 @@
                             android:id="@+id/ImageViewArgentFournitures"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/argent_antivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:layout_toEndOf="@+id/ImageButtonUpFournitures"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpFournitures"
+                            android:src="@drawable/argent_antivirus" />
 
                         <TextView
                             android:id="@+id/TextViewArgentFournitures"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1500"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ImageViewArgentFournitures"
-                            android:textSize="25sp"/>
+                            android:text="1500"
+                            android:textSize="25sp" />
 
                         <RelativeLayout
                             android:id="@+id/RelatvieLayoutNomFournitures"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/TextViewArgentFournitures"
-                            android:layout_marginStart="45dp"
-                            android:layout_marginEnd="23dp"
                             android:layout_centerVertical="true"
+                            android:layout_marginEnd="23dp"
+                            android:layout_marginStart="45dp"
+                            android:layout_toEndOf="@+id/TextViewArgentFournitures"
                             android:background="@drawable/custom_relative_layout_nom_antivirus">
 
                             <TextView
                                 android:id="@+id/TextViewNomFournitures"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/colorNomFourniture"
                                 android:layout_centerHorizontal="true"
+                                android:layout_marginStart="20dp"
                                 android:text="@string/nomFournitures"
-                                android:textSize="12sp"
-                                android:layout_marginStart="20dp"/>
+                                android:textColor="@color/colorNomFourniture"
+                                android:textSize="12sp" />
                         </RelativeLayout>
 
                         <ImageButton
                             android:id="@+id/ImageButtonHelpFournitures"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/help"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_toEndOf="@+id/RelatvieLayoutNomFournitures"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutConditionsTravailsSeparatorOne"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="10dp"
                             android:layout_height="2dp"
-                            android:layout_below="@+id/RelatvieLayoutNomFournitures"
                             android:layout_alignEnd="@+id/ImageButtonHelpFournitures"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:layout_below="@+id/RelatvieLayoutNomFournitures"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -2034,13 +1546,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/RelativeLayoutContentFournitures"
                         android:layout_marginStart="10dp">
+
                         <TextView
                             android:id="@+id/TextViewMedecinTravail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="@string/medecinTravail"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpMedecinTravail"
@@ -2056,60 +1569,59 @@
                             android:id="@+id/ImageViewArgentMedecinTravail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/argent_antivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:layout_toEndOf="@+id/ImageButtonUpMedecinTravail"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpMedecinTravail"
+                            android:src="@drawable/argent_antivirus" />
 
                         <TextView
                             android:id="@+id/TextViewArgentMedecinTravail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/textAntivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ImageViewArgentMedecinTravail"
-                            android:textSize="25sp"/>
+                            android:text="@string/textAntivirus"
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/TextViewDerniereInterventionMedecinTravail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=""
-                            android:layout_toEndOf="@+id/TextViewArgentMedecinTravail"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="30dp"
-                            android:textSize="20sp"/>
+                            android:layout_toEndOf="@+id/TextViewArgentMedecinTravail"
+                            android:text=""
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/TextViewHeureDerniereInterventionMedecinTravail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="pas encore effectuee"
-                            android:layout_toEndOf="@+id/TextViewDerniereInterventionMedecinTravail"
-                            android:layout_marginStart="5dp"
                             android:layout_centerVertical="true"
-                            android:textSize="20sp"/>
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/TextViewDerniereInterventionMedecinTravail"
+                            android:text="pas encore effectuee"
+                            android:textSize="20sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonHelpMedecinTravail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/help"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_toEndOf="@+id/TextViewHeureDerniereInterventionMedecinTravail"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutConditionsTravailsSeparatorTwo"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="10dp"
                             android:layout_height="2dp"
-                            android:layout_below="@+id/TextViewMedecinTravail"
                             android:layout_alignEnd="@+id/ImageButtonHelpMedecinTravail"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:layout_below="@+id/TextViewMedecinTravail"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -2118,13 +1630,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/RelativeLayoutMedecinTravail"
                         android:layout_marginStart="10dp">
+
                         <TextView
                             android:id="@+id/TextViewMenage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="MENAGE"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpMenage"
@@ -2140,60 +1653,59 @@
                             android:id="@+id/ImageViewArgentMenage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/argent_antivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:layout_toEndOf="@+id/ImageButtonUpMenage"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpMenage"
+                            android:src="@drawable/argent_antivirus" />
 
                         <TextView
                             android:id="@+id/TextViewArgentMenage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="100"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ImageViewArgentMenage"
-                            android:textSize="25sp"/>
+                            android:text="100"
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/TextViewDernierMenage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=""
-                            android:layout_toEndOf="@+id/TextViewArgentMenage"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:textSize="20sp"/>
+                            android:layout_toEndOf="@+id/TextViewArgentMenage"
+                            android:text=""
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/TextViewHeureDernierMenage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="pas encore effectue"
-                            android:layout_toEndOf="@+id/TextViewDernierMenage"
-                            android:layout_marginStart="25dp"
                             android:layout_centerVertical="true"
-                            android:textSize="20sp"/>
+                            android:layout_marginStart="25dp"
+                            android:layout_toEndOf="@+id/TextViewDernierMenage"
+                            android:text="pas encore effectue"
+                            android:textSize="20sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonHelpMenage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/help"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_toEndOf="@+id/TextViewHeureDernierMenage"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="5dp"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            android:layout_toEndOf="@+id/TextViewHeureDernierMenage"
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutConditionsTravailsSeparatorThree"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="10dp"
                             android:layout_height="2dp"
                             android:layout_below="@+id/TextViewMenage"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -2202,13 +1714,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/RelativeLayoutContenMenage"
                         android:layout_marginStart="10dp">
+
                         <TextView
                             android:id="@+id/TextViewApero"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="@string/apero"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpApero"
@@ -2224,40 +1737,39 @@
                             android:id="@+id/ImageViewArgentApero"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/argent_antivirus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
-                            android:layout_toEndOf="@+id/ImageButtonUpApero"/>
+                            android:layout_toEndOf="@+id/ImageButtonUpApero"
+                            android:src="@drawable/argent_antivirus" />
 
                         <TextView
                             android:id="@+id/TextViewArgentApero"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/prixApero"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/ImageViewArgentApero"
-                            android:textSize="25sp"/>
+                            android:text="@string/prixApero"
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonHelpApero"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/help"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="175dp"
                             android:layout_toEndOf="@+id/TextViewArgentApero"
-                            android:background="@color/colorBackgroundRelativeLayoutEmployes"/>
+                            android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutConditionsTravailsSeparatorFour"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="10dp"
                             android:layout_height="2dp"
                             android:layout_below="@+id/TextViewApero"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -2265,16 +1777,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/RelativeLayoutContentApero"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp">
+                        android:layout_marginTop="5dp">
+
                         <TextView
                             android:id="@+id/TextViewFelicitaion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:text="@string/feliciter"
-                            android:textSize="25sp"
-                            android:layout_centerVertical="true"/>
+                            android:textSize="25sp" />
 
                         <ImageButton
                             android:id="@+id/ImageButtonUpFelicitation"
@@ -2290,9 +1803,9 @@
                             android:id="@+id/ImageButtonHelpFelicitation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/ImageButtonUpFelicitation"
                             android:layout_alignParentEnd="true"
                             android:layout_marginStart="240dp"
+                            android:layout_toEndOf="@+id/ImageButtonUpFelicitation"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
                             android:src="@drawable/help" />
                     </RelativeLayout>
@@ -2344,8 +1857,8 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="20dp"
                         android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                        android:src="@drawable/back_2"
-                        android:contentDescription="@string/description_icone_back_button"/>
+                        android:contentDescription="@string/description_icone_back_button"
+                        android:src="@drawable/back_2" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -2415,8 +1928,8 @@
                             android:layout_marginStart="150dp"
                             android:layout_toEndOf="@+id/TextViewParite"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
 
                         <ProgressBar
                             android:id="@+id/ProgressBarParite"
@@ -2442,8 +1955,8 @@
                             android:layout_marginStart="4dp"
                             android:layout_toEndOf="@+id/ProgressBarParite"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/help"
-                            android:contentDescription="@string/description_image_help"/>
+                            android:contentDescription="@string/description_image_help"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutReputationSeparatorOne"
@@ -2452,8 +1965,7 @@
                             android:layout_alignEnd="@+id/ImageButtonHelpParite"
                             android:layout_below="@+id/ProgressBarParite"
                             android:layout_marginTop="10dp"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -2479,8 +1991,8 @@
                             android:layout_marginStart="27dp"
                             android:layout_toEndOf="@+id/TextViewCampagneCom"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
 
                         <ImageView
                             android:id="@+id/ImageViewArgentCampagneCom"
@@ -2489,8 +2001,8 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="20dp"
                             android:layout_toEndOf="@+id/ImageButtonUpCampagneCOm"
-                            android:src="@drawable/argent_antivirus"
-                            android:contentDescription="@string/description_image_argent"/>
+                            android:contentDescription="@string/description_image_argent"
+                            android:src="@drawable/argent_antivirus" />
 
                         <TextView
                             android:id="@+id/TextViewArgentCampagneCom"
@@ -2511,8 +2023,8 @@
                             android:layout_marginStart="150dp"
                             android:layout_toEndOf="@+id/TextViewArgentCampagneCom"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/help"
-                            android:contentDescription="@string/description_image_help"/>
+                            android:contentDescription="@string/description_image_help"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutReputationSeparatorTwo"
@@ -2521,8 +2033,7 @@
                             android:layout_alignEnd="@+id/ImageButtonHelpCampagneCom"
                             android:layout_below="@+id/TextViewCampagneCom"
                             android:layout_marginTop="10dp"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
@@ -2572,8 +2083,8 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="20dp"
                         android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                        android:src="@drawable/back_2"
-                        android:contentDescription="@string/description_icone_back_button"/>
+                        android:contentDescription="@string/description_icone_back_button"
+                        android:src="@drawable/back_2" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -2643,8 +2154,8 @@
                             android:layout_marginStart="45dp"
                             android:layout_toEndOf="@+id/TextViewNiveauFormation"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
 
                         <ProgressBar
                             android:id="@+id/ProgressBarNiveauFormation"
@@ -2670,8 +2181,8 @@
                             android:layout_marginStart="4dp"
                             android:layout_toEndOf="@+id/ProgressBarNiveauFormation"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/help"
-                            android:contentDescription="@string/description_image_help"/>
+                            android:contentDescription="@string/description_image_help"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutbonheurSeparatorOne"
@@ -2680,8 +2191,7 @@
                             android:layout_alignEnd="@+id/ImageButtonHelpNiveauFormation"
                             android:layout_below="@+id/ProgressBarNiveauFormation"
                             android:layout_marginTop="10dp"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -2707,8 +2217,8 @@
                             android:layout_marginStart="150dp"
                             android:layout_toEndOf="@+id/TextViewNiveauReputation2"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
 
                         <ProgressBar
                             android:id="@+id/ProgressBarNiveauReputation2"
@@ -2734,8 +2244,8 @@
                             android:layout_marginStart="4dp"
                             android:layout_toEndOf="@+id/ProgressBarNiveauReputation2"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/help"
-                            android:contentDescription="@string/description_image_help"/>
+                            android:contentDescription="@string/description_image_help"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutbonheurSeparatorTwo"
@@ -2744,8 +2254,7 @@
                             android:layout_alignEnd="@+id/ImageButtonHelpNiveauReputation2"
                             android:layout_below="@+id/ProgressBarNiveauReputation2"
                             android:layout_marginTop="10dp"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -2771,8 +2280,8 @@
                             android:layout_marginStart="98dp"
                             android:layout_toEndOf="@+id/TextViewNiveauSecuriteGlobale"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
 
                         <ProgressBar
                             android:id="@+id/ProgressBarNiveauSecuriteGlobale"
@@ -2798,8 +2307,8 @@
                             android:layout_marginStart="4dp"
                             android:layout_toEndOf="@+id/ProgressBarNiveauSecuriteGlobale"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/help"
-                            android:contentDescription="@string/description_image_help"/>
+                            android:contentDescription="@string/description_image_help"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutbonheurSeparatorThree"
@@ -2808,8 +2317,7 @@
                             android:layout_alignEnd="@+id/ImageButtonHelpNiveauSecuriteGlobale"
                             android:layout_below="@+id/ImageButtonHelpNiveauSecuriteGlobale"
                             android:layout_marginTop="10dp"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -2835,8 +2343,8 @@
                             android:layout_marginStart="60dp"
                             android:layout_toEndOf="@+id/TextViewNiveauConditionsTravails2"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/up"
-                            android:contentDescription="@string/description_icone_up"/>
+                            android:contentDescription="@string/description_icone_up"
+                            android:src="@drawable/up" />
 
                         <ProgressBar
                             android:id="@+id/ProgressBarNiveauConditionsTravails2"
@@ -2862,8 +2370,8 @@
                             android:layout_marginStart="4dp"
                             android:layout_toEndOf="@+id/ProgressBarNiveauConditionsTravails2"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                            android:src="@drawable/help"
-                            android:contentDescription="@string/description_image_help"/>
+                            android:contentDescription="@string/description_image_help"
+                            android:src="@drawable/help" />
 
                         <RelativeLayout
                             android:id="@+id/RelativeLayoutbonheurSeparatorFour"
@@ -2872,8 +2380,7 @@
                             android:layout_alignEnd="@+id/ImageButtonHelpNiveauConditionTravails"
                             android:layout_below="@+id/ImageButtonHelpNiveauConditionTravails"
                             android:layout_marginTop="10dp"
-                            android:background="@color/colorBackgroundTextView">
-                        </RelativeLayout>
+                            android:background="@color/colorBackgroundTextView"></RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -2924,8 +2431,8 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="20dp"
                         android:background="@color/colorBackgroundRelativeLayoutEmployes"
-                        android:src="@drawable/back_2"
-                        android:contentDescription="@string/description_icone_back_button"/>
+                        android:contentDescription="@string/description_icone_back_button"
+                        android:src="@drawable/back_2" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -3012,8 +2519,8 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_toEndOf="@+id/TextViewNombrePremiereRessources"
                                 android:alpha="1"
-                                android:src="@drawable/ressources"
-                                android:contentDescription="@string/description_image_ressources"/>
+                                android:contentDescription="@string/description_image_ressources"
+                                android:src="@drawable/ressources" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -3028,8 +2535,8 @@
                                 android:id="@+id/ImageViewArgentPremiereRessource"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/argent"
-                                android:contentDescription="@string/description_image_argent"/>
+                                android:contentDescription="@string/description_image_argent"
+                                android:src="@drawable/argent" />
 
                             <TextView
                                 android:id="@+id/TextViewArgentPremiereRessource"
@@ -3079,8 +2586,8 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="10dp"
                                 android:layout_toEndOf="@+id/TextViewNombreDeuxiemeRessources"
-                                android:src="@drawable/ressources"
-                                android:contentDescription="@string/description_image_ressources"/>
+                                android:contentDescription="@string/description_image_ressources"
+                                android:src="@drawable/ressources" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -3095,8 +2602,8 @@
                                 android:id="@+id/ImageViewArgentDeuxiemeRessource"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/argent"
-                                android:contentDescription="@string/description_image_argent"/>
+                                android:contentDescription="@string/description_image_argent"
+                                android:src="@drawable/argent" />
 
                             <TextView
                                 android:id="@+id/TextViewArgentDeuxiemeRessource"
@@ -3148,8 +2655,8 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="10dp"
                                 android:layout_toEndOf="@+id/TextViewNombreTroisiemeRessources"
-                                android:src="@drawable/ressources"
-                                android:contentDescription="@string/description_image_ressources"/>
+                                android:contentDescription="@string/description_image_ressources"
+                                android:src="@drawable/ressources" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -3165,8 +2672,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/argent"
-                                android:contentDescription="@string/description_image_argent"/>
+                                android:contentDescription="@string/description_image_argent"
+                                android:src="@drawable/argent" />
 
                             <TextView
                                 android:id="@+id/TextViewArgentTroisiemeRessource"
@@ -3182,13 +2689,158 @@
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayoutContentDetailCompetences"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutBackButtonDetailCompetences"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp">
+
+                <ImageButton
+                    android:id="@+id/ImageButtonBackButtonDetailCompetences"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                    android:contentDescription="@string/description_icone_back_button"
+                    android:src="@drawable/back_2" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/RelativeLayoutBackButtonDetailCompetences">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutCompetencesTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorBackgroundTextView">
+
+                    <TextView
+                        android:id="@+id/TextViewCompetencesTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/competences"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/ImageViewManWomanCap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/description_image_manwomancap"
+                    android:src="@drawable/manwomancap" />
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutCompetences"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RelativeLayoutCompetencesTitle"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/ImageViewManWomanCap">
+
+                    <ImageButton
+                        android:id="@+id/ImageButtonCompetencesCommercial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                        android:contentDescription="@string/description_icone_commercial"
+                        android:src="@drawable/commercial" />
+
+                    <ImageButton
+                        android:id="@+id/ImageButtonCompetenceProduction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="60dp"
+                        android:layout_toEndOf="@+id/ImageButtonCompetencesCommercial"
+                        android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                        android:contentDescription="@string/description_icone_production"
+                        android:src="@drawable/production" />
+
+                    <ImageButton
+                        android:id="@+id/ImageButtonCompetenceSecurite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="24dp"
+                        android:layout_toStartOf="@+id/ImageButtonCompetenceMarketing"
+                        android:alpha="0.5"
+                        android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                        android:contentDescription="@string/description_icone_securite"
+                        android:src="@drawable/securite" />
+
+                    <ImageButton
+                        android:id="@+id/ImageButtonCompetenceMarketing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/TextViewCompetenceDirection"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="98dp"
+                        android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                        android:contentDescription="@string/description_icone_marketing"
+                        android:src="@drawable/marketing" />
+
+                    <ImageButton
+                        android:id="@+id/ImageButtonCompetenceComptable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignStart="@+id/ImageButtonCompetencesCommercial"
+                        android:layout_below="@+id/ImageButtonCompetencesCommercial"
+                        android:layout_marginTop="90dp"
+                        android:background="@color/colorBackgroundRelativeLayoutEmployes"
+                        android:contentDescription="@string/description_icone_comptable"
+                        android:src="@drawable/comptable" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/RelativeLayoutCompetences"
+                    android:layout_marginTop="5dp"
+                    android:alpha="0.5"
+                    android:background="@color/backgroundLevel">
+
+                    <TextView
+                        android:id="@+id/TextViewNiveauMoyen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/niveau_moyen"
+                        android:textColor="@color/colorTextViewDetails"
+                        android:textSize="30sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/RelativeLayoutRessources"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -3244,16 +2896,6 @@
                 android:contentDescription="@string/description_image_employes"
                 android:src="@drawable/manwoman2" />
 
-            <TextView
-                android:id="@+id/TextViewHomme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/ImageViewHommes"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="50dp"
-                android:text="12"
-                android:textColor="@color/fontColor"
-                android:textSize="15sp" />
         </RelativeLayout>
 
         <RelativeLayout

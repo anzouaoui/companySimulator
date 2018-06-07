@@ -190,7 +190,7 @@ public class Entreprise {
         this.derniereFelicitation = null;
         this.employes = new ArrayList<Employe>();
         this.indiceDecrem = 1;
-        this.indiceIncremArgent = 20;
+        this.indiceIncremArgent = 10;
         Ressources.getInstance();
     }
 
@@ -350,7 +350,7 @@ public class Entreprise {
         double tauxPerf = getTauxGlobal();
         double compt = getNiveauMoyenDomaine("Comptabilite") /5;
         double commerc = getNiveauMoyenDomaine("Commercial") /5;
-        taux = compt * (25.0/100.0) + commerc * (20.0*100.0) + tauxPerf * (55.0/100.0);
+        taux = compt * (25.0/100.0) + commerc * (20.0/100.0) + tauxPerf * (55.0/100.0);
         return taux;
     }
 
@@ -821,6 +821,117 @@ public class Entreprise {
         } else if (ancienNiveau <= 5 && niveau >= 5) {
 
         }
+    }
+
+    public boolean EmployeExiste(String cat) {
+        boolean exists = false;
+        for(Employe emp : employes) {
+            switch (cat) {
+                case "Commercial":
+                    if (emp instanceof Commercial) {
+                        exists = true;
+                    }
+                    break;
+                case "Comptabilite":
+                    if (emp instanceof Comptabilite) {
+                        exists = true;
+                    }
+                    break;
+                case "Communication":
+                    if (emp instanceof Communication) {
+                        exists = true;
+                    }
+                    break;
+                case "Production":
+                    if (emp instanceof Production) {
+                        exists = true;
+                    }
+                    break;
+                case "Securite":
+                    if (emp instanceof Securite) {
+                        exists = true;
+                    }
+                    break;
+            }
+            if(exists == true) {
+                break;
+            }
+        }
+        return exists;
+    }
+
+    public Character getGenre (String cat) {
+        Character genre = null;
+        for(Employe emp : employes) {
+            switch (cat) {
+                case "Commercial":
+                    if (emp instanceof Commercial) {
+                        genre = emp.getSexe();
+                    }
+                    break;
+                case "Comptabilite":
+                    if (emp instanceof Comptabilite) {
+                        genre = emp.getSexe();
+                    }
+                    break;
+                case "Communication":
+                    if (emp instanceof Communication) {
+                        genre = emp.getSexe();
+                    }
+                    break;
+                case "Production":
+                    if (emp instanceof Production) {
+                        genre = emp.getSexe();
+                    }
+                    break;
+                case "Securite":
+                    if (emp instanceof Securite) {
+                        genre = emp.getSexe();
+                    }
+                    break;
+            }
+            if(genre != null) {
+                break;
+            }
+        }
+        return genre;
+    }
+
+    public Employe getEmployeByService(String cat) {
+        Employe e = null;
+        for(Employe emp : employes) {
+            switch (cat) {
+                case "Commercial":
+                    if (emp instanceof Commercial) {
+                        e = emp;
+                    }
+                    break;
+                case "Comptabilite":
+                    if (emp instanceof Comptabilite) {
+                        e = emp;
+                    }
+                    break;
+                case "Communication":
+                    if (emp instanceof Communication) {
+                        e = emp;
+                    }
+                    break;
+                case "Production":
+                    if (emp instanceof Production) {
+                        e = emp;
+                    }
+                    break;
+                case "Securite":
+                    if (emp instanceof Securite) {
+                        e = emp;
+                    }
+                    break;
+            }
+            if(e != null) {
+                break;
+            }
+        }
+        return e;
     }
 
     public double getBonheur() {

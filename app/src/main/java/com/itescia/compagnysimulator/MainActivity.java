@@ -7,13 +7,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             textViewNiveauReputation, textViewParite, textViewCampagneCom, textViewArgentCampagneCom, textViewBonheurTitle, textViewNiveauBonheur, textViewNiveauFormation,
             textViewNiveauReputation2, textViewNiveauSecuriteGlobale, textViewNiveauConditionsTravails2, textViewRessourcesTitle, textViewNiveauRessources,
             textViewNombrePremiereRessources, textViewArgentPremiereRessource, textViewNombreDeuxiemeRessources, textViewArgentDeuxiemeRessource, textViewNombreTroisiemeRessources,
-            textViewArgentTroisiemeRessource, TextViewNiveauRessources, textViewClock;
+            textViewArgentTroisiemeRessource, TextViewNiveauRessources, textViewClock, tvNiveau, tv_niveaumoyen;
 
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             relativeLayoutInformationAntivirus, relativeLayoutDetailsConditionsTravails, relativeLayoutDetailsReputation, relativeLayoutDetailsBonheur, relativeLayoutDetailsRessources;
 
     ImageButton imageButtonBackButton, imageButtonBackButtonDetailCommercial, imageButtonBackButtonDetailCompetences, imageButtonBackButtonDetailSecurite,
-            imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
+            imageButtonBackButtonDetailSecuriteInformatique,  imageviewComptable, imageViewCommercial, ImageViewProduction, ImageViewSecurite2,ImageViewCom, imageButtonUpComptableWorker1, imageButtonUpComptableWorker2,
             imageButtonUpComptableWorker3, imageButtonAddComptableWorker, imageButtonUpCEmployesSecurite, imageButtonUpSecuriteInformatique, imageButtonUpFirewall, imageButtonUpMiseAJourSysteme,
             imageButtonUpFormationEmployes, imageButtonUpFormationSousTraiter, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
             imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonUpMedecinTravail, imageButtonUpMenage, imageButtonUpApero,
@@ -69,8 +72,11 @@ public class MainActivity extends AppCompatActivity {
             imageButtonBackButtonDetailRessources, ImageViewArgentPremiereRessource, ImageViewArgentDeuxiemeRessource, ImageViewArgentTroisiemeRessource,
             ImageButtonHelpNiveauFormation, ImageButtonHelpNiveauSecuriteGlobale, ImageButtonHelpNiveauConditionTravails, ImageButtonHelpNiveauReputation2,
             imageButtonHelpAntivirus, imageButtonHelpFirewall, imageButtonHelpMiseAJourSysteme, imageButtonHelpFormationEmployes, imageButtonHelpFournitures,
-            imageButtonHelpMedecinTravail, imageButtonHelpMenage, imageButtonHelpApero, imageButtonHelpFelicitation;
-     ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
+            imageButtonHelpMedecinTravail, imageButtonHelpMenage, imageButtonHelpApero, imageButtonHelpFelicitation, imageButton_addLevel;
+
+    ImageView imageViewGenre, ImageViewComptableWorker;
+     Button button_embaucher;
+    ArrayList<RelativeLayout> collectionRelativeLAyoutProgressBarComptable;
      ArrayList<ImageButton> colletionImageButtonUpComptable;
      ArrayList<ImageButton> collectionImageButtonBack;
      ArrayList<ImageButton> collectionImageButtonHelp;
@@ -115,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         Temps.getTemps();
         decrementeRessources();
         afficherNoms();
+        UpdateUINiveauFormation();
 
         GestionEvenements.getGestionEvenements().initialize(entreprise); //initialisation de la gestion des évènements
         gestionRandomEvent();
@@ -136,20 +143,11 @@ public class MainActivity extends AppCompatActivity {
         textViewLevel = (TextView) findViewById(R.id.TextViewLevel);
         textViewNomJoueur = (TextView) findViewById(R.id.TextViewNomJoueur);
         textViewArgent = (TextView) findViewById(R.id.TextViewArgent);
-        textViewHomme = (TextView) findViewById(R.id.TextViewHomme);
+        //textViewHomme = (TextView) findViewById(R.id.TextViewHomme);
         textViewAddRessources = (TextView) findViewById(R.id.TextViewAddRessources);
         textViewDetailEmployes = (TextView) findViewById(R.id.TextViewDetailEmployes);
         textViewComptableTitle = (TextView) findViewById(R.id.TextViewComptableTitle);
-        textViewLevelOneComptableWorker = (TextView) findViewById(R.id.TextViewLevelOneComptableWorker);
-        textViewLevelTwoComptableWorker = (TextView) findViewById(R.id.TextViewLevelTwoComptableWorker);
-        textViewLevelThreeComptableWorker = (TextView) findViewById(R.id.TextViewLevelThreeComptableWorker);
         textViewCompetencesTitle = (TextView) findViewById(R.id.TextViewCompetencesTitle);
-        textViewCompetenceCommercial = (TextView) findViewById(R.id.TextViewCompetenceCommercial);
-        textViewCompetenceProduction = (TextView) findViewById(R.id.TextViewCompetenceProduction);
-        textViewCompetenceSecurite = (TextView) findViewById(R.id.TextViewCompetenceSecurite);
-        textViewCompetenceMarketing = (TextView) findViewById(R.id.TextViewCompetenceMarketing);
-        textViewCompetenceComptable = (TextView) findViewById(R.id.TextViewCompetenceComptable);
-        textViewCompetenceRd = (TextView) findViewById(R.id.TextViewCompetenceRd);
         textViewCompetenceDirection = (TextView) findViewById(R.id.TextViewCompetenceDirection);
         textViewNiveauMoyen = (TextView) findViewById(R.id.TextViewNiveauMoyen);
         textViewSecuriteTitle = (TextView) findViewById(R.id.TextViewSecuriteTitle);
@@ -217,6 +215,8 @@ public class MainActivity extends AppCompatActivity {
         TextViewNiveauRessources = (TextView) findViewById(R.id.TextViewNiveauRessources);
         TextViewNiveauRessources.setText(String.valueOf(Ressources.getInstance()));
         textViewClock = (TextView) findViewById(R.id.TextViewClock);
+        tvNiveau = (TextView) findViewById(R.id.tvNiveau);
+        tv_niveaumoyen = (TextView) findViewById((R.id.tv_niveaumoyen));
         //textViewNiveauBonheur.setText(String.valueOf(entreprise.getBonheur() * 100));
 
         textViewArgent.setText("0");
@@ -225,23 +225,22 @@ public class MainActivity extends AppCompatActivity {
         textViewNomJoueur.setTypeface(typefaceLevel);
         textViewArgent.setTypeface(typefaceRessource);
         textViewClock.setTypeface(typefaceRessource);
-        textViewHomme.setTypeface(typefaceRessource);
         textViewAddRessources.setTypeface(typefaceRessource);
         textViewDetailEmployes.setTypeface(typefaceLevel);
         textViewComptableTitle.setTypeface(typefaceLevel);
         textViewSecuriteTitle.setTypeface(typefaceLevel);
-        textViewLevelOneComptableWorker.setTypeface(typefaceLvl);
-        textViewLevelTwoComptableWorker.setTypeface(typefaceLvl);
-        textViewLevelThreeComptableWorker.setTypeface(typefaceLvl);
+//        textViewLevelOneComptableWorker.setTypeface(typefaceLvl);
+//        textViewLevelTwoComptableWorker.setTypeface(typefaceLvl);
+//        textViewLevelThreeComptableWorker.setTypeface(typefaceLvl);
         textViewCompetencesTitle.setTypeface(typefaceLevel);
         //textViewReputationTitle.setTypeface(typefaceLevel);
-        textViewCompetenceCommercial.setTypeface(typefaceLvl);
-        textViewCompetenceProduction.setTypeface(typefaceLvl);
-        textViewCompetenceSecurite.setTypeface(typefaceLvl);
-        textViewCompetenceMarketing.setTypeface(typefaceLvl);
-        textViewCompetenceComptable.setTypeface(typefaceLvl);
-        textViewCompetenceRd.setTypeface(typefaceLvl);
-        textViewCompetenceDirection.setTypeface(typefaceLvl);
+//        textViewCompetenceCommercial.setTypeface(typefaceLvl);
+//        textViewCompetenceProduction.setTypeface(typefaceLvl);
+//        textViewCompetenceSecurite.setTypeface(typefaceLvl);
+//        textViewCompetenceMarketing.setTypeface(typefaceLvl);
+//        textViewCompetenceComptable.setTypeface(typefaceLvl);
+//        textViewCompetenceRd.setTypeface(typefaceLvl);
+//        textViewCompetenceDirection.setTypeface(typefaceLvl);
         textViewNiveauMoyen.setTypeface(typefaceLvl);
         textViewEmployesSecurite.setTypeface(typefaceLvl);
         textViewConditionTravail.setTypeface(typefaceLvl);
@@ -346,24 +345,24 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutDetailsCompetences = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsCompetences);
         relativeLayoutDetailsSecurite = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsSecurite);
         relativeLayoutDetailsSecuriteInformatique = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsSecuriteInformatique);
-        relativeLayoutScrollView = (RelativeLayout) findViewById(R.id.RelativeLayoutScrollView);
+//        relativeLayoutScrollView = (RelativeLayout) findViewById(R.id.RelativeLayoutScrollView);
         relativeLayoutInformationSousTraiter = (RelativeLayout) findViewById(R.id.RelativeLayoutInformationSousTraiter);
-        relativeLayoutProgressBarOneComptableWorker1_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_1);
-        relativeLayoutProgressBarOneComptableWorker1_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_2);
-        relativeLayoutProgressBarOneComptableWorker1_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_3);
-        relativeLayoutProgressBarOneComptableWorker1_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_4);
-        relativeLayoutProgressBarOneComptableWorker1_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_5);
-        relativeLayoutProgressBarOneComptableWorker2_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_1);
-        relativeLayoutProgressBarOneComptableWorker2_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_2);
-        relativeLayoutProgressBarOneComptableWorker2_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_3);
-        relativeLayoutProgressBarOneComptableWorker2_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_4);
-        relativeLayoutProgressBarOneComptableWorker2_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_5);
-        relativeLayoutProgressBarThreeComptableWorker = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarThreeComptableWorker);
-        relativeLayoutProgressBarOneComptableWorker3_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
-        relativeLayoutProgressBarOneComptableWorker3_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_2);
-        relativeLayoutProgressBarOneComptableWorker3_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_3);
-        relativeLayoutProgressBarOneComptableWorker3_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_4);
-        relativeLayoutProgressBarOneComptableWorker3_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_5);
+//        relativeLayoutProgressBarOneComptableWorker1_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_1);
+//        relativeLayoutProgressBarOneComptableWorker1_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_2);
+//        relativeLayoutProgressBarOneComptableWorker1_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_3);
+//        relativeLayoutProgressBarOneComptableWorker1_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_4);
+//        relativeLayoutProgressBarOneComptableWorker1_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker1_5);
+//        relativeLayoutProgressBarOneComptableWorker2_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_1);
+//        relativeLayoutProgressBarOneComptableWorker2_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_2);
+//        relativeLayoutProgressBarOneComptableWorker2_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_3);
+//        relativeLayoutProgressBarOneComptableWorker2_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_4);
+//        relativeLayoutProgressBarOneComptableWorker2_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker2_5);
+//        relativeLayoutProgressBarThreeComptableWorker = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarThreeComptableWorker);
+//        relativeLayoutProgressBarOneComptableWorker3_1 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
+//        relativeLayoutProgressBarOneComptableWorker3_2 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_2);
+//        relativeLayoutProgressBarOneComptableWorker3_3 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_3);
+//        relativeLayoutProgressBarOneComptableWorker3_4 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_4);
+//        relativeLayoutProgressBarOneComptableWorker3_5 = (RelativeLayout) findViewById(R.id.RelativeLayoutProgressBarOneComptableWorker3_5);
         relativeLayoutInformationAntivirus = (RelativeLayout) findViewById(R.id.RelativeLayoutInformationAntivirus);
         relativeLayoutDetailsConditionsTravails = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsConditionsTravails);
         relativeLayoutDetailsReputation = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsReputation);
@@ -371,16 +370,23 @@ public class MainActivity extends AppCompatActivity {
         relativeLayoutDetailsRessources = (RelativeLayout) findViewById(R.id.RelativeLayoutDetailsRessources);
 
         //ELEMENTS IMAGE BUTTON
-        imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
+//        imageButtonAddComptableWorker = (ImageButton) findViewById(R.id.ImageButtonAddComptableWorker);
         imageButtonBackButton = (ImageButton) findViewById(R.id.ImageButtonBackButton);
         imageButtonBackButtonDetailCommercial = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailCommercial);
         imageButtonBackButtonDetailCompetences = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailCompetences);
         imageButtonBackButtonDetailSecurite = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailSecurite);
         imageButtonBackButtonDetailSecuriteInformatique = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailSecuriteInformatique);
         imageviewComptable = (ImageButton) findViewById(R.id.ImageviewComptable);
-        imageButtonUpComptableWorker1 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker1);
-        imageButtonUpComptableWorker2 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker2);
-        imageButtonUpComptableWorker3 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker3);
+        imageViewCommercial = (ImageButton) findViewById(R.id.ImageViewCommercial);
+        ImageViewProduction = (ImageButton) findViewById(R.id.ImageViewProduction);
+        ImageViewSecurite2 = (ImageButton) findViewById(R.id.ImageViewSecurite2);
+        ImageViewCom = (ImageButton) findViewById(R.id.ImageViewCom);
+        imageViewGenre = (ImageView) findViewById(R.id.imageViewGenre);
+        ImageViewComptableWorker = (ImageView) findViewById(R.id.ImageViewComptableWorker);
+        imageButton_addLevel = (ImageButton) findViewById(R.id.imageButton_addLevel);
+//        imageButtonUpComptableWorker1 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker1);
+//        imageButtonUpComptableWorker2 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker2);
+//        imageButtonUpComptableWorker3 = (ImageButton) findViewById(R.id.ImageButtonUpComptableWorker3);
         imageButtonUpCEmployesSecurite = (ImageButton) findViewById(R.id.ImageButtonUpCEmployesSecurite);
         // Boutons sécurité informatique
         imageButtonUpSecuriteInformatique = (ImageButton) findViewById(R.id.ImageButtonUpSecuriteInformatique);
@@ -428,6 +434,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButtonHelpNiveauSecuriteGlobale = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauSecuriteGlobale);
         ImageButtonHelpNiveauConditionTravails = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauConditionTravails);
 
+        button_embaucher = (Button) findViewById((R.id.button_embaucher));
         //COLLECTION D'ELEMNENTS
         collectionRelativeLAyoutProgressBarComptable = new ArrayList<RelativeLayout>();
 
@@ -481,16 +488,23 @@ public class MainActivity extends AppCompatActivity {
     private void bindListener() {
         relativeLayoutHomme.setOnClickListener(relativeLayoutHommeListener);
         imageviewComptable.setOnClickListener(imageviewComptableListener);
-        imageButtonAddComptableWorker.setOnClickListener(imageButtonAddComptableWorkerListener);
-        for (ImageButton currentImagButtonUpComptable: colletionImageButtonUpComptable) {
-            currentImagButtonUpComptable.setOnClickListener(imageButtonUpComptableWorkerListener);
-        }
+        imageViewCommercial.setOnClickListener(imageviewCommercialListener);
+        ImageViewProduction.setOnClickListener(imageviewProductionListener);
+        ImageViewCom.setOnClickListener(imageviewComListener);
+        ImageViewSecurite2.setOnClickListener(imageviewSecurite2Listener);
+
+//        imageButtonAddComptableWorker.setOnClickListener(imageButtonAddComptableWorkerListener);
+//        for (ImageButton currentImagButtonUpComptable: colletionImageButtonUpComptable) {
+//            currentImagButtonUpComptable.setOnClickListener(imageButtonUpComptableWorkerListener);
+//        }
         for (ImageButton currentImageButtonBack: collectionImageButtonBack) {
             currentImageButtonBack.setOnClickListener(imageButtonBackButtonListener);
         }
         for (ImageButton currentImageButtonHelp : collectionImageButtonHelp) {
             currentImageButtonHelp.setOnClickListener(imageButtonHelpListener);
         }
+        button_embaucher.setOnClickListener(button_embaucherListener);
+        imageButton_addLevel.setOnClickListener(imageButton_addLevelListener);
         progressBarFormation.setOnClickListener(progressBarFormationListener);
         progressBarSecurite.setOnClickListener(progressBarSecuriteListener);
         progressBarReputation.setOnClickListener(progressBarReputationListener);
@@ -771,10 +785,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!show) {
-                relativeLayoutDetailsCompetences.setVisibility(View.VISIBLE);
+                relativeLayoutEmployes.setVisibility(View.VISIBLE);
                 show = true;
             } else {
-                relativeLayoutDetailsCompetences.setVisibility(View.GONE);
+                relativeLayoutEmployes.setVisibility(View.GONE);
                 show = false;
             }
         }
@@ -1018,19 +1032,95 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-
+    //***********************************************************//
+    //*                 Listeners employés                      *//
+    //***********************************************************//
     private View.OnClickListener imageviewComptableListener = new View.OnClickListener() {
-
-        /**
-         * Fonction permettant d'afficher les details sur les comptables
-         *
-         * @param v: élement de la vue sur lequel on clique
-         * @author zoua
-         */
         @Override
         public void onClick(View v) {
             relativeLayoutEmployes.setVisibility(View.GONE);
             relativeLayoutDetailCommercial.setVisibility(View.VISIBLE);
+            UpdateDetailEmploye("Comptabilite");
+        }
+    };
+    private View.OnClickListener imageviewCommercialListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            relativeLayoutEmployes.setVisibility(View.GONE);
+            relativeLayoutDetailCommercial.setVisibility(View.VISIBLE);
+            UpdateDetailEmploye("Commercial");
+        }
+    };
+    private View.OnClickListener imageviewComListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            relativeLayoutEmployes.setVisibility(View.GONE);
+            relativeLayoutDetailCommercial.setVisibility(View.VISIBLE);
+            UpdateDetailEmploye("Communication");
+        }
+    };
+    private View.OnClickListener imageviewProductionListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            relativeLayoutEmployes.setVisibility(View.GONE);
+            relativeLayoutDetailCommercial.setVisibility(View.VISIBLE);
+            UpdateDetailEmploye("Production");
+        }
+    };
+    private View.OnClickListener imageviewSecurite2Listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            relativeLayoutEmployes.setVisibility(View.GONE);
+            relativeLayoutDetailCommercial.setVisibility(View.VISIBLE);
+            UpdateDetailEmploye("Securite");
+        }
+    };
+    private View.OnClickListener imageButton_addLevelListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String cat = String.valueOf(button_embaucher.getTag());
+            if(entreprise.payer(100)) {
+                entreprise.getEmployeByService(cat).incrementNiveauFormation(1, entreprise);
+                UpdateUINiveauFormation();
+            } else {
+                notEnoughMoney(100);
+            }
+            UpdateDetailEmploye(cat);
+        }
+    };
+    private View.OnClickListener button_embaucherListener = new View.OnClickListener() {
+        String cat = "";
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            //String cat = String.valueOf(button_embaucher.getTag());
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        if(entreprise.payer(100)) {
+                            entreprise.Recruter(cat, 'H');
+                            UpdateUINiveauFormation();
+                            UpdateDetailEmploye(cat);
+                        } else {
+                            notEnoughMoney(100);
+                        }
+                        break;
+                    case DialogInterface.BUTTON_NEUTRAL:
+                        if(entreprise.payer(100)) {
+                            entreprise.Recruter(cat, 'F');
+                            UpdateUINiveauFormation();
+                            UpdateDetailEmploye(cat);
+                        } else {
+                            notEnoughMoney(100);
+                        }
+                        break;
+                }
+            }
+        };
+        @Override
+        public void onClick(View v) {
+            cat = String.valueOf(button_embaucher.getTag());
+            AlertDialog.Builder builder = new AlertDialog.Builder(ma);
+            builder.setMessage("Vous allez embaucher un employé dans le service " + cat + " (100$). Homme ou Femme ?").setNegativeButton("Homme", dialogClickListener).setNeutralButton("Femme", dialogClickListener).show();
         }
     };
 
@@ -1049,8 +1139,8 @@ public class MainActivity extends AppCompatActivity {
 
             //Ajout du relativeLayout principal
             RelativeLayout.LayoutParams layoutParamsMain = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            layoutParamsMain.addRule(RelativeLayout.BELOW, R.id.RelativeLayoutComptableWorkerThreeLine);
-            layoutParamsMain.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutComptableWorkerThreeLine);
+//            layoutParamsMain.addRule(RelativeLayout.BELOW, R.id.RelativeLayoutComptableWorkerThreeLine);
+//            layoutParamsMain.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutComptableWorkerThreeLine);
             layoutParamsMain.setMargins(0, 80, 0, 0);
             relativeLayoutScrollView.addView(currentRelativeLayout, layoutParamsMain);
             currentRelativeLayout.setId(R.id.RelativeLayoutComptableWorkerFourLine);
@@ -1066,7 +1156,7 @@ public class MainActivity extends AppCompatActivity {
             RelativeLayout.LayoutParams layoutParamsSex = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             layoutParamsSex.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.ImageViewManFour);
             layoutParamsSex.addRule(RelativeLayout.END_OF, R.id.ImageViewManFour);
-            layoutParamsSex.addRule(RelativeLayout.ALIGN_START, R.id.ImageViewFemaleIconOne);
+//            layoutParamsSex.addRule(RelativeLayout.ALIGN_START, R.id.ImageViewFemaleIconOne);
             ImageView imageSex = new ImageView(getApplicationContext());
             imageSex.setImageResource(R.drawable.female);
             imageSex.setId(R.id.ImageViewFemaleIconTwo);
@@ -1089,7 +1179,7 @@ public class MainActivity extends AppCompatActivity {
             RelativeLayout.LayoutParams layoutParamsProgressBar1 = new RelativeLayout.LayoutParams(relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width, relativeLayoutProgressBarOneComptableWorker1_1.getLayoutParams().width);
             layoutParamsProgressBar1.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.TextViewLevelFourComptableWorker);
             layoutParamsProgressBar1.addRule(RelativeLayout.END_OF, R.id.TextViewLevelFourComptableWorker);
-            layoutParamsSex.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
+//            layoutParamsSex.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
             layoutParamsProgressBar1.setMarginStart(45);
             RelativeLayout relativeLayout1 = new RelativeLayout(getApplicationContext());
             relativeLayout1.setBackground(getResources().getDrawable(R.drawable.custom_progress_bar_levels_complete));
@@ -1136,7 +1226,7 @@ public class MainActivity extends AppCompatActivity {
             //Ajout du bouton Up
             RelativeLayout.LayoutParams layoutParamsUp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             layoutParamsUp.addRule(RelativeLayout.END_OF, R.id.RelativeLayout5);
-            layoutParamsUp.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
+//            layoutParamsUp.addRule(RelativeLayout.ALIGN_START, R.id.RelativeLayoutProgressBarOneComptableWorker3_1);
             layoutParamsUp.setMarginStart(45);
             ImageButton imageButtonUp = new ImageButton(getApplicationContext());
             imageButtonUp.setImageResource(R.drawable.up);
@@ -1480,6 +1570,46 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private void UpdateDetailEmploye(String cat) {
+            textViewComptableTitle.setText(cat);
+            button_embaucher.setTag(cat);
+            if(cat == "Comptabilite")
+                ImageViewComptableWorker.setImageDrawable(getResources().getDrawable(R.drawable.comptableworker));
+            else if(cat == "Commercial")
+                ImageViewComptableWorker.setImageDrawable(getResources().getDrawable(R.drawable.commercialworker));
+            else if(cat == "Communication")
+                ImageViewComptableWorker.setImageDrawable(getResources().getDrawable(R.drawable.marketingworker));
+            else if(cat == "Production")
+                ImageViewComptableWorker.setImageDrawable(getResources().getDrawable(R.drawable.productionworker));
+            else if(cat == "Securite")
+                ImageViewComptableWorker.setImageDrawable(getResources().getDrawable(R.drawable.securiteworker));
+
+            if(entreprise.EmployeExiste(cat)) {
+                imageButton_addLevel.setVisibility(View.VISIBLE);
+                imageViewGenre.setVisibility(View.VISIBLE);
+                button_embaucher.setVisibility(View.INVISIBLE);
+                tvNiveau.setVisibility(View.VISIBLE);
+                tvNiveau.setText(String.valueOf(entreprise.getNiveauMoyenDomaine(cat)));
+                if(entreprise.getGenre(cat) == 'F') {
+                    imageViewGenre.setImageDrawable(getResources().getDrawable(R.drawable.female));
+                } else {
+                    imageViewGenre.setImageDrawable(getResources().getDrawable(R.drawable.male));
+                }
+            } else {
+                imageViewGenre.setVisibility(View.INVISIBLE);
+                button_embaucher.setVisibility(View.VISIBLE);
+                tvNiveau.setVisibility(View.INVISIBLE);
+                imageButton_addLevel.setVisibility(View.INVISIBLE);
+            }
+    }
+
+    public void UpdateUINiveauFormation() {
+        double test = ((int)(entreprise.getNiveauMoyenFormation()/5*100));
+        tv_niveaumoyen.setText(String.valueOf(entreprise.getNiveauMoyenFormation()));
+        progressBarNiveauFormation.setProgress((int)entreprise.getNiveauMoyenFormation()*100);
+        progressBarFormation.setProgress(((int)(entreprise.getNiveauMoyenFormation()/5*100)));
+        progressBarFormationSecuriteInfo.setProgress(((int)(entreprise.getNiveauMoyenDomaine("Securite")/5*100)));
+    }
     /**
      * Met à jour l'écran du détail de la sécurité
      * @author gbon
@@ -1557,7 +1687,7 @@ public class MainActivity extends AppCompatActivity {
                             majGraphSecurite();
                         } else {
                             _t2.cancel();
-                            gameOver("Vous n'avez plus assez de ressources. L'entreprise a fait faillite !");
+                            gameOver("Vous n'avez plus assez de ressources. L'entreprise a fait faillite ! \nVous avez tenu "+ Temps.getTempsString()+" minutes.");
                         }
                     }
                 });
