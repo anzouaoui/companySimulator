@@ -172,7 +172,7 @@ public class Entreprise {
         this.nomEntreprise = nomEntreprise;
         this.niveau = 1;
         this.bonheur = 0.5;
-        this.argent = 0;
+        this.argent = 100;
         this.reputation = 0.5;
         this.tauxSecuInfo = 0.5;
         this.tauxFormationSecuInfo = 0.5;
