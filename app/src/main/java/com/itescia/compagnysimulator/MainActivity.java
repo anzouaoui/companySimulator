@@ -764,7 +764,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void callEvent() {
         // Détermination aléatoire du numéro de l'événement aléatoire à appeler
-        int randomEvent = ThreadLocalRandom.current().nextInt(101, 103);
+        int randomEvent = ThreadLocalRandom.current().nextInt(101, 131);
         // Appel de l'événement précédemment déterminé avec la fonction popUpChoice()
         popUpChoice(GestionEvenements.getGestionEvenements().getEventByNum(randomEvent));
 

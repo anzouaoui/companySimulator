@@ -64,7 +64,7 @@ public class Entreprise {
      * ou d'évènements aléatoire (grèves...)
      *
      * @see Entreprise#getReputation()
-     * @see Entreprise#setReputation(int)
+     * @see Entreprise#setReputation(double)
      */
     private double reputation;
 
@@ -335,7 +335,7 @@ public class Entreprise {
      * @author casag
      */
     public void setTauxBonheur(){
-        this.bonheur = ((getNiveauMoyenFormation()/5) + getReputation() + getNiveauMoyenDomaine("Securite)") + getTauxQualConditionTravail())/4;
+        //this.bonheur = ((getNiveauMoyenFormation()/5) + getReputation() + getNiveauMoyenDomaine("Securite)") + getTauxQualConditionTravail())/4;
         setBonheur(((getNiveauMoyenFormation()/5) + getReputation() + getNiveauMoyenDomaine("Securite)") + getTauxQualConditionTravail())/4);
     }
 
@@ -764,6 +764,20 @@ public class Entreprise {
         return ok;
     }
 
+    /*
+     * Permet de diminuer le nombre de ressources
+     *
+     * @param nombre
+     * @author gbon
+     */
+    public void diminuerRessources(int nombre) {
+        if(Ressources.getInstance()< nombre) {
+            Ressources.setInstance(0);
+        } else {
+            Ressources.setInstance(Ressources.getInstance() - nombre);
+        }
+    }
+
     /**
      * Retourne le taux de sécurité global
      * @return taux sécu global
@@ -954,7 +968,7 @@ public class Entreprise {
         return reputation;
     }
 
-    public void setReputation(int reputation) {
+    public void setReputation(double reputation) {
         this.reputation = reputation;
     }
 
