@@ -568,7 +568,7 @@ public class MainActivity extends AppCompatActivity {
                         textViewArgent.setText(String.valueOf(entreprise.getArgent()));
                         textViewClock.setText(Temps.getTempsString());
                         checkTime(); // Vérifications pour augmenter niveau
-                        gestionEvenements();
+                        //gestionEvenements();
                     }
                 });
             }
@@ -1097,18 +1097,40 @@ public class MainActivity extends AppCompatActivity {
                 switch (which){
                     case DialogInterface.BUTTON_NEGATIVE:
                         if(entreprise.payer(100)) {
+                            int respectPariteAvantRecrutement = entreprise.verifierParite();
                             entreprise.Recruter(cat, 'H');
                             UpdateUINiveauFormation();
                             UpdateDetailEmploye(cat);
+                            // Vérification parité
+                            if (entreprise.verifierParite() == 1) {
+                                popUpInfo("Attention ! La parité au sein de votre entreprise n'est pas respectée car il y a plus d'hommes que de femmes");
+                                entreprise.setReputation(entreprise.getReputation() - 0.20);
+                            } else {
+                                if (entreprise.verifierParite() == 0 && respectPariteAvantRecrutement == 2) {
+                                    popUpInfo("La parité est maintenant respectée");
+                                    entreprise.setReputation(entreprise.getReputation() + 0.20);
+                                }
+                            }
                         } else {
                             notEnoughMoney(100);
                         }
                         break;
                     case DialogInterface.BUTTON_NEUTRAL:
                         if(entreprise.payer(100)) {
+                            int respectPariteAvantRecrutement = entreprise.verifierParite();
                             entreprise.Recruter(cat, 'F');
                             UpdateUINiveauFormation();
                             UpdateDetailEmploye(cat);
+                            // vérification parité
+                            if (entreprise.verifierParite() == 2) {
+                                popUpInfo("Attention ! La parité n'est pas respectée au sein de votre entreprise car il y a plus de femmes que d'hommes");
+                                entreprise.setReputation(entreprise.getReputation() - 0.20);
+                            } else {
+                                if (entreprise.verifierParite() == 0 && respectPariteAvantRecrutement == 1) {
+                                    popUpInfo("La parité est maintenant respectée");
+                                    entreprise.setReputation(entreprise.getReputation() + 0.20);
+                                }
+                            }
                         } else {
                             notEnoughMoney(100);
                         }
@@ -1933,12 +1955,12 @@ public class MainActivity extends AppCompatActivity {
      *
      * @author casag
      */
-    private void gestionEvenements() {
+    /*private void gestionEvenements() {
         // Vérification de la parité
         if(entreprise.getEmployes().size() > 3 && (entreprise.getParite() < 0.3 || entreprise.getParite() > 0.6)) {
 
         }
-    }
+    }*/
 
     /**
      * Ouvre une pop up affichant un choix à l'utilisateur, suite à un evenement

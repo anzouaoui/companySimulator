@@ -394,8 +394,25 @@ public class Entreprise {
         if (tauxFormationSecuInfo != 0){
             tauxFormationSecuInfo = tauxFormationSecuInfo *(1.0-(1.0/(employes.size())));
         }
-
         levelUp(0.15);
+    }
+
+    /**
+     * Permet de vérifier si la parité est gloablement respectée à partir de 3 employés (proportion de 40-60)
+     *
+     * @return 0 si la parité est globalement respectée, 1 s'il y a plus d'hommes que de femmes ou 2 dans le cas contraire
+     * @author gbon
+     */
+    public int verifierParite() {
+        int respectParite = 0;
+        if(getEmployes().size() > 2 && (getParite() < 0.4 || getParite() > 0.6)) {
+            if (getParite() < 0.4){
+                respectParite = 1;
+            } else {
+                respectParite = 2;
+            }
+        }
+        return respectParite;
     }
 
     /**

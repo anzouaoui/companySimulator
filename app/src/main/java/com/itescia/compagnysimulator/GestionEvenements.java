@@ -51,23 +51,23 @@ public final class GestionEvenements {
         //collectionEvenements.add(e3);
 
         // Evénements aléatoires :
-        Evenement e101 = new Evenement(101, "Plusieurs de vos employés souhaiteraient avoir un babyfoot dans la salle de repos", "Acheter un babyfoot", 500, "Leur dire de se remettre au travail", 0);
+        Evenement e101 = new Evenement(101, "Plusieurs de vos employés souhaiteraient avoir un babyfoot dans la salle de repos", "Acheter un babyfoot (500$)", 500, "Leur dire de se remettre au travail", 0);
         collectionEvenements.add(e101);
-        Evenement e102 = new Evenement(102, "La machine à cafés vient de tomber en panne", "Ne rien faire", 0, "Appeler un réparateur", 200);
+        Evenement e102 = new Evenement(102, "La machine à cafés vient de tomber en panne", "Ne rien faire", 0, "Appeler un réparateur (200$)", 200);
         collectionEvenements.add(e102);
         Evenement e103 = new Evenement(103, "Une grève nationale des transports vient d'être annoncée", "Proposer la mise en place du télétravail aux employés", 0, "Leur demander de venir au bureau quand même", 0);
         collectionEvenements.add(e103);
-        Evenement e104 = new Evenement(104, "Un hacker menace de bloquer votre système informatique en échange d'une rançon", "Lui payer la rançon", 750, "Ne pas céder à la menace", 0);
+        Evenement e104 = new Evenement(104, "Un hacker menace de bloquer votre système informatique en échange d'une rançon", "Lui payer la rançon (750$)", 750, "Ne pas céder à la menace", 0);
         collectionEvenements.add(e104);
         Evenement e105 = new Evenement(105, "Vous surprenez un employé qui semble en train de voler dans la réserve", "Le réprimander", 0, "Ne pas réagir", 0);
         collectionEvenements.add(e105);
         Evenement e106 = new Evenement(106, "Un employé vient vous voir et en accuse un autre de lui avoir volé son aggrafeuse", "Sanctionner le prétendu voleur", 0, "Laisser les employés régler cette affaire entre eux", 0);
         collectionEvenements.add(e106);
-        Evenement e107 = new Evenement(107, "Un employé souhaite une augmentation pour avoir travailler dur ces derniers temps", "L'augmenter", 50, "Simplement lui dire de continuer de travailler comme cela", 0);
+        Evenement e107 = new Evenement(107, "Un employé souhaite une augmentation pour avoir travailler dur ces derniers temps", "L'augmenter (50$)", 50, "Simplement lui dire de continuer de travailler comme cela", 0);
         collectionEvenements.add(e107);
-        Evenement e108 = new Evenement(108, "Vos employés se plaignent de la nourriture de la cantine jugée immonde", "Leur répondre de ramener leur propre gamelle", 0, "Les inviter au restaurant", 200);
+        Evenement e108 = new Evenement(108, "Vos employés se plaignent de la nourriture de la cantine jugée immonde", "Leur répondre de ramener leur propre gamelle", 0, "Les inviter au restaurant (200$)", 200);
         collectionEvenements.add(e108);
-        Evenement e109 = new Evenement(109, "Un jeune étudiant désire effectuer un stage au sein de votre entreprise", "L'embaucher malgré sa faible expérience", 150, "Lui rire au nez", 0);
+        Evenement e109 = new Evenement(109, "Un jeune étudiant désire effectuer un stage au sein de votre entreprise", "L'embaucher malgré sa faible expérience (150$)", 150, "Lui rire au nez", 0);
         collectionEvenements.add(e109);
         Evenement e110 = new Evenement(110, "Des employés ont été surpris en train de jouer en réseau à Counter Strike", "Organiser un tournois inter services", 0, "Les réprimander", 0);
         collectionEvenements.add(e110);
@@ -75,15 +75,15 @@ public final class GestionEvenements {
         collectionEvenements.add(e111);
         Evenement e112 = new Evenement(112, "Un développeur regarde Thrones of Game en streaming, ce qui monopolise la majeure partie de la bande passante du réseau internet", "Regarder les derniers épisodes inédits avec lui", 0, "Le sanctionner", 0);
         collectionEvenements.add(e112);
-        Evenement e113 = new Evenement(113, "Un employé va bientôt quitter l'entreprise", "Lui dire au revoir et bonne continuation", 0, "Organiser un pôt de départ", 50);
+        Evenement e113 = new Evenement(113, "Un employé va bientôt quitter l'entreprise", "Lui dire au revoir et bonne continuation", 0, "Organiser un pôt de départ (50$)", 50);
         collectionEvenements.add(e113);
-        Evenement e114 = new Evenement(114, "Les toilettes du premier étage sont bouchées", "Attendre qu'elles se débouchent", 0, "Appeller un plombier", 100);
+        Evenement e114 = new Evenement(114, "Les toilettes du premier étage sont bouchées", "Attendre qu'elles se débouchent", 0, "Appeller un plombier (100$)", 100);
         collectionEvenements.add(e114);
-        Evenement e115 = new Evenement(115, "Un événement sportif vous demande de le sponsoriser", "Accepter l'offre", 500, "Décliner en prétextant que vous n'avez pas d'argent à inutilement gacher", 0);
+        Evenement e115 = new Evenement(115, "Un événement sportif vous demande de le sponsoriser", "Accepter l'offre (500$)", 500, "Décliner en prétextant que vous n'avez pas d'argent à inutilement gacher", 0);
         collectionEvenements.add(e115);
-        Evenement e116 = new Evenement(116, "Un commercial a réussi à otenir un gros contrat", "Simplement le féliciter et lui dire de continuer comme cela", 0, "Lui accorder une prime", 100);
+        Evenement e116 = new Evenement(116, "Un commercial a réussi à otenir un gros contrat", "Simplement le féliciter et lui dire de continuer comme cela", 0, "Lui accorder une prime (100$)", 100);
         collectionEvenements.add(e116);
-        Evenement e117 = new Evenement(117, "Une invasion de rats a été signalée dans le bâtiment", "Appeler une société de dératisation", 250, "Adopter un chat pour qu'il chasse les rats", 0);
+        Evenement e117 = new Evenement(117, "Une invasion de rats a été signalée dans le bâtiment", "Appeler une société de dératisation (250$)", 250, "Adopter un chat pour qu'il chasse les rats", 0);
         collectionEvenements.add(e117);
         Evenement e118 = new Evenement(118, "Un employé a été dénoncé car il effectue régulièrement du shopping en ligne au lieu de travailler", "Le rappeler à l'ordre", 0, "Lui demander s'il a déniché des bons plans dont vous pourriez vous aussi profiter", 0);
         collectionEvenements.add(e118);
@@ -99,7 +99,7 @@ public final class GestionEvenements {
         collectionEvenements.add(e123);
         Evenement e124 = new Evenement(124, "Vous surprenez plusieurs employés en train de comploter pour faire partir un employé qu'ils n'apprécient pas", "Les sanctionnez en leur disant que cela est inadmissible", 0, "Comploter avec eux car vous non plus ne l'appréciez pas vraiment", 0);
         collectionEvenements.add(e124);
-        Evenement e125 = new Evenement(125, "Une oeuvre caritative fait appel à vous par mail pour l'aider à soutenir sa cause", "Faire un don", 500, "Faire semblant de ne pas avoir reçu le mail", 0);
+        Evenement e125 = new Evenement(125, "Une oeuvre caritative fait appel à vous par mail pour l'aider à soutenir sa cause", "Faire un don (500$)", 500, "Faire semblant de ne pas avoir reçu le mail", 0);
         collectionEvenements.add(e125);
         Evenement e126 = new Evenement(126, "Vous venez de gagner un très gros contrat avec un client important", "Garder une partie de la somme pour s'acheter une voiture de luxe", 0, "Donner une prime à chaque employé", 0);
         collectionEvenements.add(e126);
@@ -107,9 +107,9 @@ public final class GestionEvenements {
         collectionEvenements.add(e127);
         Evenement e128 = new Evenement(128, "Deux employés travaillant sur le même projet ne s'entendent pas", "Leur demander de se réconcilier rapidement et de travailler ensemble", 0, "Changer une des deux personnes du projet", 0);
         collectionEvenements.add(e128);
-        Evenement e129 = new Evenement(129, "Vous tombez sur une offre de séjour pour entreprise à la montagne", "Réserver le séjour", 400, "Ne rien faire", 0);
+        Evenement e129 = new Evenement(129, "Vous tombez sur une offre de séjour pour entreprise à la montagne", "Réserver le séjour (400$)", 400, "Ne rien faire", 0);
         collectionEvenements.add(e129);
-        Evenement e130 = new Evenement(130, "Vous recevez une offre de promotion pour améliorer votre antivirus", "Bénéficier de la promotion", 300, "La laisser passer", 0);
+        Evenement e130 = new Evenement(130, "Vous recevez une offre de promotion pour améliorer votre antivirus", "Bénéficier de la promotion (300$)", 300, "La laisser passer", 0);
         collectionEvenements.add(e130);
     }
 
