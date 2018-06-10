@@ -1896,57 +1896,23 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Vérifie le temps, augmente de niveau et fait les modifications adéquates
-     * @author casag
+     * Le système est potientiellement infini sur le modèle :
+     * Toutes les minutes impaires, le niveau est augmenté, ainsi que les différents indices
+     * et un message est affiché à l'utilisateur
+     *
+     * @author casag, gbon
      */
     private void checkTime(){
         long timeMillis = Temps.getTemps();
 
-        //NIVEAU 2 : 1 minute
-        if(TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 1){
-            textViewLevel.setText("NIVEAU 2");
-            entreprise.setIndiceDecrem(2);
-            entreprise.setNiveau(2);
-            entreprise.setIndiceIncremArgent(25);
-            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) > 60000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 60500){
-                popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais attention, les ressources décrémentent...", "NIVEAU 2");
-            }
-            //NIVEAU 3 : 3 minutes
-        } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 3){
-            long t = TimeUnit.MILLISECONDS.toMillis(timeMillis);
-            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 180000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 180500){
-                popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais les ressources décrémentent plus rapidement.", "NIVEAU 3");
-            }
-            textViewLevel.setText("NIVEAU 3");
-            entreprise.setIndiceDecrem(3);
-            entreprise.setNiveau(3);
-            entreprise.setIndiceIncremArgent(30);
-            //NIVEAU 4 : 5 minutes
-        } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 5) {
-            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 300000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 300500){
-                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 4");
-            }
-            textViewLevel.setText("NIVEAU 4");
-            entreprise.setIndiceDecrem(4);
-            entreprise.setNiveau(4);
-            entreprise.setIndiceIncremArgent(35);
-            //NIVEAU 5
-        } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 7) {
-            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 420000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 420500){
-                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 5");
-            }
-            textViewLevel.setText("NIVEAU 5");
-            entreprise.setIndiceDecrem(5);
-            entreprise.setNiveau(5);
-            entreprise.setIndiceIncremArgent(40);
-            //NIVEAU 6
-        } else if (TimeUnit.MILLISECONDS.toMinutes(timeMillis) == 9) {
-            if(TimeUnit.MILLISECONDS.toMillis(timeMillis) >= 540000 && TimeUnit.MILLISECONDS.toMillis(timeMillis) < 540500){
-                popUpInfo("Attention ! Les ressources décrémentent plus rapidement.", "NIVEAU 6");
-            }
-            textViewLevel.setText("NIVEAU 6");
-            entreprise.setIndiceDecrem(6);
-            entreprise.setNiveau(6);
-            entreprise.setIndiceIncremArgent(45);
+        // Vérification si la minute est impaire et que le niveau n'ai pas déjà été augmenté
+        if(TimeUnit.MILLISECONDS.toMinutes(timeMillis)%2 == 1 && (int) (TimeUnit.MILLISECONDS.toMinutes(timeMillis)/2) + 2 != entreprise.getNiveau()){
+            int nouveauNiveau = (int) (TimeUnit.MILLISECONDS.toMinutes(timeMillis)/2) + 2;
+            textViewLevel.setText("NIVEAU " + nouveauNiveau);
+            entreprise.setIndiceDecrem(nouveauNiveau);
+            entreprise.setNiveau(nouveauNiveau);
+            entreprise.setIndiceIncremArgent(entreprise.getIndiceIncremArgent() + 5);
+            popUpInfo("Les affaires vont bien ! Vous gagnez plus d'argent mais attention, les ressources décrémentent plus rapidement...", "NIVEAU "+nouveauNiveau);
         }
     }
 
