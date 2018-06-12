@@ -35,7 +35,6 @@ public class Entreprise {
      *
      * @see Entreprise#getNiveau()
      * @see Entreprise#setNiveau(double)
-     * @see Entreprise#levelUp(double)
      */
     private double niveau;
 
@@ -200,9 +199,9 @@ public class Entreprise {
      * @param nombre
      * @author casag
      */
-    public void levelUp(double nombre) {
+    /*public void levelUp(double nombre) {
         setNiveau(this.niveau + nombre);
-    }
+    }*/
 
     /**
      * Soustrait le nombre donné en paramètre à l'argent.
@@ -394,7 +393,6 @@ public class Entreprise {
         if (tauxFormationSecuInfo != 0){
             tauxFormationSecuInfo = tauxFormationSecuInfo *(1.0-(1.0/(employes.size())));
         }
-        levelUp(0.15);
     }
 
     /**
@@ -452,7 +450,6 @@ public class Entreprise {
                 setTauxQualConditionTravail(tauxQualConditionTravail * (1+taux));
             }
         }
-        levelUp(0.10);
     }
 
     /**
@@ -488,7 +485,6 @@ public class Entreprise {
                 setNiveauMobilier(getNiveauMobilier() + 1);
                 changerNomMobilier(getNiveauMobilier());
                 augmenterTauxConditTravail(0.45);
-                levelUp(0.30);
                 reussi = 2;
             }
         }
@@ -565,7 +561,6 @@ public class Entreprise {
                 if (minutes >= 3) {
                     setDernierApero(now);
                     augmenterTauxConditTravail(0.30);
-                    levelUp(0.15);
                     setNombreApero(getNombreApero() + 1);
                     resultat = 2;
                     // si le joueur organise trop d'apéro (10 ou plus au total), certains de ses employés deviennent alcooliques et d'autres passeront leur temps à s'amuser
@@ -582,7 +577,6 @@ public class Entreprise {
             if (this.payer(100)) {
                 setDernierApero(now);
                 augmenterTauxConditTravail(0.30);
-                levelUp(0.15);
                 setNombreApero(1);
                 resultat = 2;
             }
@@ -609,13 +603,11 @@ public class Entreprise {
             if(hours >= 2) {
                 setDerniereFelicitation(now);
                 augmenterTauxConditTravail(0.15);
-                levelUp(0.10);
                 done = true;
             }
         } else {
             setDerniereFelicitation(now);
             augmenterTauxConditTravail(0.15);
-            levelUp(0.10);
             done = true;
         }
         return done;
@@ -643,7 +635,6 @@ public class Entreprise {
                 setTauxSecuInfo(tauxSecuInfo * (1 + taux));
             }
         }
-        levelUp(0.10);
     }
 
     /**
@@ -679,7 +670,6 @@ public class Entreprise {
                 setNiveauAntivirus(getNiveauAntivirus() + 1);
                 changerNomAntivirus(getNiveauAntivirus());
                 augmenterTauxSecuInfo(0.15);
-                levelUp(0.15);
                 reussi = 2;
             }
         }
@@ -741,7 +731,6 @@ public class Entreprise {
         if(this.payer(300)) {
             setTauxFormationSecuInfo(1);
             augmenterTauxSecuInfo(0.15);
-            levelUp(0.15);
             done = true;
         }
         return done;
@@ -768,7 +757,6 @@ public class Entreprise {
             } else {
                 augmenterTauxSecuInfo(0.40);
             }
-            levelUp(0.15);
         }
         return randomNum;
     }
