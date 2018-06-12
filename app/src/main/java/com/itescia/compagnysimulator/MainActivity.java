@@ -759,7 +759,7 @@ public class MainActivity extends AppCompatActivity {
     private void gestionRandomEvent() {
         _tRandomEvent = new Timer();
         // génération d'un entier aléatorie pour définir au bout de combien de temps l'événement interviendra
-        int randomNum = ThreadLocalRandom.current().nextInt(10, 61);
+        int randomNum = ThreadLocalRandom.current().nextInt(30, 61);
         TimerTask gestionRandomEvent = new TimerTask () {
             @Override
             public void run () {
@@ -1322,14 +1322,16 @@ public class MainActivity extends AppCompatActivity {
 
     private View.OnClickListener imageButtonUpCEmployesSecuriteListener = new View.OnClickListener() {
         /**
-         * Redirection vers l'écran de compétences informatiques
+         * Redirection vers l'écran pour embaucher un employé de sécurité
          *
          * @param v: élement de la vue sur lequel on clique
          * @author gbon
          */
         @Override
         public void onClick(View v) {
-            // redirection vers écran de compétences info à coder ici
+            relativeLayoutDetailsSecurite.setVisibility(View.GONE);
+            relativeLayoutDetailCommercial.setVisibility(View.VISIBLE);
+            UpdateDetailEmploye("Securite");
         }
     };
 
@@ -1963,9 +1965,10 @@ public class MainActivity extends AppCompatActivity {
      */
     private void checkTime(){
         long timeMillis = Temps.getTemps();
+        int niveauActuel = (int) (TimeUnit.MILLISECONDS.toMinutes(timeMillis)/2) + 2;
 
         // Vérification si la minute est impaire et que le niveau n'ai pas déjà été augmenté
-        if(TimeUnit.MILLISECONDS.toMinutes(timeMillis)%2 == 1 && (int) (TimeUnit.MILLISECONDS.toMinutes(timeMillis)/2) + 2 != entreprise.getNiveau()){
+        if(TimeUnit.MILLISECONDS.toMinutes(timeMillis)%2 == 1 && niveauActuel != (int) entreprise.getNiveau()){
             int nouveauNiveau = (int) (TimeUnit.MILLISECONDS.toMinutes(timeMillis)/2) + 2;
             textViewLevel.setText("NIVEAU " + nouveauNiveau);
             entreprise.setIndiceDecrem(nouveauNiveau);

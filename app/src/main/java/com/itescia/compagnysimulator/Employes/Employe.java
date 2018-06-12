@@ -29,7 +29,7 @@ public class Employe {
      * @param sexe : Le sexe de l'employé
      */
     public Employe(char sexe){
-        this.niveauFormation = 0;
+        this.niveauFormation = 1;
         this.setSexe(sexe);
     }
 
