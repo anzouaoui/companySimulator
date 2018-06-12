@@ -615,7 +615,9 @@
             android:id="@+id/RelativeLayoutDetailsSecurite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="54dp"
             android:alpha="0.9"
             android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:visibility="gone">
@@ -803,7 +805,9 @@
             android:id="@+id/RelativeLayoutDetailsSecuriteInformatique"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="48dp"
             android:alpha="0.9"
             android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:visibility="gone">
@@ -1237,12 +1241,13 @@
                             android:id="@+id/ImageButtonHelpSousTraiter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignEnd="@+id/TextViewArgentSousTraiter"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="178dp"
+                            android:layout_toEndOf="@+id/TextViewArgentSousTraiter"
                             android:background="@color/colorBackgroundRelativeLayoutEmployes"
                             android:src="@drawable/help" />
                     </RelativeLayout>
+
 
                     <RelativeLayout
                         android:id="@+id/RelativeLayoutInformationSousTraiter"
@@ -1368,7 +1373,8 @@
             android:id="@+id/RelativeLayoutDetailsConditionsTravails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:alpha="0.9"
             android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:visibility="gone">
@@ -2035,7 +2041,7 @@
             android:layout_marginTop="40dp"
             android:alpha="0.9"
             android:background="@color/colorBackgroundRelativeLayoutEmployes"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <RelativeLayout
                 android:id="@+id/RelativeLayoutContentDetailBonheur"
