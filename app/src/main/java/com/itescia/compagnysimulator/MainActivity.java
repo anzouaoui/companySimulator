@@ -306,15 +306,15 @@ public class MainActivity extends AppCompatActivity {
         //ELEMENTS PROGRESSBAR
         progressBarBonheur = (ProgressBar) findViewById(R.id.ProgressBarBonheur);
         progressBarFormation = (ProgressBar) findViewById(R.id.ProgressBarFormation);
-        progressBarFormation.setProgress(99);
+        progressBarFormation.setProgress((int)(entreprise.getNiveauMoyenFormation()*100));
         progressBarReputation = (ProgressBar) findViewById(R.id.ProgressBarReputation);
-        progressBarReputation.setProgress(80);
+        progressBarReputation.setProgress((int)(entreprise.getReputation()*100));
         progressBarRessources = (ProgressBar) findViewById(R.id.ProgressBarRessources);
         progressBarRessources.setProgress(Ressources.getInstance());
         progressBarSecurite = (ProgressBar) findViewById(R.id.ProgressBarSecurite);
-        progressBarSecurite.setProgress(0);
+        progressBarSecurite.setProgress((int)(entreprise.getTauxSecuGlobal()*100));
         progressBarFormationSecuriteInfo = (ProgressBar) findViewById(R.id.ProgressBarFormationEmployes);
-        progressBarFormationSecuriteInfo.setProgress(50);
+        progressBarFormationSecuriteInfo.setProgress((int)(entreprise.getTauxSecuInfo()*100));
         ProgressBarNiveauRessources = (ProgressBar) findViewById(R.id.ProgressBarNiveauRessources);
         ProgressBarNiveauRessources.setProgress(Ressources.getInstance());
         progressBarNiveauBonheur = (ProgressBar) findViewById(R.id.ProgressBarNiveauBonheur);
@@ -1707,7 +1707,7 @@ public class MainActivity extends AppCompatActivity {
      * @author gbon
      */
     private void majGraphReputation() {
-        ProgressBarNiveauReputation2.setProgress((int)(entreprise.getReputation()*100));
+        progressBarReputation.setProgress((int)(entreprise.getReputation()*100));
         // MAJ des progressbar de l'onglet détail Réputation
         if(relativeLayoutDetailsReputation.getVisibility() == View.VISIBLE) {
             ProgressBarNiveauReputation.setProgress((int)(entreprise.getReputation()*100));
