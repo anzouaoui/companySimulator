@@ -405,7 +405,7 @@ public class Entreprise {
      */
     public int verifierParite() {
         int respectParite = 0;
-        if(getEmployes().size() > 2 && (getParite() < 0.4 || getParite() > 0.6)) {
+        if(getEmployes().size() > 3 && (getParite() < 0.4 || getParite() > 0.6)) {
             if (getParite() < 0.4){
                 respectParite = 1;
             } else {
@@ -413,6 +413,21 @@ public class Entreprise {
             }
         }
         return respectParite;
+    }
+
+    /**
+     * Permet de lancer une campagne de communication
+     *
+     * @return true si campagne effectuée, false dans le cas contraire
+     * @author gbon
+     */
+    public boolean lancerCampagneCom() {
+        boolean reussi = false;
+        if(payer(150)) {
+            setReputation(getReputation() + 0.15);
+            reussi = true;
+        }
+        return reussi;
     }
 
     /**

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     Typeface typefaceLevel, typefaceRessource, typefaceLvl, typefaceMaj;
 
-    ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources, ProgressBarNiveauRessources, progressBarNiveauBonheur,
+    ProgressBar progressBarReputation, progressBarSecurite, progressBarFormation, progressBarBonheur, progressBarRessources, ProgressBarNiveauRessources, progressBarNiveauBonheur, ProgressBarNiveauReputation, ProgressBarParite,
                 progressBarNiveauFormation, ProgressBarNiveauReputation2, ProgressBarNiveauSecuriteGlobale, progressBarEmployesSecurite, progressBarConditionTravail, progressBarSecuriteInformatique,
                 ProgressBarNiveauConditionsTravails2, progressBarFormationSecuriteInfo, progressBarNiveauConditionsTravails, progressBarNiveauSecuriteInformatique;
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             imageButtonUpFormationEmployes, imageButtonUpFormationSousTraiter, imageButtonHelpSousTraiter, imageButtonHideInformationSousTraiter,
             imageButtonUpAntivirus, imageButtonUpConditionTravail, imageButtonUpFournitures, imageButtonUpMedecinTravail, imageButtonUpMenage, imageButtonUpApero,
             imageButtonUpFelicitation, imageButtonBackButtonDetailConditionsTravails, imageButtonBackButtonDetailReputation, imageButtonBackButtonDetailBonheur,
-            imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails,
+            imageButtonUpNiveauFormation, imageButtonUpNiveauReputation2, ImageButtonHelpParite, ImageButtonUpCampagneCom, ImageButtonHelpCampagneCom, imageButtonUpNiveauSecuriteGlobale, imageButtonUpNiveauConditionsTravails,
             imageButtonBackButtonDetailRessources, ImageViewArgentPremiereRessource, ImageViewArgentDeuxiemeRessource, ImageViewArgentTroisiemeRessource,
             ImageButtonHelpNiveauFormation, ImageButtonHelpNiveauSecuriteGlobale, ImageButtonHelpNiveauConditionTravails, ImageButtonHelpNiveauReputation2,
             imageButtonHelpAntivirus, imageButtonHelpFirewall, imageButtonHelpMiseAJourSysteme, imageButtonHelpFormationEmployes, imageButtonHelpFournitures,
@@ -321,6 +321,10 @@ public class MainActivity extends AppCompatActivity {
         progressBarNiveauBonheur.setProgress((int)(entreprise.getBonheur()*100));
         progressBarNiveauFormation = (ProgressBar) findViewById(R.id.ProgressBarNiveauFormation);
         progressBarNiveauFormation.setProgress((int)(entreprise.getNiveauMoyenFormation()*100));
+        ProgressBarNiveauReputation = (ProgressBar) findViewById(R.id.ProgressBarNiveauReputation);
+        ProgressBarNiveauReputation.setProgress((int)(entreprise.getReputation()*100));
+        ProgressBarParite = (ProgressBar) findViewById(R.id.ProgressBarParite);
+        ProgressBarParite.setProgress((int)(entreprise.getParite()*100));
         ProgressBarNiveauReputation2 = (ProgressBar) findViewById(R.id.ProgressBarNiveauReputation2);
         ProgressBarNiveauReputation2.setProgress((int)(entreprise.getReputation()*100));
         ProgressBarNiveauSecuriteGlobale = (ProgressBar) findViewById(R.id.ProgressBarNiveauSecuriteGlobale);
@@ -376,6 +380,10 @@ public class MainActivity extends AppCompatActivity {
         imageButtonBackButtonDetailCompetences = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailCompetences);
         imageButtonBackButtonDetailSecurite = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailSecurite);
         imageButtonBackButtonDetailSecuriteInformatique = (ImageButton) findViewById(R.id.ImageButtonBackButtonDetailSecuriteInformatique);
+        // Boutons Réputation
+        ImageButtonUpCampagneCom = (ImageButton) findViewById(R.id.ImageButtonUpCampagneCom);
+        ImageButtonHelpCampagneCom = (ImageButton) findViewById(R.id.ImageButtonHelpCampagneCom);
+        // Boutons Employés
         imageviewComptable = (ImageButton) findViewById(R.id.ImageviewComptable);
         imageViewCommercial = (ImageButton) findViewById(R.id.ImageViewCommercial);
         ImageViewProduction = (ImageButton) findViewById(R.id.ImageViewProduction);
@@ -433,6 +441,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButtonHelpNiveauReputation2 = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauReputation2);
         ImageButtonHelpNiveauSecuriteGlobale = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauSecuriteGlobale);
         ImageButtonHelpNiveauConditionTravails = (ImageButton) findViewById(R.id.ImageButtonHelpNiveauConditionTravails);
+        ImageButtonHelpParite = (ImageButton) findViewById(R.id.ImageButtonHelpParite);
 
         button_embaucher = (Button) findViewById((R.id.button_embaucher));
         //COLLECTION D'ELEMNENTS
@@ -509,6 +518,9 @@ public class MainActivity extends AppCompatActivity {
         progressBarSecurite.setOnClickListener(progressBarSecuriteListener);
         progressBarReputation.setOnClickListener(progressBarReputationListener);
         progressBarBonheur.setOnClickListener(progressBarBonheurListener);
+        ImageButtonHelpParite.setOnClickListener(ImageButtonHelpPariteListener);
+        ImageButtonUpCampagneCom.setOnClickListener(ImageButtonUpCampagneComListener);
+        ImageButtonHelpCampagneCom.setOnClickListener(ImageButtonHelpCampagneComListener);
         imageButtonUpCEmployesSecurite.setOnClickListener(imageButtonUpCEmployesSecuriteListener);
         imageButtonUpSecuriteInformatique.setOnClickListener(imageButtonUpSecuriteInformatiqueListener);
         imageButtonHideInformationSousTraiter.setOnClickListener(imageButtonHideInformationSousTraiterListener);
@@ -547,6 +559,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButtonHelpNiveauReputation2.setOnClickListener(ImageButtonHelpNiveauReputation2Listener);
         ImageButtonHelpNiveauSecuriteGlobale.setOnClickListener(ImageButtonHelpNiveauSecuriteGlobaleListener);
         ImageButtonHelpNiveauConditionTravails.setOnClickListener(ImageButtonHelpNiveauConditionTravailsListener);
+
     }
 
     /**
@@ -1632,6 +1645,7 @@ public class MainActivity extends AppCompatActivity {
         progressBarFormation.setProgress(((int)(entreprise.getNiveauMoyenFormation()/5*100)));
         progressBarEmployesSecurite.setProgress((int)(entreprise.getNiveauMoyenDomaine("Securite")/5*100));
     }
+
     /**
      * Met à jour l'écran du détail de la sécurité
      * @author gbon
@@ -1653,6 +1667,50 @@ public class MainActivity extends AppCompatActivity {
         if(relativeLayoutDetailsSecuriteInformatique.getVisibility() == View.VISIBLE) {
             progressBarNiveauSecuriteInformatique.setProgress((int)(entreprise.getTauxSecuInfo()*100));
             textViewNiveauSecuriteInformatique.setText(String.valueOf((int) (entreprise.getTauxSecuInfo() * 100)));
+        }
+    }
+
+    /* ********************************** *
+     *            REPUTATION              *
+     * ********************************** */
+
+    private View.OnClickListener ImageButtonUpCampagneComListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (entreprise.lancerCampagneCom()) {
+                successfulMessage("Vous avez lancé une campagne de communication !");
+                majGraphReputation();
+            } else {
+                notEnoughMoney(150);
+            }
+        }
+    };
+
+    private View.OnClickListener ImageButtonHelpCampagneComListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Lancer une campagne de communication permet d'améliorer la visibilité de votre entreprise et ainsi augmenter votre réputation.");
+        }
+    };
+
+    private View.OnClickListener ImageButtonHelpPariteListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popUpInfo("Cette barre de progression indique le taux de parité des employés de l'entreprise.");
+        }
+    };
+
+    /**
+     * Met à jour l'écran du détail de la réputation
+     * @author gbon
+     */
+    private void majGraphReputation() {
+        ProgressBarNiveauReputation2.setProgress((int)(entreprise.getReputation()*100));
+        // MAJ des progressbar de l'onglet détail Réputation
+        if(relativeLayoutDetailsReputation.getVisibility() == View.VISIBLE) {
+            ProgressBarNiveauReputation.setProgress((int)(entreprise.getReputation()*100));
+            textViewNiveauReputation.setText(String.valueOf((int) (entreprise.getReputation() * 100)));
+            ProgressBarParite.setProgress((int)(entreprise.getParite()*100));
         }
     }
 
@@ -1706,6 +1764,7 @@ public class MainActivity extends AppCompatActivity {
                         if (Ressources.getInstance() >= 0) {
                             majGraphRessources();
                             majGraphBonheur();
+                            majGraphReputation();
                             majGraphSecurite();
                         } else {
                             _t2.cancel();
