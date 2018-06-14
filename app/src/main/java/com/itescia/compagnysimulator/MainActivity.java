@@ -1642,7 +1642,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void UpdateUINiveauFormation() {
         double test = (int)(entreprise.getNiveauMoyenDomaine("Securite")/5*100);
-        tv_niveaumoyen.setText(String.valueOf(entreprise.getNiveauMoyenFormation()/5*100));
+        tv_niveaumoyen.setText(String.valueOf(entreprise.getNiveauMoyenFormation()));
         progressBarNiveauFormation.setProgress((int)entreprise.getNiveauMoyenFormation()/5*100);
         progressBarFormation.setProgress(((int)(entreprise.getNiveauMoyenFormation()/5*100)));
         progressBarEmployesSecurite.setProgress((int)(entreprise.getNiveauMoyenDomaine("Securite")/5*100));

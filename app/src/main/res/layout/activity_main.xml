@@ -102,32 +102,33 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_below="@+id/RelativeLayoutTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
+            android:layout_below="@+id/RelativeLayoutTop"
+            android:layout_centerVertical="true"
+            android:visibility="visible">
 
             <RelativeLayout
                 android:id="@+id/RelativeLayoutMedaille"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginEnd="130dp"
-                android:layout_centerHorizontal="true">
+                android:layout_marginTop="10dp">
 
                 <ProgressBar
                     android:id="@+id/ProgressBarReputation"
                     style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:progressDrawable="@drawable/custom_progress_bar_reputation"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_alignParentStart="true"
-                    android:indeterminate="false"
                     android:clickable="true"
                     android:focusable="true"
+                    android:indeterminate="false"
                     android:indeterminateTintMode="src_atop"
                     android:max="100"
-                    android:progress="0"/>
+                    android:progress="0"
+                    android:progressDrawable="@drawable/custom_progress_bar_reputation" />
 
                 <ImageView
                     android:id="@+id/ImageViewReputation"
@@ -136,31 +137,31 @@
                     android:layout_alignStart="@+id/ProgressBarReputation"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="25dp"
-                    app:srcCompat="@drawable/medalicon"
-                    android:contentDescription="@string/description_icone_reputation"/>
+                    android:contentDescription="@string/description_icone_reputation"
+                    app:srcCompat="@drawable/medalicon" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/RelativeLayoutSecurite"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/RelativeLayoutMedaille"
+                android:layout_centerHorizontal="true"
                 android:layout_marginEnd="130dp"
-                android:layout_centerHorizontal="true">
+                android:layout_marginTop="10dp">
 
                 <ProgressBar
                     android:id="@+id/ProgressBarSecurite"
                     style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:progressDrawable="@drawable/custom_progress_bar_securite"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:indeterminate="false"
                     android:clickable="true"
                     android:focusable="true"
+                    android:indeterminate="false"
                     android:indeterminateTintMode="src_atop"
                     android:max="100"
-                    android:progress="0"/>
+                    android:progress="0"
+                    android:progressDrawable="@drawable/custom_progress_bar_securite" />
 
                 <ImageView
                     android:id="@+id/ImageViewSecurite"
@@ -171,8 +172,8 @@
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="25dp"
-                    app:srcCompat="@drawable/securityicon"
-                    android:contentDescription="@string/description_icone_securite"/>
+                    android:contentDescription="@string/description_icone_securite"
+                    app:srcCompat="@drawable/securityicon" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -180,55 +181,55 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/RelativeLayoutSecurite"
-                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginEnd="130dp"
-                android:layout_centerHorizontal="true">
+                android:layout_marginTop="10dp">
 
                 <ProgressBar
                     android:id="@+id/ProgressBarFormation"
                     style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:progressDrawable="@drawable/custom_progress_bar_formation"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:indeterminate="false"
-                    android:indeterminateTintMode="src_atop"
                     android:clickable="true"
                     android:focusable="true"
+                    android:indeterminate="false"
+                    android:indeterminateTintMode="src_atop"
                     android:max="100"
-                    android:progress="0"/>
+                    android:progress="0"
+                    android:progressDrawable="@drawable/custom_progress_bar_formation" />
 
                 <ImageView
                     android:id="@+id/ImageViewFormation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/ProgressBarFormation"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="25dp"
+                    android:layout_alignStart="@+id/ProgressBarFormation"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
                     android:layout_centerInParent="true"
-                    app:srcCompat="@drawable/competenceicon"
-                    android:contentDescription="@string/description_icone_formation"/>
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="25dp"
+                    android:contentDescription="@string/description_icone_formation"
+                    app:srcCompat="@drawable/competenceicon" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/RelativeLayoutFormation"
-                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginEnd="130dp"
-                android:layout_centerHorizontal="true">
+                android:layout_marginTop="10dp">
 
                 <ProgressBar
                     android:id="@+id/ProgressBarBonheur"
                     style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:progressDrawable="@drawable/custom_progress_bar_bonheur"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:indeterminate="false"
                     android:indeterminateTintMode="src_atop"
                     android:max="100"
-                    android:progress="0"/>
+                    android:progress="0"
+                    android:progressDrawable="@drawable/custom_progress_bar_bonheur" />
 
                 <ImageView
                     android:id="@+id/ImageViewBonheur"
@@ -238,9 +239,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="25dp"
                     android:clickable="true"
+                    android:contentDescription="@string/description_icone_bonheur"
                     android:focusable="true"
-                    app:srcCompat="@drawable/happinessicon"
-                    android:contentDescription="@string/description_icone_bonheur"/>
+                    app:srcCompat="@drawable/happinessicon" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -1823,7 +1824,9 @@
             android:id="@+id/RelativeLayoutDetailsReputation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="59dp"
             android:alpha="0.9"
             android:background="@color/colorBackgroundRelativeLayoutEmployes"
             android:visibility="gone">
